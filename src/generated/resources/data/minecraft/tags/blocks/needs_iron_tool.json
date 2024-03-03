@@ -1,0 +1,14 @@
+{
+  "values": [
+    "deddymod:sapphire_block",
+    "deddymod:plastimetal_block",
+    "deddymod:sapphire_ore",
+    "deddymod:deepslate_sapphire_ore",
+    "deddymod:ruined_plastimetal",
+    "deddymod:deepslate_ruined_plastimetal",
+    "deddymod:raw_plastimetal_block",
+    "deddymod:plastimetal_door",
+    "deddymod:plastimetal_trapdoor",
+    "deddymod:plastimetal_bars"
+  ]
+}

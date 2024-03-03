@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "deddymod:block/glass_slab"
+    },
+    "type=double": {
+      "model": "deddymod:block/glass_slab_doubleslab"
+    },
+    "type=top": {
+      "model": "deddymod:block/glass_slab_top"
+    }
+  }
+}

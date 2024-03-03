@@ -1,0 +1,39 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 0.1,
+  "ingredient": [
+    {
+      "item": "deddymod:plastimetal_pickaxe"
+    },
+    {
+      "item": "deddymod:plastimetal_shovel"
+    },
+    {
+      "item": "deddymod:plastimetal_axe"
+    },
+    {
+      "item": "deddymod:plastimetal_hoe"
+    },
+    {
+      "item": "deddymod:plastimetal_sword"
+    },
+    {
+      "item": "deddymod:plastimetal_helmet"
+    },
+    {
+      "item": "deddymod:plastimetal_chestplate"
+    },
+    {
+      "item": "deddymod:plastimetal_leggings"
+    },
+    {
+      "item": "deddymod:plastimetal_boots"
+    },
+    {
+      "item": "deddymod:plastimetal_horse_armor"
+    }
+  ],
+  "result": "deddymod:plastimetal_nugget"
+}

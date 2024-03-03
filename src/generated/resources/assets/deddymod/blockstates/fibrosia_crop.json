@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "deddymod:block/fibrosia_stage0"
+    },
+    "age=1": {
+      "model": "deddymod:block/fibrosia_stage1"
+    },
+    "age=2": {
+      "model": "deddymod:block/fibrosia_stage2"
+    },
+    "age=3": {
+      "model": "deddymod:block/fibrosia_stage3"
+    },
+    "age=4": {
+      "model": "deddymod:block/fibrosia_stage4"
+    }
+  }
+}

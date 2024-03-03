@@ -1,0 +1,54 @@
+{
+    "pack": {
+        "description": "${mod_id} resources",
+        "pack_format": 26
+    },
+     "filter": {
+         "block": [
+             {
+                 "namespace": "minecraft",
+                 "path": "recipes/wooden_sword"
+             },
+             {
+                 "namespace": "minecraft",
+                 "path": "recipes/wooden_hoe"
+             },
+             {
+                 "namespace": "minecraft",
+                 "path": "recipes/wooden_axe"
+             },
+             {
+                 "namespace": "minecraft",
+                 "path": "recipes/wooden_shovel"
+             },
+             {
+                 "namespace": "minecraft",
+                 "path": "recipes/wooden_pickaxe"
+             },
+             {
+                 "namespace": "minecraft",
+                 "path": "recipes/stone_sword"
+             },
+             {
+                 "namespace": "minecraft",
+                 "path": "recipes/stone_hoe"
+             },
+             {
+                 "namespace": "minecraft",
+                 "path": "recipes/stone_axe"
+             },
+             {
+                 "namespace": "minecraft",
+                 "path": "recipes/stone_shovel"
+             },
+             {
+                 "namespace": "minecraft",
+                 "path": "recipes/stone_pickaxe"
+             },
+             {
+                 "namespace": "minecraft",
+                 "path": "recipes/arrow"
+             }
+         ]
+     }
+}

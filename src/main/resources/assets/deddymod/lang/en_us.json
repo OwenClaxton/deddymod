@@ -1,0 +1,79 @@
+{
+  "item.deddymod.sapphire": "Sapphire",
+
+  "item.deddymod.plastimetal_ingot": "Plastimetal Ingot",
+  "item.deddymod.plastimetal_nugget": "Plastimetal Nugget",
+  "item.deddymod.raw_plastimetal": "Raw Plastimetal",
+
+  "item.deddymod.bronze_ingot": "Bronze Ingot",
+  "item.deddymod.bronze_nugget": "Bronze Nugget",
+  "item.deddymod.raw_bronze": "Raw Bronze",
+
+  "item.deddymod.tin_ingot": "Tin Ingot",
+  "item.deddymod.tin_nugget": "Tin Nugget",
+  "item.deddymod.raw_tin": "Raw Tin",
+
+  "item.deddymod.copper_nugget": "Copper Nugget",
+
+  "item.deddymod.plastimetal_sword": "Plastimetal Sword",
+  "item.deddymod.plastimetal_pickaxe": "Plastimetal Pickaxe",
+  "item.deddymod.plastimetal_axe": "Plastimetal Axe",
+  "item.deddymod.plastimetal_shovel": "Plastimetal Shovel",
+  "item.deddymod.plastimetal_hoe": "Plastimetal Hoe",
+
+  "item.deddymod.plastimetal_helmet": "Plastimetal Helmet",
+  "item.deddymod.plastimetal_chestplate": "Plastimetal Chestplate",
+  "item.deddymod.plastimetal_leggings": "Plastimetal Leggings",
+  "item.deddymod.plastimetal_boots": "Plastimetal Boots",
+  "item.deddymod.plastimetal_horse_armor": "Plastimetal Horse Armor",
+
+  "item.deddymod.gps_tool": "Handheld GPS",
+
+  "item.deddymod.coffee_food": "Bowl of Coffee",
+  "item.deddymod.coffee_beans": "Coffee Beans",
+  "item.deddymod.fibrosia_seeds": "Fibrosia Seeds",
+  "item.deddymod.plant_fibers": "Plant Fibers",
+
+  "item.deddymod.stick_bundle": "Bundle of Sticks",
+  "item.deddymod.knapped_flint": "Knapped Flint",
+  "item.deddymod.wooden_handle": "Wooden Handle",
+
+  "item.deddymod.flint_knife": "Flint Knife",
+  "item.deddymod.wooden_spear": "Wooden Spear",
+  "item.deddymod.stone_mattock": "Stone Mattock",
+
+  "block.deddymod.test_block": "Test Block",
+
+  "block.deddymod.bauxite": "Bauxite",
+  "block.deddymod.polished_bauxite": "Polished Bauxite",
+
+  "block.deddymod.sapphire_block": "Block of Sapphire",
+  "block.deddymod.sapphire_ore": "Sapphire Ore",
+  "block.deddymod.deepslate_sapphire_ore": "Deepslate Sapphire Ore",
+
+  "block.deddymod.plastimetal_block": "Block of Plastimetal",
+  "block.deddymod.raw_plastimetal_block": "Block of Raw Plastimetal",
+  "block.deddymod.ruined_plastimetal": "Ruined Plastimetal",
+  "block.deddymod.deepslate_ruined_plastimetal": "Deepslate Ruined Plastimetal",
+
+  "block.deddymod.glass_stairs": "Glass Stairs",
+  "block.deddymod.glass_slab": "Glass Slab",
+  "block.deddymod.glass_button":  "Glass Button",
+  "block.deddymod.glass_pressure_plate": "Glass Pressure Plate",
+  "block.deddymod.glass_fence":  "Glass Fence",
+  "block.deddymod.glass_fence_gate": "Glass Fence Gate",
+  "block.deddymod.glass_wall":  "Glass Wall",
+  "block.deddymod.glass_door": "Glass Door",
+  "block.deddymod.glass_trapdoor":  "Glass Trapdoor",
+
+  "block.deddymod.plastimetal_door": "Plastimetal Door",
+  "block.deddymod.plastimetal_trapdoor":  "Plastimetal Trapdoor",
+  "block.deddymod.plastimetal_bars":  "Plastimetal Bars",
+
+  "block.deddymod.tiny_rock_block":  "Cobble",
+  "block.deddymod.tiny_log_block":  "Branch",
+
+  "creativetab.deddymod_tab": "DeddyMod",
+
+  "tooltip.deddymod.gps_tool.tooltip": "Displays XYZ when right-clicking"
+}

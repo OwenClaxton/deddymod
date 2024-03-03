@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/stairs",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "bottom": "deddymod:block/glass_grid",
+    "side": "deddymod:block/glass_grid",
+    "top": "deddymod:block/glass_grid"
+  }
+}

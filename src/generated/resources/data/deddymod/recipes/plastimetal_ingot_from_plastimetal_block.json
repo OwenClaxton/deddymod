@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "deddymod:plastimetal_block"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "deddymod:plastimetal_ingot"
+  }
+}
