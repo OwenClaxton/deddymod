@@ -3,6 +3,7 @@ package net.deddybones.deddymod.datagen;
 import net.deddybones.deddymod.DeddyMod;
 import net.deddybones.deddymod.block.ModBlocks;
 import net.deddybones.deddymod.item.ModItems;
+import net.deddybones.deddymod.item.TweakedVanillaItems;
 import net.deddybones.deddymod.util.ModTags;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderLookup;
@@ -33,8 +34,8 @@ public class ModItemTagProvider extends ItemTagsProvider {
                         ModItems.PLASTIMETAL_BOOTS.get());
 
         this.tag(ItemTags.AXES)
-                .add(ModItems.PLASTIMETAL_AXE.get());
-//                .add(ModItems.IRON_AXE.get());
+                .add(ModItems.PLASTIMETAL_AXE.get())
+                .add(TweakedVanillaItems.IRON_AXE.get());
 
         this.tag(ItemTags.PICKAXES)
                 .add(ModItems.PLASTIMETAL_PICKAXE.get());
@@ -50,7 +51,6 @@ public class ModItemTagProvider extends ItemTagsProvider {
 
         this.tag(ModTags.Items.CAN_CARVE)
                 .addTag(ItemTags.AXES)
-                .add(ModItems.IRON_AXE.get())
                 .add(ModItems.FLINT_KNIFE.get());
 
         this.tag(ModTags.Items.CARVED_ITEM)

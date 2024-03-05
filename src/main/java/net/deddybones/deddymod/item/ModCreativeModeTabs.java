@@ -93,7 +93,7 @@ public class ModCreativeModeTabs {
                                 output.accept(ModBlocks.TINY_ROCK_BLOCK.get());
                                 output.accept(ModBlocks.TINY_LOG_BLOCK.get());
 
-                                output.accept(ModItems.IRON_AXE.get());
+                                output.accept(TweakedVanillaItems.IRON_AXE.get());
                             })
                             .build());
 

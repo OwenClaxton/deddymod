@@ -3,6 +3,7 @@ package net.deddybones.deddymod.datagen;
 import net.deddybones.deddymod.DeddyMod;
 import net.deddybones.deddymod.block.ModBlocks;
 import net.deddybones.deddymod.item.ModItems;
+import net.deddybones.deddymod.item.TweakedVanillaItems;
 import net.deddybones.deddymod.item.custom.ModArmorItem;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceKey;
@@ -92,7 +93,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         handheldItem(ModItems.PLASTIMETAL_SHOVEL.get());
         handheldItem(ModItems.PLASTIMETAL_HOE.get());
 
-        handheldItem(ModItems.IRON_AXE.get(), "minecraft");
+//        handheldItem(TweakedVanillaItems.IRON_AXE.get(), "minecraft");
 
         trimmedArmorItem(ModItems.PLASTIMETAL_HELMET.get());
         trimmedArmorItem(ModItems.PLASTIMETAL_CHESTPLATE.get());

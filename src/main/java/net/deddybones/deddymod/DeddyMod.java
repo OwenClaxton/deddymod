@@ -2,15 +2,15 @@ package net.deddybones.deddymod;
 
 import com.mojang.logging.LogUtils;
 import net.deddybones.deddymod.block.ModBlocks;
+import net.deddybones.deddymod.block.TweakedVanillaBlocks;
 import net.deddybones.deddymod.entity.ModEntities;
 import net.deddybones.deddymod.entity.client.ThrownWoodenSpearRenderer;
 import net.deddybones.deddymod.item.ModCreativeModeTabs;
 import net.deddybones.deddymod.item.ModItems;
+import net.deddybones.deddymod.item.TweakedVanillaItems;
 import net.deddybones.deddymod.loot.ModLootModifiers;
 import net.deddybones.deddymod.recipes.ModRecipes;
 import net.deddybones.deddymod.util.ModTags;
-import net.deddybones.deddymod.util.crafting.CarveProcessHolder;
-import net.deddybones.deddymod.util.crafting.CraftingContainerListener;
 import net.deddybones.deddymod.worldgen.ModWorldGen;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.item.ItemProperties;
@@ -51,7 +51,9 @@ public class DeddyMod {
 
         ModCreativeModeTabs.register(modEventBus);
         ModItems.register(modEventBus);
+        TweakedVanillaItems.register(modEventBus);
         ModBlocks.register(modEventBus);
+        TweakedVanillaBlocks.register(modEventBus);
         ModWorldGen.register(modEventBus);
         ModLootModifiers.register(modEventBus);
         ModEntities.register(modEventBus);
@@ -66,7 +68,6 @@ public class DeddyMod {
 //        ItemBlockRenderTypes.setRenderLayer(ModBlocks.TEST_BLOCK.get(), RenderType.cutout());
         event.enqueueWork(() ->
         {
-            System.out.println("*****\nRegistering throwing\n********");
             ItemProperties.register(ModItems.WOODEN_SPEAR.get(),
                     new ResourceLocation(DeddyMod.MOD_ID, "throwing"), (stack, level, living, id) -> {
                         return living != null && living.isUsingItem() && living.getUseItem() == stack ? 1.0F : 0.0F;

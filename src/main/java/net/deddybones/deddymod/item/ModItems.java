@@ -12,8 +12,7 @@ import net.minecraftforge.registries.RegistryObject;
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, DeddyMod.MOD_ID);
-    public static final DeferredRegister<Item> VANILLA_ITEMS =
-            DeferredRegister.create(ForgeRegistries.ITEMS, "minecraft");
+
     public static final RegistryObject<Item> SAPPHIRE = ITEMS.register("sapphire",
             () -> new Item(new Item.Properties()));
 
@@ -92,12 +91,7 @@ public class ModItems {
             () -> new ModHorseArmorItem(6, "plastimetal", (new Item.Properties()).stacksTo(1)));
 
 
-    public static final RegistryObject<Item> IRON_AXE = VANILLA_ITEMS.register("iron_axe",
-            () -> new CarverItem(Tiers.IRON, 6.0F, -3.1F, new Item.Properties()));
-
-
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
-        VANILLA_ITEMS.register(eventBus);
     }
 }
