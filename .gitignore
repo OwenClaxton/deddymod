@@ -5,3 +5,4 @@ gradle/
 run/
 src/generated/resources/.cache/
 *.log.gz
+run-data/logs/
