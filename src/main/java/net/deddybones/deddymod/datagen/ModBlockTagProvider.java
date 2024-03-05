@@ -8,6 +8,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.BlockTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -25,8 +26,6 @@ public class ModBlockTagProvider extends BlockTagsProvider {
     protected void addTags(HolderLookup.@NotNull Provider pProvider) {
 //        this.tag(ModTags.Blocks.METAL_DETECTOR_VALUABLES)
 //                .add(ModBlocks.SAPPHIRE_ORE.get()).addTag(Tags.Blocks.ORES);
-
-//        this.tag(BlockTags.IMPERMEABLE).add(ModBlocks.TEST_BLOCK.get());
 
         this.tag(BlockTags.NEEDS_IRON_TOOL)
                 .add(   ModBlocks.SAPPHIRE_BLOCK.get(),
@@ -53,6 +52,16 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                         ModBlocks.PLASTIMETAL_TRAPDOOR.get(),
                         ModBlocks.PLASTIMETAL_BARS.get()
                 );
+
+        this.tag(BlockTags.NEEDS_STONE_TOOL)
+                .add(Blocks.OAK_LOG)
+                .addTag(BlockTags.LOGS)
+                .addTag(BlockTags.PLANKS);
+
+        this.tag(BlockTags.MINEABLE_WITH_AXE)
+                .add(Blocks.OAK_LOG)
+                .addTag(BlockTags.LOGS)
+                .addTag(BlockTags.PLANKS);
 
         this.tag(ModTags.Blocks.TINY_LOG_PLACEABLE_ON)
                 .addTag(Tags.Blocks.GRAVEL)
