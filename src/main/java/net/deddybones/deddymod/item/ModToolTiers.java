@@ -16,26 +16,31 @@ import java.util.List;
 public class ModToolTiers{
 
     public static final Tier PRIMITIVE = TierSortingRegistry.registerTier(
-            new ForgeTier(0, 50, 1f, 0.5f, 0,
+            new ForgeTier(0, 50, 1.0f, 0.0f, 0,
                           ModTags.Blocks.NEEDS_PRIMITIVE_TOOL, () -> Ingredient.of(ModItems.PLASTIMETAL_INGOT.get())),
             new ResourceLocation(DeddyMod.MOD_ID, "primitive"), List.of(), List.of());
 
     public static final Tier COPPER = TierSortingRegistry.registerTier(
-            new ForgeTier(0, 100, 2f, 1f, 5,
+            new ForgeTier(1, 100, 2.0f, 1.0f, 5,
                     ModTags.Blocks.NEEDS_COPPERTIN_TOOL, () -> Ingredient.of(Items.COPPER_INGOT)),
             new ResourceLocation(DeddyMod.MOD_ID, "copper"), List.of(ModToolTiers.PRIMITIVE), List.of());
 
     public static final Tier TIN = TierSortingRegistry.registerTier(
-            new ForgeTier(0, 100, 2f, 1f, 5,
+            new ForgeTier(1, 100, 2.0f, 1.0f, 5,
                     ModTags.Blocks.NEEDS_COPPERTIN_TOOL, () -> Ingredient.of(ModItems.TIN_INGOT.get())),
             new ResourceLocation(DeddyMod.MOD_ID, "tin"), List.of(ModToolTiers.PRIMITIVE), List.of());
 
     public static final Tier BRONZE = TierSortingRegistry.registerTier(
-            new ForgeTier(0, 200, 3f, 1.5f, 8,
+            new ForgeTier(2, 200, 5.0f, 1.5f, 8,
                     ModTags.Blocks.NEEDS_BRONZE_TOOL, () -> Ingredient.of(ModItems.BRONZE_INGOT.get())),
             new ResourceLocation(DeddyMod.MOD_ID, "bronze"), List.of(ModToolTiers.COPPER, ModToolTiers.TIN), List.of(Tiers.IRON));
+
+//    IRON(2, 250, 6.0F, 2.0F, 14, () -> {
+//        return Ingredient.of(Items.IRON_INGOT);
+//    }),
+
     public static final Tier PLASTIMETAL = TierSortingRegistry.registerTier(
-            new ForgeTier(2, 500, 7f, 2.5f, 14,
+            new ForgeTier(4, 500, 8.0f, 2.5f, 14,
                     ModTags.Blocks.NEEDS_PLASTIMETAL_TOOL, () -> Ingredient.of(ModItems.PLASTIMETAL_INGOT.get())),
             new ResourceLocation(DeddyMod.MOD_ID, "plastimetal"), List.of(Tiers.IRON), List.of());
 
