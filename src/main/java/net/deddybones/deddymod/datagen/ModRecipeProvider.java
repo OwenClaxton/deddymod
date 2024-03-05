@@ -77,7 +77,20 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.KNAPPED_FLINT.get(), 2).requires(Items.FLINT).requires(ModBlocks.TINY_ROCK_BLOCK.get()).unlockedBy("has_flint", has(Items.FLINT)).unlockedBy("has_tiny_rock_block", has(ModBlocks.TINY_ROCK_BLOCK.get())).save(pOutput);
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, Items.ARROW, 3).define('#', Items.STICK).define('X', ModItems.KNAPPED_FLINT.get()).define('Y', Items.FEATHER).pattern("X").pattern("#").pattern("Y").unlockedBy("has_feather", has(Items.FEATHER)).unlockedBy("has_stick", has(Items.STICK)).unlockedBy("has_knapped_flint", has(ModItems.KNAPPED_FLINT.get())).save(pOutput, DeddyMod.MOD_ID + ":arrow");
 
-        itemListAndItemLike(pOutput, RecipeCategory.MISC, ModItems.WOODEN_HANDLE.get(), ModBlocks.TINY_LOG_BLOCK.get(), List.of(ModItems.FLINT_KNIFE.get(), ModItems.PLASTIMETAL_AXE.get(), Items.IRON_AXE));
+        List<Item> CarverList = List.of(ModItems.FLINT_KNIFE.get(), ModItems.PLASTIMETAL_AXE.get(), Items.IRON_AXE);
+
+        itemListAndItemLike(pOutput, RecipeCategory.MISC, ModItems.WOODEN_HANDLE.get(), ModBlocks.TINY_LOG_BLOCK.get(), CarverList);
+        itemListAndItemLike(pOutput, RecipeCategory.MISC, ModItems.WOODEN_SPEAR.get(), ModItems.WOODEN_HANDLE.get(), CarverList);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, ModItems.FLINT_KNIFE.get(), 1)
+                .requires(ModItems.KNAPPED_FLINT.get()).requires(Items.STICK)
+                .unlockedBy("has_knapped_flint", has(ModItems.KNAPPED_FLINT.get())).unlockedBy("has_stick", has(Items.STICK))
+                .save(pOutput);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, ModItems.STONE_MATTOCK.get(), 1)
+                .requires(ModBlocks.TINY_ROCK_BLOCK.get()).requires(Items.STRING).requires(ModItems.WOODEN_HANDLE.get())
+                .unlockedBy("has_tiny_rock_block", has(ModBlocks.TINY_ROCK_BLOCK.get())).unlockedBy("has_string", has(Items.STRING)).unlockedBy("has_wooden_handle", has(ModItems.WOODEN_HANDLE.get()))
+                .save(pOutput);
 
 //        for (String tool : new String[]{"shovel", "sword", "pickaxe", "hoe", "axe"}) {
 //            removeRecipe(pOutput, "wooden_" + tool);
