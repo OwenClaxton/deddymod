@@ -1,8 +1,8 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "deddymod:block/tiny_log_block",
-		"particle": "deddymod:block/tiny_log_block"
+		"0": "techplusplus:block/tiny_log_block",
+		"particle": "techplusplus:block/tiny_log_block"
 	},
 	"elements": [
 		{

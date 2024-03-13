@@ -2,8 +2,8 @@
   "credit": "Made with Blockbench",
   "texture_size": [32, 32],
   "textures": {
-    "0": "deddymod:item/wooden_spear_3d",
-    "particle": "deddymod:item/wooden_spear_3d"
+    "0": "techplusplus:item/wooden_spear_3d",
+    "particle": "techplusplus:item/wooden_spear_3d"
   },
   "elements": [
     {

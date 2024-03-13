@@ -2,25 +2,25 @@
   "parent": "minecraft:item/handheld",
   "loader": "forge:separate_transforms",
   "base": {
-    "parent": "deddymod:item/wooden_spear_3d"
+    "parent": "techplusplus:item/wooden_spear_3d"
   },
   "perspectives": {
     "gui": {
-      "parent": "deddymod:item/wooden_spear_2d"
+      "parent": "techplusplus:item/wooden_spear_2d"
     },
     "ground": {
-      "parent": "deddymod:item/wooden_spear_2d"
+      "parent": "techplusplus:item/wooden_spear_2d"
     },
     "fixed": {
-      "parent": "deddymod:item/wooden_spear_2d"
+      "parent": "techplusplus:item/wooden_spear_2d"
     }
   },
   "overrides": [
     {
       "predicate": {
-        "deddymod:throwing": 1
+        "techplusplus:throwing": 1
       },
-      "model": "deddymod:item/wooden_spear_throwing"
+      "model": "techplusplus:item/wooden_spear_throwing"
     }
   ]
 }
