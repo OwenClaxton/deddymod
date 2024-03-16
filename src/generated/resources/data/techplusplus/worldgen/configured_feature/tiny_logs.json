@@ -1,0 +1,14 @@
+{
+  "type": "techplusplus:tiny_log_feature",
+  "config": {
+    "to_place": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "techplusplus:tiny_log_block",
+        "Properties": {
+          "conditional": "false"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "variants": {
+    "conditional=false": {
+      "model": "techplusplus:block/tiny_rock_block"
+    },
+    "conditional=true": {
+      "model": "techplusplus:block/tiny_rock_block",
+      "y": 90
+    }
+  }
+}

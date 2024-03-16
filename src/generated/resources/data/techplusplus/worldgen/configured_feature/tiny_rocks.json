@@ -1,0 +1,14 @@
+{
+  "type": "techplusplus:tiny_rock_feature",
+  "config": {
+    "to_place": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "techplusplus:tiny_rock_block",
+        "Properties": {
+          "conditional": "false"
+        }
+      }
+    }
+  }
+}

@@ -1,14 +1,14 @@
 {
   "values": [
-    "deddymod:sapphire_block",
-    "deddymod:plastimetal_block",
-    "deddymod:sapphire_ore",
-    "deddymod:deepslate_sapphire_ore",
-    "deddymod:ruined_plastimetal",
-    "deddymod:deepslate_ruined_plastimetal",
-    "deddymod:raw_plastimetal_block",
-    "deddymod:plastimetal_door",
-    "deddymod:plastimetal_trapdoor",
-    "deddymod:plastimetal_bars"
+    "techplusplus:sapphire_block",
+    "techplusplus:plastimetal_block",
+    "techplusplus:sapphire_ore",
+    "techplusplus:deepslate_sapphire_ore",
+    "techplusplus:ruined_plastimetal",
+    "techplusplus:deepslate_ruined_plastimetal",
+    "techplusplus:raw_plastimetal_block",
+    "techplusplus:plastimetal_door",
+    "techplusplus:plastimetal_trapdoor",
+    "techplusplus:plastimetal_bars"
   ]
 }

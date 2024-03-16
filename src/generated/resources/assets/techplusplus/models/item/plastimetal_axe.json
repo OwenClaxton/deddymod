@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "techplusplus:item/plastimetal_axe"
+  }
+}

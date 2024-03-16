@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:flint"
+    },
+    {
+      "item": "techplusplus:tiny_rock_block"
+    }
+  ],
+  "result": {
+    "count": 2,
+    "item": "techplusplus:knapped_flint"
+  }
+}

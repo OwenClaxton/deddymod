@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    {
+      "item": "techplusplus:tiny_rock_block"
+    },
+    {
+      "item": "minecraft:string"
+    },
+    {
+      "item": "techplusplus:wooden_handle"
+    }
+  ],
+  "result": {
+    "item": "techplusplus:stone_mattock"
+  }
+}

@@ -1,8 +1,8 @@
 {
   "entries": [
-    "deddymod:plastimetal_ingot_from_mineshaft_chest",
-    "deddymod:plastimetal_ingot_from_suspicious_sand",
-    "deddymod:plastimetal_nugget_from_zombie"
+    "techplusplus:plastimetal_ingot_from_mineshaft_chest",
+    "techplusplus:plastimetal_ingot_from_suspicious_sand",
+    "techplusplus:plastimetal_nugget_from_zombie"
   ],
   "replace": false
 }

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "techplusplus:block/glass_slab"
+    },
+    "type=double": {
+      "model": "techplusplus:block/glass_slab_doubleslab"
+    },
+    "type=top": {
+      "model": "techplusplus:block/glass_slab_top"
+    }
+  }
+}

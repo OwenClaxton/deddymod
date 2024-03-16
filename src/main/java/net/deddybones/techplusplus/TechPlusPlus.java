@@ -43,7 +43,7 @@ import java.util.stream.Collectors;
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(TechPlusPlus.MOD_ID)
 public class TechPlusPlus {
-    public static final String MOD_ID = "deddymod";
+    public static final String MOD_ID = "techplusplus";
     private static final Logger LOGGER = LogUtils.getLogger();
 
     public TechPlusPlus() {

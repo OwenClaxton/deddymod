@@ -1,0 +1,8 @@
+{
+  "values": [
+    "#minecraft:stone_ore_replaceables",
+    "#minecraft:sand",
+    "#forge:ores",
+    "#techplusplus:tiny_log_placeable_on"
+  ]
+}
