@@ -21,8 +21,13 @@ public class ModBiomeModifiers {
     public static final ResourceKey<BiomeModifier> ADD_PLASTIMETAL_ORE_SMALL = registerKey("add_plastimetal_ore_small");
     public static final ResourceKey<BiomeModifier> ADD_PLASTIMETAL_ORE_BURIED = registerKey("add_plastimetal_ore_buried");
     public static final ResourceKey<BiomeModifier> ADD_PLASTIMETAL_ORE_LARGE = registerKey("add_plastimetal_ore_large");
+
+    public static final ResourceKey<BiomeModifier> ADD_TIN_ORE = registerKey("add_tin_ore");
+    public static final ResourceKey<BiomeModifier> ADD_TIN_ORE_LARGE = registerKey("add_tin_ore_large");
+
     public static final ResourceKey<BiomeModifier> ADD_TINY_ROCKS = registerKey("add_tiny_rocks");
     public static final ResourceKey<BiomeModifier> ADD_TINY_LOGS = registerKey("add_tiny_logs");
+
     public static final ResourceKey<BiomeModifier> ADD_BAUXITE_ORE_UPPER = registerKey("add_bauxite_ore_upper");
     public static final ResourceKey<BiomeModifier> ADD_BAUXITE_ORE_LOWER = registerKey("add_bauxite_ore_lower");
 
@@ -66,6 +71,18 @@ public class ModBiomeModifiers {
         context.register(ADD_PLASTIMETAL_ORE_LARGE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
                 biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
                 HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.PLASTIMETAL_ORE_LARGE_PLACED_KEY)),
+                GenerationStep.Decoration.UNDERGROUND_ORES
+        ));
+
+
+        context.register(ADD_TIN_ORE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
+                biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
+                HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.TIN_ORE_PLACED_KEY)),
+                GenerationStep.Decoration.UNDERGROUND_ORES
+        ));
+        context.register(ADD_TIN_ORE_LARGE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
+                biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
+                HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.TIN_ORE_LARGE_PLACED_KEY)),
                 GenerationStep.Decoration.UNDERGROUND_ORES
         ));
 

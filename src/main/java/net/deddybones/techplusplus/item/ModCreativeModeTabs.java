@@ -14,10 +14,10 @@ public class ModCreativeModeTabs {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS =
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, TechPlusPlus.MOD_ID);
 
-    public static final RegistryObject<CreativeModeTab> TUTORIAL_TAB =
-            CREATIVE_MODE_TABS.register("deddymod_tab",
+    public static final RegistryObject<CreativeModeTab> TECHPLUSPLUS_TAB =
+            CREATIVE_MODE_TABS.register("techplusplus_tab",
                     () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.SAPPHIRE.get()))
-                            .title(Component.translatable("creativetab.deddymod_tab"))
+                            .title(Component.translatable("creativetab.techplusplus_tab"))
                             .displayItems((itemDisplayParameters, output) -> {
 
                                 output.accept(ModItems.SAPPHIRE.get());

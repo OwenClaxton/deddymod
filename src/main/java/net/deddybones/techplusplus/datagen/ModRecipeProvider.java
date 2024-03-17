@@ -39,6 +39,12 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         nineThingsStorageRecipes(pOutput, RecipeCategory.MISC, ModItems.PLASTIMETAL_INGOT.get(), RecipeCategory.BUILDING_BLOCKS, ModBlocks.PLASTIMETAL_BLOCK.get());
         nineThingsStorageRecipes(pOutput, RecipeCategory.MISC, ModItems.RAW_PLASTIMETAL.get(), RecipeCategory.BUILDING_BLOCKS, ModBlocks.RAW_PLASTIMETAL_BLOCK.get());
 
+        nineThingsStorageRecipes(pOutput, RecipeCategory.MISC, ModItems.TIN_INGOT.get(), RecipeCategory.BUILDING_BLOCKS, ModBlocks.TIN_BLOCK.get());
+        nineThingsStorageRecipes(pOutput, RecipeCategory.MISC, ModItems.RAW_TIN.get(), RecipeCategory.BUILDING_BLOCKS, ModBlocks.RAW_TIN_BLOCK.get());
+
+        nineThingsStorageRecipes(pOutput, RecipeCategory.MISC, ModItems.BRONZE_INGOT.get(), RecipeCategory.BUILDING_BLOCKS, ModBlocks.BRONZE_BLOCK.get());
+        nineThingsStorageRecipes(pOutput, RecipeCategory.MISC, ModItems.RAW_BRONZE.get(), RecipeCategory.BUILDING_BLOCKS, ModBlocks.RAW_BRONZE_BLOCK.get());
+
         nineThingsStorageRecipes(pOutput, RecipeCategory.MISC, Items.STICK, RecipeCategory.MISC, ModItems.STICK_BUNDLE.get());
 
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.PLASTIMETAL_BARS.get(), 16).define('#', ModItems.PLASTIMETAL_INGOT.get()).pattern("###").pattern("###").unlockedBy("has_plastimetal_ingot", has(ModItems.PLASTIMETAL_INGOT.get())).save(pOutput);

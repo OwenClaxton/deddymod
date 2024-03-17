@@ -36,12 +36,21 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.BAUXITE.get());
         this.dropSelf(ModBlocks.POLISHED_BAUXITE.get());
 
+        this.dropSelf(ModBlocks.RAW_PLASTIMETAL_BLOCK.get());
+        this.dropSelf(ModBlocks.RAW_TIN_BLOCK.get());
+        this.dropSelf(ModBlocks.RAW_BRONZE_BLOCK.get());
+
+        this.dropSelf(ModBlocks.PLASTIMETAL_BLOCK.get());
+        this.dropSelf(ModBlocks.TIN_BLOCK.get());
+        this.dropSelf(ModBlocks.BRONZE_BLOCK.get());
         this.dropSelf(ModBlocks.SAPPHIRE_BLOCK.get());
+
+        this.add(ModBlocks.TIN_ORE.get(), block -> createOreDrop(ModBlocks.TIN_ORE.get(), ModItems.RAW_TIN.get()));
+        this.add(ModBlocks.DEEPSLATE_TIN_ORE.get(), block -> createOreDrop(ModBlocks.DEEPSLATE_TIN_ORE.get(), ModItems.RAW_TIN.get()));
+
         this.add(ModBlocks.SAPPHIRE_ORE.get(), block -> createOreDrop(ModBlocks.SAPPHIRE_ORE.get(), ModItems.SAPPHIRE.get()));
         this.add(ModBlocks.DEEPSLATE_SAPPHIRE_ORE.get(), block -> createOreDrop(ModBlocks.DEEPSLATE_SAPPHIRE_ORE.get(), ModItems.SAPPHIRE.get()));
 
-        this.dropSelf(ModBlocks.PLASTIMETAL_BLOCK.get());
-        this.dropSelf(ModBlocks.RAW_PLASTIMETAL_BLOCK.get());
         this.add(ModBlocks.RUINED_PLASTIMETAL.get(), block -> createOreDrop(ModBlocks.RUINED_PLASTIMETAL.get(), ModItems.RAW_PLASTIMETAL.get()));
         this.add(ModBlocks.DEEPSLATE_RUINED_PLASTIMETAL.get(), block -> createOreDrop(ModBlocks.DEEPSLATE_RUINED_PLASTIMETAL.get(), ModItems.RAW_PLASTIMETAL.get()));
 

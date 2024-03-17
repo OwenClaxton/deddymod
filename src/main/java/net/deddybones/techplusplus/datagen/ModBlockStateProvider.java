@@ -28,13 +28,21 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockWithItem(ModBlocks.BAUXITE);
         blockWithItem(ModBlocks.POLISHED_BAUXITE);
 
+        blockWithItem(ModBlocks.RAW_PLASTIMETAL_BLOCK);
+        blockWithItem(ModBlocks.RAW_TIN_BLOCK);
+        blockWithItem(ModBlocks.RAW_BRONZE_BLOCK);
+
         blockWithItem(ModBlocks.SAPPHIRE_BLOCK);
         blockWithItem(ModBlocks.PLASTIMETAL_BLOCK);
+        blockWithItem(ModBlocks.TIN_BLOCK);
+        blockWithItem(ModBlocks.BRONZE_BLOCK);
 
         blockWithItem(ModBlocks.SAPPHIRE_ORE);
         blockWithItem(ModBlocks.DEEPSLATE_SAPPHIRE_ORE);
 
-        blockWithItem(ModBlocks.RAW_PLASTIMETAL_BLOCK);
+        blockWithItem(ModBlocks.TIN_ORE);
+        blockWithItem(ModBlocks.DEEPSLATE_TIN_ORE);
+
         blockWithItem(ModBlocks.RUINED_PLASTIMETAL);
         blockWithItem(ModBlocks.DEEPSLATE_RUINED_PLASTIMETAL);
 

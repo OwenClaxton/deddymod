@@ -28,6 +28,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent.ItemCraftedEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -103,6 +104,14 @@ public class TechPlusPlus {
 //    @SubscribeEvent
 //    public void onLoggingOut(PlayerEvent.PlayerLoggedOutEvent event) {
 //    }
+
+    @SubscribeEvent
+    public void onLeftClickingBlock(PlayerInteractEvent.LeftClickBlock event) {
+        System.out.println(event.getAction());
+        System.out.println(event.getItemStack());
+        System.out.println(event.getUseBlock());
+        System.out.println(event.getUseItem());
+    }
 
     public boolean isRepairRecipe(Player player, Level level) {
         CraftingContainer craftingSlots;

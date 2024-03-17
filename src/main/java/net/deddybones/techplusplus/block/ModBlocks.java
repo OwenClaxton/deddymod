@@ -5,6 +5,7 @@ import net.deddybones.techplusplus.block.custom.*;
 import net.deddybones.techplusplus.item.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.BlockItem;
@@ -31,7 +32,6 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> BAUXITE = registerBlock("bauxite",
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.GRANITE)));
-
     public static final RegistryObject<Block> POLISHED_BAUXITE = registerBlock("polished_bauxite",
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.POLISHED_GRANITE)));
 
@@ -40,9 +40,33 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> PLASTIMETAL_BLOCK = registerBlock("plastimetal_block",
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK)));
-
     public static final RegistryObject<Block> RAW_PLASTIMETAL_BLOCK = registerBlock("raw_plastimetal_block",
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.RAW_IRON_BLOCK)));
+
+    public static final RegistryObject<Block> TIN_BLOCK = registerBlock("tin_block",
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK)));
+    public static final RegistryObject<Block> RAW_TIN_BLOCK = registerBlock("raw_tin_block",
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.RAW_IRON_BLOCK)));
+
+    public static final RegistryObject<Block> BRONZE_BLOCK = registerBlock("bronze_block",
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK)));
+    public static final RegistryObject<Block> RAW_BRONZE_BLOCK = registerBlock("raw_bronze_block",
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.RAW_IRON_BLOCK)));
+
+    public static final RegistryObject<Block> TIN_ORE = registerBlock("tin_ore",
+            () -> new DropExperienceBlock(
+                    ConstantInt.of(0),
+                    BlockBehaviour.Properties.of().mapColor(MapColor.STONE)
+                            .instrument(NoteBlockInstrument.BASEDRUM)
+                            .requiresCorrectToolForDrops()
+                            .strength(3.0F, 3.0F)));
+    public static final RegistryObject<Block> DEEPSLATE_TIN_ORE = registerBlock("deepslate_tin_ore",
+            () -> new DropExperienceBlock(
+                    ConstantInt.of(0),
+                    BlockBehaviour.Properties.of().mapColor(MapColor.DEEPSLATE)
+                            .instrument(NoteBlockInstrument.BASEDRUM)
+                            .requiresCorrectToolForDrops()
+                            .strength(4.5F, 3.0F)));
 
     public static final RegistryObject<Block> SAPPHIRE_ORE = registerBlock("sapphire_ore",
             () -> new DropExperienceBlock(
@@ -77,7 +101,6 @@ public class ModBlocks {
             () -> new RockGoodieBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).instabreak().pushReaction(PushReaction.DESTROY).sound(SoundType.STONE).noCollission().isViewBlocking(ModBlocks::never).offsetType(BlockBehaviour.OffsetType.XZ)));
     public static final RegistryObject<Block> TINY_LOG_BLOCK = registerBlock("tiny_log_block",
             () -> new LogGoodieBlock(BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).instabreak().pushReaction(PushReaction.DESTROY).sound(SoundType.STONE).noCollission().isViewBlocking(ModBlocks::never).offsetType(BlockBehaviour.OffsetType.XZ)));
-
 
     public static final RegistryObject<Block> GLASS_STAIRS = registerBlock("glass_stairs",
             () -> new TransparentStairBlock(Blocks.GLASS.defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS)));

@@ -19,6 +19,45 @@ public class ModTags {
         public static final TagKey<Block> NEEDS_COPPERTIN_TOOL = tag("needs_coppertin_tool");
         public static final TagKey<Block> NEEDS_BRONZE_TOOL = tag("needs_bronze_tool");
         public static final TagKey<Block> NEEDS_PLASTIMETAL_TOOL = tag("needs_plastimetal_tool");
+        public static final TagKey<Block> PLASTIMETAL_ORES = tag("plastimetal_ores");
+        public static final TagKey<Block> TIN_ORES = tag("tin_ores");
+        public static final TagKey<Block> SAPPHIRE_ORES = tag("sapphire_ores");
+        public static final TagKey<Block> NETHER_ORES = tag("nether_ores");
+        public static final TagKey<Block> CONCRETE_BLOCKS = tag("concrete_blocks");
+        public static final TagKey<Block> STONE_FAMILY = tag("stone_family");
+        public static final TagKey<Block> SMOOTH_STONE_FAMILY = tag("smooth_stone_family");
+        public static final TagKey<Block> STONE_BRICK_FAMILY = tag("stone_brick_family");
+        public static final TagKey<Block> COBBLESTONE_FAMILY = tag("cobblestone_family");
+        public static final TagKey<Block> GRANITE_FAMILY = tag("granite_family");
+        public static final TagKey<Block> ANDESITE_FAMILY = tag("andesite_family");
+        public static final TagKey<Block> DIORITE_FAMILY = tag("diorite_family");
+        public static final TagKey<Block> BAUXITE_FAMILY = tag("bauxite_family");
+        public static final TagKey<Block> DEEPSLATE_FAMILY = tag("deepslate_family");
+        public static final TagKey<Block> COBBLED_DEEPSLATE_FAMILY = tag("cobbled_deepslate_family");
+        public static final TagKey<Block> DEEPSLATE_BRICK_FAMILY = tag("deepslate_brick_family");
+        public static final TagKey<Block> DEEPSLATE_TILE_FAMILY = tag("deepslate_tile_family");
+        public static final TagKey<Block> POLISHED_DEEPSLATE_FAMILY = tag("polished_deepslate_family");
+        public static final TagKey<Block> ALL_DEEPSLATE = tag("all_deepslate");
+        public static final TagKey<Block> BASALT_FAMILY = tag("basalt_family");
+        public static final TagKey<Block> NETHER_BRICK_FAMILY = tag("nether_brick_family");
+        public static final TagKey<Block> PURPUR_FAMILY = tag("purpur_family");
+        public static final TagKey<Block> BLACKSTONE_FAMILY = tag("blackstone_family");
+        public static final TagKey<Block> POLISHED_BLACKSTONE_FAMILY = tag("polished_blackstone_family");
+        public static final TagKey<Block> POLISHED_BLACKSTONE_BRICK_FAMILY = tag("polished_blackstone_brick_family");
+        public static final TagKey<Block> ALL_BLACKSTONE = tag("all_blackstone");
+        public static final TagKey<Block> END_STONE_FAMILY = tag("end_stone_family");
+        public static final TagKey<Block> PLAIN_GLASS_FAMILY = tag("glass_family");
+        public static final TagKey<Block> GLASS_PANES = tag("glass_panes");
+        public static final TagKey<Block> GLASS_BLOCKS = tag("glass_blocks");
+        public static final TagKey<Block> ALL_GLASS = tag("all_glass");
+        public static final TagKey<Block> QUARTZ_FAMILY = tag("quartz_family");
+        public static final TagKey<Block> STORAGE_RAW_ORE_BLOCKS = tag("storage_ore_blocks");
+        public static final TagKey<Block> STORAGE_ORE_BLOCKS = tag("storage_ore_blocks");
+        public static final TagKey<Block> STONE_BLOCKS = tag("stone_blocks");
+        public static final TagKey<Block> ORE_BLOCKS = tag("ore_blocks");
+        public static final TagKey<Block> HURTS_SMALL = tag("hurts_small");
+        public static final TagKey<Block> HURTS_MEDIUM = tag("hurts_medium");
+        public static final TagKey<Block> HURTS_LARGE = tag("hurts_large");
 
 
         private static TagKey<Block> tag(String name) {

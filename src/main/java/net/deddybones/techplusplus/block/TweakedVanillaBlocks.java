@@ -22,7 +22,7 @@ public class TweakedVanillaBlocks {
     public static final DeferredRegister<Block> BLOCKS =
             DeferredRegister.create(ForgeRegistries.BLOCKS, "minecraft");
 
-    public static final RegistryObject<Block> OAK_LOG = registerBlock("oak_log", () -> log(MapColor.WOOD, MapColor.PODZOL));
+//    public static final RegistryObject<Block> OAK_LOG = registerBlock("oak_log", () -> log(MapColor.WOOD, MapColor.PODZOL));
 
     public static boolean never(BlockState p_50806_, BlockGetter p_50807_, BlockPos p_50808_) {
         return false;

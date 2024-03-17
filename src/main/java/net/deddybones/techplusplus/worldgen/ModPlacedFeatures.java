@@ -7,6 +7,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstapContext;
 //import net.minecraft.data.worldgen.features.OreFeatures;
 //import net.minecraft.data.worldgen.placement.PlacementUtils;
+import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
@@ -29,6 +30,9 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> PLASTIMETAL_ORE_LARGE_PLACED_KEY = registerKey("plastimetal_ore_large_placed");
     public static final ResourceKey<PlacedFeature> PLASTIMETAL_ORE_BURIED_PLACED_KEY = registerKey("plastimetal_ore_buried_placed");
 
+    public static final ResourceKey<PlacedFeature> TIN_ORE_PLACED_KEY = registerKey("tin_ore_placed");
+    public static final ResourceKey<PlacedFeature> TIN_ORE_LARGE_PLACED_KEY = registerKey("tin_ore_large_placed");
+
     public static final ResourceKey<PlacedFeature> TINY_ROCKS_PLACED_KEY = registerKey("tiny_rocks_placed");
     public static final ResourceKey<PlacedFeature> TINY_LOGS_PLACED_KEY = registerKey("tiny_logs_placed");
 
@@ -47,6 +51,9 @@ public class ModPlacedFeatures {
         Holder<ConfiguredFeature<?, ?>> PLASTIMETAL_ORE_SMALL_HOLDER    = configuredFeatures.getOrThrow(ModConfiguredFeatures.OVERWORLD_PLASTIMETAL_ORE_SMALL_KEY);
         Holder<ConfiguredFeature<?, ?>> PLASTIMETAL_ORE_LARGE_HOLDER    = configuredFeatures.getOrThrow(ModConfiguredFeatures.OVERWORLD_PLASTIMETAL_ORE_LARGE_KEY);
         Holder<ConfiguredFeature<?, ?>> PLASTIMETAL_ORE_BURIED_HOLDER   = configuredFeatures.getOrThrow(ModConfiguredFeatures.OVERWORLD_PLASTIMETAL_ORE_BURIED_KEY);
+
+        Holder<ConfiguredFeature<?, ?>> TIN_ORE_HOLDER          = configuredFeatures.getOrThrow(ModConfiguredFeatures.OVERWORLD_TIN_ORE_KEY);
+        Holder<ConfiguredFeature<?, ?>> TIN_ORE_LARGE_HOLDER    = configuredFeatures.getOrThrow(ModConfiguredFeatures.OVERWORLD_TIN_ORE_LARGE_KEY);
 
         Holder<ConfiguredFeature<?, ?>> TINY_ROCKS_HOLDER   = configuredFeatures.getOrThrow(ModConfiguredFeatures.OVERWORLD_TINY_ROCKS_KEY);
         Holder<ConfiguredFeature<?, ?>> TINY_LOGS_HOLDER    = configuredFeatures.getOrThrow(ModConfiguredFeatures.OVERWORLD_TINY_LOGS_KEY);
@@ -69,6 +76,11 @@ public class ModPlacedFeatures {
                 rareOrePlacement(1, HeightRangePlacement.triangle(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(32))));
         register(context, PLASTIMETAL_ORE_BURIED_PLACED_KEY, PLASTIMETAL_ORE_BURIED_HOLDER,
                 rareOrePlacement(1, HeightRangePlacement.triangle(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(32))));
+
+        register(context, TIN_ORE_PLACED_KEY, TIN_ORE_HOLDER,
+                commonOrePlacement(16, HeightRangePlacement.triangle(VerticalAnchor.absolute(-16), VerticalAnchor.absolute(112))));
+        register(context, TIN_ORE_LARGE_PLACED_KEY, TIN_ORE_LARGE_HOLDER,
+                commonOrePlacement(16, HeightRangePlacement.triangle(VerticalAnchor.absolute(-16), VerticalAnchor.absolute(112))));
 
         register(context, TINY_ROCKS_PLACED_KEY, TINY_ROCKS_HOLDER, worldSurfaceSquaredWithCount(2));
         register(context, TINY_LOGS_PLACED_KEY, TINY_LOGS_HOLDER, worldSurfaceSquaredWithCount(1));
