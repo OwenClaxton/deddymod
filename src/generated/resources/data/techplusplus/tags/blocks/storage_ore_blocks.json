@@ -1,0 +1,23 @@
+{
+  "values": [
+    "minecraft:raw_iron_block",
+    "minecraft:raw_copper_block",
+    "minecraft:raw_gold_block",
+    "techplusplus:raw_plastimetal_block",
+    "techplusplus:raw_tin_block",
+    "techplusplus:raw_bronze_block",
+    "minecraft:coal_block",
+    "minecraft:iron_block",
+    "minecraft:copper_block",
+    "minecraft:gold_block",
+    "minecraft:lapis_block",
+    "minecraft:redstone_block",
+    "minecraft:emerald_block",
+    "minecraft:diamond_block",
+    "minecraft:netherite_block",
+    "techplusplus:plastimetal_block",
+    "techplusplus:sapphire_block",
+    "techplusplus:tin_block",
+    "techplusplus:bronze_block"
+  ]
+}

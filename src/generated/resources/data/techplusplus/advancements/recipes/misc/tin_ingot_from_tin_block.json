@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "techplusplus:tin_ingot_from_tin_block"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_tin_block": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "techplusplus:tin_block"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_tin_block"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "techplusplus:tin_ingot_from_tin_block"
+    ]
+  }
+}

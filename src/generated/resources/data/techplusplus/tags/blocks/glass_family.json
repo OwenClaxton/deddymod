@@ -1,0 +1,14 @@
+{
+  "values": [
+    "minecraft:glass",
+    "techplusplus:glass_slab",
+    "techplusplus:glass_stairs",
+    "techplusplus:glass_wall",
+    "techplusplus:glass_fence",
+    "techplusplus:glass_fence_gate",
+    "techplusplus:glass_door",
+    "techplusplus:glass_trapdoor",
+    "techplusplus:glass_pressure_plate",
+    "techplusplus:glass_button"
+  ]
+}

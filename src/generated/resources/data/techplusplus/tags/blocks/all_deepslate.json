@@ -1,0 +1,11 @@
+{
+  "values": [
+    "#techplusplus:deepslate_family",
+    "#techplusplus:cobbled_deepslate_family",
+    "#techplusplus:deepslate_brick_family",
+    "#techplusplus:deepslate_tile_family",
+    "#techplusplus:polished_deepslate_family",
+    "minecraft:chiseled_deepslate",
+    "minecraft:reinforced_deepslate"
+  ]
+}
