@@ -1,0 +1,39 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 0.1,
+  "ingredient": [
+    {
+      "item": "techplusplus:plastimetal_pickaxe"
+    },
+    {
+      "item": "techplusplus:plastimetal_shovel"
+    },
+    {
+      "item": "techplusplus:plastimetal_axe"
+    },
+    {
+      "item": "techplusplus:plastimetal_hoe"
+    },
+    {
+      "item": "techplusplus:plastimetal_sword"
+    },
+    {
+      "item": "techplusplus:plastimetal_helmet"
+    },
+    {
+      "item": "techplusplus:plastimetal_chestplate"
+    },
+    {
+      "item": "techplusplus:plastimetal_leggings"
+    },
+    {
+      "item": "techplusplus:plastimetal_boots"
+    },
+    {
+      "item": "techplusplus:plastimetal_horse_armor"
+    }
+  ],
+  "result": "techplusplus:plastimetal_billet"
+}

@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "techplusplus:copper_billet"
+    },
+    {
+      "item": "techplusplus:copper_billet"
+    },
+    {
+      "item": "techplusplus:copper_billet"
+    },
+    {
+      "item": "techplusplus:copper_billet"
+    },
+    {
+      "item": "techplusplus:copper_billet"
+    },
+    {
+      "item": "techplusplus:copper_billet"
+    },
+    {
+      "item": "techplusplus:copper_billet"
+    },
+    {
+      "item": "techplusplus:tin_billet"
+    },
+    {
+      "item": "techplusplus:tin_billet"
+    }
+  ],
+  "result": {
+    "item": "techplusplus:raw_bronze"
+  }
+}
