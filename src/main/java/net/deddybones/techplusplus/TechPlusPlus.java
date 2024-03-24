@@ -23,6 +23,7 @@ import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -78,7 +79,7 @@ public class TechPlusPlus {
 
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
-        if(event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
+        if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
             event.accept(ModItems.SAPPHIRE);
         }
     }
@@ -105,12 +106,26 @@ public class TechPlusPlus {
 //    public void onLoggingOut(PlayerEvent.PlayerLoggedOutEvent event) {
 //    }
 
+//    @SubscribeEvent
+//    public void pickupItem(EntityItemPickupEvent event) {
+//    }
+
     @SubscribeEvent
     public void onLeftClickingBlock(PlayerInteractEvent.LeftClickBlock event) {
-        System.out.println(event.getAction());
-        System.out.println(event.getItemStack());
-        System.out.println(event.getUseBlock());
-        System.out.println(event.getUseItem());
+        if (event.getEntity().isCreative()) return;
+        Player player = event.getEntity();
+        BlockState blockTarget = event.getLevel().getBlockState(event.getPos());
+        boolean blockHurts      = blockTarget.is(ModTags.Blocks.HURTS);
+        boolean usingTool       = event.getItemStack().is(ModTags.Items.IS_A_TOOL);
+        boolean shouldCancel    = false;
+        if (!usingTool) {
+            if (blockHurts) shouldCancel = true;
+            if (!event.getLevel().isClientSide() && blockHurts) player.hurt(event.getLevel().damageSources().generic(), 1);
+        } else {
+            boolean hasCorrectTool  = player.hasCorrectToolForDrops(blockTarget);
+            if (!hasCorrectTool) shouldCancel = true;
+        }
+        event.setCanceled(shouldCancel);
     }
 
     public boolean isRepairRecipe(Player player, Level level) {
@@ -161,11 +176,6 @@ public class TechPlusPlus {
                 }
             }
         }
-    }
-
-    @SubscribeEvent
-    public void pickupItem(EntityItemPickupEvent event) {
-        System.out.println("Item picked up! :" + event.getResult());
     }
 
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
