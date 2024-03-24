@@ -1,7 +1,6 @@
 {
   "values": [
-    "minecraft:oak_log",
-    "#minecraft:logs",
-    "#minecraft:planks"
+    "minecraft:mangrove_roots",
+    "#techplusplus:all_wood_families"
   ]
 }

@@ -1,14 +1,14 @@
 {
   "values": [
-    "techplusplus:sapphire_block",
-    "techplusplus:plastimetal_block",
-    "techplusplus:sapphire_ore",
-    "techplusplus:deepslate_sapphire_ore",
-    "techplusplus:ruined_plastimetal",
-    "techplusplus:deepslate_ruined_plastimetal",
-    "techplusplus:raw_plastimetal_block",
-    "techplusplus:plastimetal_door",
-    "techplusplus:plastimetal_trapdoor",
-    "techplusplus:plastimetal_bars"
+    "minecraft:sea_lantern",
+    "minecraft:spawner",
+    "minecraft:magma_block",
+    "minecraft:bone_block",
+    "minecraft:glowstone",
+    "minecraft:muddy_mangrove_roots",
+    "#techplusplus:all_glass",
+    "#techplusplus:ice_family",
+    "#techplusplus:ore_blocks",
+    "#techplusplus:stone_blocks"
   ]
 }

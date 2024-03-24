@@ -48,6 +48,38 @@
              {
                  "namespace": "minecraft",
                  "path": "recipes/arrow"
+             },
+             {
+                 "namespace": "minecraft",
+                 "path": "recipes/iron_ingot_from_nuggets"
+             },
+             {
+                 "namespace": "minecraft",
+                 "path": "recipes/iron_nugget"
+             },
+             {
+                 "namespace": "minecraft",
+                 "path": "recipes/gold_ingot_from_nuggets"
+             },
+             {
+                 "namespace": "minecraft",
+                 "path": "recipes/gold_nugget"
+             },
+             {
+                 "namespace": "minecraft",
+                 "path": "recipes/iron_nugget_from_blasting"
+             },
+             {
+                 "namespace": "minecraft",
+                 "path": "recipes/iron_nugget_from_smelting"
+             },
+             {
+                 "namespace": "minecraft",
+                 "path": "recipes/gold_nugget_from_blasting"
+             },
+             {
+                 "namespace": "minecraft",
+                 "path": "recipes/gold_nugget_from_smelting"
              }
          ]
      }

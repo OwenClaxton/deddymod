@@ -1,5 +1,6 @@
 {
   "values": [
+    "minecraft:calcite",
     "#techplusplus:concrete_blocks",
     "#techplusplus:stone_family",
     "#techplusplus:smooth_stone_family",
@@ -12,11 +13,23 @@
     "#techplusplus:all_deepslate",
     "#techplusplus:basalt_family",
     "#techplusplus:nether_brick_family",
+    "#techplusplus:netherrack_family",
     "#techplusplus:purpur_family",
     "#techplusplus:end_stone_family",
     "#techplusplus:all_blackstone",
     "#techplusplus:quartz_family",
     "#techplusplus:storage_ore_blocks",
-    "#techplusplus:storage_ore_blocks"
+    "#techplusplus:storage_ore_blocks",
+    "#techplusplus:amethyst_family",
+    "#techplusplus:tuff_family",
+    "#techplusplus:brick_family",
+    "#techplusplus:mud_family",
+    "#techplusplus:sandstone_family",
+    "#techplusplus:red_sandstone_family",
+    "#techplusplus:prismarine_family",
+    "#techplusplus:terracotta_family",
+    "#techplusplus:dripstone_family",
+    "#techplusplus:obsidian_family",
+    "#techplusplus:coral_family"
   ]
 }
