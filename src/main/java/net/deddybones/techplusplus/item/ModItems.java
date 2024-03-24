@@ -20,15 +20,21 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> PLASTIMETAL_NUGGET = ITEMS.register("plastimetal_nugget",
             () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> PLASTIMETAL_BILLET = ITEMS.register("plastimetal_billet",
+            () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> PLASTIMETAL_INGOT = ITEMS.register("plastimetal_ingot",
             () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> COPPER_NUGGET = ITEMS.register("copper_nugget",
             () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> COPPER_BILLET = ITEMS.register("copper_billet",
+            () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> RAW_TIN = ITEMS.register("raw_tin",
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> TIN_NUGGET = ITEMS.register("tin_nugget",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> TIN_BILLET = ITEMS.register("tin_billet",
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> TIN_INGOT = ITEMS.register("tin_ingot",
             () -> new Item(new Item.Properties()));
@@ -37,7 +43,15 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> BRONZE_NUGGET = ITEMS.register("bronze_nugget",
             () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> BRONZE_BILLET = ITEMS.register("bronze_billet",
+            () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> BRONZE_INGOT = ITEMS.register("bronze_ingot",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> IRON_BILLET = ITEMS.register("iron_billet",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> GOLD_BILLET = ITEMS.register("gold_billet",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> NETHERITE_BILLET = ITEMS.register("netherite_billet",
             () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> GPS_TOOL = ITEMS.register("gps_tool",
