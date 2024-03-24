@@ -19,10 +19,7 @@ public class ModTags {
         public static final TagKey<Block> NEEDS_COPPERTIN_TOOL = tag("needs_coppertin_tool");
         public static final TagKey<Block> NEEDS_BRONZE_TOOL = tag("needs_bronze_tool");
         public static final TagKey<Block> NEEDS_PLASTIMETAL_TOOL = tag("needs_plastimetal_tool");
-        public static final TagKey<Block> PLASTIMETAL_ORES = tag("plastimetal_ores");
-        public static final TagKey<Block> TIN_ORES = tag("tin_ores");
-        public static final TagKey<Block> SAPPHIRE_ORES = tag("sapphire_ores");
-        public static final TagKey<Block> NETHER_ORES = tag("nether_ores");
+
         public static final TagKey<Block> CONCRETE_BLOCKS = tag("concrete_blocks");
         public static final TagKey<Block> STONE_FAMILY = tag("stone_family");
         public static final TagKey<Block> SMOOTH_STONE_FAMILY = tag("smooth_stone_family");
@@ -40,6 +37,11 @@ public class ModTags {
         public static final TagKey<Block> ALL_DEEPSLATE = tag("all_deepslate");
         public static final TagKey<Block> BASALT_FAMILY = tag("basalt_family");
         public static final TagKey<Block> NETHER_BRICK_FAMILY = tag("nether_brick_family");
+        public static final TagKey<Block> NETHERRACK_FAMILY = tag("netherrack_family");
+        public static final TagKey<Block> DRIPSTONE_FAMILY = tag("dripstone_family");
+        public static final TagKey<Block> OBSIDIAN_FAMILY = tag("obsidian_family");
+        public static final TagKey<Block> CORAL_FAMILY = tag("coral_family");
+        public static final TagKey<Block> FROGLIGHT_FAMILY = tag("froglight_family");
         public static final TagKey<Block> PURPUR_FAMILY = tag("purpur_family");
         public static final TagKey<Block> BLACKSTONE_FAMILY = tag("blackstone_family");
         public static final TagKey<Block> POLISHED_BLACKSTONE_FAMILY = tag("polished_blackstone_family");
@@ -51,13 +53,42 @@ public class ModTags {
         public static final TagKey<Block> GLASS_BLOCKS = tag("glass_blocks");
         public static final TagKey<Block> ALL_GLASS = tag("all_glass");
         public static final TagKey<Block> QUARTZ_FAMILY = tag("quartz_family");
+        public static final TagKey<Block> TUFF_FAMILY = tag("tuff_family");
+        public static final TagKey<Block> BRICK_FAMILY = tag("brick_family");
+        public static final TagKey<Block> MUD_FAMILY = tag("mud_family");
+        public static final TagKey<Block> SANDSTONE_FAMILY = tag("sandstone_family");
+        public static final TagKey<Block> RED_SANDSTONE_FAMILY = tag("red_sandstone_family");
+        public static final TagKey<Block> PRISMARINE_FAMILY = tag("prismarine_family");
+        public static final TagKey<Block> AMETHYST_FAMILY = tag("amethyst_family");
+        public static final TagKey<Block> TERRACOTTA_FAMILY = tag("terracotta_family");
+        public static final TagKey<Block> STONE_BLOCKS = tag("stone_blocks");
+        public static final TagKey<Block> ICE_FAMILY = tag("ice_family");
+
+        public static final TagKey<Block> PLASTIMETAL_ORES = tag("plastimetal_ores");
+        public static final TagKey<Block> TIN_ORES = tag("tin_ores");
+        public static final TagKey<Block> SAPPHIRE_ORES = tag("sapphire_ores");
+        public static final TagKey<Block> NETHER_ORES = tag("nether_ores");
+
         public static final TagKey<Block> STORAGE_RAW_ORE_BLOCKS = tag("storage_ore_blocks");
         public static final TagKey<Block> STORAGE_ORE_BLOCKS = tag("storage_ore_blocks");
-        public static final TagKey<Block> STONE_BLOCKS = tag("stone_blocks");
         public static final TagKey<Block> ORE_BLOCKS = tag("ore_blocks");
-        public static final TagKey<Block> HURTS_SMALL = tag("hurts_small");
-        public static final TagKey<Block> HURTS_MEDIUM = tag("hurts_medium");
-        public static final TagKey<Block> HURTS_LARGE = tag("hurts_large");
+        public static final TagKey<Block> METAL_BUILDING_BLOCKS = tag("metal_building_blocks");
+        public static final TagKey<Block> CRAFTED_COPPER_BUILDING_BLOCKS = tag("crafted_copper_building_blocks");
+
+        public static final TagKey<Block> OAK_WOOD_FAMILY = tag("oak_wood_family");
+        public static final TagKey<Block> SPRUCE_WOOD_FAMILY = tag("spruce_wood_family");
+        public static final TagKey<Block> BIRCH_WOOD_FAMILY = tag("birch_wood_family");
+        public static final TagKey<Block> JUNGLE_WOOD_FAMILY = tag("jungle_wood_family");
+        public static final TagKey<Block> ACACIA_WOOD_FAMILY = tag("acacia_wood_family");
+        public static final TagKey<Block> DARK_OAK_WOOD_FAMILY = tag("dark_oak_wood_family");
+        public static final TagKey<Block> MANGROVE_WOOD_FAMILY = tag("mangrove_wood_family");
+        public static final TagKey<Block> CHERRY_WOOD_FAMILY = tag("cherry_wood_family");
+        public static final TagKey<Block> BAMBOO_WOOD_FAMILY = tag("bamboo_wood_family");
+        public static final TagKey<Block> CRIMSON_STEM_FAMILY = tag("crimson_stem_family");
+        public static final TagKey<Block> WARPED_STEM_FAMILY = tag("warped_stem_family");
+        public static final TagKey<Block> ALL_WOOD_FAMILIES = tag("all_wood_families");
+
+        public static final TagKey<Block> HURTS = tag("hurts");
 
 
         private static TagKey<Block> tag(String name) {
@@ -70,6 +101,9 @@ public class ModTags {
         public static final TagKey<Item> CAN_CARVE = tag("can_carve");
         public static final TagKey<Item> CARVED_ITEM = tag("carved_item");
         public static final TagKey<Item> CARVABLE_ITEM = tag("carvable_item");
+        public static final TagKey<Item> BUCKETS = tag("buckets");
+        public static final TagKey<Item> IS_A_TOOL = tag("is_a_tool");
+        public static final TagKey<Item> CAN_BREAK_BLOCKS = tag("can_break_blocks");
 
         private static TagKey<Item> tag(String name) {
             return ItemTags.create(new ResourceLocation(TechPlusPlus.MOD_ID, name));
