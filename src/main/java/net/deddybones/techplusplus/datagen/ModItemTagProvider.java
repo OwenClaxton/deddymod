@@ -9,6 +9,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.NotNull;
@@ -24,10 +25,10 @@ public class ModItemTagProvider extends ItemTagsProvider {
     @Override
     protected void addTags(HolderLookup.@NotNull Provider pProvider) {
         this.tag(ItemTags.TRIMMABLE_ARMOR)
-                .add(ModItems.PLASTIMETAL_HELMET.get(),
-                        ModItems.PLASTIMETAL_CHESTPLATE.get(),
-                        ModItems.PLASTIMETAL_LEGGINGS.get(),
-                        ModItems.PLASTIMETAL_BOOTS.get());
+                .add(ModItems.PLASTIMETAL_HELMET.get())
+                .add(ModItems.PLASTIMETAL_CHESTPLATE.get())
+                .add(ModItems.PLASTIMETAL_LEGGINGS.get())
+                .add(ModItems.PLASTIMETAL_BOOTS.get());
 
         this.tag(ItemTags.AXES)
                 .add(ModItems.PLASTIMETAL_AXE.get())
@@ -56,6 +57,42 @@ public class ModItemTagProvider extends ItemTagsProvider {
         this.tag(ModTags.Items.CARVABLE_ITEM)
                 .add(ModItems.WOODEN_HANDLE.get())
                 .add(ModBlocks.TINY_LOG_BLOCK.get().asItem());
+
+        this.tag(ModTags.Items.BUCKETS)
+                .add(Items.BUCKET)
+                .add(Items.WATER_BUCKET)
+                .add(Items.COD_BUCKET)
+                .add(Items.SALMON_BUCKET)
+                .add(Items.TROPICAL_FISH_BUCKET)
+                .add(Items.PUFFERFISH_BUCKET)
+                .add(Items.AXOLOTL_BUCKET)
+                .add(Items.TADPOLE_BUCKET)
+                .add(Items.LAVA_BUCKET)
+                .add(Items.POWDER_SNOW_BUCKET)
+                .add(Items.MILK_BUCKET);
+
+        this.tag(ModTags.Items.IS_A_TOOL)
+                .addTag(ModTags.Items.BUCKETS)
+                .add(Items.BOW)
+                .add(Items.CROSSBOW)
+                .add(Items.FISHING_ROD)
+                .add(Items.CARROT_ON_A_STICK)
+                .add(Items.WARPED_FUNGUS_ON_A_STICK)
+                .add(Items.FLINT_AND_STEEL)
+                .add(Items.SPYGLASS)
+                .addTag(ModTags.Items.CAN_BREAK_BLOCKS);
+
+        this.tag(ModTags.Items.CAN_BREAK_BLOCKS)
+                .addTag(ItemTags.AXES)
+                .addTag(ItemTags.PICKAXES)
+                .addTag(ItemTags.HOES)
+                .addTag(ItemTags.SHOVELS)
+                .addTag(ItemTags.SWORDS)
+                .add(Items.TRIDENT)
+                .add(Items.SHEARS)
+                .add(ModItems.FLINT_KNIFE.get())
+                .add(ModItems.STONE_MATTOCK.get())
+                .add(ModItems.WOODEN_SPEAR.get());
 
     }
 }

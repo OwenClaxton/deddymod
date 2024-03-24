@@ -23,17 +23,25 @@ public class ModCreativeModeTabs {
                                 output.accept(ModItems.SAPPHIRE.get());
                                 output.accept(ModItems.PLASTIMETAL_INGOT.get());
                                 output.accept(ModItems.PLASTIMETAL_NUGGET.get());
+                                output.accept(ModItems.PLASTIMETAL_BILLET.get());
                                 output.accept(ModItems.RAW_PLASTIMETAL.get());
 
                                 output.accept(ModItems.TIN_INGOT.get());
                                 output.accept(ModItems.TIN_NUGGET.get());
+                                output.accept(ModItems.TIN_BILLET.get());
                                 output.accept(ModItems.RAW_TIN.get());
 
                                 output.accept(ModItems.BRONZE_INGOT.get());
                                 output.accept(ModItems.BRONZE_NUGGET.get());
+                                output.accept(ModItems.BRONZE_BILLET.get());
                                 output.accept(ModItems.RAW_BRONZE.get());
 
                                 output.accept(ModItems.COPPER_NUGGET.get());
+                                output.accept(ModItems.COPPER_BILLET.get());
+
+                                output.accept(ModItems.IRON_BILLET.get());
+                                output.accept(ModItems.GOLD_BILLET.get());
+                                output.accept(ModItems.NETHERITE_BILLET.get());
 
                                 output.accept(ModItems.GPS_TOOL.get());
 
@@ -63,14 +71,24 @@ public class ModCreativeModeTabs {
                                 output.accept(ModItems.PLASTIMETAL_BOOTS.get());
                                 output.accept(ModItems.PLASTIMETAL_HORSE_ARMOR.get());
 
+                                output.accept(ModBlocks.BAUXITE.get());
+                                output.accept(ModBlocks.POLISHED_BAUXITE.get());
+
                                 output.accept(ModBlocks.SAPPHIRE_BLOCK.get());
                                 output.accept(ModBlocks.PLASTIMETAL_BLOCK.get());
+                                output.accept(ModBlocks.TIN_BLOCK.get());
+                                output.accept(ModBlocks.BRONZE_BLOCK.get());
+
+                                output.accept(ModBlocks.RAW_BRONZE_BLOCK.get());
+                                output.accept(ModBlocks.RAW_TIN_BLOCK.get());
+                                output.accept(ModBlocks.RAW_PLASTIMETAL_BLOCK.get());
+
+                                output.accept(ModBlocks.TIN_ORE.get());
+                                output.accept(ModBlocks.DEEPSLATE_TIN_ORE.get());
 
                                 output.accept(ModBlocks.SAPPHIRE_ORE.get());
-                                output.accept(ModBlocks.PLASTIMETAL_BLOCK.get());
                                 output.accept(ModBlocks.DEEPSLATE_SAPPHIRE_ORE.get());
 
-                                output.accept(ModBlocks.RAW_PLASTIMETAL_BLOCK.get());
                                 output.accept(ModBlocks.RUINED_PLASTIMETAL.get());
                                 output.accept(ModBlocks.DEEPSLATE_RUINED_PLASTIMETAL.get());
 
@@ -88,12 +106,10 @@ public class ModCreativeModeTabs {
                                 output.accept(ModBlocks.GLASS_BUTTON.get());
                                 output.accept(ModBlocks.GLASS_PRESSURE_PLATE.get());
 
-                                output.accept(ModBlocks.TEST_BLOCK.get());
-
                                 output.accept(ModBlocks.TINY_ROCK_BLOCK.get());
                                 output.accept(ModBlocks.TINY_LOG_BLOCK.get());
 
-                                output.accept(TweakedVanillaItems.IRON_AXE.get());
+                                output.accept(ModBlocks.TEST_BLOCK.get());
                             })
                             .build());
 
