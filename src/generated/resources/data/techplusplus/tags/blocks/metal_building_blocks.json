@@ -1,0 +1,14 @@
+{
+  "values": [
+    "#techplusplus:crafted_copper_building_blocks",
+    "minecraft:iron_bars",
+    "minecraft:iron_door",
+    "minecraft:iron_trapdoor",
+    "minecraft:chain",
+    "minecraft:light_weighted_pressure_plate",
+    "minecraft:heavy_weighted_pressure_plate",
+    "techplusplus:plastimetal_door",
+    "techplusplus:plastimetal_trapdoor",
+    "techplusplus:plastimetal_bars"
+  ]
+}

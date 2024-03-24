@@ -1,0 +1,14 @@
+{
+  "values": [
+    "#minecraft:axes",
+    "#minecraft:pickaxes",
+    "#minecraft:hoes",
+    "#minecraft:shovels",
+    "#minecraft:swords",
+    "minecraft:trident",
+    "minecraft:shears",
+    "techplusplus:flint_knife",
+    "techplusplus:stone_mattock",
+    "techplusplus:wooden_spear"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "values": [
+    "#techplusplus:buckets",
+    "minecraft:bow",
+    "minecraft:crossbow",
+    "minecraft:fishing_rod",
+    "minecraft:carrot_on_a_stick",
+    "minecraft:warped_fungus_on_a_stick",
+    "minecraft:flint_and_steel",
+    "minecraft:spyglass",
+    "#techplusplus:can_break_blocks"
+  ]
+}
