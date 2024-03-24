@@ -45,17 +45,25 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         simpleItem(ModItems.PLASTIMETAL_INGOT.get());
         simpleItem(ModItems.PLASTIMETAL_NUGGET.get());
+        simpleItem(ModItems.PLASTIMETAL_BILLET.get());
         simpleItem(ModItems.RAW_PLASTIMETAL.get());
 
         simpleItem(ModItems.COPPER_NUGGET.get());
+        simpleItem(ModItems.COPPER_BILLET.get());
 
         simpleItem(ModItems.TIN_INGOT.get());
         simpleItem(ModItems.TIN_NUGGET.get());
+        simpleItem(ModItems.TIN_BILLET.get());
         simpleItem(ModItems.RAW_TIN.get());
 
         simpleItem(ModItems.BRONZE_INGOT.get());
         simpleItem(ModItems.BRONZE_NUGGET.get());
+        simpleItem(ModItems.BRONZE_BILLET.get());
         simpleItem(ModItems.RAW_BRONZE.get());
+
+        simpleItem(ModItems.GOLD_BILLET.get());
+        simpleItem(ModItems.IRON_BILLET.get());
+        simpleItem(ModItems.NETHERITE_BILLET.get());
 
         simpleItem(ModItems.GPS_TOOL.get());
 
