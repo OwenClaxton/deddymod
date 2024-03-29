@@ -1,9 +1,7 @@
 package net.deddybones.techplusplus.recipes;
 
 import net.deddybones.techplusplus.TechPlusPlus;
-import net.deddybones.techplusplus.util.crafting.EmptyRecipe;
-import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.item.crafting.*;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -15,9 +13,19 @@ public class ModRecipes {
     public static final DeferredRegister<RecipeType<?>> RECIPE_TYPES =
             DeferredRegister.create(ForgeRegistries.RECIPE_TYPES, TechPlusPlus.MOD_ID);
 
-    public static final RegistryObject<RecipeSerializer<?>> EMPTY_SERIALIZER = RECIPE_SERIALIZERS.register("empty", EmptyRecipe.Serializer::new);
-    public static final RegistryObject<RecipeType<?>> EMPTY_TYPE = RECIPE_TYPES.register("empty", () -> new RecipeType<>() {});
+    public static final RegistryObject<RecipeSerializer<EmptyRecipe>> EMPTY_SERIALIZER      = RECIPE_SERIALIZERS.register("empty", EmptyRecipe.Serializer::new);
+    public static final RegistryObject<RecipeSerializer<CrusherRecipe>> CRUSHING_SERIALIZER = RECIPE_SERIALIZERS.register("crushing", () -> new ModSingleItemRecipe.Serializer<>(CrusherRecipe::new));
 
+    public static final RegistryObject<RecipeType<EmptyRecipe>> EMPTY_TYPE      = registerType("empty");
+    public static final RegistryObject<RecipeType<CrusherRecipe>> CRUSHING_TYPE = registerType("crushing");
+
+    static <T extends Recipe<?>> RegistryObject<RecipeType<T>> registerType(final String pId) {
+        return RECIPE_TYPES.register(pId, () -> new RecipeType<>() {
+            public String toString() {
+                return pId;
+            }
+        });
+    }
 
     public static void register(IEventBus eventBus) {
         RECIPE_SERIALIZERS.register(eventBus);

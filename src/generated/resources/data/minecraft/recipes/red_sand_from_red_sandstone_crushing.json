@@ -1,0 +1,8 @@
+{
+  "type": "techplusplus:crushing",
+  "count": 1,
+  "ingredient": {
+    "item": "minecraft:red_sandstone"
+  },
+  "result": "minecraft:red_sand"
+}

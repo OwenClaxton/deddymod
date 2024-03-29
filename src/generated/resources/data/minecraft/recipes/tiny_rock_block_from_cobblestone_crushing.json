@@ -1,0 +1,8 @@
+{
+  "type": "techplusplus:crushing",
+  "count": 4,
+  "ingredient": {
+    "item": "minecraft:cobblestone"
+  },
+  "result": "techplusplus:tiny_rock_block"
+}

@@ -1,8 +1,7 @@
-package net.deddybones.techplusplus.util.crafting;
+package net.deddybones.techplusplus.recipes;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.deddybones.techplusplus.recipes.ModRecipes;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.Container;

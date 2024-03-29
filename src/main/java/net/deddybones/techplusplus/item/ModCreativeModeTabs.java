@@ -109,6 +109,8 @@ public class ModCreativeModeTabs {
                                 output.accept(ModBlocks.TINY_ROCK_BLOCK.get());
                                 output.accept(ModBlocks.TINY_LOG_BLOCK.get());
 
+                                output.accept(ModBlocks.CRUSHER.get());
+
                                 output.accept(ModBlocks.TEST_BLOCK.get());
                             })
                             .build());

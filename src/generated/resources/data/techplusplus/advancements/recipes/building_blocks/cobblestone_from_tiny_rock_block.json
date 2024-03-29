@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "techplusplus:cobblestone_from_tiny_rock_block"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_tiny_rock_block": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "techplusplus:tiny_rock_block"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_tiny_rock_block"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "techplusplus:cobblestone_from_tiny_rock_block"
+    ]
+  }
+}

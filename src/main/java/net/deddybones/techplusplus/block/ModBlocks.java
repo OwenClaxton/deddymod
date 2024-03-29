@@ -43,6 +43,10 @@ public class ModBlocks {
     public static final RegistryObject<Block> RAW_PLASTIMETAL_BLOCK = registerBlock("raw_plastimetal_block",
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.RAW_IRON_BLOCK)));
 
+    public static final RegistryObject<Block> CRUSHER = registerBlock("crusher",
+            () -> new CrusherBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE)
+                    .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.5F)));
+
     public static final RegistryObject<Block> TIN_BLOCK = registerBlock("tin_block",
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK)));
     public static final RegistryObject<Block> RAW_TIN_BLOCK = registerBlock("raw_tin_block",

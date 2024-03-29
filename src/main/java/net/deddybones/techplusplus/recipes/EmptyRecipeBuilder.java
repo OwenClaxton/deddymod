@@ -1,4 +1,4 @@
-package net.deddybones.techplusplus.util.crafting;
+package net.deddybones.techplusplus.recipes;
 
 import net.minecraft.advancements.*;
 import net.minecraft.data.recipes.RecipeBuilder;

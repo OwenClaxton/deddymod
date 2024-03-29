@@ -3,17 +3,41 @@
 
   "item.techplusplus.plastimetal_ingot": "Plastimetal Ingot",
   "item.techplusplus.plastimetal_nugget": "Plastimetal Nugget",
+  "item.techplusplus.plastimetal_billet": "Plastimetal Billet",
   "item.techplusplus.raw_plastimetal": "Raw Plastimetal",
-
-  "item.techplusplus.bronze_ingot": "Bronze Ingot",
-  "item.techplusplus.bronze_nugget": "Bronze Nugget",
-  "item.techplusplus.raw_bronze": "Raw Bronze",
 
   "item.techplusplus.tin_ingot": "Tin Ingot",
   "item.techplusplus.tin_nugget": "Tin Nugget",
+  "item.techplusplus.tin_billet": "Tin Billet",
   "item.techplusplus.raw_tin": "Raw Tin",
 
+  "item.techplusplus.bronze_ingot": "Bronze Ingot",
+  "item.techplusplus.bronze_nugget": "Bronze Nugget",
+  "item.techplusplus.bronze_billet": "Bronze Billet",
+  "item.techplusplus.raw_bronze": "Raw Bronze",
+
   "item.techplusplus.copper_nugget": "Copper Nugget",
+  "item.techplusplus.copper_billet": "Copper Billet",
+
+  "item.techplusplus.iron_billet": "Iron Billet",
+  "item.techplusplus.gold_billet": "Gold Billet",
+  "item.techplusplus.netherite_billet": "Netherite Billet",
+
+  "item.techplusplus.gps_tool": "Handheld GPS",
+
+  "item.techplusplus.coffee_food": "Bowl of Coffee",
+
+  "item.techplusplus.coffee_beans": "Coffee Beans",
+  "item.techplusplus.fibrosia_seeds": "Fibrosia Seeds",
+
+  "item.techplusplus.plant_fibers": "Plant Fibers",
+  "item.techplusplus.stick_bundle": "Bundle of Sticks",
+  "item.techplusplus.knapped_flint": "Knapped Flint",
+  "item.techplusplus.wooden_handle": "Wooden Handle",
+
+  "item.techplusplus.flint_knife": "Flint Knife",
+  "item.techplusplus.wooden_spear": "Wooden Spear",
+  "item.techplusplus.stone_mattock": "Stone Mattock",
 
   "item.techplusplus.plastimetal_sword": "Plastimetal Sword",
   "item.techplusplus.plastimetal_pickaxe": "Plastimetal Pickaxe",
@@ -27,53 +51,50 @@
   "item.techplusplus.plastimetal_boots": "Plastimetal Boots",
   "item.techplusplus.plastimetal_horse_armor": "Plastimetal Horse Armor",
 
-  "item.techplusplus.gps_tool": "Handheld GPS",
-
-  "item.techplusplus.coffee_food": "Bowl of Coffee",
-  "item.techplusplus.coffee_beans": "Coffee Beans",
-  "item.techplusplus.fibrosia_seeds": "Fibrosia Seeds",
-  "item.techplusplus.plant_fibers": "Plant Fibers",
-
-  "item.techplusplus.stick_bundle": "Bundle of Sticks",
-  "item.techplusplus.knapped_flint": "Knapped Flint",
-  "item.techplusplus.wooden_handle": "Wooden Handle",
-
-  "item.techplusplus.flint_knife": "Flint Knife",
-  "item.techplusplus.wooden_spear": "Wooden Spear",
-  "item.techplusplus.stone_mattock": "Stone Mattock",
-
-  "block.techplusplus.test_block": "Test Block",
-
   "block.techplusplus.bauxite": "Bauxite",
   "block.techplusplus.polished_bauxite": "Polished Bauxite",
 
   "block.techplusplus.sapphire_block": "Block of Sapphire",
+  "block.techplusplus.plastimetal_block": "Block of Plastimetal",
+  "block.techplusplus.tin_block": "Block of Tin",
+  "block.techplusplus.bronze_block": "Block of Bronze",
+  "block.techplusplus.raw_bronze_block": "Block of Raw Bronze",
+  "block.techplusplus.raw_tin_block": "Block of Raw Tin",
+  "block.techplusplus.raw_plastimetal_block": "Block of Raw Plastimetal",
+
+  "block.techplusplus.tin_ore": "Tin Ore",
+  "block.techplusplus.deepslate_tin_ore": "Deepslate Tin Ore",
+
   "block.techplusplus.sapphire_ore": "Sapphire Ore",
   "block.techplusplus.deepslate_sapphire_ore": "Deepslate Sapphire Ore",
 
-  "block.techplusplus.plastimetal_block": "Block of Plastimetal",
-  "block.techplusplus.raw_plastimetal_block": "Block of Raw Plastimetal",
   "block.techplusplus.ruined_plastimetal": "Ruined Plastimetal",
   "block.techplusplus.deepslate_ruined_plastimetal": "Deepslate Ruined Plastimetal",
-
-  "block.techplusplus.glass_stairs": "Glass Stairs",
-  "block.techplusplus.glass_slab": "Glass Slab",
-  "block.techplusplus.glass_button":  "Glass Button",
-  "block.techplusplus.glass_pressure_plate": "Glass Pressure Plate",
-  "block.techplusplus.glass_fence":  "Glass Fence",
-  "block.techplusplus.glass_fence_gate": "Glass Fence Gate",
-  "block.techplusplus.glass_wall":  "Glass Wall",
-  "block.techplusplus.glass_door": "Glass Door",
-  "block.techplusplus.glass_trapdoor":  "Glass Trapdoor",
 
   "block.techplusplus.plastimetal_door": "Plastimetal Door",
   "block.techplusplus.plastimetal_trapdoor":  "Plastimetal Trapdoor",
   "block.techplusplus.plastimetal_bars":  "Plastimetal Bars",
 
+  "block.techplusplus.glass_stairs": "Glass Stairs",
+  "block.techplusplus.glass_slab": "Glass Slab",
+  "block.techplusplus.glass_fence":  "Glass Fence",
+  "block.techplusplus.glass_fence_gate": "Glass Fence Gate",
+  "block.techplusplus.glass_wall":  "Glass Wall",
+  "block.techplusplus.glass_door": "Glass Door",
+  "block.techplusplus.glass_trapdoor":  "Glass Trapdoor",
+  "block.techplusplus.glass_button":  "Glass Button",
+  "block.techplusplus.glass_pressure_plate": "Glass Pressure Plate",
+
   "block.techplusplus.tiny_rock_block":  "Cobble",
   "block.techplusplus.tiny_log_block":  "Branch",
 
+  "block.techplusplus.crusher": "Crusher",
+
+  "block.techplusplus.test_block": "Test Block",
+
   "creativetab.techplusplus_tab": "Tech++",
 
-  "tooltip.techplusplus.gps_tool.tooltip": "Displays XYZ when right-clicking"
+  "tooltip.techplusplus.gps_tool.tooltip": "Displays XYZ when right-clicking",
+
+  "container.techplusplus.crusher": "Crusher"
 }

@@ -5,7 +5,9 @@ import net.deddybones.techplusplus.TechPlusPlus;
 import net.deddybones.techplusplus.block.ModBlocks;
 import net.deddybones.techplusplus.item.ModItems;
 import net.deddybones.techplusplus.item.TweakedVanillaItems;
-import net.deddybones.techplusplus.util.crafting.EmptyRecipeBuilder;
+import net.deddybones.techplusplus.recipes.CrusherRecipe;
+import net.deddybones.techplusplus.recipes.EmptyRecipeBuilder;
+import net.deddybones.techplusplus.recipes.ModSingleItemRecipeBuilder;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.world.item.Item;
@@ -19,6 +21,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
+@SuppressWarnings({"SameParameterValue", "unused"})
 public class ModRecipeProvider extends RecipeProvider implements IConditionBuilder {
     public static final ImmutableList<ItemLike> SAPPHIRE_SMELTABLES = ImmutableList.of(ModBlocks.SAPPHIRE_ORE.get(), ModBlocks.DEEPSLATE_SAPPHIRE_ORE.get());
     public static final ImmutableList<ItemLike> PLASTIMETAL_BILLET_SMELTABLES = ImmutableList.of(ModItems.PLASTIMETAL_NUGGET.get(), ModBlocks.RUINED_PLASTIMETAL.get(), ModBlocks.DEEPSLATE_RUINED_PLASTIMETAL.get());
@@ -85,6 +88,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         itemListAndItemLike(pOutput, RecipeCategory.MISC, ModItems.WOODEN_HANDLE.get(), ModBlocks.TINY_LOG_BLOCK.get(), CarverList);
         itemListAndItemLike(pOutput, RecipeCategory.MISC, ModItems.WOODEN_SPEAR.get(), ModItems.WOODEN_HANDLE.get(), CarverList);
 
+        fourThingsStorageRecipes(pOutput, RecipeCategory.MISC, ModBlocks.TINY_ROCK_BLOCK.get(), RecipeCategory.BUILDING_BLOCKS, Blocks.COBBLESTONE);
+
         ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, ModItems.FLINT_KNIFE.get(), 1)
                 .requires(ModItems.KNAPPED_FLINT.get()).requires(Items.STICK)
                 .unlockedBy("has_knapped_flint", has(ModItems.KNAPPED_FLINT.get())).unlockedBy("has_stick", has(Items.STICK))
@@ -100,6 +105,25 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 //        }
 //        removeRecipe(pOutput, "arrow");
 
+        crusherResult(pOutput, RecipeCategory.BUILDING_BLOCKS, Blocks.COBBLESTONE, Blocks.STONE);
+        crusherResult(pOutput, RecipeCategory.BUILDING_BLOCKS, Blocks.COBBLED_DEEPSLATE, Blocks.DEEPSLATE);
+        crusherResult(pOutput, RecipeCategory.BUILDING_BLOCKS, Blocks.SAND, Blocks.SANDSTONE, 4);
+        crusherResult(pOutput, RecipeCategory.BUILDING_BLOCKS, Blocks.RED_SAND, Blocks.RED_SANDSTONE, 4);
+        crusherResult(pOutput, RecipeCategory.MISC, Items.AMETHYST_SHARD, Blocks.AMETHYST_BLOCK, 4);
+        crusherResult(pOutput, RecipeCategory.MISC, Items.QUARTZ, Blocks.QUARTZ_BLOCK, 4);
+        crusherResult(pOutput, RecipeCategory.MISC, Items.GLOWSTONE_DUST, Blocks.GLOWSTONE, 4);
+        crusherResult(pOutput, RecipeCategory.MISC, ModBlocks.TINY_ROCK_BLOCK.get(), Blocks.COBBLESTONE, 4);
+        crusherResult(pOutput, RecipeCategory.MISC, Items.CLAY_BALL, Blocks.CLAY, 4);
+    }
+
+    protected static void crusherResult(RecipeOutput pOutput, RecipeCategory pCategory, ItemLike pResult, ItemLike pIngredient) {
+        crusherResult(pOutput, pCategory, pResult, pIngredient, 1);
+    }
+
+    protected static void crusherResult(RecipeOutput pOutput, RecipeCategory pCategory, ItemLike pResult, ItemLike pIngredient, int resultCount) {
+        ModSingleItemRecipeBuilder.crushing(Ingredient.of(pIngredient), pCategory, pResult, resultCount)
+                .unlockedBy(getHasName(pIngredient), has(pIngredient))
+                .save(pOutput, getConversionRecipeName(pResult, pIngredient) + "_crushing");
     }
 
     protected static void recycleIntoSomething(@NotNull RecipeOutput pOutput, @NotNull Ingredient itemsForRecycling, @NotNull RecipeCategory recipeCategory,
@@ -158,6 +182,22 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
     protected static void removeRecipe(@NotNull RecipeOutput pOutput, @NotNull String recipeName) {
         new EmptyRecipeBuilder().save(pOutput, recipeName);
+    }
+
+    protected static void fourThingsStorageRecipes(@NotNull RecipeOutput pOutput,
+                                                   @NotNull RecipeCategory singleRecipeCategory, @NotNull ItemLike singleItem,
+                                                   @NotNull RecipeCategory storageRecipeCategory, @NotNull ItemLike storageItem) {
+        ShapedRecipeBuilder.shaped(storageRecipeCategory, storageItem)
+                .define('#', singleItem)
+                .pattern("##")
+                .pattern("##")
+                .unlockedBy(getHasName(singleItem), has(singleItem))
+                .save(pOutput, TechPlusPlus.MOD_ID + ":" + getItemName(storageItem) + "_from_" + getItemName(singleItem));
+
+        ShapelessRecipeBuilder.shapeless(singleRecipeCategory, singleItem, 4)
+                .requires(storageItem)
+                .unlockedBy(getHasName(storageItem), has(storageItem))
+                .save(pOutput, TechPlusPlus.MOD_ID + ":" + getItemName(singleItem) + "_from_" + getItemName(storageItem));
     }
 
     protected static void nineThingsStorageRecipes(@NotNull RecipeOutput pOutput,

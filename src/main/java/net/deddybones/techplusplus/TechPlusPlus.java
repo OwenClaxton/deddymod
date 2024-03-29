@@ -3,6 +3,7 @@ package net.deddybones.techplusplus;
 import com.mojang.logging.LogUtils;
 import net.deddybones.techplusplus.block.ModBlocks;
 import net.deddybones.techplusplus.block.TweakedVanillaBlocks;
+import net.deddybones.techplusplus.block.entity.ModBlockEntities;
 import net.deddybones.techplusplus.entity.ModEntities;
 import net.deddybones.techplusplus.entity.client.ThrownWoodenSpearRenderer;
 import net.deddybones.techplusplus.item.ModCreativeModeTabs;
@@ -10,8 +11,11 @@ import net.deddybones.techplusplus.item.ModItems;
 import net.deddybones.techplusplus.item.TweakedVanillaItems;
 import net.deddybones.techplusplus.loot.ModLootModifiers;
 import net.deddybones.techplusplus.recipes.ModRecipes;
+import net.deddybones.techplusplus.screen.CrusherScreen;
+import net.deddybones.techplusplus.screen.ModMenuTypes;
 import net.deddybones.techplusplus.util.ModTags;
 import net.deddybones.techplusplus.worldgen.ModWorldGen;
+import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.core.NonNullList;
@@ -52,12 +56,18 @@ public class TechPlusPlus {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         ModCreativeModeTabs.register(modEventBus);
+
         ModItems.register(modEventBus);
         TweakedVanillaItems.register(modEventBus);
         ModBlocks.register(modEventBus);
         TweakedVanillaBlocks.register(modEventBus);
+
+        ModBlockEntities.register(modEventBus);
+        ModMenuTypes.register(modEventBus);
+
         ModWorldGen.register(modEventBus);
         ModLootModifiers.register(modEventBus);
+
         ModEntities.register(modEventBus);
         ModRecipes.register(modEventBus);
 
@@ -184,6 +194,8 @@ public class TechPlusPlus {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
             EntityRenderers.register(ModEntities.THROWN_WOODEN_SPEAR_ENTITY_TYPE.get(), ThrownWoodenSpearRenderer::new);
+
+            MenuScreens.register(ModMenuTypes.CRUSHER_MENU.get(), CrusherScreen::new);
         }
     }
 }

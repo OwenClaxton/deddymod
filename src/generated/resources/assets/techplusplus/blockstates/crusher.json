@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "techplusplus:block/crusher",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "techplusplus:block/crusher"
+    },
+    "facing=south": {
+      "model": "techplusplus:block/crusher",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "techplusplus:block/crusher",
+      "y": 270
+    }
+  }
+}
