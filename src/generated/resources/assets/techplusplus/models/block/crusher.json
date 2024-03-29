@@ -1,8 +1,9 @@
 {
-  "parent": "minecraft:block/orientable",
+  "parent": "minecraft:block/orientable_with_bottom",
   "textures": {
-    "front": "minecraft:block/crafting_table_front",
-    "side": "minecraft:block/furnace_side",
-    "top": "minecraft:block/furnace_top"
+    "bottom": "techplusplus:block/crusher_bottom",
+    "front": "techplusplus:block/crusher_front",
+    "side": "techplusplus:block/crusher_side",
+    "top": "techplusplus:block/crusher_top"
   }
 }

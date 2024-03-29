@@ -71,7 +71,7 @@ public class CrusherMenu extends AbstractContainerMenu {
              pAccess.execute((pLevel, pPos) -> {
                long l = pLevel.getGameTime();
                if (CrusherMenu.this.lastSoundTime != l) {
-                   pLevel.playSound((Player) null, pPos, SoundEvents.UI_STONECUTTER_TAKE_RESULT, SoundSource.BLOCKS, 1.0F, 1.0F);
+                   pLevel.playSound(null, pPos, SoundEvents.UI_STONECUTTER_TAKE_RESULT, SoundSource.BLOCKS, 1.0F, 1.0F);
                   CrusherMenu.this.lastSoundTime = l;
                }
 
@@ -203,8 +203,6 @@ public class CrusherMenu extends AbstractContainerMenu {
    public void removed(@NotNull Player pPlayer) {
       super.removed(pPlayer);
       this.resultContainer.removeItemNoUpdate(1); // this integer is meaningless. Why mojang, Why.
-      this.access.execute((pLevel, pPos) -> {
-         this.clearContainer(pPlayer, this.inputContainer);
-      });
+      this.access.execute((pLevel, pPos) -> this.clearContainer(pPlayer, this.inputContainer));
    }
 }

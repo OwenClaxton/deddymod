@@ -68,11 +68,15 @@ public class ModBlockStateProvider extends BlockStateProvider {
         goodieBlock((RockGoodieBlock) ModBlocks.TINY_ROCK_BLOCK.get(), new ModelFile.UncheckedModelFile(modLoc("block/tiny_rock_block")));
         goodieBlock((LogGoodieBlock) ModBlocks.TINY_LOG_BLOCK.get(), new ModelFile.UncheckedModelFile(modLoc("block/tiny_log_block")));
 
-        horizontalBlockWithItem(ModBlocks.CRUSHER.get(), mcLoc("minecraft:block/furnace_side"), mcLoc("minecraft:block/crafting_table_front"), mcLoc("minecraft:block/furnace_top"));
+        horizontalBlockWithItem(ModBlocks.CRUSHER.get(), modLoc("block/crusher_side"), modLoc("block/crusher_front"), modLoc("block/crusher_top"), modLoc("block/crusher_bottom"));
     }
 
     public void horizontalBlockWithItem(Block pBlock, ResourceLocation side, ResourceLocation front, ResourceLocation top) {
-        ModelFile model = models().orientable(name(pBlock), side, front, top);
+        horizontalBlockWithItem(pBlock, side, front, top, top);
+    }
+
+    public void horizontalBlockWithItem(Block pBlock, ResourceLocation side, ResourceLocation front, ResourceLocation top, ResourceLocation bottom) {
+        ModelFile model = models().orientableWithBottom(name(pBlock), side, front, bottom, top);
         horizontalBlock(pBlock, model);
         itemModels().getBuilder(key(pBlock).getPath()).parent(model);
     }
