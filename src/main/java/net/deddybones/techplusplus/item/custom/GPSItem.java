@@ -21,7 +21,7 @@ public class GPSItem extends Item {
 
     @Override
     public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
-        pTooltipComponents.add(Component.translatable("tooltip.deddymod.gps_tool.tooltip"));
+        pTooltipComponents.add(Component.translatable("tooltip.techplusplus.gps_tool.tooltip"));
         super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
     }
 
