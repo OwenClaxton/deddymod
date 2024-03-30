@@ -89,6 +89,7 @@
   "block.techplusplus.tiny_log_block":  "Branch",
 
   "block.techplusplus.crusher": "Crusher",
+  "block.techplusplus.kiln": "Kiln",
 
   "block.techplusplus.test_block": "Test Block",
 
@@ -96,5 +97,6 @@
 
   "tooltip.techplusplus.gps_tool.tooltip": "Displays XYZ when right-clicking",
 
-  "container.techplusplus.crusher": "Crusher"
+  "container.techplusplus.crusher": "Crusher",
+  "container.techplusplus.kiln": "Kiln"
 }

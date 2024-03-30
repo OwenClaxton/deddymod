@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:amethyst_shard_from_amethyst_block_crushing"
+        "recipe": "techplusplus:amethyst_shard_from_amethyst_block_crushing"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:amethyst_shard_from_amethyst_block_crushing"
+      "techplusplus:amethyst_shard_from_amethyst_block_crushing"
     ]
   }
 }

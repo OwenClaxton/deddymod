@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_glowstone": {
+    "has_quartz_block": {
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:glowstone"
+              "minecraft:quartz_block"
             ]
           }
         ]
@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:glowstone_dust_from_glowstone_crushing"
+        "recipe": "techplusplus:quartz_from_quartz_block_crushing"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -23,12 +23,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_glowstone"
+      "has_quartz_block"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:glowstone_dust_from_glowstone_crushing"
+      "techplusplus:quartz_from_quartz_block_crushing"
     ]
   }
 }

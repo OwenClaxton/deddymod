@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_clay": {
+    "has_sandstone": {
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:clay"
+              "minecraft:sandstone"
             ]
           }
         ]
@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:clay_ball_from_clay_crushing"
+        "recipe": "techplusplus:sand_from_sandstone_crushing"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -23,12 +23,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_clay"
+      "has_sandstone"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:clay_ball_from_clay_crushing"
+      "techplusplus:sand_from_sandstone_crushing"
     ]
   }
 }

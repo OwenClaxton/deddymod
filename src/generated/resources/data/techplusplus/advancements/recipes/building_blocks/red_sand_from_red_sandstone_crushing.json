@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_sandstone": {
+    "has_red_sandstone": {
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:sandstone"
+              "minecraft:red_sandstone"
             ]
           }
         ]
@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:sand_from_sandstone_crushing"
+        "recipe": "techplusplus:red_sand_from_red_sandstone_crushing"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -23,12 +23,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_sandstone"
+      "has_red_sandstone"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:sand_from_sandstone_crushing"
+      "techplusplus:red_sand_from_red_sandstone_crushing"
     ]
   }
 }

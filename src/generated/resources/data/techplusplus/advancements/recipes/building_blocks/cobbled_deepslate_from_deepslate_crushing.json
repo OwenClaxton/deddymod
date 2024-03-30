@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:cobbled_deepslate_from_deepslate_crushing"
+        "recipe": "techplusplus:cobbled_deepslate_from_deepslate_crushing"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:cobbled_deepslate_from_deepslate_crushing"
+      "techplusplus:cobbled_deepslate_from_deepslate_crushing"
     ]
   }
 }

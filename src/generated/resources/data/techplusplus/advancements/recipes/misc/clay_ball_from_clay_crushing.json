@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_cobblestone": {
+    "has_clay": {
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:cobblestone"
+              "minecraft:clay"
             ]
           }
         ]
@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:tiny_rock_block_from_cobblestone_crushing"
+        "recipe": "techplusplus:clay_ball_from_clay_crushing"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -23,12 +23,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_cobblestone"
+      "has_clay"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:tiny_rock_block_from_cobblestone_crushing"
+      "techplusplus:clay_ball_from_clay_crushing"
     ]
   }
 }

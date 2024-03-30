@@ -51,7 +51,7 @@ public class CrusherMenu extends AbstractContainerMenu {
    }
 
    public CrusherMenu(int pContainerId, Inventory pInventory, final ContainerLevelAccess pAccess) {
-      super(ModMenuTypes.CRUSHER_MENU.get(), pContainerId);
+      super(ModMenuTypes.CRUSHER.get(), pContainerId);
       this.access = pAccess;
       this.level = pInventory.player.level();
       this.inputSlot = this.addSlot(new Slot(this.inputContainer, INPUT_SLOT, INPUT_SLOT_PX, INPUT_SLOT_PY));
@@ -146,7 +146,7 @@ public class CrusherMenu extends AbstractContainerMenu {
    }
 
    public @NotNull MenuType<?> getType() {
-      return ModMenuTypes.CRUSHER_MENU.get();
+      return ModMenuTypes.CRUSHER.get();
    }
 
    public boolean canTakeItemForPickAll(@NotNull ItemStack pStack, Slot pSlot) {

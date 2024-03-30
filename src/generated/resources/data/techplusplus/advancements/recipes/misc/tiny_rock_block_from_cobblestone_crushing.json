@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_quartz_block": {
+    "has_cobblestone": {
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:quartz_block"
+              "minecraft:cobblestone"
             ]
           }
         ]
@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:quartz_from_quartz_block_crushing"
+        "recipe": "techplusplus:tiny_rock_block_from_cobblestone_crushing"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -23,12 +23,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_quartz_block"
+      "has_cobblestone"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:quartz_from_quartz_block_crushing"
+      "techplusplus:tiny_rock_block_from_cobblestone_crushing"
     ]
   }
 }
