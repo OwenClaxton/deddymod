@@ -88,6 +88,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
                                 .hasProperty(FibrosiaCropBlock.AGE, FibrosiaCropBlock.MAX_AGE))));
 
         this.dropSelf(ModBlocks.CRUSHER.get());
+        this.dropSelf(ModBlocks.KILN.get());
     }
 
     protected LootTable.Builder createCropDrop(Block pBlock, Item pProduce, LootItemCondition.Builder pCondition) {

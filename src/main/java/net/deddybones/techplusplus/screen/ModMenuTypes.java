@@ -13,8 +13,11 @@ public class ModMenuTypes {
     public static final DeferredRegister<MenuType<?>> MENUS =
             DeferredRegister.create(ForgeRegistries.MENU_TYPES, TechPlusPlus.MOD_ID);
 
-    public static final RegistryObject<MenuType<CrusherMenu>> CRUSHER_MENU =
-            registerMenuType("crusher_menu", CrusherMenu::new);
+    public static final RegistryObject<MenuType<CrusherMenu>> CRUSHER =
+            registerMenuType("crusher", CrusherMenu::new);
+
+    public static final RegistryObject<MenuType<KilnMenu>> KILN =
+            registerMenuType("kiln", KilnMenu::new);
 
     @SuppressWarnings("SameParameterValue")
     private static <T extends AbstractContainerMenu>RegistryObject<MenuType<T>> registerMenuType(String name, MenuType.MenuSupplier<T> p_39990_) {

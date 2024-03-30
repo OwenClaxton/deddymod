@@ -1,0 +1,11 @@
+{
+  "type": "techplusplus:kiln",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 1.0,
+  "group": "tin",
+  "ingredient": {
+    "item": "techplusplus:tin_nugget"
+  },
+  "result": "techplusplus:tin_billet"
+}

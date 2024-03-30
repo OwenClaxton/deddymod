@@ -15,9 +15,11 @@ public class ModRecipes {
 
     public static final RegistryObject<RecipeSerializer<EmptyRecipe>> EMPTY_SERIALIZER      = RECIPE_SERIALIZERS.register("empty", EmptyRecipe.Serializer::new);
     public static final RegistryObject<RecipeSerializer<CrusherRecipe>> CRUSHING_SERIALIZER = RECIPE_SERIALIZERS.register("crushing", () -> new ModSingleItemRecipe.Serializer<>(CrusherRecipe::new));
+    public static final RegistryObject<RecipeSerializer<KilnRecipe>> KILN_SERIALIZER        = RECIPE_SERIALIZERS.register("kiln", () -> new SimpleCookingSerializer<>(KilnRecipe::new, 400));
 
     public static final RegistryObject<RecipeType<EmptyRecipe>> EMPTY_TYPE      = registerType("empty");
     public static final RegistryObject<RecipeType<CrusherRecipe>> CRUSHING_TYPE = registerType("crushing");
+    public static final RegistryObject<RecipeType<KilnRecipe>> KILN_TYPE        = registerType("kiln");
 
     static <T extends Recipe<?>> RegistryObject<RecipeType<T>> registerType(final String pId) {
         return RECIPE_TYPES.register(pId, () -> new RecipeType<>() {

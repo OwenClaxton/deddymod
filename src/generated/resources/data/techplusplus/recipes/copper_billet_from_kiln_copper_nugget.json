@@ -1,0 +1,11 @@
+{
+  "type": "techplusplus:kiln",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 1.0,
+  "group": "copper",
+  "ingredient": {
+    "item": "techplusplus:copper_nugget"
+  },
+  "result": "techplusplus:copper_billet"
+}

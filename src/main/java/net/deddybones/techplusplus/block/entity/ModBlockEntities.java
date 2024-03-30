@@ -12,11 +12,10 @@ public class ModBlockEntities {
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES =
             DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, TechPlusPlus.MOD_ID);
 
-//    public static final RegistryObject<BlockEntityType<CrusherBlockEntity>> CRUSHER_BLOCK_ENTITY =
-//            BLOCK_ENTITIES.register("crusher_block_entity", () ->
-//                    BlockEntityType.Builder.of(CrusherBlockEntity::new,
-//                            ModBlocks.CRUSHER.get()).build(null));
-
+    public static final RegistryObject<BlockEntityType<KilnBlockEntity>> KILN =
+            BLOCK_ENTITIES.register("kiln", () ->
+                    BlockEntityType.Builder.of(KilnBlockEntity::new,
+                            ModBlocks.KILN.get()).build(null));
 
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);

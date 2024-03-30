@@ -5,9 +5,7 @@ import net.deddybones.techplusplus.TechPlusPlus;
 import net.deddybones.techplusplus.block.ModBlocks;
 import net.deddybones.techplusplus.item.ModItems;
 import net.deddybones.techplusplus.item.TweakedVanillaItems;
-import net.deddybones.techplusplus.recipes.CrusherRecipe;
-import net.deddybones.techplusplus.recipes.EmptyRecipeBuilder;
-import net.deddybones.techplusplus.recipes.ModSingleItemRecipeBuilder;
+import net.deddybones.techplusplus.recipes.*;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.world.item.Item;
@@ -34,6 +32,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
     @Override
     protected void buildRecipes(@NotNull RecipeOutput pOutput) {
+        oreKiln(pOutput, ImmutableList.of(ModItems.COPPER_NUGGET.get()), RecipeCategory.MISC, ModItems.COPPER_BILLET.get(), 1.0F, 200, "copper");
+        oreKiln(pOutput, ImmutableList.of(ModItems.TIN_NUGGET.get()), RecipeCategory.MISC, ModItems.TIN_BILLET.get(), 1.0F, 200, "tin");
         oreSmelting(pOutput, SAPPHIRE_SMELTABLES, RecipeCategory.MISC, ModItems.SAPPHIRE.get(), 1.0F, 200, "sapphire");
         oreBlasting(pOutput, SAPPHIRE_SMELTABLES, RecipeCategory.MISC, ModItems.SAPPHIRE.get(), 1.0F, 100, "sapphire");
         nineThingsStorageRecipes(pOutput, RecipeCategory.MISC, ModItems.SAPPHIRE.get(), RecipeCategory.BUILDING_BLOCKS, ModBlocks.SAPPHIRE_BLOCK.get());
@@ -123,13 +123,13 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     protected static void crusherResult(RecipeOutput pOutput, RecipeCategory pCategory, ItemLike pResult, ItemLike pIngredient, int resultCount) {
         ModSingleItemRecipeBuilder.crushing(Ingredient.of(pIngredient), pCategory, pResult, resultCount)
                 .unlockedBy(getHasName(pIngredient), has(pIngredient))
-                .save(pOutput, getConversionRecipeName(pResult, pIngredient) + "_crushing");
+                .save(pOutput,   TechPlusPlus.MOD_ID + ":" + getConversionRecipeName(pResult, pIngredient) + "_crushing");
     }
 
     protected static void recycleIntoSomething(@NotNull RecipeOutput pOutput, @NotNull Ingredient itemsForRecycling, @NotNull RecipeCategory recipeCategory,
                                                @NotNull ItemLike recipeResult, float experience, String modid) {
-        SimpleCookingRecipeBuilder smeltingBuilder = SimpleCookingRecipeBuilder.smelting(itemsForRecycling, recipeCategory, recipeResult, experience, 200);
-        SimpleCookingRecipeBuilder blastingBuilder = SimpleCookingRecipeBuilder.blasting(itemsForRecycling, recipeCategory, recipeResult, experience, 100);
+        ModSimpleCookingRecipeBuilder smeltingBuilder = ModSimpleCookingRecipeBuilder.smelting(itemsForRecycling, recipeCategory, recipeResult, experience, 200);
+        ModSimpleCookingRecipeBuilder blastingBuilder = ModSimpleCookingRecipeBuilder.blasting(itemsForRecycling, recipeCategory, recipeResult, experience, 100);
 
         for (ItemStack itemStackToRecycle : itemsForRecycling.getItems()) {
             Item itemToRecycle = itemStackToRecycle.getItem();
@@ -167,12 +167,17 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         oreCooking(pOutput, RecipeSerializer.BLASTING_RECIPE, BlastingRecipe::new, acceptableItems, recipeCategory, blastOutput, experienceAmount, blastTime, group, "_from_blasting");
     }
 
+    protected static void oreKiln(@NotNull RecipeOutput pOutput, List<ItemLike> acceptableItems, @NotNull RecipeCategory recipeCategory,
+                                  @NotNull ItemLike kilnOutput, float experienceAmount, int kilnTime, @NotNull String group) {
+        oreCooking(pOutput, ModRecipes.KILN_SERIALIZER.get(), KilnRecipe::new, acceptableItems, recipeCategory, kilnOutput, experienceAmount, kilnTime, group, "_from_kiln");
+    }
+
     private static <T extends AbstractCookingRecipe> void oreCooking(RecipeOutput pOutput, RecipeSerializer<T> recipeSerializer,
                                                                      AbstractCookingRecipe.Factory<T> cookingRecipe, List<ItemLike> acceptableItems,
                                                                      RecipeCategory recipeCategory, ItemLike cookingOutput,
                                                                      float experienceAmount, int cookingTime, String group, String methodString) {
         for(ItemLike itemlike : acceptableItems) {
-            SimpleCookingRecipeBuilder.generic(Ingredient.of(itemlike), recipeCategory, cookingOutput, experienceAmount, cookingTime, recipeSerializer, cookingRecipe)
+            ModSimpleCookingRecipeBuilder.generic(Ingredient.of(itemlike), recipeCategory, cookingOutput, experienceAmount, cookingTime, recipeSerializer, cookingRecipe)
                     .group(group)
                     .unlockedBy(getHasName(itemlike), has(itemlike))
                     .save(pOutput, TechPlusPlus.MOD_ID + ":" + (cookingOutput) + methodString + "_" + getItemName(itemlike));
