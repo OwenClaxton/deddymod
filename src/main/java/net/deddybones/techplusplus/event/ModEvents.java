@@ -26,36 +26,37 @@ public class ModEvents {
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent
-    public void onServerStarting(ServerStartingEvent event) {
+    public static void onServerStarting(ServerStartingEvent event) {
 
     }
 
 //    @SubscribeEvent
-//    public void onOpenContainer(PlayerContainerEvent.Open event) {
+//    public static void onOpenContainer(PlayerContainerEvent.Open event) {
 //    }
 //
 //    @SubscribeEvent
-//    public void onCloseContainer(PlayerContainerEvent.Close event) {
+//    public static void onCloseContainer(PlayerContainerEvent.Close event) {
 //    }
 //
 //    @SubscribeEvent
-//    public void onLoggingIn(PlayerEvent.PlayerLoggedInEvent event) {
+//    public static void onLoggingIn(PlayerEvent.PlayerLoggedInEvent event) {
 //    }
 //
 //    @SubscribeEvent
-//    public void onLoggingOut(PlayerEvent.PlayerLoggedOutEvent event) {
+//    public static void onLoggingOut(PlayerEvent.PlayerLoggedOutEvent event) {
 //    }
 
 //    @SubscribeEvent
-//    public void pickupItem(EntityItemPickupEvent event) {
+//    public static void pickupItem(EntityItemPickupEvent event) {
 //    }
 
     @SubscribeEvent
-    public void onLeftClickingBlock(PlayerInteractEvent.LeftClickBlock event) {
+    public static void onLeftClickingBlock(PlayerInteractEvent.LeftClickBlock event) {
         if (event.getEntity().isCreative()) return;
         Player player = event.getEntity();
         BlockState blockTarget = event.getLevel().getBlockState(event.getPos());
-        boolean blockHurts      = blockTarget.is(ModTags.Blocks.HURTS);
+        boolean blockIsSoft     = blockTarget.is(ModTags.Blocks.SOFT_BLOCKS_OVERRIDE);
+        boolean blockHurts      = blockTarget.is(ModTags.Blocks.HURTS) & !blockIsSoft;
         boolean usingTool       = event.getItemStack().is(ModTags.Items.IS_A_TOOL);
         boolean shouldCancel    = false;
         if (!usingTool) {
@@ -68,7 +69,7 @@ public class ModEvents {
         event.setCanceled(shouldCancel);
     }
 
-    public boolean isRepairRecipe(Player player, Level level) {
+    public static boolean isRepairRecipe(Player player, Level level) {
         CraftingContainer craftingSlots;
         if (player.containerMenu.getClass() == InventoryMenu.class) {
             InventoryMenu iMenu = (InventoryMenu) player.containerMenu;
@@ -84,7 +85,7 @@ public class ModEvents {
     }
 
     @SubscribeEvent
-    public void itemCrafted(PlayerEvent.ItemCraftedEvent event) {
+    public static void itemCrafted(PlayerEvent.ItemCraftedEvent event) {
         Level level = event.getEntity().level();
         Player player = event.getEntity();
         if (!level.isClientSide()) {

@@ -19,6 +19,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 import java.util.function.Function;
 
+@SuppressWarnings("unused")
 public class ModBlockStateProvider extends BlockStateProvider {
     public ModBlockStateProvider(PackOutput output, ExistingFileHelper exFileHelper) {
         super(output, TechPlusPlus.MOD_ID, exFileHelper);

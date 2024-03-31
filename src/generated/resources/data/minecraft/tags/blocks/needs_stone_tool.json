@@ -1,7 +1,4 @@
 {
-  "values": [
-    "minecraft:oak_log",
-    "#minecraft:logs",
-    "#minecraft:planks"
-  ]
+  "replace": true,
+  "values": []
 }
