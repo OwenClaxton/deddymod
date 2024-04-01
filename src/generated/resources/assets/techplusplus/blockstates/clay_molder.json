@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "techplusplus:block/clay_molder",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "techplusplus:block/clay_molder"
+    },
+    "facing=south": {
+      "model": "techplusplus:block/clay_molder",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "techplusplus:block/clay_molder",
+      "y": 270
+    }
+  }
+}

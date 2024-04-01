@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_flint_knife": {
+    "flint_knife": {
       "conditions": {
         "items": [
           {
@@ -19,7 +19,7 @@
       },
       "trigger": "minecraft:recipe_unlocked"
     },
-    "has_wooden_handle": {
+    "wooden_handle": {
       "conditions": {
         "items": [
           {
@@ -35,8 +35,8 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_wooden_handle",
-      "has_flint_knife"
+      "wooden_handle",
+      "flint_knife"
     ]
   ],
   "rewards": {

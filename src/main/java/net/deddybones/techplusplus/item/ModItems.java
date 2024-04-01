@@ -73,6 +73,10 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> WOODEN_HANDLE = ITEMS.register("wooden_handle",
             () -> new CarvedFuelItem(new Item.Properties(), 200));
+    public static final RegistryObject<Item> CLAY_CHUNK = ITEMS.register("clay_chunk",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> LARGE_CLAY_CHUNK = ITEMS.register("large_clay_chunk",
+            () -> new Item(new Item.Properties()));
 
 
     public static final RegistryObject<Item> WOODEN_SPEAR = ITEMS.register("wooden_spear",

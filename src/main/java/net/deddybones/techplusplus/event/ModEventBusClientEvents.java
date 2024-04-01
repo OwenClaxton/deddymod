@@ -7,6 +7,7 @@ import net.deddybones.techplusplus.entity.client.ModModelLayers;
 import net.deddybones.techplusplus.entity.client.ThrownWoodenSpearModel;
 import net.deddybones.techplusplus.entity.client.ThrownWoodenSpearRenderer;
 import net.deddybones.techplusplus.recipes.ModRecipes;
+import net.deddybones.techplusplus.screen.ClayMolderScreen;
 import net.deddybones.techplusplus.screen.CrusherScreen;
 import net.deddybones.techplusplus.screen.KilnScreen;
 import net.deddybones.techplusplus.screen.ModMenuTypes;
@@ -30,6 +31,7 @@ public class ModEventBusClientEvents {
 
         MenuScreens.register(ModMenuTypes.CRUSHER.get(), CrusherScreen::new);
         MenuScreens.register(ModMenuTypes.KILN.get(), KilnScreen::new);
+        MenuScreens.register(ModMenuTypes.CLAY_MOLDER.get(), ClayMolderScreen::new);
     }
 
     @SubscribeEvent

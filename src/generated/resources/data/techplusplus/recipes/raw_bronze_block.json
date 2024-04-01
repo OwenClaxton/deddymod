@@ -1,6 +1,7 @@
 {
   "type": "minecraft:crafting_shapeless",
-  "category": "misc",
+  "category": "building",
+  "group": "raw_bronze_block",
   "ingredients": [
     {
       "item": "minecraft:copper_ingot"

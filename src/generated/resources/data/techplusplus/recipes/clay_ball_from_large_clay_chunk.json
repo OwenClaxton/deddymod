@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "clay_ball",
+  "ingredients": [
+    {
+      "item": "techplusplus:large_clay_chunk"
+    }
+  ],
+  "result": {
+    "count": 6,
+    "item": "minecraft:clay_ball"
+  }
+}

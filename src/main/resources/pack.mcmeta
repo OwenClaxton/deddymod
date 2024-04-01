@@ -47,6 +47,58 @@
              },
              {
                  "namespace": "minecraft",
+                 "path": "recipes/golden_sword"
+             },
+             {
+                 "namespace": "minecraft",
+                 "path": "recipes/golden_hoe"
+             },
+             {
+                 "namespace": "minecraft",
+                 "path": "recipes/golden_axe"
+             },
+             {
+                 "namespace": "minecraft",
+                 "path": "recipes/golden_shovel"
+             },
+             {
+                 "namespace": "minecraft",
+                 "path": "recipes/golden_pickaxe"
+             },
+             {
+                 "namespace": "minecraft",
+                 "path": "recipes/golden_apple"
+             },
+             {
+                 "namespace": "minecraft",
+                 "path": "recipes/golden_carrot"
+             },
+             {
+                 "namespace": "minecraft",
+                 "path": "recipes/glistering_melon_slice"
+             },
+             {
+                 "namespace": "minecraft",
+                 "path": "recipes/firework_star"
+             },
+             {
+                 "namespace": "minecraft",
+                 "path": "recipes/golden_helmet"
+             },
+             {
+                 "namespace": "minecraft",
+                 "path": "recipes/golden_chestplate"
+             },
+             {
+                 "namespace": "minecraft",
+                 "path": "recipes/golden_leggings"
+             },
+             {
+                 "namespace": "minecraft",
+                 "path": "recipes/golden_boots"
+             },
+             {
+                 "namespace": "minecraft",
                  "path": "recipes/arrow"
              },
              {
@@ -80,6 +132,14 @@
              {
                  "namespace": "minecraft",
                  "path": "recipes/gold_nugget_from_smelting"
+             },
+             {
+                 "namespace": "minecraft",
+                 "path": "recipes/clay"
+             },
+             {
+                 "namespace": "minecraft",
+                 "path": "loot_tables/blocks/clay"
              }
          ]
      }

@@ -1,6 +1,7 @@
 {
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
+  "group": "bronze_billet",
   "ingredients": [
     {
       "item": "techplusplus:bronze_ingot"

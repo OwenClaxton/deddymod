@@ -13,7 +13,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 public class KilnScreen extends AbstractFurnaceScreen<KilnMenu> {
     private static final ResourceLocation LIT_PROGRESS_SPRITE   = new ResourceLocation( "minecraft:container/furnace/lit_progress");
     private static final ResourceLocation BURN_PROGRESS_SPRITE  = new ResourceLocation( "minecraft:container/furnace/burn_progress");
-    private static final ResourceLocation TEXTURE               = new ResourceLocation(TechPlusPlus.MOD_ID + ":textures/gui/kiln.png");
+    private static final ResourceLocation TEXTURE               = new ResourceLocation(TechPlusPlus.MOD_ID + ":textures/gui/container/kiln.png");
 
     public KilnScreen(KilnMenu pMenu, Inventory pInventory, Component pComponent) {
         super(pMenu, new SmeltingRecipeBookComponent(), pInventory, pComponent, TEXTURE, LIT_PROGRESS_SPRITE, BURN_PROGRESS_SPRITE);

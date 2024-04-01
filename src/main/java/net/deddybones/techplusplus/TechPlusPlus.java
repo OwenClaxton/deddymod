@@ -35,6 +35,7 @@ import java.util.List;
 public class TechPlusPlus {
     public static final String MOD_ID = "techplusplus";
     public static final Logger LOGGER = LogUtils.getLogger();
+
     public static final RecipeBookType KILN_RECIPE_BOOK_TYPE = RecipeBookType.create("KILN");
     public static final RecipeBookCategories KILN_SEARCH = RecipeBookCategories.create("KILN_SEARCH", new ItemStack(Items.COMPASS));
     public static final RecipeBookCategories KILN_FOOD = RecipeBookCategories.create("KILN_FOOD", new ItemStack(Items.PORKCHOP));

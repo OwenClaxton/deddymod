@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_bronze_ingot": {
+    "bronze_ingot": {
       "conditions": {
         "items": [
           {
@@ -23,7 +23,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_bronze_ingot"
+      "bronze_ingot"
     ]
   ],
   "rewards": {

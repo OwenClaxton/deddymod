@@ -7,7 +7,7 @@
       },
       "trigger": "minecraft:recipe_unlocked"
     },
-    "has_tin_block": {
+    "tin_block": {
       "conditions": {
         "items": [
           {
@@ -23,7 +23,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_tin_block"
+      "tin_block"
     ]
   ],
   "rewards": {

@@ -75,6 +75,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.STICK_BUNDLE.get());
         simpleItem(ModItems.KNAPPED_FLINT.get());
         simpleItem(ModItems.WOODEN_HANDLE.get());
+        simpleItem(ModItems.CLAY_CHUNK.get());
+        simpleItem(ModItems.LARGE_CLAY_CHUNK.get());
 
         evenSimplerBlockItem(ModBlocks.GLASS_STAIRS.get());
         evenSimplerBlockItem(ModBlocks.GLASS_SLAB.get());

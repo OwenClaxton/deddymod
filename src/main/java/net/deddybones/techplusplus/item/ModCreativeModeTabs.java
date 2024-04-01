@@ -54,6 +54,8 @@ public class ModCreativeModeTabs {
                                 output.accept(ModItems.STICK_BUNDLE.get());
                                 output.accept(ModItems.KNAPPED_FLINT.get());
                                 output.accept(ModItems.WOODEN_HANDLE.get());
+                                output.accept(ModItems.CLAY_CHUNK.get());
+                                output.accept(ModItems.LARGE_CLAY_CHUNK.get());
 
                                 output.accept(ModItems.FLINT_KNIFE.get());
                                 output.accept(ModItems.WOODEN_SPEAR.get());
@@ -111,6 +113,7 @@ public class ModCreativeModeTabs {
 
                                 output.accept(ModBlocks.CRUSHER.get());
                                 output.accept(ModBlocks.KILN.get());
+                                output.accept(ModBlocks.CLAY_MOLDER.get());
 
                                 output.accept(ModBlocks.TEST_BLOCK.get());
                             })

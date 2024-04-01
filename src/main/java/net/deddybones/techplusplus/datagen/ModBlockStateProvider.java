@@ -71,9 +71,8 @@ public class ModBlockStateProvider extends BlockStateProvider {
         goodieBlock((LogGoodieBlock) ModBlocks.TINY_LOG_BLOCK.get(), new ModelFile.UncheckedModelFile(modLoc("block/tiny_log_block")));
 
         horizontalBlockWithItem(ModBlocks.CRUSHER.get(), modLoc("block/crusher_side"), modLoc("block/crusher_front"), modLoc("block/crusher_top"), modLoc("block/crusher_bottom"));
-//        horizontalBlockWithItem(ModBlocks.KILN.get(), modLoc("block/kiln_side"), modLoc("block/kiln_front"), modLoc("block/kiln_top"));
-
         furnaceBlockWithItem(ModBlocks.KILN.get(), modLoc("block/kiln_side"), modLoc("block/kiln_front"), modLoc("block/kiln_front_on"), modLoc("block/kiln_top"));
+        horizontalBlockWithItem(ModBlocks.CLAY_MOLDER.get(), modLoc("block/clay_molder_side"), modLoc("block/clay_molder_front"), modLoc("block/clay_molder_top"), modLoc("block/clay_molder_bottom"));
     }
 
     public void horizontalBlockWithItem(Block pBlock, ResourceLocation side, ResourceLocation front, ResourceLocation top) {

@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_copper_ingot": {
+    "has_melon": {
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:copper_ingot"
+              "minecraft:melon_slice"
             ]
           }
         ]
@@ -15,33 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "techplusplus:raw_bronze_block"
+        "recipe": "techplusplus:glistering_melon_slice"
       },
       "trigger": "minecraft:recipe_unlocked"
-    },
-    "has_tin_ingot": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "techplusplus:tin_ingot"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_copper_ingot",
-      "has_tin_ingot"
+      "has_melon"
     ]
   ],
   "rewards": {
     "recipes": [
-      "techplusplus:raw_bronze_block"
+      "techplusplus:glistering_melon_slice"
     ]
   }
 }

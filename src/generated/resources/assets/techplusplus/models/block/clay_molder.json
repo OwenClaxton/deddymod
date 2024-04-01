@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/orientable_with_bottom",
+  "textures": {
+    "bottom": "techplusplus:block/clay_molder_bottom",
+    "front": "techplusplus:block/clay_molder_front",
+    "side": "techplusplus:block/clay_molder_side",
+    "top": "techplusplus:block/clay_molder_top"
+  }
+}

@@ -1,6 +1,7 @@
 {
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
+  "group": "wooden_handle",
   "ingredients": [
     {
       "item": "techplusplus:tiny_log_block"

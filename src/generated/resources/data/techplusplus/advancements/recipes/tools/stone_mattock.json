@@ -1,7 +1,13 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_string": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "techplusplus:stone_mattock"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "string": {
       "conditions": {
         "items": [
           {
@@ -13,13 +19,7 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
-    "has_the_recipe": {
-      "conditions": {
-        "recipe": "techplusplus:stone_mattock"
-      },
-      "trigger": "minecraft:recipe_unlocked"
-    },
-    "has_tiny_rock_block": {
+    "tiny_rock_block": {
       "conditions": {
         "items": [
           {
@@ -31,7 +31,7 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
-    "has_wooden_handle": {
+    "wooden_handle": {
       "conditions": {
         "items": [
           {
@@ -47,9 +47,9 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_tiny_rock_block",
-      "has_string",
-      "has_wooden_handle"
+      "tiny_rock_block",
+      "wooden_handle",
+      "string"
     ]
   ],
   "rewards": {

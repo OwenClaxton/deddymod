@@ -8,8 +8,10 @@ import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.DoorBlock;
 import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
@@ -23,16 +25,23 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePrope
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraftforge.registries.RegistryObject;
+import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 public class ModBlockLootTables extends BlockLootSubProvider {
+    private final List<Block> VANILLA_BLOCKS_CHANGED = List.of(Blocks.CLAY);
+
     public ModBlockLootTables() {
         super(Set.of(), FeatureFlags.REGISTRY.allFlags());
     }
 
     @Override
     protected void generate() {
+        this.add(Blocks.CLAY, block -> createSingleItemTableWithSilkTouch(block, Items.CLAY_BALL, ConstantValue.exactly(9.0F)));
+
         this.dropSelf(ModBlocks.BAUXITE.get());
         this.dropSelf(ModBlocks.POLISHED_BAUXITE.get());
 
@@ -45,14 +54,14 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.BRONZE_BLOCK.get());
         this.dropSelf(ModBlocks.SAPPHIRE_BLOCK.get());
 
-        this.add(ModBlocks.TIN_ORE.get(), block -> createOreDrop(ModBlocks.TIN_ORE.get(), ModItems.RAW_TIN.get()));
-        this.add(ModBlocks.DEEPSLATE_TIN_ORE.get(), block -> createOreDrop(ModBlocks.DEEPSLATE_TIN_ORE.get(), ModItems.RAW_TIN.get()));
+        this.add(ModBlocks.TIN_ORE.get(), block -> createOreDrop(block, ModItems.RAW_TIN.get()));
+        this.add(ModBlocks.DEEPSLATE_TIN_ORE.get(), block -> createOreDrop(block, ModItems.RAW_TIN.get()));
 
-        this.add(ModBlocks.SAPPHIRE_ORE.get(), block -> createOreDrop(ModBlocks.SAPPHIRE_ORE.get(), ModItems.SAPPHIRE.get()));
-        this.add(ModBlocks.DEEPSLATE_SAPPHIRE_ORE.get(), block -> createOreDrop(ModBlocks.DEEPSLATE_SAPPHIRE_ORE.get(), ModItems.SAPPHIRE.get()));
+        this.add(ModBlocks.SAPPHIRE_ORE.get(), block -> createOreDrop(block, ModItems.SAPPHIRE.get()));
+        this.add(ModBlocks.DEEPSLATE_SAPPHIRE_ORE.get(), block -> createOreDrop(block, ModItems.SAPPHIRE.get()));
 
-        this.add(ModBlocks.RUINED_PLASTIMETAL.get(), block -> createOreDrop(ModBlocks.RUINED_PLASTIMETAL.get(), ModItems.RAW_PLASTIMETAL.get()));
-        this.add(ModBlocks.DEEPSLATE_RUINED_PLASTIMETAL.get(), block -> createOreDrop(ModBlocks.DEEPSLATE_RUINED_PLASTIMETAL.get(), ModItems.RAW_PLASTIMETAL.get()));
+        this.add(ModBlocks.RUINED_PLASTIMETAL.get(), block -> createOreDrop(block, ModItems.RAW_PLASTIMETAL.get()));
+        this.add(ModBlocks.DEEPSLATE_RUINED_PLASTIMETAL.get(), block -> createOreDrop(block, ModItems.RAW_PLASTIMETAL.get()));
 
         this.dropWhenSilkTouch(ModBlocks.GLASS_STAIRS.get());
         this.dropWhenSilkTouch(ModBlocks.GLASS_BUTTON.get());
@@ -64,10 +73,10 @@ public class ModBlockLootTables extends BlockLootSubProvider {
 
         this.dropWhenSilkTouch(ModBlocks.TEST_BLOCK.get());
 
-        this.add(ModBlocks.GLASS_SLAB.get(), block -> createSilkTouchSlabItemTable(ModBlocks.GLASS_SLAB.get()));
-        this.add(ModBlocks.GLASS_DOOR.get(), block -> createSilkTouchDoorTable(ModBlocks.GLASS_DOOR.get()));
+        this.add(ModBlocks.GLASS_SLAB.get(), this::createSilkTouchSlabItemTable);
+        this.add(ModBlocks.GLASS_DOOR.get(), this::createSilkTouchDoorTable);
 
-        this.add(ModBlocks.PLASTIMETAL_DOOR.get(), block -> createDoorTable(ModBlocks.PLASTIMETAL_DOOR.get()));
+        this.add(ModBlocks.PLASTIMETAL_DOOR.get(), this::createDoorTable);
         this.dropSelf(ModBlocks.PLASTIMETAL_TRAPDOOR.get());
         this.dropSelf(ModBlocks.PLASTIMETAL_BARS.get());
 
@@ -89,6 +98,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
 
         this.dropSelf(ModBlocks.CRUSHER.get());
         this.dropSelf(ModBlocks.KILN.get());
+        this.dropSelf(ModBlocks.CLAY_MOLDER.get());
     }
 
     protected LootTable.Builder createCropDrop(Block pBlock, Item pProduce, LootItemCondition.Builder pCondition) {
@@ -123,7 +133,11 @@ public class ModBlockLootTables extends BlockLootSubProvider {
     }
 
     @Override
-    protected Iterable<Block> getKnownBlocks() {
-        return ModBlocks.BLOCKS.getEntries().stream().map(RegistryObject::get)::iterator;
+    protected @NotNull Iterable<Block> getKnownBlocks() {
+        ArrayList<Block> iterableBlocks = new ArrayList<>();
+        ModBlocks.BLOCKS.getEntries().stream().map(RegistryObject::get).forEach(iterableBlocks::add);
+        iterableBlocks.addAll(VANILLA_BLOCKS_CHANGED);
+
+        return iterableBlocks;
     }
 }

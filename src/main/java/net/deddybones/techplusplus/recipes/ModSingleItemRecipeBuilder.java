@@ -41,6 +41,10 @@ public class ModSingleItemRecipeBuilder implements RecipeBuilder {
       return new ModSingleItemRecipeBuilder(pCategory, CrusherRecipe::new, pIngredient, pResult, resultCount);
    }
 
+   public static ModSingleItemRecipeBuilder molding(Ingredient pIngredient, RecipeCategory pCategory, ItemLike pResult, int resultCount) {
+      return new ModSingleItemRecipeBuilder(pCategory, ClayMolderRecipe::new, pIngredient, pResult, resultCount);
+   }
+
    public @NotNull ModSingleItemRecipeBuilder unlockedBy(@NotNull String pCriteriaStr, @NotNull Criterion<?> pCriteria) {
       this.criteria.put(pCriteriaStr, pCriteria);
       return this;

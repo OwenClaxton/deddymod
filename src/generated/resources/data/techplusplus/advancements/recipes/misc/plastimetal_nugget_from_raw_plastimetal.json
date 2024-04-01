@@ -1,7 +1,13 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_raw_plastimetal": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "techplusplus:plastimetal_nugget_from_raw_plastimetal"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "raw_plastimetal": {
       "conditions": {
         "items": [
           {
@@ -12,18 +18,12 @@
         ]
       },
       "trigger": "minecraft:inventory_changed"
-    },
-    "has_the_recipe": {
-      "conditions": {
-        "recipe": "techplusplus:plastimetal_nugget_from_raw_plastimetal"
-      },
-      "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_raw_plastimetal"
+      "raw_plastimetal"
     ]
   ],
   "rewards": {

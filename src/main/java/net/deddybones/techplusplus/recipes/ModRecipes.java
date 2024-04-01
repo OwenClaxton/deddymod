@@ -13,13 +13,21 @@ public class ModRecipes {
     public static final DeferredRegister<RecipeType<?>> RECIPE_TYPES =
             DeferredRegister.create(ForgeRegistries.RECIPE_TYPES, TechPlusPlus.MOD_ID);
 
-    public static final RegistryObject<RecipeSerializer<EmptyRecipe>> EMPTY_SERIALIZER      = RECIPE_SERIALIZERS.register("empty", EmptyRecipe.Serializer::new);
-    public static final RegistryObject<RecipeSerializer<CrusherRecipe>> CRUSHING_SERIALIZER = RECIPE_SERIALIZERS.register("crushing", () -> new ModSingleItemRecipe.Serializer<>(CrusherRecipe::new));
-    public static final RegistryObject<RecipeSerializer<KilnRecipe>> KILN_SERIALIZER        = RECIPE_SERIALIZERS.register("kiln", () -> new SimpleCookingSerializer<>(KilnRecipe::new, 400));
+    public static final RegistryObject<RecipeSerializer<EmptyRecipe>> EMPTY_SERIALIZER
+            = RECIPE_SERIALIZERS.register("empty", EmptyRecipe.Serializer::new);
+    public static final RegistryObject<RecipeSerializer<CrusherRecipe>> CRUSHING_SERIALIZER
+            = RECIPE_SERIALIZERS.register("crushing", () -> new ModSingleItemRecipe.Serializer<>(CrusherRecipe::new));
+    public static final RegistryObject<RecipeSerializer<KilnRecipe>> KILN_SERIALIZER
+            = RECIPE_SERIALIZERS.register("kiln", () -> new SimpleCookingSerializer<>(KilnRecipe::new, 400));
+    public static final RegistryObject<RecipeSerializer<ClayMolderRecipe>> MOLD_SERIALIZER
+            = RECIPE_SERIALIZERS.register("mold", () -> new ModSingleItemRecipe.Serializer<>(ClayMolderRecipe::new));
+    public static final RegistryObject<RecipeSerializer<ModFireworkStarRecipe>> FIREWORK_STAR_SERIALIZER
+            = RECIPE_SERIALIZERS.register("crafting_special_firework_star", () -> new SimpleCraftingRecipeSerializer<>(ModFireworkStarRecipe::new));
 
     public static final RegistryObject<RecipeType<EmptyRecipe>> EMPTY_TYPE      = registerType("empty");
     public static final RegistryObject<RecipeType<CrusherRecipe>> CRUSHING_TYPE = registerType("crushing");
     public static final RegistryObject<RecipeType<KilnRecipe>> KILN_TYPE        = registerType("kiln");
+    public static final RegistryObject<RecipeType<ClayMolderRecipe>> MOLD_TYPE  = registerType("mold");
 
     static <T extends Recipe<?>> RegistryObject<RecipeType<T>> registerType(final String pId) {
         return RECIPE_TYPES.register(pId, () -> new RecipeType<>() {

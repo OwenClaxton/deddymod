@@ -1,6 +1,7 @@
 {
   "type": "minecraft:crafting_shapeless",
   "category": "equipment",
+  "group": "flint_knife",
   "ingredients": [
     {
       "item": "techplusplus:knapped_flint"

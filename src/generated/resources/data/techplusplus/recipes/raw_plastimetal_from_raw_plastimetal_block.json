@@ -1,6 +1,7 @@
 {
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
+  "group": "raw_plastimetal",
   "ingredients": [
     {
       "item": "techplusplus:raw_plastimetal_block"

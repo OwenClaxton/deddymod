@@ -1,0 +1,47 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "copper_ingot": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:copper_ingot"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "techplusplus:raw_bronze_block"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "tin_ingot": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "techplusplus:tin_ingot"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "copper_ingot",
+      "tin_ingot"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "techplusplus:raw_bronze_block"
+    ]
+  }
+}

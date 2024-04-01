@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_copper_billet": {
+    "copper_billet": {
       "conditions": {
         "items": [
           {
@@ -19,7 +19,7 @@
       },
       "trigger": "minecraft:recipe_unlocked"
     },
-    "has_tin_billet": {
+    "tin_billet": {
       "conditions": {
         "items": [
           {
@@ -35,8 +35,8 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_copper_billet",
-      "has_tin_billet"
+      "copper_billet",
+      "tin_billet"
     ]
   ],
   "rewards": {

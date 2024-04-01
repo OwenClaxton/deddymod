@@ -19,6 +19,10 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
+import static net.deddybones.techplusplus.datagen.custom.ModHelper.getFromExt;
+import static net.deddybones.techplusplus.recipes.ModShapelessRecipeBuilder.shapeless;
+import static net.deddybones.techplusplus.util.ItemLikeNumbered.NIng;
+
 @SuppressWarnings({"SameParameterValue", "unused"})
 public class ModRecipeProvider extends RecipeProvider implements IConditionBuilder {
     public static final ImmutableList<ItemLike> SAPPHIRE_SMELTABLES = ImmutableList.of(ModBlocks.SAPPHIRE_ORE.get(), ModBlocks.DEEPSLATE_SAPPHIRE_ORE.get());
@@ -26,12 +30,19 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     public static final ImmutableList<ItemLike> PLASTIMETAL_INGOT_SMELTABLES = ImmutableList.of(ModItems.RAW_PLASTIMETAL.get());
     public static final Ingredient PLASTIMETAL_RECYCLABLES = Ingredient.of(ModItems.PLASTIMETAL_PICKAXE.get(), ModItems.PLASTIMETAL_SHOVEL.get(), ModItems.PLASTIMETAL_AXE.get(), ModItems.PLASTIMETAL_HOE.get(), ModItems.PLASTIMETAL_SWORD.get(), ModItems.PLASTIMETAL_HELMET.get(), ModItems.PLASTIMETAL_CHESTPLATE.get(), ModItems.PLASTIMETAL_LEGGINGS.get(), ModItems.PLASTIMETAL_BOOTS.get(), ModItems.PLASTIMETAL_HORSE_ARMOR.get());
     public static final Ingredient IRON_RECYCLABLES = Ingredient.of(Items.IRON_PICKAXE, Items.IRON_SHOVEL, TweakedVanillaItems.IRON_AXE.get(), Items.IRON_HOE, Items.IRON_SWORD, Items.IRON_HELMET, Items.IRON_CHESTPLATE, Items.IRON_LEGGINGS, Items.IRON_BOOTS, Items.IRON_HORSE_ARMOR, Blocks.IRON_BARS, Blocks.IRON_DOOR, Blocks.LIGHT_WEIGHTED_PRESSURE_PLATE);
+
     public ModRecipeProvider(PackOutput pOutput) {
         super(pOutput);
     }
 
     @Override
     protected void buildRecipes(@NotNull RecipeOutput pOutput) {
+        nineThingsStorageRecipes(pOutput, RecipeCategory.MISC, Items.CLAY_BALL, RecipeCategory.BUILDING_BLOCKS, Blocks.CLAY);
+        shapeless(pOutput, RecipeCategory.MISC, ModItems.CLAY_CHUNK.get(), 1, List.of(NIng(Items.CLAY_BALL, 3))).save();
+        shapeless(pOutput, RecipeCategory.MISC, ModItems.LARGE_CLAY_CHUNK.get(), 1, List.of(NIng(Items.CLAY_BALL, 6))).save();
+        shapeless(pOutput, RecipeCategory.MISC, Items.CLAY_BALL, 3, List.of(NIng(ModItems.CLAY_CHUNK.get())), getFromExt(ModItems.CLAY_CHUNK.get())).save();
+        shapeless(pOutput, RecipeCategory.MISC, Items.CLAY_BALL, 6, List.of(NIng(ModItems.LARGE_CLAY_CHUNK.get())), getFromExt(ModItems.LARGE_CLAY_CHUNK.get())).save();
+
         oreKiln(pOutput, ImmutableList.of(ModItems.COPPER_NUGGET.get()), RecipeCategory.MISC, ModItems.COPPER_BILLET.get(), 1.0F, 200, "copper");
         oreKiln(pOutput, ImmutableList.of(ModItems.TIN_NUGGET.get()), RecipeCategory.MISC, ModItems.TIN_BILLET.get(), 1.0F, 200, "tin");
         oreSmelting(pOutput, SAPPHIRE_SMELTABLES, RecipeCategory.MISC, ModItems.SAPPHIRE.get(), 1.0F, 200, "sapphire");
@@ -56,8 +67,9 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         nineThingsStorageRecipes(pOutput, RecipeCategory.MISC, ModItems.BRONZE_BILLET.get(), RecipeCategory.MISC, ModItems.BRONZE_INGOT.get());
         nineThingsStorageRecipes(pOutput, RecipeCategory.MISC, ModItems.BRONZE_INGOT.get(), RecipeCategory.BUILDING_BLOCKS, ModBlocks.BRONZE_BLOCK.get());
         nineThingsStorageRecipes(pOutput, RecipeCategory.MISC, ModItems.RAW_BRONZE.get(), RecipeCategory.BUILDING_BLOCKS, ModBlocks.RAW_BRONZE_BLOCK.get());
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.RAW_BRONZE.get(), 1).requires(ModItems.COPPER_BILLET.get(), 7).requires(ModItems.TIN_BILLET.get(), 2).unlockedBy("has_copper_billet", has(ModItems.COPPER_BILLET.get())).unlockedBy("has_tin_billet", has(ModItems.TIN_BILLET.get())).save(pOutput);
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModBlocks.RAW_BRONZE_BLOCK.get(), 1).requires(Items.COPPER_INGOT, 7).requires(ModItems.TIN_INGOT.get(), 2).unlockedBy("has_copper_ingot", has(Items.COPPER_INGOT)).unlockedBy("has_tin_ingot", has(ModItems.TIN_INGOT.get())).save(pOutput);
+
+        shapeless(pOutput, RecipeCategory.MISC, ModItems.RAW_BRONZE.get(), 1, List.of(NIng(ModItems.COPPER_BILLET.get(), 7), NIng(ModItems.TIN_BILLET.get(), 2))).save();
+        shapeless(pOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.RAW_BRONZE_BLOCK.get(), 1, List.of(NIng(Items.COPPER_INGOT, 7), NIng(ModItems.TIN_INGOT.get(), 2))).save();
 
         nineThingsStorageRecipes(pOutput, RecipeCategory.MISC, Items.STICK, RecipeCategory.MISC, ModItems.STICK_BUNDLE.get());
 
@@ -80,31 +92,60 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.PLASTIMETAL_SHOVEL.get()).define('#', Items.STICK).define('X', ModItems.PLASTIMETAL_INGOT.get()).pattern("X").pattern("#").pattern("#").unlockedBy("has_plastimetal_ingot", has(ModItems.PLASTIMETAL_INGOT.get())).save(pOutput);
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.PLASTIMETAL_SWORD.get()).define('#', Items.STICK).define('X', ModItems.PLASTIMETAL_INGOT.get()).pattern("X").pattern("X").pattern("#").unlockedBy("has_plastimetal_ingot", has(ModItems.PLASTIMETAL_INGOT.get())).save(pOutput);
 
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.KNAPPED_FLINT.get(), 2).requires(Items.FLINT).requires(ModBlocks.TINY_ROCK_BLOCK.get()).unlockedBy("has_flint", has(Items.FLINT)).unlockedBy("has_tiny_rock_block", has(ModBlocks.TINY_ROCK_BLOCK.get())).save(pOutput);
+        shapeless(pOutput, RecipeCategory.MISC, ModItems.KNAPPED_FLINT.get(), 2, List.of(NIng(Items.FLINT), NIng(ModBlocks.TINY_ROCK_BLOCK.get()))).save();
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, Items.ARROW, 3).define('#', Items.STICK).define('X', ModItems.KNAPPED_FLINT.get()).define('Y', Items.FEATHER).pattern("X").pattern("#").pattern("Y").unlockedBy("has_feather", has(Items.FEATHER)).unlockedBy("has_stick", has(Items.STICK)).unlockedBy("has_knapped_flint", has(ModItems.KNAPPED_FLINT.get())).save(pOutput, TechPlusPlus.MOD_ID + ":arrow");
 
-        List<Item> CarverList = List.of(ModItems.FLINT_KNIFE.get(), ModItems.PLASTIMETAL_AXE.get(), Items.IRON_AXE);
+        List<ItemLike> CarverList = List.of(ModItems.FLINT_KNIFE.get(), ModItems.PLASTIMETAL_AXE.get(), Items.IRON_AXE);
 
         itemListAndItemLike(pOutput, RecipeCategory.MISC, ModItems.WOODEN_HANDLE.get(), ModBlocks.TINY_LOG_BLOCK.get(), CarverList);
         itemListAndItemLike(pOutput, RecipeCategory.MISC, ModItems.WOODEN_SPEAR.get(), ModItems.WOODEN_HANDLE.get(), CarverList);
 
         fourThingsStorageRecipes(pOutput, RecipeCategory.MISC, ModBlocks.TINY_ROCK_BLOCK.get(), RecipeCategory.BUILDING_BLOCKS, Blocks.COBBLESTONE);
 
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, ModItems.FLINT_KNIFE.get(), 1)
-                .requires(ModItems.KNAPPED_FLINT.get()).requires(Items.STICK)
-                .unlockedBy("has_knapped_flint", has(ModItems.KNAPPED_FLINT.get())).unlockedBy("has_stick", has(Items.STICK))
-                .save(pOutput);
+        shapeless(pOutput, RecipeCategory.TOOLS, ModItems.FLINT_KNIFE.get(), 1, List.of(NIng(ModItems.KNAPPED_FLINT.get()), NIng(Items.STICK))).save();
+        shapeless(pOutput, RecipeCategory.TOOLS, ModItems.STONE_MATTOCK.get(), 1, List.of(NIng(ModBlocks.TINY_ROCK_BLOCK.get()), NIng(ModItems.WOODEN_HANDLE.get()), NIng(Items.STRING))).save();
 
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, ModItems.STONE_MATTOCK.get(), 1)
-                .requires(ModBlocks.TINY_ROCK_BLOCK.get()).requires(Items.STRING).requires(ModItems.WOODEN_HANDLE.get())
-                .unlockedBy("has_tiny_rock_block", has(ModBlocks.TINY_ROCK_BLOCK.get())).unlockedBy("has_string", has(Items.STRING)).unlockedBy("has_wooden_handle", has(ModItems.WOODEN_HANDLE.get()))
-                .save(pOutput);
 
 //        for (String tool : new String[]{"shovel", "sword", "pickaxe", "hoe", "axe"}) {
 //            removeRecipe(pOutput, "wooden_" + tool);
 //        }
 //        removeRecipe(pOutput, "arrow");
 
+        // gold nuggets used in firework star, glistering melon slice, and golden carrot recipes -> swap to gold billet:
+        SpecialRecipeBuilder.special(ModFireworkStarRecipe::new).save(pOutput,  TechPlusPlus.MOD_ID + ":" + getItemName(Items.FIREWORK_STAR));
+        ShapedRecipeBuilder.shaped(RecipeCategory.BREWING, Items.GOLDEN_CARROT).define('#', ModItems.GOLD_BILLET.get()).define('X', Items.CARROT).pattern("###").pattern("#X#").pattern("###").unlockedBy("has_gold_nugget", has(Items.GOLD_NUGGET)).save(pOutput, TechPlusPlus.MOD_ID + ":" + getItemName(Items.GOLDEN_CARROT));
+        ShapedRecipeBuilder.shaped(RecipeCategory.BREWING, Items.GLISTERING_MELON_SLICE).define('#', ModItems.GOLD_BILLET.get()).define('X', Items.MELON_SLICE).pattern("###").pattern("#X#").pattern("###").unlockedBy("has_melon", has(Items.MELON_SLICE)).save(pOutput, TechPlusPlus.MOD_ID + ":" + getItemName(Items.GLISTERING_MELON_SLICE));
+
+        // Clay Molder Recipes
+//        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_SWORD_BLADE.get(),        ModItems.CLAY_CHUNK.get());         // 2xI : WEAPON: swords
+//        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_AXE_BLADE.get(),          ModItems.CLAY_CHUNK.get());         // 2xI : WEAPON: axes
+//        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_CROSSBOW_PARTS.get(),     ModItems.CLAY_CHUNK.get());         // 1xI : WEAPON: crossbow
+//        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_ARROW_HEADS.get(),        ModItems.CLAY_CHUNK.get());         // 2xI : WEAPON: arrows
+//        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_PICKAXE_HEAD.get(),       ModItems.CLAY_CHUNK.get());         // 2xI : TOOL: pickaxe
+//        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_SHOVEL_HEAD.get(),        ModItems.CLAY_CHUNK.get());         // 2xI : TOOL: shovel
+//        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_HOE_BLADE.get(),          ModItems.CLAY_CHUNK.get());         // 2xI : TOOL: hoe
+//        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_SHEAR_BLADE.get(),        ModItems.CLAY_CHUNK.get());         // 2xI : TOOL: shears
+//        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_BUCKET.get(),             ModItems.CLAY_CHUNK.get());         // 2xI : TOOL: bucket
+//        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_STEEL_STRIKER.get(),      ModItems.CLAY_CHUNK.get());         // 1xB : TOOL: flint & steel
+//        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_HELMET_PARTS.get(),       ModItems.LARGE_CLAY_CHUNK.get());   // 2xI : ARMOR: helmets
+//        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_CHESTPLATE_PARTS.get(),   ModItems.LARGE_CLAY_CHUNK.get());   // 4xI : ARMOR: chestplate
+//        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_LEGGINGS_PARTS.get(),     ModItems.LARGE_CLAY_CHUNK.get());   // 4xI : ARMOR: leggings
+//        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_BOOTS_PARTS.get(),        ModItems.LARGE_CLAY_CHUNK.get());   // 2xI : ARMOR: boots
+//        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_HORSE_ARMOR_PARTS.get(),  Blocks.CLAY);                       // 9xI : ARMOR: horse armour
+//        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_TRIM_PARTS.get(),         ModItems.CLAY_CHUNK.get());         // 1xI : ARMOR: trims
+//        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_SHIELD_PARTS.get(),       ModItems.CLAY_CHUNK.get());         // 1xI : shield
+//        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_PLATE.get(),              ModItems.CLAY_CHUNK.get());         // 1xI : pressure plates, minecarts, armor, blocks, armor
+//        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_ROD.get(),                ModItems.CLAY_CHUNK.get());         // 1xI : for tools, weapons, bar blocks
+//        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_FASTENERS.get(),          ModItems.CLAY_CHUNK.get());         // 4xB : for armor, bar blocks, blocks,
+//        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_MECHANISM_PIECES.get(),   ModItems.CLAY_CHUNK.get());         // 1xI : clock, compass, tripwire hook, metal (trap)doors
+//        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_WHEELS.get(),             ModItems.CLAY_CHUNK.get());         // 2xB : minecart
+//        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_SAW_BLADE.get(),          ModItems.CLAY_CHUNK.get());         // 1xI : saw bench, stonecutter
+//        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_CHAIN_LINKS.get(),        ModItems.CLAY_CHUNK.get());         //
+//        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_PISTON_PARTS.get(),       Blocks.CLAY);                       // 1xI : pistons
+//        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_APPLE_SHELL.get(),        ModItems.CLAY_CHUNK.get());         // 1xI : golden apple (recipe uses ingots)
+//        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_RAIL.get(),               Blocks.CLAY);                       // 3xI : rail, powered/detector/activator rail
+
+        // Crusher Recipes
         crusherResult(pOutput, RecipeCategory.BUILDING_BLOCKS, Blocks.COBBLESTONE, Blocks.STONE);
         crusherResult(pOutput, RecipeCategory.BUILDING_BLOCKS, Blocks.COBBLED_DEEPSLATE, Blocks.DEEPSLATE);
         crusherResult(pOutput, RecipeCategory.BUILDING_BLOCKS, Blocks.SAND, Blocks.SANDSTONE, 4);
@@ -114,6 +155,16 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         crusherResult(pOutput, RecipeCategory.MISC, Items.GLOWSTONE_DUST, Blocks.GLOWSTONE, 4);
         crusherResult(pOutput, RecipeCategory.MISC, ModBlocks.TINY_ROCK_BLOCK.get(), Blocks.COBBLESTONE, 4);
         crusherResult(pOutput, RecipeCategory.MISC, Items.CLAY_BALL, Blocks.CLAY, 4);
+    }
+
+    protected static void moldingResult(RecipeOutput pOutput, RecipeCategory pCategory, ItemLike pResult, ItemLike pIngredient) {
+        moldingResult(pOutput, pCategory, pResult, pIngredient, 1);
+    }
+
+    protected static void moldingResult(RecipeOutput pOutput, RecipeCategory pCategory, ItemLike pResult, ItemLike pIngredient, int resultCount) {
+        ModSingleItemRecipeBuilder.molding(Ingredient.of(pIngredient), pCategory, pResult, resultCount)
+                .unlockedBy(getHasName(pIngredient), has(pIngredient))
+                .save(pOutput,   TechPlusPlus.MOD_ID + ":" + getConversionRecipeName(pResult, pIngredient) + "_molding");
     }
 
     protected static void crusherResult(RecipeOutput pOutput, RecipeCategory pCategory, ItemLike pResult, ItemLike pIngredient) {
@@ -133,27 +184,27 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
         for (ItemStack itemStackToRecycle : itemsForRecycling.getItems()) {
             Item itemToRecycle = itemStackToRecycle.getItem();
-            smeltingBuilder.unlockedBy("has_" + itemToRecycle.toString(), has(itemToRecycle));
-            blastingBuilder.unlockedBy("has_" + itemToRecycle.toString(), has(itemToRecycle));
+            smeltingBuilder.unlockedBy(getHasName(itemToRecycle), has(itemToRecycle));
+            blastingBuilder.unlockedBy(getHasName(itemToRecycle), has(itemToRecycle));
         }
 
         smeltingBuilder.save(pOutput, modid + ":" + getSmeltingRecipeName(recipeResult));
         blastingBuilder.save(pOutput, modid + ":" + getBlastingRecipeName(recipeResult));
     }
 
-    protected static void recycleIntoSomething(@NotNull RecipeOutput pOutput, @NotNull Ingredient itemsForRecycling, @NotNull RecipeCategory recipeCategory,
+    protected static void recycleIntoSomething(@NotNull RecipeOutput pOutput, @NotNull Ingredient itemsForRecycling,
+                                               @NotNull RecipeCategory recipeCategory,
                                                @NotNull ItemLike recipeResult, float experience) {
         recycleIntoSomething(pOutput, itemsForRecycling, recipeCategory, recipeResult, experience, TechPlusPlus.MOD_ID);
     }
 
-    protected static void itemListAndItemLike(@NotNull RecipeOutput pOutput, @NotNull RecipeCategory recipeCategory,
-                                         @NotNull ItemLike recipeResult, @NotNull ItemLike recipeIngredient, List<Item> itemList) {
-        for (Item singleItem : itemList) {
-            ShapelessRecipeBuilder.shapeless(recipeCategory, recipeResult, 1)
-                    .requires(recipeIngredient).requires(singleItem)
-                    .unlockedBy(getHasName(recipeIngredient), has(recipeIngredient))
-                    .unlockedBy("has_" + singleItem.toString(), has(singleItem))
-                    .save(pOutput, TechPlusPlus.MOD_ID + ":" + getItemName(recipeResult) + "_from_" + getItemName(recipeIngredient) + "_and_" + getItemName(singleItem));
+    protected static void itemListAndItemLike(  @NotNull RecipeOutput pOutput, @NotNull RecipeCategory recipeCategory,
+                                                @NotNull ItemLike recipeResult, @NotNull ItemLike recipeIngredient,
+                                                List<ItemLike> itemList) {
+        for (ItemLike ingredientItem : itemList) {
+            shapeless(pOutput, recipeCategory, recipeResult, 1, List.of(NIng(recipeIngredient), NIng(ingredientItem)))
+                    .extension("_from_" + getItemName(recipeIngredient) + "_and_" + getItemName(ingredientItem))
+                    .save();
         }
     }
 
@@ -180,7 +231,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             ModSimpleCookingRecipeBuilder.generic(Ingredient.of(itemlike), recipeCategory, cookingOutput, experienceAmount, cookingTime, recipeSerializer, cookingRecipe)
                     .group(group)
                     .unlockedBy(getHasName(itemlike), has(itemlike))
-                    .save(pOutput, TechPlusPlus.MOD_ID + ":" + (cookingOutput) + methodString + "_" + getItemName(itemlike));
+                    .save(pOutput, TechPlusPlus.MOD_ID + ":" + getItemName(cookingOutput) + methodString + "_" + getItemName(itemlike));
         }
 
     }
@@ -197,12 +248,9 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("##")
                 .pattern("##")
                 .unlockedBy(getHasName(singleItem), has(singleItem))
-                .save(pOutput, TechPlusPlus.MOD_ID + ":" + getItemName(storageItem) + "_from_" + getItemName(singleItem));
+                .save(pOutput, TechPlusPlus.MOD_ID + ":" + getItemName(storageItem) + getFromExt(singleItem));
 
-        ShapelessRecipeBuilder.shapeless(singleRecipeCategory, singleItem, 4)
-                .requires(storageItem)
-                .unlockedBy(getHasName(storageItem), has(storageItem))
-                .save(pOutput, TechPlusPlus.MOD_ID + ":" + getItemName(singleItem) + "_from_" + getItemName(storageItem));
+        shapeless(pOutput, singleRecipeCategory, singleItem, 4, List.of(NIng(storageItem)), getFromExt(storageItem)).save();
     }
 
     protected static void nineThingsStorageRecipes(@NotNull RecipeOutput pOutput,
@@ -214,11 +262,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("###")
                 .pattern("###")
                 .unlockedBy(getHasName(singleItem), has(singleItem))
-                .save(pOutput, TechPlusPlus.MOD_ID + ":" + getItemName(storageItem) + "_from_" + getItemName(singleItem));
+                .save(pOutput, TechPlusPlus.MOD_ID + ":" + getItemName(storageItem) + getFromExt(singleItem));
 
-        ShapelessRecipeBuilder.shapeless(singleRecipeCategory, singleItem, 9)
-                .requires(storageItem)
-                .unlockedBy(getHasName(storageItem), has(storageItem))
-                .save(pOutput, TechPlusPlus.MOD_ID + ":" + getItemName(singleItem) + "_from_" + getItemName(storageItem));
+        shapeless(pOutput, singleRecipeCategory, singleItem, 9, List.of(NIng(storageItem)), getFromExt(storageItem)).save();
     }
 }

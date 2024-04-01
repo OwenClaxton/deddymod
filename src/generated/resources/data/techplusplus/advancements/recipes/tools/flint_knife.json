@@ -1,7 +1,13 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_knapped_flint": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "techplusplus:flint_knife"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "knapped_flint": {
       "conditions": {
         "items": [
           {
@@ -13,7 +19,7 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
-    "has_stick": {
+    "stick": {
       "conditions": {
         "items": [
           {
@@ -24,19 +30,13 @@
         ]
       },
       "trigger": "minecraft:inventory_changed"
-    },
-    "has_the_recipe": {
-      "conditions": {
-        "recipe": "techplusplus:flint_knife"
-      },
-      "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_knapped_flint",
-      "has_stick"
+      "knapped_flint",
+      "stick"
     ]
   ],
   "rewards": {

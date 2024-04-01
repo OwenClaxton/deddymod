@@ -1,7 +1,13 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_iron_axe": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "techplusplus:wooden_spear_from_wooden_handle_and_iron_axe"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "iron_axe": {
       "conditions": {
         "items": [
           {
@@ -13,13 +19,7 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
-    "has_the_recipe": {
-      "conditions": {
-        "recipe": "techplusplus:wooden_spear_from_wooden_handle_and_iron_axe"
-      },
-      "trigger": "minecraft:recipe_unlocked"
-    },
-    "has_wooden_handle": {
+    "wooden_handle": {
       "conditions": {
         "items": [
           {
@@ -35,8 +35,8 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_wooden_handle",
-      "has_iron_axe"
+      "wooden_handle",
+      "iron_axe"
     ]
   ],
   "rewards": {

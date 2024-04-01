@@ -1,6 +1,7 @@
 {
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
+  "group": "knapped_flint",
   "ingredients": [
     {
       "item": "minecraft:flint"

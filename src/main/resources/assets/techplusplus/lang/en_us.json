@@ -34,6 +34,8 @@
   "item.techplusplus.stick_bundle": "Bundle of Sticks",
   "item.techplusplus.knapped_flint": "Knapped Flint",
   "item.techplusplus.wooden_handle": "Wooden Handle",
+  "item.techplusplus.clay_chunk": "Chunk of Clay",
+  "item.techplusplus.large_clay_chunk": "Large Chunk of Clay",
 
   "item.techplusplus.flint_knife": "Flint Knife",
   "item.techplusplus.wooden_spear": "Wooden Spear",
@@ -90,6 +92,7 @@
 
   "block.techplusplus.crusher": "Crusher",
   "block.techplusplus.kiln": "Kiln",
+  "block.techplusplus.clay_molder": "Clay Molder",
 
   "block.techplusplus.test_block": "Test Block",
 
@@ -98,5 +101,6 @@
   "tooltip.techplusplus.gps_tool.tooltip": "Displays XYZ when right-clicking",
 
   "container.techplusplus.crusher": "Crusher",
-  "container.techplusplus.kiln": "Kiln"
+  "container.techplusplus.kiln": "Kiln",
+  "container.techplusplus.clay_molder": "Clay Molder"
 }

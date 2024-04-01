@@ -1,7 +1,13 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_stick_bundle": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "techplusplus:stick_from_stick_bundle"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "stick_bundle": {
       "conditions": {
         "items": [
           {
@@ -12,18 +18,12 @@
         ]
       },
       "trigger": "minecraft:inventory_changed"
-    },
-    "has_the_recipe": {
-      "conditions": {
-        "recipe": "techplusplus:stick_from_stick_bundle"
-      },
-      "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_stick_bundle"
+      "stick_bundle"
     ]
   ],
   "rewards": {

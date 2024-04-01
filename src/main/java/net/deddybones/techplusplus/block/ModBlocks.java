@@ -53,6 +53,9 @@ public class ModBlocks {
             () -> new KilnBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE)
                     .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.5F)
                     .lightLevel(litBlockEmission(13))));
+    public static final RegistryObject<Block> CLAY_MOLDER = registerBlock("clay_molder",
+            () -> new ClayMolderBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE)
+                    .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.5F)));
 
     public static final RegistryObject<Block> TIN_BLOCK = registerBlock("tin_block",
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK)));

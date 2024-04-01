@@ -1,6 +1,7 @@
 {
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
+  "group": "stick",
   "ingredients": [
     {
       "item": "techplusplus:stick_bundle"

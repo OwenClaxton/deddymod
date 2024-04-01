@@ -11,7 +11,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
 public class CrusherScreen extends AbstractContainerScreen<CrusherMenu> {
-   private static final ResourceLocation BG_LOCATION = new ResourceLocation(TechPlusPlus.MOD_ID + ":textures/gui/crusher.png");
+   private static final ResourceLocation BG_LOCATION = new ResourceLocation(TechPlusPlus.MOD_ID + ":textures/gui/container/crusher.png");
 
    public CrusherScreen(CrusherMenu pMenu, Inventory pInventory, Component pComp) {
       super(pMenu, pInventory, pComp);

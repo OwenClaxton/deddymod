@@ -39,14 +39,14 @@ public class CrusherBlock extends Block {
         return CODEC;
     }
 
-    public CrusherBlock(BlockBehaviour.Properties p_57068_) {
-        super(p_57068_);
+    public CrusherBlock(BlockBehaviour.Properties pProperties) {
+        super(pProperties);
         this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
     }
 
     @Override
-    public BlockState getStateForPlacement(BlockPlaceContext p_57070_) {
-        return this.defaultBlockState().setValue(FACING, p_57070_.getHorizontalDirection().getOpposite());
+    public BlockState getStateForPlacement(BlockPlaceContext pContext) {
+        return this.defaultBlockState().setValue(FACING, pContext.getHorizontalDirection().getOpposite());
     }
 
     @Override
