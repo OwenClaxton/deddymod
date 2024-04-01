@@ -3,10 +3,14 @@ package net.deddybones.techplusplus.util;
 import net.deddybones.techplusplus.item.ModItems;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.ItemLike;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Map;
+import java.util.function.Function;
+
 @SuppressWarnings("unused")
-public enum EquipmentCollection implements net.minecraftforge.common.IExtensibleEnum {
+public enum EquipmentCollection {
 //    COPPER(ModItems.COPPER_SWORD.get(), ModItems.COPPER_AXE.get(), ModItems.COPPER_HOE.get(), ModItems.COPPER_PICKAXE.get(), ModItems.COPPER_SHOVEL.get(),
 //            ModItems.COPPER_HELMET.get(), ModItems.COPPER_CHESTPLATE.get(), ModItems.COPPER_LEGGINGS.get(), ModItems.COPPER_BOOTS.get(), ModItems.COPPER_HORSE_ARMOR.get()),
     COPPER(),
@@ -36,6 +40,23 @@ public enum EquipmentCollection implements net.minecraftforge.common.IExtensible
     private final @Nullable Item leggingsItem;
     private final @Nullable Item bootsItem;
     private final @Nullable Item horseArmorItem;
+
+    private static final Map<EquipmentName, Function<EquipmentCollection, ItemLike>> EQUIPMENT_GETTERS = Map.ofEntries(
+            Map.entry(EquipmentName.PICKAXE,     EquipmentCollection::getPickaxeItem),
+            Map.entry(EquipmentName.AXE,         EquipmentCollection::getAxeItem),
+            Map.entry(EquipmentName.HOE,         EquipmentCollection::getHoeItem),
+            Map.entry(EquipmentName.SWORD,       EquipmentCollection::getSwordItem),
+            Map.entry(EquipmentName.SHOVEL,      EquipmentCollection::getShovelItem),
+            Map.entry(EquipmentName.HELMET,      EquipmentCollection::getHelmetItem),
+            Map.entry(EquipmentName.CHESTPLATE,  EquipmentCollection::getChestplateItem),
+            Map.entry(EquipmentName.LEGGINGS,    EquipmentCollection::getLeggingsItem),
+            Map.entry(EquipmentName.BOOTS,       EquipmentCollection::getBootsItem),
+            Map.entry(EquipmentName.HORSE_ARMOR, EquipmentCollection::getHorseArmorItem)
+    );
+
+    public enum EquipmentName {
+        PICKAXE, AXE, HOE, SWORD, SHOVEL, HELMET, CHESTPLATE, LEGGINGS, BOOTS, HORSE_ARMOR;
+    }
 
     EquipmentCollection() {
         this.pickaxeItem = null;

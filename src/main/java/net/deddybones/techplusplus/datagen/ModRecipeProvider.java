@@ -6,6 +6,7 @@ import net.deddybones.techplusplus.block.ModBlocks;
 import net.deddybones.techplusplus.item.ModItems;
 import net.deddybones.techplusplus.item.TweakedVanillaItems;
 import net.deddybones.techplusplus.recipes.*;
+import net.deddybones.techplusplus.util.OreCollection;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.world.item.Item;
@@ -35,13 +36,39 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         super(pOutput);
     }
 
-    @Override
-    protected void buildRecipes(@NotNull RecipeOutput pOutput) {
+    protected void makeClayRecipes(@NotNull RecipeOutput pOutput) {
         nineThingsStorageRecipes(pOutput, RecipeCategory.MISC, Items.CLAY_BALL, RecipeCategory.BUILDING_BLOCKS, Blocks.CLAY);
         shapeless(pOutput, RecipeCategory.MISC, ModItems.CLAY_CHUNK.get(), 1, List.of(NIng(Items.CLAY_BALL, 3))).save();
         shapeless(pOutput, RecipeCategory.MISC, ModItems.LARGE_CLAY_CHUNK.get(), 1, List.of(NIng(Items.CLAY_BALL, 6))).save();
         shapeless(pOutput, RecipeCategory.MISC, Items.CLAY_BALL, 3, List.of(NIng(ModItems.CLAY_CHUNK.get())), getFromExt(ModItems.CLAY_CHUNK.get())).save();
         shapeless(pOutput, RecipeCategory.MISC, Items.CLAY_BALL, 6, List.of(NIng(ModItems.LARGE_CLAY_CHUNK.get())), getFromExt(ModItems.LARGE_CLAY_CHUNK.get())).save();
+    }
+
+    protected void makeMainMetalRecipes(@NotNull RecipeOutput pOutput) {
+        for (OreCollection oreCollection : OreCollection.values()) {
+            boolean nuggetNotNull       = oreCollection.getNuggetItem() != null;
+            boolean billetNotNull       = oreCollection.getBilletItem() != null;
+            boolean rawNotNull          = oreCollection.getRawItem() != null;
+            boolean ingotNotNull        = oreCollection.getIngotItem() != null;
+            boolean rawBlockNotNull     = oreCollection.getRawBlock() != null;
+            boolean cookedBlockNotNull  = oreCollection.getCookedBlock() != null;
+            if (nuggetNotNull && rawNotNull)        nineThingsStorageRecipes(pOutput, RecipeCategory.MISC, oreCollection.getNuggetItem(), RecipeCategory.MISC, oreCollection.getRawItem());
+            if (rawNotNull && rawBlockNotNull)      nineThingsStorageRecipes(pOutput, RecipeCategory.MISC, oreCollection.getRawItem(), RecipeCategory.BUILDING_BLOCKS, oreCollection.getRawBlock());
+            if (billetNotNull && ingotNotNull)      nineThingsStorageRecipes(pOutput, RecipeCategory.MISC, oreCollection.getBilletItem(), RecipeCategory.MISC, oreCollection.getIngotItem());
+            if (ingotNotNull && cookedBlockNotNull) nineThingsStorageRecipes(pOutput, RecipeCategory.MISC, oreCollection.getIngotItem(), RecipeCategory.BUILDING_BLOCKS, oreCollection.getCookedBlock());
+        }
+    }
+
+    protected void makeAlloyRecipes(@NotNull RecipeOutput pOutput) {
+        shapeless(pOutput, RecipeCategory.MISC, ModItems.RAW_BRONZE.get(), 1, List.of(NIng(ModItems.COPPER_BILLET.get(), 7), NIng(ModItems.TIN_BILLET.get(), 2))).save();
+        shapeless(pOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.RAW_BRONZE_BLOCK.get(), 1, List.of(NIng(Items.COPPER_INGOT, 7), NIng(ModItems.TIN_INGOT.get(), 2))).save();
+    }
+
+    @Override
+    protected void buildRecipes(@NotNull RecipeOutput pOutput) {
+        makeClayRecipes(pOutput);
+        makeMainMetalRecipes(pOutput);
+        makeAlloyRecipes(pOutput);
 
         oreKiln(pOutput, ImmutableList.of(ModItems.COPPER_NUGGET.get()), RecipeCategory.MISC, ModItems.COPPER_BILLET.get(), 1.0F, 200, "copper");
         oreKiln(pOutput, ImmutableList.of(ModItems.TIN_NUGGET.get()), RecipeCategory.MISC, ModItems.TIN_BILLET.get(), 1.0F, 200, "tin");
@@ -53,23 +80,6 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         oreBlasting(pOutput, PLASTIMETAL_BILLET_SMELTABLES, RecipeCategory.MISC, ModItems.PLASTIMETAL_BILLET.get(), 0.1F, 100, "plastimetal");
         oreSmelting(pOutput, PLASTIMETAL_INGOT_SMELTABLES, RecipeCategory.MISC, ModItems.PLASTIMETAL_INGOT.get(), 1.0F, 200, "plastimetal");
         oreBlasting(pOutput, PLASTIMETAL_INGOT_SMELTABLES, RecipeCategory.MISC, ModItems.PLASTIMETAL_INGOT.get(), 1.0F, 100, "plastimetal");
-        nineThingsStorageRecipes(pOutput, RecipeCategory.MISC, ModItems.PLASTIMETAL_NUGGET.get(), RecipeCategory.MISC, ModItems.RAW_PLASTIMETAL.get());
-        nineThingsStorageRecipes(pOutput, RecipeCategory.MISC, ModItems.PLASTIMETAL_BILLET.get(), RecipeCategory.MISC, ModItems.PLASTIMETAL_INGOT.get());
-        nineThingsStorageRecipes(pOutput, RecipeCategory.MISC, ModItems.RAW_PLASTIMETAL.get(), RecipeCategory.BUILDING_BLOCKS, ModBlocks.RAW_PLASTIMETAL_BLOCK.get());
-        nineThingsStorageRecipes(pOutput, RecipeCategory.MISC, ModItems.PLASTIMETAL_INGOT.get(), RecipeCategory.BUILDING_BLOCKS, ModBlocks.PLASTIMETAL_BLOCK.get());
-
-        nineThingsStorageRecipes(pOutput, RecipeCategory.MISC, ModItems.TIN_NUGGET.get(), RecipeCategory.MISC, ModItems.RAW_TIN.get());
-        nineThingsStorageRecipes(pOutput, RecipeCategory.MISC, ModItems.TIN_BILLET.get(), RecipeCategory.MISC, ModItems.TIN_INGOT.get());
-        nineThingsStorageRecipes(pOutput, RecipeCategory.MISC, ModItems.TIN_INGOT.get(), RecipeCategory.BUILDING_BLOCKS, ModBlocks.TIN_BLOCK.get());
-        nineThingsStorageRecipes(pOutput, RecipeCategory.MISC, ModItems.RAW_TIN.get(), RecipeCategory.BUILDING_BLOCKS, ModBlocks.RAW_TIN_BLOCK.get());
-
-        nineThingsStorageRecipes(pOutput, RecipeCategory.MISC, ModItems.BRONZE_NUGGET.get(), RecipeCategory.MISC, ModItems.RAW_BRONZE.get());
-        nineThingsStorageRecipes(pOutput, RecipeCategory.MISC, ModItems.BRONZE_BILLET.get(), RecipeCategory.MISC, ModItems.BRONZE_INGOT.get());
-        nineThingsStorageRecipes(pOutput, RecipeCategory.MISC, ModItems.BRONZE_INGOT.get(), RecipeCategory.BUILDING_BLOCKS, ModBlocks.BRONZE_BLOCK.get());
-        nineThingsStorageRecipes(pOutput, RecipeCategory.MISC, ModItems.RAW_BRONZE.get(), RecipeCategory.BUILDING_BLOCKS, ModBlocks.RAW_BRONZE_BLOCK.get());
-
-        shapeless(pOutput, RecipeCategory.MISC, ModItems.RAW_BRONZE.get(), 1, List.of(NIng(ModItems.COPPER_BILLET.get(), 7), NIng(ModItems.TIN_BILLET.get(), 2))).save();
-        shapeless(pOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.RAW_BRONZE_BLOCK.get(), 1, List.of(NIng(Items.COPPER_INGOT, 7), NIng(ModItems.TIN_INGOT.get(), 2))).save();
 
         nineThingsStorageRecipes(pOutput, RecipeCategory.MISC, Items.STICK, RecipeCategory.MISC, ModItems.STICK_BUNDLE.get());
 
