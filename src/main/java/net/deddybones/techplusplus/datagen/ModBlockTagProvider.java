@@ -10,8 +10,6 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.BlockTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.common.data.ForgeItemTagsProvider;
-import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -22,7 +20,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
         super(output, lookupProvider, TechPlusPlus.MOD_ID, existingFileHelper);
     }
 
-    protected void addToMinecraftBlockTags(HolderLookup.@NotNull Provider pProvider) {
+    protected void addToMinecraftBlockTags() {
         this.tag(BlockTags.FENCES)
                 .add(ModBlocks.GLASS_FENCE.get());
         this.tag(BlockTags.FENCE_GATES)
@@ -31,10 +29,18 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.GLASS_WALL.get());
         this.tag(BlockTags.DOORS)
                 .add(ModBlocks.GLASS_DOOR.get())
-                .add(ModBlocks.PLASTIMETAL_DOOR.get());
+                .add(ModBlocks.PLASTIMETAL_DOOR.get())
+                .add(ModBlocks.GOLD_DOOR.get())
+                .add(ModBlocks.NETHERITE_DOOR.get())
+                .add(ModBlocks.TIN_DOOR.get())
+                .add(ModBlocks.BRONZE_DOOR.get());
         this.tag(BlockTags.TRAPDOORS)
                 .add(ModBlocks.GLASS_TRAPDOOR.get())
-                .add(ModBlocks.PLASTIMETAL_TRAPDOOR.get());
+                .add(ModBlocks.PLASTIMETAL_TRAPDOOR.get())
+                .add(ModBlocks.GOLD_TRAPDOOR.get())
+                .add(ModBlocks.NETHERITE_TRAPDOOR.get())
+                .add(ModBlocks.TIN_TRAPDOOR.get())
+                .add(ModBlocks.BRONZE_TRAPDOOR.get());
         this.tag(BlockTags.BUTTONS)
                 .add(ModBlocks.GLASS_BUTTON.get());
         this.tag(BlockTags.PRESSURE_PLATES)
@@ -48,13 +54,13 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.FIBROSIA_CROP.get());
     }
 
-    protected void addToMinecraftMechanicTags(HolderLookup.@NotNull Provider pProvider) {
+    protected void addToMinecraftMechanicTags() {
         this.tag(BlockTags.SNOW_LAYER_CANNOT_SURVIVE_ON)
                 .add(ModBlocks.TINY_ROCK_BLOCK.get())
                 .add(ModBlocks.TINY_LOG_BLOCK.get());
     }
 
-    protected void addToAllToolControlTags(HolderLookup.@NotNull Provider pProvider) {
+    protected void addToAllToolControlTags() {
 
         this.tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(Blocks.SEA_LANTERN)
@@ -75,7 +81,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
         this.tag(Tags.Blocks.NEEDS_GOLD_TOOL).replace();
         this.tag(ModTags.Blocks.NEEDS_PRIMITIVE_TOOL);
         this.tag(BlockTags.NEEDS_STONE_TOOL).replace();
-        this.tag(ModTags.Blocks.NEEDS_COPPERTIN_TOOL);
+        this.tag(ModTags.Blocks.NEEDS_COPPER_OR_TIN_TOOL);
         this.tag(ModTags.Blocks.NEEDS_BRONZE_TOOL);
         this.tag(BlockTags.NEEDS_IRON_TOOL).replace();
         this.tag(ModTags.Blocks.NEEDS_PLASTIMETAL_TOOL);
@@ -98,7 +104,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
 
     }
 
-    protected void addToModMechanicTags(HolderLookup.@NotNull Provider pProvider) {
+    protected void addToModMechanicTags() {
         this.tag(ModTags.Blocks.TINY_LOG_PLACEABLE_ON)
                 .addTag(Tags.Blocks.GRAVEL)
                 .addTag(BlockTags.TERRACOTTA)
@@ -113,10 +119,10 @@ public class ModBlockTagProvider extends BlockTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.@NotNull Provider pProvider) {
-        addToMinecraftBlockTags(pProvider);
-        addToMinecraftMechanicTags(pProvider);
-        addToAllToolControlTags(pProvider);
-        addToModMechanicTags(pProvider);
+        addToMinecraftBlockTags();
+        addToMinecraftMechanicTags();
+        addToAllToolControlTags();
+        addToModMechanicTags();
 
         this.tag(ModTags.Blocks.PLASTIMETAL_ORES)
                 .add(ModBlocks.RUINED_PLASTIMETAL.get())
@@ -149,6 +155,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(Blocks.RAW_IRON_BLOCK)
                 .add(Blocks.RAW_COPPER_BLOCK)
                 .add(Blocks.RAW_GOLD_BLOCK)
+                .add(ModBlocks.RAW_NETHERITE_BLOCK.get())
                 .add(ModBlocks.RAW_PLASTIMETAL_BLOCK.get())
                 .add(ModBlocks.RAW_TIN_BLOCK.get())
                 .add(ModBlocks.RAW_BRONZE_BLOCK.get());
@@ -168,6 +175,15 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.BRONZE_BLOCK.get());
         this.tag(ModTags.Blocks.CRAFTED_COPPER_BUILDING_BLOCKS)
                 .add(Blocks.COPPER_BLOCK) // also in STORAGE_ORE_BLOCKS
+                .add(ModBlocks.COPPER_BARS.get())
+                .add(Blocks.COPPER_DOOR)
+                .add(Blocks.EXPOSED_COPPER_DOOR)
+                .add(Blocks.WEATHERED_COPPER_DOOR)
+                .add(Blocks.OXIDIZED_COPPER_DOOR)
+                .add(Blocks.COPPER_TRAPDOOR)
+                .add(Blocks.EXPOSED_COPPER_TRAPDOOR)
+                .add(Blocks.WEATHERED_COPPER_TRAPDOOR)
+                .add(Blocks.OXIDIZED_COPPER_TRAPDOOR)
                 .add(Blocks.CUT_COPPER)
                 .add(Blocks.CUT_COPPER_STAIRS)
                 .add(Blocks.CUT_COPPER_SLAB)
@@ -207,6 +223,19 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(Blocks.CHAIN)
                 .add(Blocks.LIGHT_WEIGHTED_PRESSURE_PLATE)
                 .add(Blocks.HEAVY_WEIGHTED_PRESSURE_PLATE)
+                .add(ModBlocks.COPPER_BARS.get())
+                .add(ModBlocks.GOLD_DOOR.get())
+                .add(ModBlocks.GOLD_TRAPDOOR.get())
+                .add(ModBlocks.GOLD_BARS.get())
+                .add(ModBlocks.NETHERITE_DOOR.get())
+                .add(ModBlocks.NETHERITE_TRAPDOOR.get())
+                .add(ModBlocks.NETHERITE_BARS.get())
+                .add(ModBlocks.TIN_DOOR.get())
+                .add(ModBlocks.TIN_TRAPDOOR.get())
+                .add(ModBlocks.TIN_BARS.get())
+                .add(ModBlocks.BRONZE_DOOR.get())
+                .add(ModBlocks.BRONZE_TRAPDOOR.get())
+                .add(ModBlocks.BRONZE_BARS.get())
                 .add(ModBlocks.PLASTIMETAL_DOOR.get())
                 .add(ModBlocks.PLASTIMETAL_TRAPDOOR.get())
                 .add(ModBlocks.PLASTIMETAL_BARS.get());

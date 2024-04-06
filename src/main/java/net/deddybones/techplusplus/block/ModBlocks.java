@@ -67,6 +67,9 @@ public class ModBlocks {
     public static final RegistryObject<Block> RAW_BRONZE_BLOCK = registerBlock("raw_bronze_block",
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.RAW_IRON_BLOCK)));
 
+    public static final RegistryObject<Block> RAW_NETHERITE_BLOCK = registerBlock("raw_netherite_block",
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.RAW_IRON_BLOCK)));
+
     public static final RegistryObject<Block> TIN_ORE = registerBlock("tin_ore",
             () -> new DropExperienceBlock(
                     ConstantInt.of(0),
@@ -134,12 +137,50 @@ public class ModBlocks {
             () -> new DoorBlock(BlockSetType.OAK, BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).noOcclusion().isViewBlocking(ModBlocks::never)));
     public static final RegistryObject<Block> GLASS_TRAPDOOR = registerBlock("glass_trapdoor",
             () -> new TrapDoorBlock(BlockSetType.OAK, BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).noOcclusion().isViewBlocking(ModBlocks::never)));
+
     public static final RegistryObject<Block> PLASTIMETAL_DOOR = registerBlock("plastimetal_door",
             () -> new DoorBlock(BlockSetType.IRON, BlockBehaviour.Properties.ofFullCopy(ModBlocks.PLASTIMETAL_BLOCK.get()).noOcclusion()));
     public static final RegistryObject<Block> PLASTIMETAL_TRAPDOOR = registerBlock("plastimetal_trapdoor",
             () -> new TrapDoorBlock(BlockSetType.IRON, BlockBehaviour.Properties.ofFullCopy(ModBlocks.PLASTIMETAL_BLOCK.get()).noOcclusion()));
     public static final RegistryObject<Block> PLASTIMETAL_BARS = registerBlock("plastimetal_bars",
-            () -> new IronBarsBlock(BlockBehaviour.Properties.of().requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.METAL).noOcclusion()));
+            () -> new IronBarsBlock(BlockBehaviour.Properties.of().requiresCorrectToolForDrops()
+                    .strength(5.0F, 6.0F).sound(SoundType.METAL).noOcclusion()));
+
+    public static final RegistryObject<Block> GOLD_DOOR = registerBlock("gold_door",
+            () -> new DoorBlock(BlockSetType.GOLD, BlockBehaviour.Properties.ofFullCopy(Blocks.GOLD_BLOCK).noOcclusion()));
+    public static final RegistryObject<Block> GOLD_TRAPDOOR = registerBlock("gold_trapdoor",
+            () -> new TrapDoorBlock(BlockSetType.GOLD, BlockBehaviour.Properties.ofFullCopy(Blocks.GOLD_BLOCK).noOcclusion()));
+    public static final RegistryObject<Block> GOLD_BARS = registerBlock("gold_bars",
+            () -> new IronBarsBlock(BlockBehaviour.Properties.of().requiresCorrectToolForDrops()
+                    .strength(5.0F, 6.0F).sound(SoundType.METAL).noOcclusion()));
+
+    public static final RegistryObject<Block> NETHERITE_DOOR = registerBlock("netherite_door",
+            () -> new DoorBlock(BlockSetType.IRON, BlockBehaviour.Properties.ofFullCopy(Blocks.NETHERITE_BLOCK).noOcclusion()));
+    public static final RegistryObject<Block> NETHERITE_TRAPDOOR = registerBlock("netherite_trapdoor",
+            () -> new TrapDoorBlock(BlockSetType.IRON, BlockBehaviour.Properties.ofFullCopy(Blocks.NETHERITE_BLOCK).noOcclusion()));
+    public static final RegistryObject<Block> NETHERITE_BARS = registerBlock("netherite_bars",
+            () -> new IronBarsBlock(BlockBehaviour.Properties.of().requiresCorrectToolForDrops()
+                    .strength(5.0F, 6.0F).sound(SoundType.METAL).noOcclusion()));
+
+    public static final RegistryObject<Block> COPPER_BARS = registerBlock("copper_bars",
+            () -> new IronBarsBlock(BlockBehaviour.Properties.of().requiresCorrectToolForDrops()
+                    .strength(5.0F, 6.0F).sound(SoundType.METAL).noOcclusion()));
+
+    public static final RegistryObject<Block> TIN_DOOR = registerBlock("tin_door",
+            () -> new DoorBlock(BlockSetType.IRON, BlockBehaviour.Properties.ofFullCopy(ModBlocks.TIN_BLOCK.get()).noOcclusion()));
+    public static final RegistryObject<Block> TIN_TRAPDOOR = registerBlock("tin_trapdoor",
+            () -> new TrapDoorBlock(BlockSetType.IRON, BlockBehaviour.Properties.ofFullCopy(ModBlocks.TIN_BLOCK.get()).noOcclusion()));
+    public static final RegistryObject<Block> TIN_BARS = registerBlock("tin_bars",
+            () -> new IronBarsBlock(BlockBehaviour.Properties.of().requiresCorrectToolForDrops()
+                    .strength(5.0F, 6.0F).sound(SoundType.METAL).noOcclusion()));
+
+    public static final RegistryObject<Block> BRONZE_DOOR = registerBlock("bronze_door",
+            () -> new DoorBlock(BlockSetType.IRON, BlockBehaviour.Properties.ofFullCopy(ModBlocks.BRONZE_BLOCK.get()).noOcclusion()));
+    public static final RegistryObject<Block> BRONZE_TRAPDOOR = registerBlock("bronze_trapdoor",
+            () -> new TrapDoorBlock(BlockSetType.IRON, BlockBehaviour.Properties.ofFullCopy(ModBlocks.BRONZE_BLOCK.get()).noOcclusion()));
+    public static final RegistryObject<Block> BRONZE_BARS = registerBlock("bronze_bars",
+            () -> new IronBarsBlock(BlockBehaviour.Properties.of().requiresCorrectToolForDrops()
+                    .strength(5.0F, 6.0F).sound(SoundType.METAL).noOcclusion()));
 
     public static final RegistryObject<Block> COFFEE_CROP = BLOCKS.register("coffee_crop",
             () -> new CoffeePlantBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SWEET_BERRY_BUSH).noCollission()));

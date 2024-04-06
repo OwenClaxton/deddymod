@@ -16,13 +16,22 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
+@SuppressWarnings("unused")
 public class ModHelper {
-    public static ResourceLocation key(Block block) {
+    public static ResourceLocation bKey(Block block) {
         return ForgeRegistries.BLOCKS.getKey(block);
     }
 
-    public static String name(Block block) {
-        return key(block).getPath();
+    public static String bName(Block block) {
+        return bKey(block).getPath();
+    }
+
+    public static ResourceLocation iKey(Item item) {
+        return ForgeRegistries.ITEMS.getKey(item);
+    }
+
+    public static String iName(Item item) {
+        return iKey(item).getPath();
     }
 
     public static String getItemName(ItemLike pItemLike) {

@@ -1,6 +1,10 @@
 {
   "values": [
     "techplusplus:glass_door",
-    "techplusplus:plastimetal_door"
+    "techplusplus:plastimetal_door",
+    "techplusplus:gold_door",
+    "techplusplus:netherite_door",
+    "techplusplus:tin_door",
+    "techplusplus:bronze_door"
   ]
 }

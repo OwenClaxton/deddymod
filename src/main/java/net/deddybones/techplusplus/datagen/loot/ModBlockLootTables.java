@@ -48,6 +48,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.RAW_PLASTIMETAL_BLOCK.get());
         this.dropSelf(ModBlocks.RAW_TIN_BLOCK.get());
         this.dropSelf(ModBlocks.RAW_BRONZE_BLOCK.get());
+        this.dropSelf(ModBlocks.RAW_NETHERITE_BLOCK.get());
 
         this.dropSelf(ModBlocks.PLASTIMETAL_BLOCK.get());
         this.dropSelf(ModBlocks.TIN_BLOCK.get());
@@ -77,8 +78,23 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.add(ModBlocks.GLASS_DOOR.get(), this::createSilkTouchDoorTable);
 
         this.add(ModBlocks.PLASTIMETAL_DOOR.get(), this::createDoorTable);
+        this.add(ModBlocks.GOLD_DOOR.get(), this::createDoorTable);
+        this.add(ModBlocks.NETHERITE_DOOR.get(), this::createDoorTable);
+        this.add(ModBlocks.BRONZE_DOOR.get(), this::createDoorTable);
+        this.add(ModBlocks.TIN_DOOR.get(), this::createDoorTable);
+
         this.dropSelf(ModBlocks.PLASTIMETAL_TRAPDOOR.get());
+        this.dropSelf(ModBlocks.GOLD_TRAPDOOR.get());
+        this.dropSelf(ModBlocks.NETHERITE_TRAPDOOR.get());
+        this.dropSelf(ModBlocks.BRONZE_TRAPDOOR.get());
+        this.dropSelf(ModBlocks.TIN_TRAPDOOR.get());
+
         this.dropSelf(ModBlocks.PLASTIMETAL_BARS.get());
+        this.dropSelf(ModBlocks.COPPER_BARS.get());
+        this.dropSelf(ModBlocks.GOLD_BARS.get());
+        this.dropSelf(ModBlocks.NETHERITE_BARS.get());
+        this.dropSelf(ModBlocks.BRONZE_BARS.get());
+        this.dropSelf(ModBlocks.TIN_BARS.get());
 
         this.dropSelf(ModBlocks.TINY_ROCK_BLOCK.get());
         this.dropSelf(ModBlocks.TINY_LOG_BLOCK.get());

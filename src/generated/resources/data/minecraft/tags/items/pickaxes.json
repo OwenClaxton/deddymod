@@ -1,5 +1,8 @@
 {
   "values": [
-    "techplusplus:plastimetal_pickaxe"
+    "techplusplus:plastimetal_pickaxe",
+    "techplusplus:tin_pickaxe",
+    "techplusplus:copper_pickaxe",
+    "techplusplus:bronze_pickaxe"
   ]
 }

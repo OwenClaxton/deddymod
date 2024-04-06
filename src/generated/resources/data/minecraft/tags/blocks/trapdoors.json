@@ -1,6 +1,10 @@
 {
   "values": [
     "techplusplus:glass_trapdoor",
-    "techplusplus:plastimetal_trapdoor"
+    "techplusplus:plastimetal_trapdoor",
+    "techplusplus:gold_trapdoor",
+    "techplusplus:netherite_trapdoor",
+    "techplusplus:tin_trapdoor",
+    "techplusplus:bronze_trapdoor"
   ]
 }

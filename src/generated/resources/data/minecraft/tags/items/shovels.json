@@ -1,5 +1,8 @@
 {
   "values": [
-    "techplusplus:plastimetal_shovel"
+    "techplusplus:plastimetal_shovel",
+    "techplusplus:tin_shovel",
+    "techplusplus:copper_shovel",
+    "techplusplus:bronze_shovel"
   ]
 }

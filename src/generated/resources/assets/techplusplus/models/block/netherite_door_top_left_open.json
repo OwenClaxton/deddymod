@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/door_top_left_open",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "bottom": "techplusplus:block/netherite_door_bottom",
+    "top": "techplusplus:block/netherite_door_top"
+  }
+}

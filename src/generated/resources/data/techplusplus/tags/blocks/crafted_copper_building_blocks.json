@@ -1,6 +1,15 @@
 {
   "values": [
     "minecraft:copper_block",
+    "techplusplus:copper_bars",
+    "minecraft:copper_door",
+    "minecraft:exposed_copper_door",
+    "minecraft:weathered_copper_door",
+    "minecraft:oxidized_copper_door",
+    "minecraft:copper_trapdoor",
+    "minecraft:exposed_copper_trapdoor",
+    "minecraft:weathered_copper_trapdoor",
+    "minecraft:oxidized_copper_trapdoor",
     "minecraft:cut_copper",
     "minecraft:cut_copper_stairs",
     "minecraft:cut_copper_slab",

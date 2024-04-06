@@ -21,12 +21,12 @@ public class ModToolTiers{
 
     public static final Tier COPPER = TierSortingRegistry.registerTier(
             new ForgeTier(1, 100, 2.0f, 1.0f, 5,
-                    ModTags.Blocks.NEEDS_COPPERTIN_TOOL, () -> Ingredient.of(Items.COPPER_INGOT)),
+                    ModTags.Blocks.NEEDS_COPPER_OR_TIN_TOOL, () -> Ingredient.of(Items.COPPER_INGOT)),
             new ResourceLocation(TechPlusPlus.MOD_ID, "copper"), List.of(ModToolTiers.PRIMITIVE), List.of());
 
     public static final Tier TIN = TierSortingRegistry.registerTier(
             new ForgeTier(1, 100, 2.0f, 1.0f, 5,
-                    ModTags.Blocks.NEEDS_COPPERTIN_TOOL, () -> Ingredient.of(ModItems.TIN_INGOT.get())),
+                    ModTags.Blocks.NEEDS_COPPER_OR_TIN_TOOL, () -> Ingredient.of(ModItems.TIN_INGOT.get())),
             new ResourceLocation(TechPlusPlus.MOD_ID, "tin"), List.of(ModToolTiers.PRIMITIVE), List.of());
 
     public static final Tier BRONZE = TierSortingRegistry.registerTier(

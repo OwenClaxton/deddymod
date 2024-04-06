@@ -1,5 +1,8 @@
 {
   "values": [
-    "techplusplus:plastimetal_hoe"
+    "techplusplus:plastimetal_hoe",
+    "techplusplus:tin_hoe",
+    "techplusplus:copper_hoe",
+    "techplusplus:bronze_hoe"
   ]
 }

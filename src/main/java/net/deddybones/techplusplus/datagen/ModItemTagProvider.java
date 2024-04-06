@@ -28,23 +28,50 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.PLASTIMETAL_HELMET.get())
                 .add(ModItems.PLASTIMETAL_CHESTPLATE.get())
                 .add(ModItems.PLASTIMETAL_LEGGINGS.get())
-                .add(ModItems.PLASTIMETAL_BOOTS.get());
+                .add(ModItems.PLASTIMETAL_BOOTS.get())
+                .add(ModItems.TIN_HELMET.get())
+                .add(ModItems.TIN_CHESTPLATE.get())
+                .add(ModItems.TIN_LEGGINGS.get())
+                .add(ModItems.TIN_BOOTS.get())
+                .add(ModItems.COPPER_HELMET.get())
+                .add(ModItems.COPPER_CHESTPLATE.get())
+                .add(ModItems.COPPER_LEGGINGS.get())
+                .add(ModItems.COPPER_BOOTS.get())
+                .add(ModItems.BRONZE_HELMET.get())
+                .add(ModItems.BRONZE_CHESTPLATE.get())
+                .add(ModItems.BRONZE_LEGGINGS.get())
+                .add(ModItems.BRONZE_BOOTS.get());
 
         this.tag(ItemTags.AXES)
                 .add(ModItems.PLASTIMETAL_AXE.get())
-                .add(TweakedVanillaItems.IRON_AXE.get());
+                .add(TweakedVanillaItems.IRON_AXE.get())
+                .add(ModItems.TIN_AXE.get())
+                .add(ModItems.COPPER_AXE.get())
+                .add(ModItems.BRONZE_AXE.get());
 
         this.tag(ItemTags.PICKAXES)
-                .add(ModItems.PLASTIMETAL_PICKAXE.get());
+                .add(ModItems.PLASTIMETAL_PICKAXE.get())
+                .add(ModItems.TIN_PICKAXE.get())
+                .add(ModItems.COPPER_PICKAXE.get())
+                .add(ModItems.BRONZE_PICKAXE.get());
 
         this.tag(ItemTags.SWORDS)
-                .add(ModItems.PLASTIMETAL_SWORD.get());
+                .add(ModItems.PLASTIMETAL_SWORD.get())
+                .add(ModItems.TIN_SWORD.get())
+                .add(ModItems.COPPER_SWORD.get())
+                .add(ModItems.BRONZE_SWORD.get());
 
         this.tag(ItemTags.SHOVELS)
-                .add(ModItems.PLASTIMETAL_SHOVEL.get());
+                .add(ModItems.PLASTIMETAL_SHOVEL.get())
+                .add(ModItems.TIN_SHOVEL.get())
+                .add(ModItems.COPPER_SHOVEL.get())
+                .add(ModItems.BRONZE_SHOVEL.get());
 
         this.tag(ItemTags.HOES)
-                .add(ModItems.PLASTIMETAL_HOE.get());
+                .add(ModItems.PLASTIMETAL_HOE.get())
+                .add(ModItems.TIN_HOE.get())
+                .add(ModItems.COPPER_HOE.get())
+                .add(ModItems.BRONZE_HOE.get());
 
         this.tag(ModTags.Items.CAN_CARVE)
                 .addTag(ItemTags.AXES)

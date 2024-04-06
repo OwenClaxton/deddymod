@@ -33,6 +33,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockWithItem(ModBlocks.RAW_PLASTIMETAL_BLOCK);
         blockWithItem(ModBlocks.RAW_TIN_BLOCK);
         blockWithItem(ModBlocks.RAW_BRONZE_BLOCK);
+        blockWithItem(ModBlocks.RAW_NETHERITE_BLOCK);
 
         blockWithItem(ModBlocks.SAPPHIRE_BLOCK);
         blockWithItem(ModBlocks.PLASTIMETAL_BLOCK);
@@ -50,19 +51,37 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         blockWithItem(ModBlocks.TEST_BLOCK);
 
-        transparentStairsBlockWithRenderType(((TransparentStairBlock) ModBlocks.GLASS_STAIRS.get()), modLoc("block/glass_grid"), modLoc("block/glass_grid"), modLoc("block/glass_grid"), "cutout");
-        transparentSlabBlockWithRenderType(((TransparentSlabBlock) ModBlocks.GLASS_SLAB.get()), blockTexture(Blocks.GLASS), modLoc("block/glass_slab"), blockTexture(Blocks.GLASS), blockTexture(Blocks.GLASS), "cutout");
-        buttonBlockWithRenderType(((ButtonBlock) ModBlocks.GLASS_BUTTON.get()), blockTexture(Blocks.GLASS), "cutout");
-        pressurePlateBlockWithRenderType(((PressurePlateBlock) ModBlocks.GLASS_PRESSURE_PLATE.get()), blockTexture(Blocks.GLASS), "cutout");
-        fenceBlockWithRenderType(((FenceBlock) ModBlocks.GLASS_FENCE.get()), blockTexture(Blocks.GLASS), "cutout");
-        fenceGateBlockWithRenderType(((FenceGateBlock) ModBlocks.GLASS_FENCE_GATE.get()), blockTexture(Blocks.GLASS), "cutout");
-        wallBlockWithRenderType(((WallBlock) ModBlocks.GLASS_WALL.get()), blockTexture(Blocks.GLASS), "cutout");
-        doorBlockWithRenderType(((DoorBlock) ModBlocks.GLASS_DOOR.get()), modLoc("block/glass_door_bottom"), modLoc("block/glass_door_top"), "cutout");
-        trapdoorBlockWithRenderType(((TrapDoorBlock) ModBlocks.GLASS_TRAPDOOR.get()), modLoc("block/glass_trapdoor"), true, "cutout");
+        transparentStairsBlockWithRenderType((TransparentStairBlock) ModBlocks.GLASS_STAIRS.get(), modLoc("block/glass_grid"), modLoc("block/glass_grid"), modLoc("block/glass_grid"), "cutout");
+        transparentSlabBlockWithRenderType((TransparentSlabBlock) ModBlocks.GLASS_SLAB.get(), blockTexture(Blocks.GLASS), modLoc("block/glass_slab"), blockTexture(Blocks.GLASS), blockTexture(Blocks.GLASS), "cutout");
+        buttonBlockWithRenderType((ButtonBlock) ModBlocks.GLASS_BUTTON.get(), blockTexture(Blocks.GLASS), "cutout");
+        pressurePlateBlockWithRenderType((PressurePlateBlock) ModBlocks.GLASS_PRESSURE_PLATE.get(), blockTexture(Blocks.GLASS), "cutout");
+        fenceBlockWithRenderType((FenceBlock) ModBlocks.GLASS_FENCE.get(), blockTexture(Blocks.GLASS), "cutout");
+        fenceGateBlockWithRenderType((FenceGateBlock) ModBlocks.GLASS_FENCE_GATE.get(), blockTexture(Blocks.GLASS), "cutout");
+        wallBlockWithRenderType((WallBlock) ModBlocks.GLASS_WALL.get(), blockTexture(Blocks.GLASS), "cutout");
+        doorBlockWithRenderType((DoorBlock) ModBlocks.GLASS_DOOR.get(), modLoc("block/glass_door_bottom"), modLoc("block/glass_door_top"), "cutout");
+        trapdoorBlockWithRenderType((TrapDoorBlock) ModBlocks.GLASS_TRAPDOOR.get(), modLoc("block/glass_trapdoor"), true, "cutout");
 
-        doorBlockWithRenderType(((DoorBlock) ModBlocks.PLASTIMETAL_DOOR.get()), modLoc("block/plastimetal_door_bottom"), modLoc("block/plastimetal_door_top"), "cutout");
-        trapdoorBlockWithRenderType(((TrapDoorBlock) ModBlocks.PLASTIMETAL_TRAPDOOR.get()), modLoc("block/plastimetal_trapdoor"), true, "cutout");
-        paneBlockWithRenderType((IronBarsBlock) ModBlocks.PLASTIMETAL_BARS.get(), modLoc("block/plastimetal_bars"), modLoc("block/plastimetal_bars"), "cutout");
+        doorBlockWithRenderType(        (DoorBlock) ModBlocks.PLASTIMETAL_DOOR.get(),     modLoc("block/plastimetal_door_bottom"), modLoc("block/plastimetal_door_top"), "cutout");
+        trapdoorBlockWithRenderType((TrapDoorBlock) ModBlocks.PLASTIMETAL_TRAPDOOR.get(), modLoc("block/plastimetal_trapdoor"), true, "cutout");
+        paneBlockWithRenderType(    (IronBarsBlock) ModBlocks.PLASTIMETAL_BARS.get(),     modLoc("block/plastimetal_bars"), modLoc("block/plastimetal_bars"), "cutout");
+
+        doorBlockWithRenderType(        (DoorBlock) ModBlocks.TIN_DOOR.get(),     modLoc("block/tin_door_bottom"), modLoc("block/tin_door_top"), "cutout");
+        trapdoorBlockWithRenderType((TrapDoorBlock) ModBlocks.TIN_TRAPDOOR.get(), modLoc("block/tin_trapdoor"), true, "cutout");
+        paneBlockWithRenderType(    (IronBarsBlock) ModBlocks.TIN_BARS.get(),     modLoc("block/tin_bars"), modLoc("block/tin_bars"), "cutout");
+
+        doorBlockWithRenderType(        (DoorBlock) ModBlocks.BRONZE_DOOR.get(),     modLoc("block/bronze_door_bottom"), modLoc("block/bronze_door_top"), "cutout");
+        trapdoorBlockWithRenderType((TrapDoorBlock) ModBlocks.BRONZE_TRAPDOOR.get(), modLoc("block/bronze_trapdoor"), true, "cutout");
+        paneBlockWithRenderType(    (IronBarsBlock) ModBlocks.BRONZE_BARS.get(),     modLoc("block/bronze_bars"), modLoc("block/bronze_bars"), "cutout");
+
+        doorBlockWithRenderType(        (DoorBlock) ModBlocks.GOLD_DOOR.get(),     modLoc("block/gold_door_bottom"), modLoc("block/gold_door_top"), "cutout");
+        trapdoorBlockWithRenderType((TrapDoorBlock) ModBlocks.GOLD_TRAPDOOR.get(), modLoc("block/gold_trapdoor"), true, "cutout");
+        paneBlockWithRenderType(    (IronBarsBlock) ModBlocks.GOLD_BARS.get(),     modLoc("block/gold_bars"), modLoc("block/gold_bars"), "cutout");
+
+        doorBlockWithRenderType(        (DoorBlock) ModBlocks.NETHERITE_DOOR.get(),     modLoc("block/netherite_door_bottom"), modLoc("block/netherite_door_top"), "cutout");
+        trapdoorBlockWithRenderType((TrapDoorBlock) ModBlocks.NETHERITE_TRAPDOOR.get(), modLoc("block/netherite_trapdoor"), true, "cutout");
+        paneBlockWithRenderType(    (IronBarsBlock) ModBlocks.NETHERITE_BARS.get(),     modLoc("block/netherite_bars"), modLoc("block/netherite_bars"), "cutout");
+
+        paneBlockWithRenderType(    (IronBarsBlock) ModBlocks.COPPER_BARS.get(),     modLoc("block/copper_bars"), modLoc("block/copper_bars"), "cutout");
 
 //        makeCrop((ModCropBlock) ModBlocks.COFFEE_CROP.get(), "coffee_stage", "coffee_stage");
         makeCrop((FibrosiaCropBlock) ModBlocks.FIBROSIA_CROP.get(), "fibrosia_stage", "fibrosia_stage");
@@ -80,14 +99,14 @@ public class ModBlockStateProvider extends BlockStateProvider {
     }
 
     public void horizontalBlockWithItem(Block pBlock, ResourceLocation side, ResourceLocation front, ResourceLocation top, ResourceLocation bottom) {
-        ModelFile model = models().orientableWithBottom(name(pBlock), side, front, bottom, top);
+        ModelFile model = models().orientableWithBottom(bName(pBlock), side, front, bottom, top);
         horizontalBlock(pBlock, model);
-        itemModels().getBuilder(key(pBlock).getPath()).parent(model);
+        itemModels().getBuilder(bKey(pBlock).getPath()).parent(model);
     }
 
     public void furnaceBlockWithItem(Block pBlock, ResourceLocation side, ResourceLocation front, ResourceLocation front_lit, ResourceLocation top) {
-        ModelFile model_unlit = models().orientable(name(pBlock), side, front, top);
-        ModelFile model_lit = models().orientable(name(pBlock) + "_on", side, front_lit, top);
+        ModelFile model_unlit = models().orientable(bName(pBlock), side, front, top);
+        ModelFile model_lit = models().orientable(bName(pBlock) + "_on", side, front_lit, top);
 
         getVariantBuilder(pBlock)
                 .forAllStates(state -> {
@@ -98,7 +117,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
                                 .build();
                 });
 
-        itemModels().getBuilder(key(pBlock).getPath()).parent(model_unlit);
+        itemModels().getBuilder(bKey(pBlock).getPath()).parent(model_unlit);
     }
 
     public void goodieBlock(GoodieBlock pBlock, ModelFile pModel) {
@@ -136,7 +155,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
     }
 
     public void transparentStairsBlock(TransparentStairBlock block, ResourceLocation side, ResourceLocation bottom, ResourceLocation top) {
-        transparentStairsBlockInternal(block, key(block).toString(), side, bottom, top);
+        transparentStairsBlockInternal(block, bKey(block).toString(), side, bottom, top);
     }
 
     public void transparentStairsBlock(TransparentStairBlock block, String name, ResourceLocation side, ResourceLocation bottom, ResourceLocation top) {
@@ -152,7 +171,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
     }
 
     public void transparentStairsBlockWithRenderType(TransparentStairBlock block, ResourceLocation side, ResourceLocation bottom, ResourceLocation top, String renderType) {
-        transparentStairsBlockInternalWithRenderType(block, key(block).toString(), side, bottom, top, ResourceLocation.tryParse(renderType));
+        transparentStairsBlockInternalWithRenderType(block, bKey(block).toString(), side, bottom, top, ResourceLocation.tryParse(renderType));
     }
 
     public void transparentStairsBlockWithRenderType(TransparentStairBlock block, String name, ResourceLocation side, ResourceLocation bottom, ResourceLocation top, String renderType) {
@@ -168,7 +187,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
     }
 
     public void transparentStairsBlockWithRenderType(TransparentStairBlock block, ResourceLocation side, ResourceLocation bottom, ResourceLocation top, ResourceLocation renderType) {
-        transparentStairsBlockInternalWithRenderType(block, key(block).toString(), side, bottom, top, renderType);
+        transparentStairsBlockInternalWithRenderType(block, bKey(block).toString(), side, bottom, top, renderType);
     }
 
     public void transparentStairsBlockWithRenderType(TransparentStairBlock block, String name, ResourceLocation side, ResourceLocation bottom, ResourceLocation top, ResourceLocation renderType) {
@@ -218,7 +237,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
     }
 
     public void transparentSlabBlock(TransparentSlabBlock block, ResourceLocation doubleslab, ResourceLocation side, ResourceLocation bottom, ResourceLocation top) {
-        transparentSlabBlock(block, models().slab(name(block), side, bottom, top), models().slabTop(name(block) + "_top", side, bottom, top), models().getExistingFile(doubleslab));
+        transparentSlabBlock(block, models().slab(bName(block), side, bottom, top), models().slabTop(bName(block) + "_top", side, bottom, top), models().getExistingFile(doubleslab));
     }
 
     public void transparentSlabBlock(TransparentSlabBlock block, ModelFile bottom, ModelFile top, ModelFile doubleslab) {
@@ -234,9 +253,9 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     public void transparentSlabBlockWithRenderType(TransparentSlabBlock block, ResourceLocation doubleslab, ResourceLocation side, ResourceLocation bottom, ResourceLocation top, String renderType) {
         transparentSlabBlock(block,
-                models().slab(name(block), side, bottom, top).renderType(renderType),
-                models().slabTop(name(block) + "_top", side, bottom, top).renderType(renderType),
-                models().cubeAll(name(block) + "_doubleslab", doubleslab).renderType(renderType));
+                models().slab(bName(block), side, bottom, top).renderType(renderType),
+                models().slabTop(bName(block) + "_top", side, bottom, top).renderType(renderType),
+                models().cubeAll(bName(block) + "_doubleslab", doubleslab).renderType(renderType));
     }
 
     public void slabBlockWithRenderType(SlabBlock block, ResourceLocation doubleslab, ResourceLocation texture, String renderType) {
@@ -245,20 +264,20 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     public void slabBlockWithRenderType(SlabBlock block, ResourceLocation doubleslab, ResourceLocation side, ResourceLocation bottom, ResourceLocation top, String renderType) {
         slabBlock(block,
-                models().slab(name(block), side, bottom, top).renderType(renderType),
-                models().slabTop(name(block) + "_top", side, bottom, top).renderType(renderType),
-                models().cubeAll(name(block) + "_doubleslab", doubleslab).renderType(renderType));
+                models().slab(bName(block), side, bottom, top).renderType(renderType),
+                models().slabTop(bName(block) + "_top", side, bottom, top).renderType(renderType),
+                models().cubeAll(bName(block) + "_doubleslab", doubleslab).renderType(renderType));
     }
 
     public void pressurePlateBlockWithRenderType(PressurePlateBlock block, ResourceLocation texture, String renderType) {
-        ModelFile pressurePlate = models().pressurePlate(name(block), texture).renderType(renderType);
-        ModelFile pressurePlateDown = models().pressurePlateDown(name(block) + "_down", texture).renderType(renderType);
+        ModelFile pressurePlate = models().pressurePlate(bName(block), texture).renderType(renderType);
+        ModelFile pressurePlateDown = models().pressurePlateDown(bName(block) + "_down", texture).renderType(renderType);
         pressurePlateBlock(block, pressurePlate, pressurePlateDown);
     }
 
     public void buttonBlockWithRenderType(ButtonBlock block, ResourceLocation texture, String renderType) {
-        ModelFile button = models().button(name(block), texture).renderType(renderType);
-        ModelFile buttonPressed = models().buttonPressed(name(block) + "_pressed", texture).renderType(renderType);
+        ModelFile button = models().button(bName(block), texture).renderType(renderType);
+        ModelFile buttonPressed = models().buttonPressed(bName(block) + "_pressed", texture).renderType(renderType);
         buttonBlock(block, button, buttonPressed);
     }
 

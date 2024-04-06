@@ -1,6 +1,9 @@
 {
   "values": [
     "techplusplus:plastimetal_axe",
-    "minecraft:iron_axe"
+    "minecraft:iron_axe",
+    "techplusplus:tin_axe",
+    "techplusplus:copper_axe",
+    "techplusplus:bronze_axe"
   ]
 }

@@ -10,10 +10,8 @@ import net.minecraft.world.level.block.Block;
 
 public class ModTags {
     public static class Blocks {
-        // public static final TagKey<Block> METAL_DETECTOR_VALUABLES = tag("metal_detector_valuables");
-        // e.g. BlockState state.is(ModTags.Blocks.METAL_DETECTOR_VALUABLES)
         public static final TagKey<Block> NEEDS_PRIMITIVE_TOOL = tag("needs_primitive_tool");
-        public static final TagKey<Block> NEEDS_COPPERTIN_TOOL = tag("needs_coppertin_tool");
+        public static final TagKey<Block> NEEDS_COPPER_OR_TIN_TOOL = tag("needs_copper_or_tin_tool");
         public static final TagKey<Block> NEEDS_BRONZE_TOOL = tag("needs_bronze_tool");
         public static final TagKey<Block> NEEDS_PLASTIMETAL_TOOL = tag("needs_plastimetal_tool");
         public static final TagKey<Block> HURTS = tag("hurts");

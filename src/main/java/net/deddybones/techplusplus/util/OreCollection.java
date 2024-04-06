@@ -17,14 +17,20 @@ import java.util.function.Function;
 
 @SuppressWarnings("unused")
 public enum OreCollection {
-    COPPER(ModItems.COPPER_NUGGET.get(), ModItems.COPPER_BILLET.get(), Items.RAW_COPPER, Items.COPPER_INGOT, Blocks.RAW_COPPER_BLOCK, Blocks.COPPER_BLOCK, true, true, true),
-    TIN(ModItems.TIN_NUGGET.get(), ModItems.TIN_BILLET.get(), ModItems.RAW_TIN.get(), ModItems.TIN_INGOT.get(), ModBlocks.RAW_TIN_BLOCK.get(), ModBlocks.TIN_BLOCK.get(), true, true, true),
-    GOLD(Items.GOLD_NUGGET, ModItems.GOLD_BILLET.get(), Items.RAW_GOLD, Items.GOLD_INGOT, Blocks.RAW_GOLD_BLOCK, Blocks.GOLD_BLOCK, false, true, true),
-    BRONZE(ModItems.BRONZE_NUGGET.get(), ModItems.BRONZE_BILLET.get(), ModItems.RAW_BRONZE.get(), ModItems.BRONZE_INGOT.get(), ModBlocks.RAW_BRONZE_BLOCK.get(), ModBlocks.BRONZE_BLOCK.get(), false, true, true),
-    IRON(Items.IRON_NUGGET, ModItems.IRON_BILLET.get(), Items.RAW_IRON, Items.IRON_INGOT, Blocks.RAW_IRON_BLOCK, Blocks.IRON_BLOCK, false, true, true),
-    PLASTIMETAL(ModItems.PLASTIMETAL_NUGGET.get(), ModItems.PLASTIMETAL_BILLET.get(), ModItems.RAW_PLASTIMETAL.get(), ModItems.PLASTIMETAL_INGOT.get(), ModBlocks.RAW_PLASTIMETAL_BLOCK.get(), ModBlocks.PLASTIMETAL_BLOCK.get(), false, false, true),
-//    NETHERITE(ModItems.NETHERITE_NUGGET.get(), ModItems.NETHERITE_BILLET.get(), ModItems.RAW_NETHERITE.get(), Items.NETHERITE_INGOT, ModBlocks.RAW_NETHERITE_BLOCK.get(), Blocks.NETHERITE_BLOCK);
-    NETHERITE(null, ModItems.NETHERITE_BILLET.get(), null, Items.NETHERITE_INGOT, null, Blocks.NETHERITE_BLOCK, false, false, true);
+//    COPPER(ModItems.COPPER_NUGGET.get(), ModItems.COPPER_BILLET.get(), Items.RAW_COPPER, Items.COPPER_INGOT, Blocks.RAW_COPPER_BLOCK, Blocks.COPPER_BLOCK, true, true, true),
+//    TIN(ModItems.TIN_NUGGET.get(), ModItems.TIN_BILLET.get(), ModItems.RAW_TIN.get(), ModItems.TIN_INGOT.get(), ModBlocks.RAW_TIN_BLOCK.get(), ModBlocks.TIN_BLOCK.get(), true, true, true),
+//    GOLD(Items.GOLD_NUGGET, ModItems.GOLD_BILLET.get(), Items.RAW_GOLD, Items.GOLD_INGOT, Blocks.RAW_GOLD_BLOCK, Blocks.GOLD_BLOCK, false, true, true),
+//    BRONZE(ModItems.BRONZE_NUGGET.get(), ModItems.BRONZE_BILLET.get(), ModItems.RAW_BRONZE.get(), ModItems.BRONZE_INGOT.get(), ModBlocks.RAW_BRONZE_BLOCK.get(), ModBlocks.BRONZE_BLOCK.get(), false, true, true),
+//    IRON(Items.IRON_NUGGET, ModItems.IRON_BILLET.get(), Items.RAW_IRON, Items.IRON_INGOT, Blocks.RAW_IRON_BLOCK, Blocks.IRON_BLOCK, false, true, true),
+//    PLASTIMETAL(ModItems.PLASTIMETAL_NUGGET.get(), ModItems.PLASTIMETAL_BILLET.get(), ModItems.RAW_PLASTIMETAL.get(), ModItems.PLASTIMETAL_INGOT.get(), ModBlocks.RAW_PLASTIMETAL_BLOCK.get(), ModBlocks.PLASTIMETAL_BLOCK.get(), false, false, true),
+//    NETHERITE(ModItems.NETHERITE_NUGGET.get(), ModItems.NETHERITE_BILLET.get(), ModItems.RAW_NETHERITE.get(), Items.NETHERITE_INGOT, ModBlocks.RAW_NETHERITE_BLOCK.get(), Blocks.NETHERITE_BLOCK, false, false, true);
+    COPPER(),
+    TIN(),
+    GOLD(),
+    BRONZE(),
+    IRON(),
+    PLASTIMETAL(),
+    NETHERITE();
 
     public static final Map<String, OreCollection> COLLECTION_MAP = Util.make(Maps.newHashMap(),
             (instance) -> {
@@ -59,6 +65,10 @@ public enum OreCollection {
     private final boolean kiln_okay;
     private final boolean furnace_okay;
     private final boolean forge_okay;
+
+    OreCollection() {
+        this(null, null, null, null, null, null, true, true, true);
+    }
 
     OreCollection(@Nullable Item nuggetItem, @Nullable Item billetItem, @Nullable Item rawItem, @Nullable Item ingotItem,
                   @Nullable Block rawBlock, @Nullable Block cookedBlock) {
