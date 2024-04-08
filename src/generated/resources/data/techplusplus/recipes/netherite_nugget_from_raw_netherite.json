@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "netherite_nugget",
+  "ingredients": [
+    {
+      "item": "techplusplus:raw_netherite"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "techplusplus:netherite_nugget"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "techplusplus:plastimetal_billet_from_plastimetal_ingot"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "plastimetal_ingot": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "techplusplus:plastimetal_ingot"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "plastimetal_ingot"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "techplusplus:plastimetal_billet_from_plastimetal_ingot"
+    ]
+  }
+}

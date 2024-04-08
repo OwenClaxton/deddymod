@@ -207,16 +207,16 @@ public class ModItems {
         return ITEMS.register(pTierColl.getGroup() + "_hoe", () -> new HoeItem(pTierColl.getTier(), pTierColl.getAttackDamageExtra(EquipmentName.HOE), pTierColl.getAttackSpeedExtra(EquipmentName.HOE), new Item.Properties()));
     }
     public static RegistryObject<Item> helmet(TierCollection pTierColl) {
-        return  ITEMS.register(pTierColl.getGroup() + "_helmet", () -> new ModArmorItem(pTierColl.getMaterial(), ArmorItem.Type.HELMET, new Item.Properties()));
+        return ITEMS.register(pTierColl.getGroup() + "_helmet", () -> new ModArmorItem(pTierColl.getMaterial(), ArmorItem.Type.HELMET, new Item.Properties()));
     }
     public static RegistryObject<Item> chestplate(TierCollection pTierColl) {
-        return  ITEMS.register(pTierColl.getGroup() + "_chestplate", () -> new ModArmorItem(pTierColl.getMaterial(), ArmorItem.Type.CHESTPLATE, new Item.Properties()));
+        return ITEMS.register(pTierColl.getGroup() + "_chestplate", () -> new ModArmorItem(pTierColl.getMaterial(), ArmorItem.Type.CHESTPLATE, new Item.Properties()));
     }
     public static RegistryObject<Item> leggings(TierCollection pTierColl) {
-        return  ITEMS.register(pTierColl.getGroup() + "_leggings", () -> new ModArmorItem(pTierColl.getMaterial(), ArmorItem.Type.LEGGINGS, new Item.Properties()));
+        return ITEMS.register(pTierColl.getGroup() + "_leggings", () -> new ModArmorItem(pTierColl.getMaterial(), ArmorItem.Type.LEGGINGS, new Item.Properties()));
     }
     public static RegistryObject<Item> boots(TierCollection pTierColl) {
-        return  ITEMS.register(pTierColl.getGroup() + "_boots", () -> new ModArmorItem(pTierColl.getMaterial(), ArmorItem.Type.BOOTS, new Item.Properties()));
+        return ITEMS.register(pTierColl.getGroup() + "_boots", () -> new ModArmorItem(pTierColl.getMaterial(), ArmorItem.Type.BOOTS, new Item.Properties()));
     }
     public static RegistryObject<Item> horseArmor(TierCollection pTierColl) {
         return ITEMS.register(pTierColl.getGroup() + "_horse_armor", () -> new ModHorseArmorItem(pTierColl.getProtectionAmount(EquipmentName.HORSE_ARMOR), pTierColl.getGroup(), (new Item.Properties()).stacksTo(1)));

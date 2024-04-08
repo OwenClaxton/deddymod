@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "netherite_billet",
+  "ingredients": [
+    {
+      "item": "minecraft:netherite_ingot"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "techplusplus:netherite_billet"
+  }
+}

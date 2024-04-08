@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "plastimetal_nugget",
+  "ingredients": [
+    {
+      "item": "techplusplus:raw_plastimetal"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "techplusplus:plastimetal_nugget"
+  }
+}

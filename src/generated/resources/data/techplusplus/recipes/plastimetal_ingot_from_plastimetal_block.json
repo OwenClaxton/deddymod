@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "plastimetal_ingot",
+  "ingredients": [
+    {
+      "item": "techplusplus:plastimetal_block"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "techplusplus:plastimetal_ingot"
+  }
+}

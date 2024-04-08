@@ -1,7 +1,8 @@
-package net.deddybones.techplusplus.item;
+package net.deddybones.techplusplus.util;
 
 import net.deddybones.techplusplus.TechPlusPlus;
 import net.deddybones.techplusplus.block.ModBlocks;
+import net.deddybones.techplusplus.item.ModItems;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -10,6 +11,7 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 
+@SuppressWarnings("unused")
 public class ModCreativeModeTabs {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS =
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, TechPlusPlus.MOD_ID);

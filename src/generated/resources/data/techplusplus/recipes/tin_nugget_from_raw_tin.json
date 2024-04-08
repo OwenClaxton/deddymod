@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "tin_nugget",
+  "ingredients": [
+    {
+      "item": "techplusplus:raw_tin"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "techplusplus:tin_nugget"
+  }
+}

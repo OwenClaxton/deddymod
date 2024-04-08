@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "techplusplus:iron_nugget_from_raw_iron"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "raw_iron": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:raw_iron"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "raw_iron"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "techplusplus:iron_nugget_from_raw_iron"
+    ]
+  }
+}

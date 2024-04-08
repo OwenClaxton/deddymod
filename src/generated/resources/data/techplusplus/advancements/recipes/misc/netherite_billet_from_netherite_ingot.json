@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "techplusplus:netherite_billet_from_netherite_ingot"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "netherite_ingot": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:netherite_ingot"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "netherite_ingot"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "techplusplus:netherite_billet_from_netherite_ingot"
+    ]
+  }
+}

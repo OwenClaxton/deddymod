@@ -6,7 +6,7 @@ import net.deddybones.techplusplus.block.ModBlocks;
 import net.deddybones.techplusplus.block.TweakedVanillaBlocks;
 import net.deddybones.techplusplus.block.entity.ModBlockEntities;
 import net.deddybones.techplusplus.entity.ModEntities;
-import net.deddybones.techplusplus.item.ModCreativeModeTabs;
+import net.deddybones.techplusplus.util.ModCreativeModeTabs;
 import net.deddybones.techplusplus.item.ModItems;
 import net.deddybones.techplusplus.item.TweakedVanillaItems;
 import net.deddybones.techplusplus.loot.ModLootModifiers;
@@ -17,11 +17,9 @@ import net.minecraft.client.RecipeBookCategories;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.*;
-import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -63,11 +61,10 @@ public class TechPlusPlus {
 
         modEventBus.addListener(this::commonSetup);
         MinecraftForge.EVENT_BUS.register(this);
-        modEventBus.addListener(this::addCreative);
+//        modEventBus.addListener(this::addCreative);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
-//        ItemBlockRenderTypes.setRenderLayer(ModBlocks.TEST_BLOCK.get(), RenderType.cutout());
         event.enqueueWork(() ->
         {
             ItemProperties.register(ModItems.WOODEN_SPEAR.get(),
@@ -77,10 +74,10 @@ public class TechPlusPlus {
         });
     }
 
-    // Add the example block item to the building blocks tab
-    private void addCreative(BuildCreativeModeTabContentsEvent event) {
-        if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
-            event.accept(ModItems.SAPPHIRE);
-        }
-    }
+//    // Add the example block item to the building blocks tab
+//    private void addCreative(BuildCreativeModeTabContentsEvent event) {
+//        if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
+//            event.accept(ModItems.SAPPHIRE);
+//        }
+//    }
 }

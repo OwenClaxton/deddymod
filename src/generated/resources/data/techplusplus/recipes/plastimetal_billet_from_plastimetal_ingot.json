@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "plastimetal_billet",
+  "ingredients": [
+    {
+      "item": "techplusplus:plastimetal_ingot"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "techplusplus:plastimetal_billet"
+  }
+}

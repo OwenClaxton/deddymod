@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "techplusplus:netherite_nugget_from_raw_netherite"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "raw_netherite": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "techplusplus:raw_netherite"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "raw_netherite"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "techplusplus:netherite_nugget_from_raw_netherite"
+    ]
+  }
+}

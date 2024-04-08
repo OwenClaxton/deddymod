@@ -1,8 +1,6 @@
 package net.deddybones.techplusplus.util;
 
-import net.deddybones.techplusplus.item.ModItems;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 import org.jetbrains.annotations.Nullable;
 
@@ -11,20 +9,6 @@ import java.util.function.Function;
 
 @SuppressWarnings("unused")
 public enum EquipmentCollection {
-//    COPPER(ModItems.COPPER_SWORD.get(), ModItems.COPPER_AXE.get(), ModItems.COPPER_HOE.get(), ModItems.COPPER_PICKAXE.get(), ModItems.COPPER_SHOVEL.get(),
-//            ModItems.COPPER_HELMET.get(), ModItems.COPPER_CHESTPLATE.get(), ModItems.COPPER_LEGGINGS.get(), ModItems.COPPER_BOOTS.get(), ModItems.COPPER_HORSE_ARMOR.get()),
-//    TIN(ModItems.TIN_SWORD.get(), ModItems.TIN_AXE.get(), ModItems.TIN_HOE.get(), ModItems.TIN_PICKAXE.get(), ModItems.TIN_SHOVEL.get(),
-//            ModItems.TIN_HELMET.get(), ModItems.TIN_CHESTPLATE.get(), ModItems.TIN_LEGGINGS.get(), ModItems.TIN_BOOTS.get(), ModItems.TIN_HORSE_ARMOR.get()),
-//    GOLD(Items.GOLDEN_SWORD, Items.GOLDEN_AXE, Items.GOLDEN_HOE, Items.GOLDEN_PICKAXE, Items.GOLDEN_SHOVEL,
-//            Items.GOLDEN_HELMET, Items.GOLDEN_CHESTPLATE, Items.GOLDEN_LEGGINGS, Items.GOLDEN_BOOTS, Items.GOLDEN_HORSE_ARMOR),
-//    BRONZE(ModItems.BRONZE_SWORD.get(), ModItems.BRONZE_AXE.get(), ModItems.BRONZE_HOE.get(), ModItems.BRONZE_PICKAXE.get(), ModItems.BRONZE_SHOVEL.get(),
-//            ModItems.BRONZE_HELMET.get(), ModItems.BRONZE_CHESTPLATE.get(), ModItems.BRONZE_LEGGINGS.get(), ModItems.BRONZE_BOOTS.get(), ModItems.BRONZE_HORSE_ARMOR.get()),
-//    IRON(Items.IRON_SWORD, Items.IRON_AXE, Items.IRON_HOE, Items.IRON_PICKAXE, Items.IRON_SHOVEL,
-//            Items.IRON_HELMET, Items.IRON_CHESTPLATE, Items.IRON_LEGGINGS, Items.IRON_BOOTS, Items.IRON_HORSE_ARMOR),
-//    PLASTIMETAL(ModItems.PLASTIMETAL_SWORD.get(), ModItems.PLASTIMETAL_AXE.get(), ModItems.PLASTIMETAL_HOE.get(), ModItems.PLASTIMETAL_PICKAXE.get(), ModItems.PLASTIMETAL_SHOVEL.get(),
-//            ModItems.PLASTIMETAL_HELMET.get(), ModItems.PLASTIMETAL_CHESTPLATE.get(), ModItems.PLASTIMETAL_LEGGINGS.get(), ModItems.PLASTIMETAL_BOOTS.get(), ModItems.PLASTIMETAL_HORSE_ARMOR.get()),
-//    NETHERITE(Items.NETHERITE_SWORD, Items.NETHERITE_AXE, Items.NETHERITE_HOE, Items.NETHERITE_PICKAXE, Items.NETHERITE_SHOVEL,
-//            Items.NETHERITE_HELMET, Items.NETHERITE_CHESTPLATE, Items.NETHERITE_LEGGINGS, Items.NETHERITE_BOOTS, ModItems.NETHERITE_HORSE_ARMOR.get());
     COPPER(),
     TIN(),
     GOLD(),
@@ -33,16 +17,16 @@ public enum EquipmentCollection {
     PLASTIMETAL(),
     NETHERITE();
 
-    private final @Nullable Item pickaxeItem;
-    private final @Nullable Item axeItem;
-    private final @Nullable Item hoeItem;
-    private final @Nullable Item swordItem;
-    private final @Nullable Item shovelItem;
-    private final @Nullable Item helmetItem;
-    private final @Nullable Item chestplateItem;
-    private final @Nullable Item leggingsItem;
-    private final @Nullable Item bootsItem;
-    private final @Nullable Item horseArmorItem;
+    private @Nullable ItemLike pickaxeItem;
+    private @Nullable ItemLike axeItem;
+    private @Nullable ItemLike hoeItem;
+    private @Nullable ItemLike swordItem;
+    private @Nullable ItemLike shovelItem;
+    private @Nullable ItemLike helmetItem;
+    private @Nullable ItemLike chestplateItem;
+    private @Nullable ItemLike leggingsItem;
+    private @Nullable ItemLike bootsItem;
+    private @Nullable ItemLike horseArmorItem;
 
     private static final Map<EquipmentName, Function<EquipmentCollection, ItemLike>> EQUIPMENT_GETTERS = Map.ofEntries(
             Map.entry(EquipmentName.PICKAXE,     EquipmentCollection::getPickaxeItem),
@@ -62,71 +46,88 @@ public enum EquipmentCollection {
     }
 
     EquipmentCollection() {
-        this.pickaxeItem = null;
-        this.axeItem = null;
-        this.hoeItem = null;
-        this.swordItem = null;
-        this.shovelItem = null;
-        this.helmetItem = null;
+        this.pickaxeItem    = null;
+        this.axeItem        = null;
+        this.hoeItem        = null;
+        this.swordItem      = null;
+        this.shovelItem     = null;
+        this.helmetItem     = null;
         this.chestplateItem = null;
-        this.leggingsItem = null;
-        this.bootsItem = null;
+        this.leggingsItem   = null;
+        this.bootsItem      = null;
         this.horseArmorItem = null;
     }
 
-    EquipmentCollection(@Nullable Item swordItem, @Nullable Item axeItem,
-                   @Nullable Item hoeItem, @Nullable Item pickaxeItem, @Nullable Item shovelItem,
-                   @Nullable Item helmetItem, @Nullable Item chestplateItem, @Nullable Item leggingsItem, @Nullable Item bootsItem,
-                   @Nullable Item horseArmorItem) {
-        this.pickaxeItem = pickaxeItem;
-        this.axeItem = axeItem;
-        this.hoeItem = hoeItem;
-        this.swordItem = swordItem;
-        this.shovelItem = shovelItem;
-        this.helmetItem = helmetItem;
+    EquipmentCollection(@Nullable Item swordItem, @Nullable Item axeItem, @Nullable Item hoeItem,
+                        @Nullable Item pickaxeItem, @Nullable Item shovelItem, @Nullable Item helmetItem,
+                        @Nullable Item chestplateItem, @Nullable Item leggingsItem, @Nullable Item bootsItem,
+                        @Nullable Item horseArmorItem) {
+        this.pickaxeItem    = pickaxeItem;
+        this.axeItem        = axeItem;
+        this.hoeItem        = hoeItem;
+        this.swordItem      = swordItem;
+        this.shovelItem     = shovelItem;
+        this.helmetItem     = helmetItem;
         this.chestplateItem = chestplateItem;
-        this.leggingsItem = leggingsItem;
-        this.bootsItem = bootsItem;
+        this.leggingsItem   = leggingsItem;
+        this.bootsItem      = bootsItem;
         this.horseArmorItem = horseArmorItem;
     }
 
-    public @Nullable Item getHelmetItem() {
+    public void setAllItemLikes(@Nullable ItemLike swordItem, @Nullable ItemLike axeItem,
+                                @Nullable ItemLike hoeItem, @Nullable ItemLike pickaxeItem,
+                                @Nullable ItemLike shovelItem, @Nullable ItemLike helmetItem,
+                                @Nullable ItemLike chestplateItem, @Nullable ItemLike leggingsItem,
+                                @Nullable ItemLike bootsItem, @Nullable ItemLike horseArmorItem) {
+        this.pickaxeItem    = pickaxeItem;
+        this.axeItem        = axeItem;
+        this.hoeItem        = hoeItem;
+        this.swordItem      = swordItem;
+        this.shovelItem     = shovelItem;
+        this.helmetItem     = helmetItem;
+        this.chestplateItem = chestplateItem;
+        this.leggingsItem   = leggingsItem;
+        this.bootsItem      = bootsItem;
+        this.horseArmorItem = horseArmorItem;
+    }
+
+    public @Nullable ItemLike getHelmetItem() {
         return this.helmetItem;
     }
 
-    public @Nullable Item getChestplateItem() {
+    public @Nullable ItemLike getChestplateItem() {
         return this.chestplateItem;
     }
 
-    public @Nullable Item getLeggingsItem() {
+    public @Nullable ItemLike getLeggingsItem() {
         return this.leggingsItem;
     }
 
-    public @Nullable Item getBootsItem() {
+    public @Nullable ItemLike getBootsItem() {
         return this.bootsItem;
     }
 
-    public @Nullable Item getSwordItem() {
+    public @Nullable ItemLike getSwordItem() {
         return this.swordItem;
     }
 
-    public @Nullable Item getAxeItem() {
+    public @Nullable ItemLike getAxeItem() {
         return this.axeItem;
     }
 
-    public @Nullable Item getHoeItem() {
+    public @Nullable ItemLike getHoeItem() {
         return this.hoeItem;
     }
 
-    public @Nullable Item getPickaxeItem() {
+    public @Nullable ItemLike getPickaxeItem() {
         return this.pickaxeItem;
     }
 
-    public @Nullable Item getShovelItem() {
+    public @Nullable ItemLike getShovelItem() {
         return this.shovelItem;
     }
 
-    public @Nullable Item getHorseArmorItem() {
+    public @Nullable ItemLike getHorseArmorItem() {
         return this.horseArmorItem;
     }
 }
