@@ -7,5 +7,7 @@
   "ingredient": {
     "item": "techplusplus:plastimetal_nugget"
   },
-  "result": "techplusplus:plastimetal_billet"
+  "result": {
+    "id": "techplusplus:plastimetal_billet"
+  }
 }

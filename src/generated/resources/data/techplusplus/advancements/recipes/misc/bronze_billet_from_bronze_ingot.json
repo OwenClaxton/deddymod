@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "techplusplus:bronze_ingot"
-            ]
+            "items": "techplusplus:bronze_ingot"
           }
         ]
       },

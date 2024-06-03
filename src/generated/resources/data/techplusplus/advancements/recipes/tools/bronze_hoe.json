@@ -1,0 +1,54 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "bronze_hoe_part": {
+      "conditions": {
+        "items": [
+          {
+            "items": "techplusplus:bronze_hoe_part"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "techplusplus:bronze_hoe"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "string": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:string"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "wooden_handle": {
+      "conditions": {
+        "items": [
+          {
+            "items": "techplusplus:wooden_handle"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "bronze_hoe_part",
+      "wooden_handle",
+      "string"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "techplusplus:bronze_hoe"
+    ]
+  }
+}

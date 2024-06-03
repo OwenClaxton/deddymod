@@ -1,8 +1,10 @@
 {
   "type": "techplusplus:crushing",
-  "count": 1,
   "ingredient": {
     "item": "minecraft:stone"
   },
-  "result": "minecraft:cobblestone"
+  "result": {
+    "count": 1,
+    "id": "minecraft:cobblestone"
+  }
 }

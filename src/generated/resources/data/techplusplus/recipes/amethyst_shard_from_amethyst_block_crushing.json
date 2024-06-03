@@ -1,8 +1,10 @@
 {
   "type": "techplusplus:crushing",
-  "count": 4,
   "ingredient": {
     "item": "minecraft:amethyst_block"
   },
-  "result": "minecraft:amethyst_shard"
+  "result": {
+    "count": 4,
+    "id": "minecraft:amethyst_shard"
+  }
 }

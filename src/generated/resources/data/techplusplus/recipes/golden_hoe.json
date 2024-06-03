@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "group": "golden_hoe",
+  "ingredients": [
+    {
+      "item": "techplusplus:golden_hoe_part"
+    },
+    {
+      "item": "techplusplus:wooden_handle"
+    },
+    {
+      "item": "minecraft:string"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:golden_hoe"
+  }
+}

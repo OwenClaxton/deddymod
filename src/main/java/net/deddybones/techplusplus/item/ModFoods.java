@@ -6,8 +6,8 @@ import net.minecraft.world.food.FoodProperties;
 
 public class ModFoods {
     public static final FoodProperties COFFEE_FOOD = new FoodProperties.Builder()
-            .alwaysEat().fast()
+            .alwaysEdible().fast()
             .nutrition(1)
-            .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 300), 1.0f)
-            .effect(() -> new MobEffectInstance(MobEffects.CONFUSION, 100), 0.1f).build();
+            .effect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 300), 1.0f)
+            .effect(new MobEffectInstance(MobEffects.CONFUSION, 100), 0.1f).build();
 }

@@ -11,9 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "techplusplus:plastimetal_axe"
-            ]
+            "items": "techplusplus:plastimetal_axe"
           }
         ]
       },
@@ -23,9 +21,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "techplusplus:tiny_log_block"
-            ]
+            "items": "techplusplus:tiny_log_block"
           }
         ]
       },

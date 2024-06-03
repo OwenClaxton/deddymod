@@ -1,0 +1,54 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "techplusplus:netherite_pickaxe"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "netherite_pickaxe_part": {
+      "conditions": {
+        "items": [
+          {
+            "items": "techplusplus:netherite_pickaxe_part"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "string": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:string"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "wooden_handle": {
+      "conditions": {
+        "items": [
+          {
+            "items": "techplusplus:wooden_handle"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "netherite_pickaxe_part",
+      "wooden_handle",
+      "string"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "techplusplus:netherite_pickaxe"
+    ]
+  }
+}

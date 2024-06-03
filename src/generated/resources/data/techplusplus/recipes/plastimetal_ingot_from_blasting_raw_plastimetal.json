@@ -7,5 +7,7 @@
   "ingredient": {
     "item": "techplusplus:raw_plastimetal"
   },
-  "result": "techplusplus:plastimetal_ingot"
+  "result": {
+    "id": "techplusplus:plastimetal_ingot"
+  }
 }

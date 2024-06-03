@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "techplusplus:clay_chunk"
-            ]
+            "items": "techplusplus:clay_chunk"
           }
         ]
       },

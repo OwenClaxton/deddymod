@@ -1,17 +1,17 @@
 package net.deddybones.techplusplus;
 
 import com.google.common.collect.ImmutableList;
-import com.mojang.logging.LogUtils;
 import net.deddybones.techplusplus.block.ModBlocks;
 import net.deddybones.techplusplus.block.TweakedVanillaBlocks;
 import net.deddybones.techplusplus.block.entity.ModBlockEntities;
 import net.deddybones.techplusplus.entity.ModEntities;
+import net.deddybones.techplusplus.item.util.ModArmorMaterials;
 import net.deddybones.techplusplus.util.ModCreativeModeTabs;
 import net.deddybones.techplusplus.item.ModItems;
 import net.deddybones.techplusplus.item.TweakedVanillaItems;
 import net.deddybones.techplusplus.loot.ModLootModifiers;
 import net.deddybones.techplusplus.recipes.ModRecipes;
-import net.deddybones.techplusplus.screen.ModMenuTypes;
+import net.deddybones.techplusplus.gui.ModMenuTypes;
 import net.deddybones.techplusplus.worldgen.ModWorldGen;
 import net.minecraft.client.RecipeBookCategories;
 import net.minecraft.client.renderer.item.ItemProperties;
@@ -24,7 +24,6 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import org.slf4j.Logger;
 
 import java.util.List;
 
@@ -32,21 +31,25 @@ import java.util.List;
 @Mod(TechPlusPlus.MOD_ID)
 public class TechPlusPlus {
     public static final String MOD_ID = "techplusplus";
-    public static final Logger LOGGER = LogUtils.getLogger();
 
     public static final RecipeBookType KILN_RECIPE_BOOK_TYPE = RecipeBookType.create("KILN");
     public static final RecipeBookCategories KILN_SEARCH = RecipeBookCategories.create("KILN_SEARCH", new ItemStack(Items.COMPASS));
     public static final RecipeBookCategories KILN_FOOD = RecipeBookCategories.create("KILN_FOOD", new ItemStack(Items.PORKCHOP));
     public static final RecipeBookCategories KILN_MISC = RecipeBookCategories.create("KILN_MISC", new ItemStack(Items.IRON_NUGGET));
     public static final List<RecipeBookCategories> KILN_CATEGORIES = ImmutableList.of(KILN_SEARCH, KILN_FOOD, KILN_MISC);
+//    public static final ResourceKey<Registry<ModArmorMaterial>> MOD_ARMOR_MATERIAL = ResourceKey.createRegistryKey(new ResourceLocation(MOD_ID, "mod_armor_material"));
 
     public TechPlusPlus() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         ModCreativeModeTabs.register(modEventBus);
 
+//        modEventBus.addListener(this::addCustomRegistries);
+        ModArmorMaterials.register(modEventBus);
+
         ModItems.register(modEventBus);
         TweakedVanillaItems.register(modEventBus);
+
         ModBlocks.register(modEventBus);
         TweakedVanillaBlocks.register(modEventBus);
 
@@ -63,6 +66,10 @@ public class TechPlusPlus {
         MinecraftForge.EVENT_BUS.register(this);
 //        modEventBus.addListener(this::addCreative);
     }
+
+//    private void addCustomRegistries(DataPackRegistryEvent.NewRegistry event) {
+//        event.dataPackRegistry(MOD_ARMOR_MATERIAL, ModArmorMaterial.CODEC);
+//    }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         event.enqueueWork(() ->

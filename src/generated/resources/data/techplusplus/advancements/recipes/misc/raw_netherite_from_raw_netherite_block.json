@@ -11,9 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "techplusplus:raw_netherite_block"
-            ]
+            "items": "techplusplus:raw_netherite_block"
           }
         ]
       },

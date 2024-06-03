@@ -7,5 +7,7 @@
   "ingredient": {
     "item": "techplusplus:tin_nugget"
   },
-  "result": "techplusplus:tin_billet"
+  "result": {
+    "id": "techplusplus:tin_billet"
+  }
 }

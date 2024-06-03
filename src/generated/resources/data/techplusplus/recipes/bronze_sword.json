@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "group": "bronze_sword",
+  "ingredients": [
+    {
+      "item": "techplusplus:bronze_sword_parts"
+    },
+    {
+      "item": "techplusplus:wooden_handle"
+    },
+    {
+      "item": "minecraft:string"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "techplusplus:bronze_sword"
+  }
+}

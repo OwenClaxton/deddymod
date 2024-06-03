@@ -1,0 +1,10 @@
+{
+  "type": "techplusplus:mold",
+  "ingredient": {
+    "item": "techplusplus:clay_chunk"
+  },
+  "result": {
+    "count": 1,
+    "id": "techplusplus:mold_mechanism_pieces"
+  }
+}

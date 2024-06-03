@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "techplusplus:plastimetal_billet"
-            ]
+            "items": "techplusplus:plastimetal_billet"
           }
         ]
       },

@@ -11,9 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "minecraft:string"
-            ]
+            "items": "minecraft:string"
           }
         ]
       },
@@ -23,9 +21,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "techplusplus:tiny_rock_block"
-            ]
+            "items": "techplusplus:tiny_rock_block"
           }
         ]
       },
@@ -35,9 +31,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "techplusplus:wooden_handle"
-            ]
+            "items": "techplusplus:wooden_handle"
           }
         ]
       },

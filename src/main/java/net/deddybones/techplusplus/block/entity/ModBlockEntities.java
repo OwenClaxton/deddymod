@@ -17,6 +17,16 @@ public class ModBlockEntities {
                     BlockEntityType.Builder.of(KilnBlockEntity::new,
                             ModBlocks.KILN.get()).build(null));
 
+    public static final RegistryObject<BlockEntityType<CrusherBlockEntity>> CRUSHER =
+            BLOCK_ENTITIES.register("crusher", () ->
+                    BlockEntityType.Builder.of(CrusherBlockEntity::new,
+                            ModBlocks.CRUSHER.get()).build(null));
+
+    public static final RegistryObject<BlockEntityType<ClayMolderBlockEntity>> CLAY_MOLDER =
+            BLOCK_ENTITIES.register("clay_molder", () ->
+                    BlockEntityType.Builder.of(ClayMolderBlockEntity::new,
+                            ModBlocks.CLAY_MOLDER.get()).build(null));
+
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);
     }

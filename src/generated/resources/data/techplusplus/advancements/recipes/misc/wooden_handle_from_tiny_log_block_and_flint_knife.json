@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "techplusplus:flint_knife"
-            ]
+            "items": "techplusplus:flint_knife"
           }
         ]
       },
@@ -23,9 +21,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "techplusplus:tiny_log_block"
-            ]
+            "items": "techplusplus:tiny_log_block"
           }
         ]
       },

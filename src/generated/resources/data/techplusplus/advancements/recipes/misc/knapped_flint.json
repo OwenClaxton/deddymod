@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "minecraft:flint"
-            ]
+            "items": "minecraft:flint"
           }
         ]
       },
@@ -23,9 +21,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "techplusplus:tiny_rock_block"
-            ]
+            "items": "techplusplus:tiny_rock_block"
           }
         ]
       },

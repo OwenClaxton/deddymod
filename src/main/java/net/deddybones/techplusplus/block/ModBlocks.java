@@ -130,7 +130,8 @@ public class ModBlocks {
     public static final RegistryObject<Block> GLASS_FENCE = registerBlock("glass_fence",
             () -> new FenceBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).noOcclusion().isViewBlocking(ModBlocks::never)));
     public static final RegistryObject<Block> GLASS_FENCE_GATE = registerBlock("glass_fence_gate",
-            () -> new FenceGateBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).noOcclusion().isViewBlocking(ModBlocks::never), SoundEvents.IRON_DOOR_OPEN, SoundEvents.IRON_DOOR_CLOSE, WoodType.OAK));
+            () -> new FenceGateBlock(WoodType.OAK, BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).noOcclusion().isViewBlocking(ModBlocks::never), SoundEvents.IRON_DOOR_OPEN, SoundEvents.IRON_DOOR_CLOSE));
+
     public static final RegistryObject<Block> GLASS_WALL = registerBlock("glass_wall",
             () -> new WallBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).noOcclusion().isViewBlocking(ModBlocks::never)));
     public static final RegistryObject<Block> GLASS_DOOR = registerBlock("glass_door",

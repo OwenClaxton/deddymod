@@ -124,7 +124,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
                                 .add(LootItem.lootTableItem(pProduce).when(pCondition).otherwise(LootItem.lootTableItem(pProduce))))
                         .withPool(LootPool.lootPool()
                                 .when(pCondition).add(LootItem.lootTableItem(pProduce)
-                                .apply(ApplyBonusCount.addBonusBinomialDistributionCount(Enchantments.BLOCK_FORTUNE, 0.5714286F, 3)))));
+                                .apply(ApplyBonusCount.addBonusBinomialDistributionCount(Enchantments.FORTUNE, 0.5714286F, 3)))));
     }
 
     protected LootTable.Builder createSilkTouchSlabItemTable(Block p_251313_) {

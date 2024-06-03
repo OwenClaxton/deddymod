@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "group": "tin_axe",
+  "ingredients": [
+    {
+      "item": "techplusplus:tin_axe_part"
+    },
+    {
+      "item": "techplusplus:wooden_handle"
+    },
+    {
+      "item": "minecraft:string"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "techplusplus:tin_axe"
+  }
+}

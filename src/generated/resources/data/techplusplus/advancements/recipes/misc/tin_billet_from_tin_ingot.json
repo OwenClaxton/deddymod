@@ -11,9 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "techplusplus:tin_ingot"
-            ]
+            "items": "techplusplus:tin_ingot"
           }
         ]
       },

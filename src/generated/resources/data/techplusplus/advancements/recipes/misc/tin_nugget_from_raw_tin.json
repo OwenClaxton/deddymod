@@ -11,9 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "techplusplus:raw_tin"
-            ]
+            "items": "techplusplus:raw_tin"
           }
         ]
       },

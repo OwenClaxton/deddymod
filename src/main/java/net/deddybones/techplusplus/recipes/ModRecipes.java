@@ -14,7 +14,7 @@ public class ModRecipes {
             DeferredRegister.create(ForgeRegistries.RECIPE_TYPES, TechPlusPlus.MOD_ID);
 
     public static final RegistryObject<RecipeSerializer<EmptyRecipe>> EMPTY_SERIALIZER
-            = RECIPE_SERIALIZERS.register("empty", EmptyRecipe.Serializer::new);
+            = RECIPE_SERIALIZERS.register("empty", () -> new EmptyRecipe.Serializer<>(EmptyRecipe::new));
     public static final RegistryObject<RecipeSerializer<CrusherRecipe>> CRUSHING_SERIALIZER
             = RECIPE_SERIALIZERS.register("crushing", () -> new ModSingleItemRecipe.Serializer<>(CrusherRecipe::new));
     public static final RegistryObject<RecipeSerializer<KilnRecipe>> KILN_SERIALIZER

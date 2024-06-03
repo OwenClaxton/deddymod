@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "techplusplus:plastimetal_axe"
-            ]
+            "items": "techplusplus:plastimetal_axe"
           }
         ]
       },
@@ -17,9 +15,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "techplusplus:plastimetal_boots"
-            ]
+            "items": "techplusplus:plastimetal_boots"
           }
         ]
       },
@@ -29,9 +25,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "techplusplus:plastimetal_chestplate"
-            ]
+            "items": "techplusplus:plastimetal_chestplate"
           }
         ]
       },
@@ -41,9 +35,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "techplusplus:plastimetal_helmet"
-            ]
+            "items": "techplusplus:plastimetal_helmet"
           }
         ]
       },
@@ -53,9 +45,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "techplusplus:plastimetal_hoe"
-            ]
+            "items": "techplusplus:plastimetal_hoe"
           }
         ]
       },
@@ -65,9 +55,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "techplusplus:plastimetal_horse_armor"
-            ]
+            "items": "techplusplus:plastimetal_horse_armor"
           }
         ]
       },
@@ -77,9 +65,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "techplusplus:plastimetal_leggings"
-            ]
+            "items": "techplusplus:plastimetal_leggings"
           }
         ]
       },
@@ -89,9 +75,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "techplusplus:plastimetal_pickaxe"
-            ]
+            "items": "techplusplus:plastimetal_pickaxe"
           }
         ]
       },
@@ -101,9 +85,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "techplusplus:plastimetal_shovel"
-            ]
+            "items": "techplusplus:plastimetal_shovel"
           }
         ]
       },
@@ -113,9 +95,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "techplusplus:plastimetal_sword"
-            ]
+            "items": "techplusplus:plastimetal_sword"
           }
         ]
       },

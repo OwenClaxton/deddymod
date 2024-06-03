@@ -1,0 +1,54 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "techplusplus:plastimetal_sword"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "plastimetal_sword_parts": {
+      "conditions": {
+        "items": [
+          {
+            "items": "techplusplus:plastimetal_sword_parts"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "string": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:string"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "wooden_handle": {
+      "conditions": {
+        "items": [
+          {
+            "items": "techplusplus:wooden_handle"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "plastimetal_sword_parts",
+      "wooden_handle",
+      "string"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "techplusplus:plastimetal_sword"
+    ]
+  }
+}

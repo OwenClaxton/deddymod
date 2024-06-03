@@ -81,7 +81,7 @@ public class ModEvents {
             craftingSlots = new TransientCraftingContainer(cMenu, 3, 3, craftingSlotContents);
         }
         List<RecipeHolder<CraftingRecipe>> recipeList = level.getRecipeManager().getRecipesFor(RecipeType.CRAFTING, craftingSlots, level);
-        return recipeList.get(0).id().toString().equals("minecraft:repair_item");
+        return recipeList.getFirst().id().toString().equals("minecraft:repair_item");
     }
 
     @SubscribeEvent
@@ -98,7 +98,9 @@ public class ModEvents {
                 for (int i = startInd; i <= endInd; i++) {
                     ItemStack thisItem = player.containerMenu.slots.get(i).getItem();
                     if (thisItem.is(ModTags.Items.CAN_CARVE)) {
-                        thisItem.hurt(1, player.getRandom(), player instanceof ServerPlayer ? (ServerPlayer) player : null);
+                        thisItem.hurtAndBreak(1, player.getRandom(),
+                                player instanceof ServerPlayer ? (ServerPlayer) player : null,
+                                () -> thisItem.setCount(0));
                         return;
                     }
                 }

@@ -1,0 +1,54 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "copper_sword_parts": {
+      "conditions": {
+        "items": [
+          {
+            "items": "techplusplus:copper_sword_parts"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "techplusplus:copper_sword"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "string": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:string"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "wooden_handle": {
+      "conditions": {
+        "items": [
+          {
+            "items": "techplusplus:wooden_handle"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "copper_sword_parts",
+      "wooden_handle",
+      "string"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "techplusplus:copper_sword"
+    ]
+  }
+}

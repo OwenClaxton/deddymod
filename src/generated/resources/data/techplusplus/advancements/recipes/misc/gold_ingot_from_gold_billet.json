@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "techplusplus:gold_billet"
-            ]
+            "items": "techplusplus:gold_billet"
           }
         ]
       },

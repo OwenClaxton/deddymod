@@ -1,20 +1,20 @@
 {
-  "type": "minecraft:crafting_shaped",
+  "type": "minecraft:crafting_shapeless",
   "category": "equipment",
-  "key": {
-    "#": {
-      "item": "minecraft:stick"
+  "group": "plastimetal_sword",
+  "ingredients": [
+    {
+      "item": "techplusplus:plastimetal_sword_parts"
     },
-    "X": {
-      "item": "techplusplus:plastimetal_ingot"
+    {
+      "item": "techplusplus:wooden_handle"
+    },
+    {
+      "item": "minecraft:string"
     }
-  },
-  "pattern": [
-    "X",
-    "X",
-    "#"
   ],
   "result": {
-    "item": "techplusplus:plastimetal_sword"
+    "count": 1,
+    "id": "techplusplus:plastimetal_sword"
   }
 }

@@ -11,9 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "techplusplus:plastimetal_block"
-            ]
+            "items": "techplusplus:plastimetal_block"
           }
         ]
       },

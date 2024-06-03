@@ -44,5 +44,7 @@
       "item": "minecraft:light_weighted_pressure_plate"
     }
   ],
-  "result": "techplusplus:iron_billet"
+  "result": {
+    "id": "techplusplus:iron_billet"
+  }
 }

@@ -2,7 +2,8 @@
   "entries": [
     "techplusplus:plastimetal_ingot_from_mineshaft_chest",
     "techplusplus:plastimetal_ingot_from_suspicious_sand",
-    "techplusplus:plastimetal_nugget_from_zombie"
+    "techplusplus:plastimetal_nugget_from_zombie",
+    "techplusplus:plastimetal_nugget_from_grass"
   ],
   "replace": false
 }

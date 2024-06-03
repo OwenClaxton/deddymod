@@ -1,14 +1,14 @@
 package net.deddybones.techplusplus.datagen;
 
 import net.deddybones.techplusplus.TechPlusPlus;
-import net.deddybones.techplusplus.util.forge.DatapackBuiltinEntriesProvider;
-import net.deddybones.techplusplus.util.forge.RegistrySetBuilder;
 import net.deddybones.techplusplus.worldgen.ModBiomeModifiers;
 import net.deddybones.techplusplus.worldgen.ModConfiguredFeatures;
 import net.deddybones.techplusplus.worldgen.ModPlacedFeatures;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
+import net.minecraftforge.common.data.DatapackBuiltinEntriesProvider;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.Set;

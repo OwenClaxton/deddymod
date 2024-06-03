@@ -2,7 +2,7 @@ package net.deddybones.techplusplus.recipes;
 
 import net.deddybones.techplusplus.block.ModBlocks;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.*;
+import net.minecraft.world.item.crafting.Ingredient;
 import org.jetbrains.annotations.NotNull;
 
 public class CrusherRecipe extends ModSingleItemRecipe {

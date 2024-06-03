@@ -20,9 +20,9 @@ public class GPSItem extends Item {
     }
 
     @Override
-    public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
+    public void appendHoverText(@NotNull ItemStack pStack, @NotNull TooltipContext pContext, List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
         pTooltipComponents.add(Component.translatable("tooltip.techplusplus.gps_tool.tooltip"));
-        super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        super.appendHoverText(pStack, pContext, pTooltipComponents, pIsAdvanced);
     }
 
     @Override

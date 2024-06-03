@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_clay_chunk": {
+      "conditions": {
+        "items": [
+          {
+            "items": "techplusplus:clay_chunk"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "techplusplus:mold_blade_from_clay_chunk_molding"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_clay_chunk"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "techplusplus:mold_blade_from_clay_chunk_molding"
+    ]
+  }
+}

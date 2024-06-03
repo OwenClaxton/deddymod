@@ -61,11 +61,11 @@ public class GoodieBlock extends Block {
         return p_51039_.getFluidState().isEmpty();
     }
 
-    @Override
-    @SuppressWarnings("deprecation")
-    public boolean isPathfindable(@NotNull BlockState p_51023_, @NotNull BlockGetter p_51024_, @NotNull BlockPos p_51025_, @NotNull PathComputationType p_51026_) {
-        return p_51026_ == PathComputationType.AIR && !this.hasCollision || super.isPathfindable(p_51023_, p_51024_, p_51025_, p_51026_);
-    }
+//    @Override
+//    @SuppressWarnings("deprecation")
+//    public boolean isPathfindable(@NotNull BlockState p_51023_, @NotNull BlockGetter p_51024_, @NotNull BlockPos p_51025_, @NotNull PathComputationType p_51026_) {
+//        return p_51026_ == PathComputationType.AIR && !this.hasCollision || super.isPathfindable(p_51023_, p_51024_, p_51025_, p_51026_);
+//    }
 
     @Override
     public boolean canDropFromExplosion(BlockState state, BlockGetter level, BlockPos pos, Explosion explosion) {

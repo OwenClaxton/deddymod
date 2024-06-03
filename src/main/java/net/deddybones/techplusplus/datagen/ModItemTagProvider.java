@@ -121,5 +121,22 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.STONE_MATTOCK.get())
                 .add(ModItems.WOODEN_SPEAR.get());
 
+        this.tag(ModTags.Items.IS_A_MOLD)
+                .add(ModItems.MOLD_SWORD_PARTS.get())
+                .add(ModItems.MOLD_PICKAXE_PART.get())
+                .add(ModItems.MOLD_AXE_PART.get())
+                .add(ModItems.MOLD_SHOVEL_PART.get())
+                .add(ModItems.MOLD_HOE_PART.get())
+                .add(ModItems.MOLD_BLADE.get())
+                .add(ModItems.MOLD_FASTENERS.get())
+                .add(ModItems.MOLD_MECHANISM_PIECES.get())
+                .add(ModItems.MOLD_ROD.get())
+                .add(ModItems.MOLD_DISK.get())
+                .add(ModItems.MOLD_FLAT_PANEL.get())
+                .add(ModItems.MOLD_ROUND_PANEL.get())
+                .add(ModItems.MOLD_ARROW_HEADS.get())
+                .add(ModItems.MOLD_BEAM.get())
+                .add(ModItems.MOLD_BODY.get());
+
     }
 }

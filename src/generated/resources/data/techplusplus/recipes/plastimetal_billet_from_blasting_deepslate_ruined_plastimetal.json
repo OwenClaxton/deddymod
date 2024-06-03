@@ -7,5 +7,7 @@
   "ingredient": {
     "item": "techplusplus:deepslate_ruined_plastimetal"
   },
-  "result": "techplusplus:plastimetal_billet"
+  "result": {
+    "id": "techplusplus:plastimetal_billet"
+  }
 }

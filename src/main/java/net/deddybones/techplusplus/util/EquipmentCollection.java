@@ -1,9 +1,12 @@
 package net.deddybones.techplusplus.util;
 
+import com.google.common.collect.Maps;
+import net.minecraft.Util;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.ItemLike;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 
@@ -28,6 +31,17 @@ public enum EquipmentCollection {
     private @Nullable ItemLike bootsItem;
     private @Nullable ItemLike horseArmorItem;
 
+    public static final Map<String, EquipmentCollection> COLLECTION_MAP = Util.make(Maps.newHashMap(),
+            (instance) -> {
+                instance.put("copper",      EquipmentCollection.COPPER);
+                instance.put("tin",         EquipmentCollection.TIN);
+                instance.put("gold",        EquipmentCollection.GOLD);
+                instance.put("bronze",      EquipmentCollection.BRONZE);
+                instance.put("iron",        EquipmentCollection.IRON);
+                instance.put("plastimetal", EquipmentCollection.PLASTIMETAL);
+                instance.put("netherite",   EquipmentCollection.NETHERITE);
+            });
+
     private static final Map<EquipmentName, Function<EquipmentCollection, ItemLike>> EQUIPMENT_GETTERS = Map.ofEntries(
             Map.entry(EquipmentName.PICKAXE,     EquipmentCollection::getPickaxeItem),
             Map.entry(EquipmentName.AXE,         EquipmentCollection::getAxeItem),
@@ -40,6 +54,9 @@ public enum EquipmentCollection {
             Map.entry(EquipmentName.BOOTS,       EquipmentCollection::getBootsItem),
             Map.entry(EquipmentName.HORSE_ARMOR, EquipmentCollection::getHorseArmorItem)
     );
+
+    public final List<EquipmentName> TOOLS = List.of(EquipmentName.PICKAXE, EquipmentName.AXE, EquipmentName.HOE,
+            EquipmentName.SWORD, EquipmentName.SHOVEL);
 
     public enum EquipmentName {
         PICKAXE, AXE, HOE, SWORD, SHOVEL, HELMET, CHESTPLATE, LEGGINGS, BOOTS, HORSE_ARMOR;
@@ -105,6 +122,17 @@ public enum EquipmentCollection {
 
     public @Nullable ItemLike getBootsItem() {
         return this.bootsItem;
+    }
+
+    public @Nullable ItemLike getToolItem(EquipmentName toolName) {
+        return switch(toolName) {
+            case SWORD -> this.getSwordItem();
+            case SHOVEL -> this.getShovelItem();
+            case PICKAXE -> this.getPickaxeItem();
+            case AXE -> this.getAxeItem();
+            case HOE -> this.getHoeItem();
+            default -> null;
+        };
     }
 
     public @Nullable ItemLike getSwordItem() {

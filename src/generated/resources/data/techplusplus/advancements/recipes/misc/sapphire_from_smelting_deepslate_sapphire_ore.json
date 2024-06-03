@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "techplusplus:deepslate_sapphire_ore"
-            ]
+            "items": "techplusplus:deepslate_sapphire_ore"
           }
         ]
       },

@@ -12,7 +12,7 @@ public class TweakedVanillaItems {
             DeferredRegister.create(ForgeRegistries.ITEMS, "minecraft");
 
     public static final RegistryObject<Item> IRON_AXE = ITEMS.register("iron_axe",
-            () -> new CarverItem(Tiers.IRON, 6.0F, -3.1F, new Item.Properties()));
+            () -> new CarverItem(Tiers.IRON, new Item.Properties()));
 
 
     public static void register(IEventBus eventBus) {

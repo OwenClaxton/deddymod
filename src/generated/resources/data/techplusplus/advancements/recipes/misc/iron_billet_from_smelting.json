@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "minecraft:iron_axe"
-            ]
+            "items": "minecraft:iron_axe"
           }
         ]
       },
@@ -17,9 +15,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "minecraft:iron_bars"
-            ]
+            "items": "minecraft:iron_bars"
           }
         ]
       },
@@ -29,9 +25,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "minecraft:iron_boots"
-            ]
+            "items": "minecraft:iron_boots"
           }
         ]
       },
@@ -41,9 +35,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "minecraft:iron_chestplate"
-            ]
+            "items": "minecraft:iron_chestplate"
           }
         ]
       },
@@ -53,9 +45,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "minecraft:iron_door"
-            ]
+            "items": "minecraft:iron_door"
           }
         ]
       },
@@ -65,9 +55,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "minecraft:iron_helmet"
-            ]
+            "items": "minecraft:iron_helmet"
           }
         ]
       },
@@ -77,9 +65,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "minecraft:iron_hoe"
-            ]
+            "items": "minecraft:iron_hoe"
           }
         ]
       },
@@ -89,9 +75,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "minecraft:iron_horse_armor"
-            ]
+            "items": "minecraft:iron_horse_armor"
           }
         ]
       },
@@ -101,9 +85,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "minecraft:iron_leggings"
-            ]
+            "items": "minecraft:iron_leggings"
           }
         ]
       },
@@ -113,9 +95,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "minecraft:iron_pickaxe"
-            ]
+            "items": "minecraft:iron_pickaxe"
           }
         ]
       },
@@ -125,9 +105,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "minecraft:iron_shovel"
-            ]
+            "items": "minecraft:iron_shovel"
           }
         ]
       },
@@ -137,9 +115,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "minecraft:iron_sword"
-            ]
+            "items": "minecraft:iron_sword"
           }
         ]
       },
@@ -149,9 +125,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "minecraft:light_weighted_pressure_plate"
-            ]
+            "items": "minecraft:light_weighted_pressure_plate"
           }
         ]
       },

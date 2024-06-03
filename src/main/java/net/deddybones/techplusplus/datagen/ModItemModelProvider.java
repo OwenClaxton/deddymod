@@ -111,6 +111,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.KNAPPED_FLINT.get());
         simpleItem(ModItems.WOODEN_HANDLE.get());
         simpleItem(ModItems.FASTENERS.get());
+        simpleItem(ModItems.MECHANISM_PIECES.get());
         simpleItem(ModItems.BLADE.get());
         simpleItem(ModItems.CLAY_CHUNK.get());
         simpleItem(ModItems.LARGE_CLAY_CHUNK.get());
@@ -235,6 +236,22 @@ public class ModItemModelProvider extends ItemModelProvider {
         handheldItem(    ModItems.BRONZE_AXE_PART.get());
         handheldItem(    ModItems.BRONZE_SHOVEL_PART.get());
         handheldItem(    ModItems.BRONZE_HOE_PART.get());
+
+        simpleItem(ModItems.MOLD_SWORD_PARTS.get());
+        simpleItem(ModItems.MOLD_PICKAXE_PART.get());
+        simpleItem(ModItems.MOLD_AXE_PART.get());
+        simpleItem(ModItems.MOLD_SHOVEL_PART.get());
+        simpleItem(ModItems.MOLD_HOE_PART.get());
+        simpleItem(ModItems.MOLD_BLADE.get());
+        simpleItem(ModItems.MOLD_FASTENERS.get());
+        simpleItem(ModItems.MOLD_MECHANISM_PIECES.get());
+        simpleItem(ModItems.MOLD_ROD.get());
+        simpleItem(ModItems.MOLD_DISK.get());
+        simpleItem(ModItems.MOLD_FLAT_PANEL.get());
+        simpleItem(ModItems.MOLD_ROUND_PANEL.get());
+        simpleItem(ModItems.MOLD_ARROW_HEADS.get());
+        simpleItem(ModItems.MOLD_BEAM.get());
+        simpleItem(ModItems.MOLD_BODY.get());
 
 //        handheldItem(ModItems.WOODEN_SPEAR.get()); // We have custom jsons for this
         handheldItem(ModItems.FLINT_KNIFE.get());

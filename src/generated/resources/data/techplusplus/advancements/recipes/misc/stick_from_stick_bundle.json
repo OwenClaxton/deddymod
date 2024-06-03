@@ -11,9 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "techplusplus:stick_bundle"
-            ]
+            "items": "techplusplus:stick_bundle"
           }
         ]
       },

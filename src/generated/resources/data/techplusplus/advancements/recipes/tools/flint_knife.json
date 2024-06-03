@@ -11,9 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "techplusplus:knapped_flint"
-            ]
+            "items": "techplusplus:knapped_flint"
           }
         ]
       },
@@ -23,9 +21,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "minecraft:stick"
-            ]
+            "items": "minecraft:stick"
           }
         ]
       },

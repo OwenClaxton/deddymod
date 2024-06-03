@@ -3,7 +3,10 @@ package net.deddybones.techplusplus.item;
 import net.deddybones.techplusplus.TechPlusPlus;
 import net.deddybones.techplusplus.block.ModBlocks;
 import net.deddybones.techplusplus.item.custom.*;
+import net.deddybones.techplusplus.item.util.ModToolTiers;
 import net.deddybones.techplusplus.util.TierCollection;
+import net.deddybones.techplusplus.util.TierNumerics;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.item.*;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -92,16 +95,17 @@ public class ModItems {
             () -> new CarvedFuelItem(new Item.Properties(), 200));
     public static final RegistryObject<Item> BLADE = simpleItem("blade");
     public static final RegistryObject<Item> FASTENERS = simpleItem("fasteners");
+    public static final RegistryObject<Item> MECHANISM_PIECES = simpleItem("mechanism_pieces");
 
     public static final RegistryObject<Item> CLAY_CHUNK = simpleItem("clay_chunk");
     public static final RegistryObject<Item> LARGE_CLAY_CHUNK = simpleItem("large_clay_chunk");
 
     public static final RegistryObject<Item> WOODEN_SPEAR = ITEMS.register("wooden_spear",
-            () -> new SpearItem(new Item.Properties().durability(50)));
+            () -> new SpearItem(new Item.Properties().durability(50).attributes(SpearItem.createAttributes()).component(DataComponents.TOOL, SpearItem.createToolProperties())));
     public static final RegistryObject<Item> FLINT_KNIFE = ITEMS.register("flint_knife",
-            () -> new CarverItem(ModToolTiers.PRIMITIVE, 4, 2, new Item.Properties().durability(20)));
+            () -> new CarverItem(ModToolTiers.PRIMITIVE, new Item.Properties().durability(20)));
     public static final RegistryObject<Item> STONE_MATTOCK = ITEMS.register("stone_mattock",
-            () -> new SwordItem(ModToolTiers.PRIMITIVE, 4, 2, new Item.Properties()));
+            () -> new SwordItem(ModToolTiers.PRIMITIVE, new Item.Properties()));
 
     public static final RegistryObject<Item> PLASTIMETAL_SWORD       = sword(TierCollection.PLA);
     public static final RegistryObject<Item> PLASTIMETAL_PICKAXE     = pickaxe(TierCollection.PLA);
@@ -191,35 +195,107 @@ public class ModItems {
     public static final RegistryObject<Item> BRONZE_SHOVEL_PART  = simpleItem("bronze_shovel_part");
     public static final RegistryObject<Item> BRONZE_HOE_PART     = simpleItem("bronze_hoe_part");
 
+    public static final RegistryObject<Item> MOLD_SWORD_PARTS       = simpleItem("mold_sword_parts");
+    public static final RegistryObject<Item> MOLD_PICKAXE_PART      = simpleItem("mold_pickaxe_part");
+    public static final RegistryObject<Item> MOLD_AXE_PART          = simpleItem("mold_axe_part");
+    public static final RegistryObject<Item> MOLD_SHOVEL_PART       = simpleItem("mold_shovel_part");
+    public static final RegistryObject<Item> MOLD_HOE_PART          = simpleItem("mold_hoe_part");
+    public static final RegistryObject<Item> MOLD_BLADE             = simpleItem("mold_blade");
+    public static final RegistryObject<Item> MOLD_FASTENERS         = simpleItem("mold_fasteners");
+    public static final RegistryObject<Item> MOLD_MECHANISM_PIECES  = simpleItem("mold_mechanism_pieces");
+    public static final RegistryObject<Item> MOLD_ROD               = simpleItem("mold_rod");
+    public static final RegistryObject<Item> MOLD_DISK              = simpleItem("mold_disk");
+    public static final RegistryObject<Item> MOLD_FLAT_PANEL        = simpleItem("mold_flat_panel");
+    public static final RegistryObject<Item> MOLD_ROUND_PANEL       = simpleItem("mold_round_panel");
+    public static final RegistryObject<Item> MOLD_ARROW_HEADS       = simpleItem("mold_arrow_heads");
+    public static final RegistryObject<Item> MOLD_BEAM              = simpleItem("mold_beam");
+    public static final RegistryObject<Item> MOLD_BODY              = simpleItem("mold_body");
+
     public static RegistryObject<Item> sword(TierCollection pTierColl) {
-        return ITEMS.register(pTierColl.getGroup() + "_sword", () -> new SwordItem(pTierColl.getTier(), pTierColl.getAttackDamageExtra(EquipmentName.SWORD), pTierColl.getAttackSpeedExtra(EquipmentName.SWORD), new Item.Properties()));
+        TierNumerics tierNumerics = TierNumerics.NUMERICS_MAP.get(pTierColl.getGroup());
+        return ITEMS.register(pTierColl.getGroup() + "_sword",
+                () -> new SwordItem(pTierColl.getTier(),
+                        new Item.Properties().attributes(SwordItem.createAttributes(
+                            pTierColl.getTier(),
+                            (int) tierNumerics.getAttackDamageBonus(EquipmentName.SWORD),
+                            tierNumerics.getAttackSpeedBonus(EquipmentName.SWORD)))
+                ));
     }
     public static RegistryObject<Item> pickaxe(TierCollection pTierColl) {
-        return ITEMS.register(pTierColl.getGroup() + "_pickaxe", () -> new PickaxeItem(pTierColl.getTier(), pTierColl.getAttackDamageExtra(EquipmentName.PICKAXE), pTierColl.getAttackSpeedExtra(EquipmentName.PICKAXE), new Item.Properties()));
+        TierNumerics tierNumerics = TierNumerics.NUMERICS_MAP.get(pTierColl.getGroup());
+        return ITEMS.register(pTierColl.getGroup() + "_pickaxe",
+                () -> new PickaxeItem(pTierColl.getTier(),
+                        new Item.Properties().attributes(PickaxeItem.createAttributes(
+                                pTierColl.getTier(),
+                                (int) tierNumerics.getAttackDamageBonus(EquipmentName.PICKAXE),
+                                tierNumerics.getAttackSpeedBonus(EquipmentName.PICKAXE)))
+                ));
     }
     public static RegistryObject<Item> axe(TierCollection pTierColl) {
-        return ITEMS.register(pTierColl.getGroup() + "_axe", () -> new AxeItem(pTierColl.getTier(), pTierColl.getAttackDamageExtra(EquipmentName.AXE), pTierColl.getAttackSpeedExtra(EquipmentName.AXE), new Item.Properties()));
+        TierNumerics tierNumerics = TierNumerics.NUMERICS_MAP.get(pTierColl.getGroup());
+        return ITEMS.register(pTierColl.getGroup() + "_axe",
+                () -> new AxeItem(pTierColl.getTier(),
+                        new Item.Properties().attributes(AxeItem.createAttributes(
+                                pTierColl.getTier(),
+                                (int) tierNumerics.getAttackDamageBonus(EquipmentName.AXE),
+                                tierNumerics.getAttackSpeedBonus(EquipmentName.AXE)))
+                ));
     }
     public static RegistryObject<Item> shovel(TierCollection pTierColl) {
-        return ITEMS.register(pTierColl.getGroup() + "_shovel", () -> new ShovelItem(pTierColl.getTier(), pTierColl.getAttackDamageExtra(EquipmentName.SHOVEL), pTierColl.getAttackSpeedExtra(EquipmentName.SHOVEL), new Item.Properties()));
+        TierNumerics tierNumerics = TierNumerics.NUMERICS_MAP.get(pTierColl.getGroup());
+        return ITEMS.register(pTierColl.getGroup() + "_shovel",
+                () -> new ShovelItem(pTierColl.getTier(),
+                        new Item.Properties().attributes(ShovelItem.createAttributes(
+                                pTierColl.getTier(),
+                                (int) tierNumerics.getAttackDamageBonus(EquipmentName.SHOVEL),
+                                tierNumerics.getAttackSpeedBonus(EquipmentName.SHOVEL)))
+                ));
     }
     public static RegistryObject<Item> hoe(TierCollection pTierColl) {
-        return ITEMS.register(pTierColl.getGroup() + "_hoe", () -> new HoeItem(pTierColl.getTier(), pTierColl.getAttackDamageExtra(EquipmentName.HOE), pTierColl.getAttackSpeedExtra(EquipmentName.HOE), new Item.Properties()));
+        TierNumerics tierNumerics = TierNumerics.NUMERICS_MAP.get(pTierColl.getGroup());
+        return ITEMS.register(pTierColl.getGroup() + "_hoe",
+                () -> new HoeItem(pTierColl.getTier(),
+                        new Item.Properties().attributes(HoeItem.createAttributes(
+                                pTierColl.getTier(),
+                                (int) tierNumerics.getAttackDamageBonus(EquipmentName.HOE),
+                                tierNumerics.getAttackSpeedBonus(EquipmentName.HOE)))
+                ));
     }
     public static RegistryObject<Item> helmet(TierCollection pTierColl) {
-        return ITEMS.register(pTierColl.getGroup() + "_helmet", () -> new ModArmorItem(pTierColl.getMaterial(), ArmorItem.Type.HELMET, new Item.Properties()));
+        TierNumerics tierNumerics = TierNumerics.NUMERICS_MAP.get(pTierColl.getGroup());
+        return ITEMS.register(pTierColl.getGroup() + "_helmet",
+                () -> new ModArmorItem(pTierColl.getMaterial(), ArmorItem.Type.HELMET,
+                        new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(tierNumerics.getDurabilityMultiplier()))
+                ));
     }
     public static RegistryObject<Item> chestplate(TierCollection pTierColl) {
-        return ITEMS.register(pTierColl.getGroup() + "_chestplate", () -> new ModArmorItem(pTierColl.getMaterial(), ArmorItem.Type.CHESTPLATE, new Item.Properties()));
+        TierNumerics tierNumerics = TierNumerics.NUMERICS_MAP.get(pTierColl.getGroup());
+        return ITEMS.register(pTierColl.getGroup() + "_chestplate",
+                () -> new ModArmorItem(pTierColl.getMaterial(), ArmorItem.Type.CHESTPLATE,
+                        new Item.Properties().durability(ArmorItem.Type.CHESTPLATE.getDurability(tierNumerics.getDurabilityMultiplier()))
+                ));
     }
     public static RegistryObject<Item> leggings(TierCollection pTierColl) {
-        return ITEMS.register(pTierColl.getGroup() + "_leggings", () -> new ModArmorItem(pTierColl.getMaterial(), ArmorItem.Type.LEGGINGS, new Item.Properties()));
+        TierNumerics tierNumerics = TierNumerics.NUMERICS_MAP.get(pTierColl.getGroup());
+        return ITEMS.register(pTierColl.getGroup() + "_leggings",
+                () -> new ModArmorItem(pTierColl.getMaterial(), ArmorItem.Type.LEGGINGS,
+                        new Item.Properties().durability(ArmorItem.Type.LEGGINGS.getDurability(tierNumerics.getDurabilityMultiplier()))
+                ));
     }
     public static RegistryObject<Item> boots(TierCollection pTierColl) {
-        return ITEMS.register(pTierColl.getGroup() + "_boots", () -> new ModArmorItem(pTierColl.getMaterial(), ArmorItem.Type.BOOTS, new Item.Properties()));
+        TierNumerics tierNumerics = TierNumerics.NUMERICS_MAP.get(pTierColl.getGroup());
+        return ITEMS.register(pTierColl.getGroup() + "_boots",
+                () -> new ModArmorItem(pTierColl.getMaterial(), ArmorItem.Type.BOOTS,
+                        new Item.Properties().durability(ArmorItem.Type.BOOTS.getDurability(tierNumerics.getDurabilityMultiplier()))
+                ));
     }
     public static RegistryObject<Item> horseArmor(TierCollection pTierColl) {
-        return ITEMS.register(pTierColl.getGroup() + "_horse_armor", () -> new ModHorseArmorItem(pTierColl.getProtectionAmount(EquipmentName.HORSE_ARMOR), pTierColl.getGroup(), (new Item.Properties()).stacksTo(1)));
+        TierNumerics tierNumerics = TierNumerics.NUMERICS_MAP.get(pTierColl.getGroup());
+        return ITEMS.register(pTierColl.getGroup() + "_horse_armor",
+                () -> new ModAnimalArmorItem(
+                    pTierColl.getMaterial(), ModAnimalArmorItem.BodyType.EQUESTRIAN, false,
+                    new Item.Properties().stacksTo(1)
+                ));
     }
     public static RegistryObject<Item> simpleItem(String name) {
         return ITEMS.register(name, () -> new Item(new Item.Properties()));

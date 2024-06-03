@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "group": "iron_shovel",
+  "ingredients": [
+    {
+      "item": "techplusplus:iron_shovel_part"
+    },
+    {
+      "item": "techplusplus:wooden_handle"
+    },
+    {
+      "item": "minecraft:string"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:iron_shovel"
+  }
+}

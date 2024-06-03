@@ -1,0 +1,10 @@
+{
+  "type": "techplusplus:mold",
+  "ingredient": {
+    "item": "techplusplus:large_clay_chunk"
+  },
+  "result": {
+    "count": 1,
+    "id": "techplusplus:mold_disk"
+  }
+}

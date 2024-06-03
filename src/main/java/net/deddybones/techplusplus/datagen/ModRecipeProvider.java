@@ -6,7 +6,13 @@ import net.deddybones.techplusplus.block.ModBlocks;
 import net.deddybones.techplusplus.item.ModItems;
 import net.deddybones.techplusplus.item.TweakedVanillaItems;
 import net.deddybones.techplusplus.recipes.*;
+import net.deddybones.techplusplus.recipes.builders.EmptyRecipeBuilder;
+import net.deddybones.techplusplus.recipes.builders.ModSimpleCookingRecipeBuilder;
+import net.deddybones.techplusplus.recipes.builders.ModSingleItemRecipeBuilder;
+import net.deddybones.techplusplus.util.EquipmentCollection.EquipmentName;
 import net.deddybones.techplusplus.util.OreCollection;
+import net.deddybones.techplusplus.util.TierCollection;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.world.item.Item;
@@ -19,9 +25,10 @@ import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 import static net.deddybones.techplusplus.datagen.custom.ModHelper.getFromExt;
-import static net.deddybones.techplusplus.recipes.ModShapelessRecipeBuilder.shapeless;
+import static net.deddybones.techplusplus.recipes.builders.ModShapelessRecipeBuilder.shapeless;
 import static net.deddybones.techplusplus.util.ItemLikeNumbered.NIng;
 
 @SuppressWarnings({"SameParameterValue", "unused"})
@@ -32,8 +39,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     public static final Ingredient PLASTIMETAL_RECYCLABLES = Ingredient.of(ModItems.PLASTIMETAL_PICKAXE.get(), ModItems.PLASTIMETAL_SHOVEL.get(), ModItems.PLASTIMETAL_AXE.get(), ModItems.PLASTIMETAL_HOE.get(), ModItems.PLASTIMETAL_SWORD.get(), ModItems.PLASTIMETAL_HELMET.get(), ModItems.PLASTIMETAL_CHESTPLATE.get(), ModItems.PLASTIMETAL_LEGGINGS.get(), ModItems.PLASTIMETAL_BOOTS.get(), ModItems.PLASTIMETAL_HORSE_ARMOR.get());
     public static final Ingredient IRON_RECYCLABLES = Ingredient.of(Items.IRON_PICKAXE, Items.IRON_SHOVEL, TweakedVanillaItems.IRON_AXE.get(), Items.IRON_HOE, Items.IRON_SWORD, Items.IRON_HELMET, Items.IRON_CHESTPLATE, Items.IRON_LEGGINGS, Items.IRON_BOOTS, Items.IRON_HORSE_ARMOR, Blocks.IRON_BARS, Blocks.IRON_DOOR, Blocks.LIGHT_WEIGHTED_PRESSURE_PLATE);
 
-    public ModRecipeProvider(PackOutput pOutput) {
-        super(pOutput);
+    public ModRecipeProvider(PackOutput pOutput, CompletableFuture<HolderLookup.Provider> registries) {
+        super(pOutput, registries);
     }
 
     protected void makeClayRecipes(@NotNull RecipeOutput pOutput) {
@@ -64,10 +71,25 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         shapeless(pOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.RAW_BRONZE_BLOCK.get(), 1, List.of(NIng(Items.COPPER_INGOT, 7), NIng(ModItems.TIN_INGOT.get(), 2))).save();
     }
 
+    protected void makeToolRecipes(@NotNull RecipeOutput pOutput) {
+        for (TierCollection tierCollection : TierCollection.values()) {
+            for (EquipmentName tool : EquipmentName.values()) {
+                ItemLike toolItemLike = tierCollection.getEquip().getToolItem(tool);
+                ItemLike toolPartItemLike = tierCollection.getComp().getToolPartItem(tool);
+                if ((toolItemLike != null) && (toolPartItemLike != null)) {
+                    shapeless(pOutput, RecipeCategory.TOOLS, toolItemLike, 1,
+                            List.of(NIng(toolPartItemLike), NIng(ModItems.WOODEN_HANDLE.get()), NIng(Items.STRING))
+                    ).save();
+                }
+            }
+        }
+    }
+
     @Override
     protected void buildRecipes(@NotNull RecipeOutput pOutput) {
         makeClayRecipes(pOutput);
         makeMainMetalRecipes(pOutput);
+        makeToolRecipes(pOutput);
         makeAlloyRecipes(pOutput);
 
         oreKiln(pOutput, ImmutableList.of(ModItems.COPPER_NUGGET.get()), RecipeCategory.MISC, ModItems.COPPER_BILLET.get(), 1.0F, 200, "copper");
@@ -96,12 +118,6 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.PLASTIMETAL_HELMET.get()).define('X', ModItems.PLASTIMETAL_INGOT.get()).pattern("XXX").pattern("X X").unlockedBy("has_plastimetal_ingot", has(ModItems.PLASTIMETAL_INGOT.get())).save(pOutput);
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.PLASTIMETAL_HORSE_ARMOR.get()).define('X', ModItems.PLASTIMETAL_INGOT.get()).pattern("X X").pattern("XXX").pattern("X X").unlockedBy("has_plastimetal_ingot", has(ModItems.PLASTIMETAL_INGOT.get())).save(pOutput);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.PLASTIMETAL_AXE.get()).define('#', Items.STICK).define('X', ModItems.PLASTIMETAL_INGOT.get()).pattern("XX").pattern("X#").pattern(" #").unlockedBy("has_plastimetal_ingot", has(ModItems.PLASTIMETAL_INGOT.get())).save(pOutput);
-        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.PLASTIMETAL_HOE.get()).define('#', Items.STICK).define('X', ModItems.PLASTIMETAL_INGOT.get()).pattern("XX").pattern(" #").pattern(" #").unlockedBy("has_plastimetal_ingot", has(ModItems.PLASTIMETAL_INGOT.get())).save(pOutput);
-        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.PLASTIMETAL_PICKAXE.get()).define('#', Items.STICK).define('X', ModItems.PLASTIMETAL_INGOT.get()).pattern("XXX").pattern(" # ").pattern(" # ").unlockedBy("has_plastimetal_ingot", has(ModItems.PLASTIMETAL_INGOT.get())).save(pOutput);
-        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.PLASTIMETAL_SHOVEL.get()).define('#', Items.STICK).define('X', ModItems.PLASTIMETAL_INGOT.get()).pattern("X").pattern("#").pattern("#").unlockedBy("has_plastimetal_ingot", has(ModItems.PLASTIMETAL_INGOT.get())).save(pOutput);
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.PLASTIMETAL_SWORD.get()).define('#', Items.STICK).define('X', ModItems.PLASTIMETAL_INGOT.get()).pattern("X").pattern("X").pattern("#").unlockedBy("has_plastimetal_ingot", has(ModItems.PLASTIMETAL_INGOT.get())).save(pOutput);
-
         shapeless(pOutput, RecipeCategory.MISC, ModItems.KNAPPED_FLINT.get(), 2, List.of(NIng(Items.FLINT), NIng(ModBlocks.TINY_ROCK_BLOCK.get()))).save();
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, Items.ARROW, 3).define('#', Items.STICK).define('X', ModItems.KNAPPED_FLINT.get()).define('Y', Items.FEATHER).pattern("X").pattern("#").pattern("Y").unlockedBy("has_feather", has(Items.FEATHER)).unlockedBy("has_stick", has(Items.STICK)).unlockedBy("has_knapped_flint", has(ModItems.KNAPPED_FLINT.get())).save(pOutput, TechPlusPlus.MOD_ID + ":arrow");
 
@@ -127,33 +143,21 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         ShapedRecipeBuilder.shaped(RecipeCategory.BREWING, Items.GLISTERING_MELON_SLICE).define('#', ModItems.GOLD_BILLET.get()).define('X', Items.MELON_SLICE).pattern("###").pattern("#X#").pattern("###").unlockedBy("has_melon", has(Items.MELON_SLICE)).save(pOutput, TechPlusPlus.MOD_ID + ":" + getItemName(Items.GLISTERING_MELON_SLICE));
 
         // Clay Molder Recipes
-//        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_SWORD_BLADE.get(),        ModItems.CLAY_CHUNK.get());         // 2xI : WEAPON: swords
-//        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_AXE_BLADE.get(),          ModItems.CLAY_CHUNK.get());         // 2xI : WEAPON: axes
-//        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_CROSSBOW_PARTS.get(),     ModItems.CLAY_CHUNK.get());         // 1xI : WEAPON: crossbow
-//        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_ARROW_HEADS.get(),        ModItems.CLAY_CHUNK.get());         // 2xI : WEAPON: arrows
-//        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_PICKAXE_HEAD.get(),       ModItems.CLAY_CHUNK.get());         // 2xI : TOOL: pickaxe
-//        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_SHOVEL_HEAD.get(),        ModItems.CLAY_CHUNK.get());         // 2xI : TOOL: shovel
-//        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_HOE_BLADE.get(),          ModItems.CLAY_CHUNK.get());         // 2xI : TOOL: hoe
-//        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_SHEAR_BLADE.get(),        ModItems.CLAY_CHUNK.get());         // 2xI : TOOL: shears
-//        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_BUCKET.get(),             ModItems.CLAY_CHUNK.get());         // 2xI : TOOL: bucket
-//        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_STEEL_STRIKER.get(),      ModItems.CLAY_CHUNK.get());         // 1xB : TOOL: flint & steel
-//        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_HELMET_PARTS.get(),       ModItems.LARGE_CLAY_CHUNK.get());   // 2xI : ARMOR: helmets
-//        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_CHESTPLATE_PARTS.get(),   ModItems.LARGE_CLAY_CHUNK.get());   // 4xI : ARMOR: chestplate
-//        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_LEGGINGS_PARTS.get(),     ModItems.LARGE_CLAY_CHUNK.get());   // 4xI : ARMOR: leggings
-//        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_BOOTS_PARTS.get(),        ModItems.LARGE_CLAY_CHUNK.get());   // 2xI : ARMOR: boots
-//        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_HORSE_ARMOR_PARTS.get(),  Blocks.CLAY);                       // 9xI : ARMOR: horse armour
-//        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_TRIM_PARTS.get(),         ModItems.CLAY_CHUNK.get());         // 1xI : ARMOR: trims
-//        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_SHIELD_PARTS.get(),       ModItems.CLAY_CHUNK.get());         // 1xI : shield
-//        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_PLATE.get(),              ModItems.CLAY_CHUNK.get());         // 1xI : pressure plates, minecarts, armor, blocks, armor
-//        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_ROD.get(),                ModItems.CLAY_CHUNK.get());         // 1xI : for tools, weapons, bar blocks
-//        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_FASTENERS.get(),          ModItems.CLAY_CHUNK.get());         // 4xB : for armor, bar blocks, blocks,
-//        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_MECHANISM_PIECES.get(),   ModItems.CLAY_CHUNK.get());         // 1xI : clock, compass, tripwire hook, metal (trap)doors
-//        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_WHEELS.get(),             ModItems.CLAY_CHUNK.get());         // 2xB : minecart
-//        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_SAW_BLADE.get(),          ModItems.CLAY_CHUNK.get());         // 1xI : saw bench, stonecutter
-//        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_CHAIN_LINKS.get(),        ModItems.CLAY_CHUNK.get());         //
-//        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_PISTON_PARTS.get(),       Blocks.CLAY);                       // 1xI : pistons
-//        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_APPLE_SHELL.get(),        ModItems.CLAY_CHUNK.get());         // 1xI : golden apple (recipe uses ingots)
-//        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_RAIL.get(),               Blocks.CLAY);                       // 3xI : rail, powered/detector/activator rail
+        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_SWORD_PARTS.get(),        ModItems.CLAY_CHUNK.get());         // 2xI : WEAPON: swords
+        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_AXE_PART.get(),           ModItems.CLAY_CHUNK.get());         // 3xI : WEAPON: axes
+        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_PICKAXE_PART.get(),       ModItems.CLAY_CHUNK.get());         // 3xI : TOOL: pickaxe
+        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_SHOVEL_PART.get(),        ModItems.CLAY_CHUNK.get());         // 1xI : TOOL: shovel
+        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_HOE_PART.get(),           ModItems.CLAY_CHUNK.get());         // 2xI : TOOL: hoe
+        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_ARROW_HEADS.get(),        ModItems.CLAY_CHUNK.get());         // 1xI : WEAPON: arrows
+        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_BLADE.get(),              ModItems.CLAY_CHUNK.get());         // 1xI : TOOL: shears
+        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_ROD.get(),                ModItems.CLAY_CHUNK.get());         // 1xI : for tools, weapons, bar blocks
+        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_FLAT_PANEL.get(),         ModItems.LARGE_CLAY_CHUNK.get());   // 1xI : shield, pressure plates, minecarts, armor, blocks, armor
+        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_ROUND_PANEL.get(),        ModItems.LARGE_CLAY_CHUNK.get());   // 1xI : bucket, armor, blocks, armor
+        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_DISK.get(),               ModItems.LARGE_CLAY_CHUNK.get());   // 1xI : minecart (wheels), saw bench, stonecutter
+        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_FASTENERS.get(),          ModItems.CLAY_CHUNK.get());         // 1xI : for armor, bar blocks, blocks,
+        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_MECHANISM_PIECES.get(),   ModItems.CLAY_CHUNK.get());         // 1xI : piston, crossbow, clock, compass, tripwire hook, metal (trap)doors
+        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_BODY.get(),               Blocks.CLAY);                       // 1xI : for armor, bar blocks, blocks,
+        moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_BEAM.get(),               Blocks.CLAY);                       // 1xI : piston, crossbow, clock, compass, tripwire hook, metal (trap)doors
 
         // Crusher Recipes
         crusherResult(pOutput, RecipeCategory.BUILDING_BLOCKS, Blocks.COBBLESTONE, Blocks.STONE);

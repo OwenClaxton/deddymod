@@ -1,9 +1,12 @@
 package net.deddybones.techplusplus.recipes;
 
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.ByteBufCodecs;
+import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
@@ -12,66 +15,72 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class EmptyRecipe implements Recipe<Container> {
+    protected final String type; // Necessary to populate the serializer
 
-    String type;
+    // Necessary to populate the serializer
+    public EmptyRecipe(String type) {
+        this.type = type;
+    }
 
     public EmptyRecipe() {
-        this("empty");
+        this.type = "empty";
     }
 
-    public EmptyRecipe(String pType) {
-        type = pType;
-    }
-
-    @Override
-    public boolean matches(@NotNull Container p_44002_, @NotNull Level p_44003_) {
-        return false;
-    }
-
-    @Override
-    public @NotNull ItemStack assemble(@NotNull Container p_44001_, @NotNull RegistryAccess p_267165_) {
-        return ItemStack.EMPTY;
-    }
-
-    @Override
-    public boolean canCraftInDimensions(int p_43999_, int p_44000_) {
-        return false;
-    }
-
-    @Override
-    public @NotNull ItemStack getResultItem(@NotNull RegistryAccess p_267052_) {
-        return ItemStack.EMPTY;
-    }
-
-    @Override
-    public @NotNull RecipeSerializer<?> getSerializer() {
-        return ModRecipes.EMPTY_SERIALIZER.get();
-    }
-
-    @Override
     public @NotNull RecipeType<?> getType() {
         return ModRecipes.EMPTY_TYPE.get();
     }
 
-    public static class Serializer implements RecipeSerializer<EmptyRecipe> {
-        //https://gist.github.com/Drullkus/1bca3f2d7f048b1fe03be97c28f87910
-        public static final Codec<EmptyRecipe> CODEC = RecordCodecBuilder.create(
-                (instance) -> instance.group(
-                    Codec.STRING.fieldOf("type").forGetter((EmptyRecipe o) -> o.type)
-                ).apply(instance, EmptyRecipe::new));
+    public @NotNull RecipeSerializer<?> getSerializer() {
+        return ModRecipes.EMPTY_SERIALIZER.get();
+    }
 
-        public @NotNull Codec<EmptyRecipe> codec() {
-            return CODEC;
+    public @NotNull ItemStack getResultItem(@Nullable HolderLookup.Provider pHLP) {
+        return ItemStack.EMPTY;
+    }
+
+    public boolean canCraftInDimensions(int p_43999_, int p_44000_) {
+        return false;
+    }
+
+    public @NotNull ItemStack assemble(@NotNull Container pContainer, @Nullable HolderLookup.Provider pHLP) {
+        return ItemStack.EMPTY;
+    }
+
+    public boolean matches(@Nullable Container pContainer, @Nullable Level pLevel) {
+        return false;
+    }
+
+    public interface Factory<T extends EmptyRecipe> {
+        T create(String type);
+    }
+
+    public static class Serializer<T extends EmptyRecipe> implements RecipeSerializer<T> {
+        final EmptyRecipe.Factory<T> factory;
+        private final MapCodec<T> codec;
+        private final StreamCodec<RegistryFriendlyByteBuf, T> streamCodec;
+
+        protected Serializer(EmptyRecipe.Factory<T> pFactory) {
+            this.factory = pFactory;
+            this.codec = RecordCodecBuilder.mapCodec(
+                    p_327217_ -> p_327217_.group(
+                                    Codec.STRING.optionalFieldOf("type", "")
+                                            .forGetter(emptyRecipeInstance -> emptyRecipeInstance.type))
+                            .apply(p_327217_, pFactory::create)
+            );
+            this.streamCodec = StreamCodec.composite(
+                    ByteBufCodecs.STRING_UTF8,
+                    emptyRecipeInstance -> emptyRecipeInstance.type,
+                    pFactory::create
+            );
+        }
+
+        public @NotNull MapCodec<T> codec() {
+            return this.codec;
         }
 
         @Override
-        public @Nullable EmptyRecipe fromNetwork(@NotNull FriendlyByteBuf p_44106_) {
-            return new EmptyRecipe();
-        }
-
-        @Override
-        public void toNetwork(@NotNull FriendlyByteBuf p_44101_, @NotNull EmptyRecipe p_44102_) {
-
+        public @NotNull StreamCodec<RegistryFriendlyByteBuf, T> streamCodec() {
+            return this.streamCodec;
         }
     }
 }

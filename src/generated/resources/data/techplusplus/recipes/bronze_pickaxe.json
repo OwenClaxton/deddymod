@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "group": "bronze_pickaxe",
+  "ingredients": [
+    {
+      "item": "techplusplus:bronze_pickaxe_part"
+    },
+    {
+      "item": "techplusplus:wooden_handle"
+    },
+    {
+      "item": "minecraft:string"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "techplusplus:bronze_pickaxe"
+  }
+}

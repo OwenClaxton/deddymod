@@ -11,9 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "techplusplus:raw_bronze"
-            ]
+            "items": "techplusplus:raw_bronze"
           }
         ]
       },

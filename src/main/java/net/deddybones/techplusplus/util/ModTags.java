@@ -14,6 +14,7 @@ public class ModTags {
         public static final TagKey<Block> NEEDS_COPPER_OR_TIN_TOOL = tag("needs_copper_or_tin_tool");
         public static final TagKey<Block> NEEDS_BRONZE_TOOL = tag("needs_bronze_tool");
         public static final TagKey<Block> NEEDS_PLASTIMETAL_TOOL = tag("needs_plastimetal_tool");
+        public static final TagKey<Block> NEEDS_GOD_TOOL = tag("needs_god_tool");
         public static final TagKey<Block> HURTS = tag("hurts");
 
         public static final TagKey<Block> HARD_BLOCKS_OVERRIDE = tag("hard_blocks_override");
@@ -128,6 +129,7 @@ public class ModTags {
         public static final TagKey<Item> BUCKETS = tag("buckets");
         public static final TagKey<Item> IS_A_TOOL = tag("is_a_tool");
         public static final TagKey<Item> CAN_BREAK_BLOCKS = tag("can_break_blocks");
+        public static final TagKey<Item> IS_A_MOLD = tag("is_a_mold");
 
         private static TagKey<Item> tag(String name) {
             return ItemTags.create(new ResourceLocation(TechPlusPlus.MOD_ID, name));

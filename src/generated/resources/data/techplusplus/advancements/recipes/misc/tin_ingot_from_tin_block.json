@@ -11,9 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "techplusplus:tin_block"
-            ]
+            "items": "techplusplus:tin_block"
           }
         ]
       },
