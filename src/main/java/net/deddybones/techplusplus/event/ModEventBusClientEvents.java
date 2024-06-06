@@ -41,6 +41,7 @@ public class ModEventBusClientEvents {
 
     @SubscribeEvent
     public static void onRegisterRecipeBookCategoriesEvent(RegisterRecipeBookCategoriesEvent event) {
+        // Kiln:
         event.registerBookCategories(TechPlusPlus.KILN_RECIPE_BOOK_TYPE, TechPlusPlus.KILN_CATEGORIES);
         event.registerAggregateCategory(TechPlusPlus.KILN_SEARCH, ImmutableList.of(TechPlusPlus.KILN_SEARCH, TechPlusPlus.KILN_FOOD, TechPlusPlus.KILN_MISC));
         event.registerRecipeCategoryFinder(ModRecipes.KILN_TYPE.get(), recipe -> {
@@ -48,6 +49,10 @@ public class ModEventBusClientEvents {
             CookingBookCategory cookingBookCategory = abstractCookingRecipe.category();
             return cookingBookCategory == CookingBookCategory.MISC ? TechPlusPlus.KILN_MISC : TechPlusPlus.KILN_FOOD;
         });
+        // Crusher:
+        event.registerBookCategories(TechPlusPlus.CRUSHER_RECIPE_BOOK_TYPE, TechPlusPlus.CRUSHER_CATEGORIES);
+        event.registerAggregateCategory(TechPlusPlus.CRUSHER_SEARCH, ImmutableList.of(TechPlusPlus.CRUSHER_SEARCH, TechPlusPlus.CRUSHER_MISC));
+        event.registerRecipeCategoryFinder(ModRecipes.CRUSHING_TYPE.get(), recipe -> TechPlusPlus.CRUSHER_MISC);
     }
 
 }

@@ -108,6 +108,17 @@ public enum EquipmentCollection {
         this.horseArmorItem = horseArmorItem;
     }
 
+    public @Nullable ItemLike getArmorItem(EquipmentName armorName) {
+        return switch(armorName) {
+            case HELMET -> this.getHelmetItem();
+            case CHESTPLATE -> this.getChestplateItem();
+            case LEGGINGS -> this.getLeggingsItem();
+            case BOOTS -> this.getBootsItem();
+            case HORSE_ARMOR -> this.getHorseArmorItem();
+            default -> null;
+        };
+    }
+
     public @Nullable ItemLike getHelmetItem() {
         return this.helmetItem;
     }

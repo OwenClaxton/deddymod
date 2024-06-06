@@ -1,17 +1,32 @@
 {
   "variants": {
-    "facing=east": {
+    "crushing=false,facing=east": {
       "model": "techplusplus:block/crusher",
       "y": 90
     },
-    "facing=north": {
+    "crushing=false,facing=north": {
       "model": "techplusplus:block/crusher"
     },
-    "facing=south": {
+    "crushing=false,facing=south": {
       "model": "techplusplus:block/crusher",
       "y": 180
     },
-    "facing=west": {
+    "crushing=false,facing=west": {
+      "model": "techplusplus:block/crusher",
+      "y": 270
+    },
+    "crushing=true,facing=east": {
+      "model": "techplusplus:block/crusher",
+      "y": 90
+    },
+    "crushing=true,facing=north": {
+      "model": "techplusplus:block/crusher"
+    },
+    "crushing=true,facing=south": {
+      "model": "techplusplus:block/crusher",
+      "y": 180
+    },
+    "crushing=true,facing=west": {
       "model": "techplusplus:block/crusher",
       "y": 270
     }

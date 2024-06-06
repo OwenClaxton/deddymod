@@ -7,7 +7,7 @@ import java.util.Objects;
 import javax.annotation.Nullable;
 
 import net.deddybones.techplusplus.TechPlusPlus;
-import net.deddybones.techplusplus.util.ItemLikeNumbered;
+import net.deddybones.techplusplus.util.ObjectNumbered;
 import net.minecraft.advancements.*;
 import net.minecraft.advancements.critereon.RecipeUnlockedTrigger;
 import net.minecraft.core.NonNullList;
@@ -22,9 +22,9 @@ import net.minecraft.world.item.crafting.ShapelessRecipe;
 import net.minecraft.world.level.ItemLike;
 import org.jetbrains.annotations.NotNull;
 
-import static net.deddybones.techplusplus.datagen.custom.ModHelper.*;
+import static net.deddybones.techplusplus.datagen.util.ModHelper.*;
 
-@SuppressWarnings("unused")
+@SuppressWarnings({"unused", "UnusedReturnValue"})
 public class ModShapelessRecipeBuilder implements RecipeBuilder {
     private final RecipeCategory category;
     private final Item result;
@@ -63,26 +63,26 @@ public class ModShapelessRecipeBuilder implements RecipeBuilder {
     }
 
     public static ModShapelessRecipeBuilder shapeless(@NotNull RecipeOutput pOutput, @NotNull RecipeCategory recipeCategory,
-                                    @NotNull ItemLike pResult, int numMade, @NotNull List<ItemLikeNumbered> ingredientsList) {
+                                    @NotNull ItemLike pResult, int numMade, @NotNull List<ObjectNumbered<ItemLike>> ingredientsList) {
         return shapeless(pOutput, recipeCategory, pResult, numMade, ingredientsList, "");
     }
 
     public static ModShapelessRecipeBuilder shapeless(@NotNull RecipeOutput pOutput, @NotNull RecipeCategory recipeCategory,
-                                    @NotNull ItemLike pResult, int numMade, @NotNull List<ItemLikeNumbered> ingredientsList,
+                                    @NotNull ItemLike pResult, int numMade, @NotNull List<ObjectNumbered<ItemLike>> ingredientsList,
                                     String extension) {
         return ModShapelessRecipeBuilder.shapeless(pOutput, recipeCategory, pResult, numMade, extension).requires(ingredientsList);
     }
 
-    public ModShapelessRecipeBuilder requires(List<ItemLikeNumbered> listItemLikeNumbered) {
-        for (ItemLikeNumbered itemLikeNumbered : listItemLikeNumbered) {
+    public ModShapelessRecipeBuilder requires(List<ObjectNumbered<ItemLike>> listItemLikeNumbered) {
+        for (ObjectNumbered<ItemLike> itemLikeNumbered : listItemLikeNumbered) {
             this.requires(itemLikeNumbered);
         }
         return this;
     }
 
-    public ModShapelessRecipeBuilder requires(ItemLikeNumbered itemLikeNumbered) {
-        return this.requires(Ingredient.of(itemLikeNumbered.getItemLike()), itemLikeNumbered.getNumber())
-                .unlockedBy(getItemName(itemLikeNumbered.getItemLike()), has(itemLikeNumbered.getItemLike()));
+    public ModShapelessRecipeBuilder requires(ObjectNumbered<ItemLike> itemLikeNumbered) {
+        return this.requires(Ingredient.of(itemLikeNumbered.getObject()), itemLikeNumbered.getCount())
+                .unlockedBy(getItemName(itemLikeNumbered.getObject()), has(itemLikeNumbered.getObject()));
     }
 
     public ModShapelessRecipeBuilder requires(ItemLike pIngredient) {

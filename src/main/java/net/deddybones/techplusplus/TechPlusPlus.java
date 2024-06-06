@@ -19,6 +19,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -37,6 +38,10 @@ public class TechPlusPlus {
     public static final RecipeBookCategories KILN_FOOD = RecipeBookCategories.create("KILN_FOOD", new ItemStack(Items.PORKCHOP));
     public static final RecipeBookCategories KILN_MISC = RecipeBookCategories.create("KILN_MISC", new ItemStack(Items.IRON_NUGGET));
     public static final List<RecipeBookCategories> KILN_CATEGORIES = ImmutableList.of(KILN_SEARCH, KILN_FOOD, KILN_MISC);
+    public static final RecipeBookType CRUSHER_RECIPE_BOOK_TYPE = RecipeBookType.create("CRUSHER");
+    public static final RecipeBookCategories CRUSHER_SEARCH = RecipeBookCategories.create("CRUSHER_SEARCH", new ItemStack(Items.COMPASS));
+    public static final RecipeBookCategories CRUSHER_MISC = RecipeBookCategories.create("CRUSHER_MISC", new ItemStack(Blocks.GRAVEL));
+    public static final List<RecipeBookCategories> CRUSHER_CATEGORIES = ImmutableList.of(CRUSHER_SEARCH, CRUSHER_MISC);
 //    public static final ResourceKey<Registry<ModArmorMaterial>> MOD_ARMOR_MATERIAL = ResourceKey.createRegistryKey(new ResourceLocation(MOD_ID, "mod_armor_material"));
 
     public TechPlusPlus() {

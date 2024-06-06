@@ -20,7 +20,7 @@ import java.util.concurrent.CompletableFuture;
 
 @SuppressWarnings("unused")
 @Mod.EventBusSubscriber(modid = TechPlusPlus.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
-public class DataGenerators {
+public class ModDataGenerators {
 
     private static void populateEnums() {
         OreCollection.COPPER.setAllItemLikes(           ModItems.COPPER_NUGGET.get(),      ModItems.COPPER_BILLET.get(),       Items.RAW_COPPER,               Items.COPPER_INGOT,               Blocks.RAW_COPPER_BLOCK,               Blocks.COPPER_BLOCK);

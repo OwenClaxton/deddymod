@@ -1,9 +1,9 @@
 {
   "type": "minecraft:blasting",
   "category": "misc",
-  "cookingtime": 100,
-  "experience": 0.1,
-  "group": "plastimetal",
+  "cookingtime": 12,
+  "experience": 1.0,
+  "group": "PLASTIMETAL",
   "ingredient": {
     "item": "techplusplus:plastimetal_nugget"
   },

@@ -1,4 +1,4 @@
-package net.deddybones.techplusplus.datagen.custom;
+package net.deddybones.techplusplus.datagen.util;
 
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.advancements.Criterion;

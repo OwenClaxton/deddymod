@@ -1,6 +1,7 @@
 package net.deddybones.techplusplus.util;
 
 import net.deddybones.techplusplus.util.EquipmentCollection.EquipmentName;
+import net.deddybones.techplusplus.util.OreCollection.OreName;
 import com.google.common.collect.Maps;
 import net.minecraft.Util;
 import net.minecraft.world.level.ItemLike;
@@ -31,7 +32,7 @@ public enum ComponentCollection {
                 instance.put("netherite",   ComponentCollection.NETHERITE);
             });
 
-    public static final Map<ComponentName, Function<ComponentCollection, ItemLike>> ORE_GETTERS = Map.ofEntries(
+    public static final Map<ComponentName, Function<ComponentCollection, ItemLike>> COMPONENT_GETTERS = Map.ofEntries(
             Map.entry(ComponentName.ROD,          ComponentCollection::getRodItem),
             Map.entry(ComponentName.FLAT_PANEL,   ComponentCollection::getFlatPanelItem),
             Map.entry(ComponentName.ROUND_PANEL,  ComponentCollection::getRoundPanelItem),
@@ -41,6 +42,18 @@ public enum ComponentCollection {
             Map.entry(ComponentName.SWORD_PARTS,  ComponentCollection::getSwordPartsItem),
             Map.entry(ComponentName.HOE_PART,     ComponentCollection::getHoePartItem),
             Map.entry(ComponentName.SHOVEL_PART,  ComponentCollection::getShovelPartItem)
+    );
+
+    public static final Map<ComponentName, OreName> COMPONENT_MATERIALS = Map.ofEntries(
+            Map.entry(ComponentName.ROD,          OreName.INGOT),
+            Map.entry(ComponentName.FLAT_PANEL,   OreName.INGOT),
+            Map.entry(ComponentName.ROUND_PANEL,  OreName.INGOT),
+            Map.entry(ComponentName.DISK,         OreName.INGOT),
+            Map.entry(ComponentName.PICKAXE_PART, OreName.INGOT),
+            Map.entry(ComponentName.AXE_PART,     OreName.INGOT),
+            Map.entry(ComponentName.SWORD_PARTS,  OreName.INGOT),
+            Map.entry(ComponentName.HOE_PART,     OreName.INGOT),
+            Map.entry(ComponentName.SHOVEL_PART,  OreName.INGOT)
     );
 
     public enum ComponentName {

@@ -2,7 +2,7 @@ package net.deddybones.techplusplus.datagen;
 
 import net.deddybones.techplusplus.TechPlusPlus;
 import net.deddybones.techplusplus.block.ModBlocks;
-import static net.deddybones.techplusplus.datagen.custom.ModHelper.*;
+import static net.deddybones.techplusplus.datagen.util.ModHelper.*;
 import net.deddybones.techplusplus.block.custom.*;
 import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
