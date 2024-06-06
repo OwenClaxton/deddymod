@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 50,
+  "experience": 1.0,
+  "group": "COPPER",
+  "ingredient": {
+    "item": "techplusplus:copper_nugget"
+  },
+  "result": {
+    "id": "techplusplus:copper_billet"
+  }
+}

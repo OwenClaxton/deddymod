@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 50,
+  "experience": 1.0,
+  "group": "TIN",
+  "ingredient": {
+    "item": "techplusplus:tin_nugget"
+  },
+  "result": {
+    "id": "techplusplus:tin_billet"
+  }
+}

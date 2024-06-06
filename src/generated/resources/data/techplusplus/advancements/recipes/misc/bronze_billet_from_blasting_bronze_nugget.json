@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_bronze_nugget": {
+      "conditions": {
+        "items": [
+          {
+            "items": "techplusplus:bronze_nugget"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "techplusplus:bronze_billet_from_blasting_bronze_nugget"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_bronze_nugget"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "techplusplus:bronze_billet_from_blasting_bronze_nugget"
+    ]
+  }
+}

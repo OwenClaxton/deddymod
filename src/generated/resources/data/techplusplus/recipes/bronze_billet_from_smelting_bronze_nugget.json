@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 50,
+  "experience": 1.0,
+  "group": "BRONZE",
+  "ingredient": {
+    "item": "techplusplus:bronze_nugget"
+  },
+  "result": {
+    "id": "techplusplus:bronze_billet"
+  }
+}

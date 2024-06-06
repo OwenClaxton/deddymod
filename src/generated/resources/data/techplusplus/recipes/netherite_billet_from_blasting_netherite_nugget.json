@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 12,
+  "experience": 1.0,
+  "group": "NETHERITE",
+  "ingredient": {
+    "item": "techplusplus:netherite_nugget"
+  },
+  "result": {
+    "id": "techplusplus:netherite_billet"
+  }
+}
