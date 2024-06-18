@@ -1,6 +1,6 @@
 # Tech++: Overhauling the Minecraft development experience.
 
-This is a minecraft for 1.20.6 using Minecraft Forge.
+This is a minecraft for 1.21.0 using Minecraft Forge.
 I've added a selection of features to the game including:
 - New ores to be found, mined, and processed
   - Plastimetal: Better than Iron, not as good as Netherite.

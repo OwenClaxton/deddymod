@@ -8,6 +8,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraftforge.registries.RegistryObject;
+import org.jetbrains.annotations.NotNull;
 
 public class FibrosiaCropBlock extends ModCropBlock {
     public static final int MAX_AGE = 4;
@@ -19,12 +20,12 @@ public class FibrosiaCropBlock extends ModCropBlock {
     }
 
     @Override
-    public ItemLike getBaseSeedId() {
+    public @NotNull ItemLike getBaseSeedId() {
         return SEED_ITEM.get();
-    };
+    }
 
     @Override
-    public IntegerProperty getAgeProperty() {
+    public @NotNull IntegerProperty getAgeProperty() {
         return AGE;
     }
 

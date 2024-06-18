@@ -3,7 +3,7 @@ package net.deddybones.techplusplus.item.util;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ArmorMaterial;
 
-import static net.deddybones.techplusplus.TechPlusPlus.MOD_ID;
+import static net.deddybones.techplusplus.datagen.util.ModHelper.modLoc;
 
 public class ModArmorLayer extends ArmorMaterial.Layer {
 
@@ -18,8 +18,7 @@ public class ModArmorLayer extends ArmorMaterial.Layer {
     }
 
     private ResourceLocation resolveTexture(boolean pIsInner) {
-        return new ResourceLocation(MOD_ID,
-                "textures/models/armor/" + this.assetName.getPath() + "_layer_"
+        return modLoc("textures/models/armor/" + this.assetName.getPath() + "_layer_"
                         + (pIsInner ? 2 : 1) + this.getSuffix() + ".png");
     }
 }

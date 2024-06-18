@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "front": "techplusplus:block/smeltery_front",
+    "side": "techplusplus:block/smeltery_side",
+    "top": "techplusplus:block/smeltery_top"
+  }
+}

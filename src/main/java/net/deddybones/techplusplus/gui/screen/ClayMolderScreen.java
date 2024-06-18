@@ -1,6 +1,5 @@
 package net.deddybones.techplusplus.gui.screen;
 
-import net.deddybones.techplusplus.TechPlusPlus;
 import net.deddybones.techplusplus.recipes.ClayMolderRecipe;
 import net.deddybones.techplusplus.gui.menu.ClayMolderMenu;
 import net.minecraft.client.Minecraft;
@@ -19,14 +18,16 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
+import static net.deddybones.techplusplus.datagen.util.ModHelper.modLoc;
+
 @OnlyIn(Dist.CLIENT)
 public class ClayMolderScreen extends AbstractContainerScreen<ClayMolderMenu> {
-   private static final ResourceLocation SCROLLER_SPRITE = new ResourceLocation(TechPlusPlus.MOD_ID + ":container/clay_molder/scroller");
-   private static final ResourceLocation SCROLLER_DISABLED_SPRITE = new ResourceLocation(TechPlusPlus.MOD_ID + ":container/clay_molder/scroller_disabled");
-   private static final ResourceLocation RECIPE_SELECTED_SPRITE = new ResourceLocation(TechPlusPlus.MOD_ID + ":container/clay_molder/recipe_selected");
-   private static final ResourceLocation RECIPE_HIGHLIGHTED_SPRITE = new ResourceLocation(TechPlusPlus.MOD_ID + ":container/clay_molder/recipe_highlighted");
-   private static final ResourceLocation RECIPE_SPRITE = new ResourceLocation(TechPlusPlus.MOD_ID + ":container/clay_molder/recipe");
-   private static final ResourceLocation BG_LOCATION = new ResourceLocation(TechPlusPlus.MOD_ID + ":textures/gui/container/clay_molder.png");
+   private static final ResourceLocation SCROLLER_SPRITE = modLoc("container/clay_molder/scroller");
+   private static final ResourceLocation SCROLLER_DISABLED_SPRITE = modLoc("container/clay_molder/scroller_disabled");
+   private static final ResourceLocation RECIPE_SELECTED_SPRITE = modLoc("container/clay_molder/recipe_selected");
+   private static final ResourceLocation RECIPE_HIGHLIGHTED_SPRITE = modLoc("container/clay_molder/recipe_highlighted");
+   private static final ResourceLocation RECIPE_SPRITE = modLoc("container/clay_molder/recipe");
+   private static final ResourceLocation BG_LOCATION = modLoc("textures/gui/container/clay_molder.png");
    private static final int SCROLLER_WIDTH = 12;
    private static final int SCROLLER_HEIGHT = 15;
    private static final int SCROLLER_X = 119;

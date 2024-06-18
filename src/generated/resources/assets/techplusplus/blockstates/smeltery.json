@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "facing=east,smelting=false": {
+      "model": "techplusplus:block/smeltery",
+      "y": 90
+    },
+    "facing=east,smelting=true": {
+      "model": "techplusplus:block/smeltery_on",
+      "y": 90
+    },
+    "facing=north,smelting=false": {
+      "model": "techplusplus:block/smeltery"
+    },
+    "facing=north,smelting=true": {
+      "model": "techplusplus:block/smeltery_on"
+    },
+    "facing=south,smelting=false": {
+      "model": "techplusplus:block/smeltery",
+      "y": 180
+    },
+    "facing=south,smelting=true": {
+      "model": "techplusplus:block/smeltery_on",
+      "y": 180
+    },
+    "facing=west,smelting=false": {
+      "model": "techplusplus:block/smeltery",
+      "y": 270
+    },
+    "facing=west,smelting=true": {
+      "model": "techplusplus:block/smeltery_on",
+      "y": 270
+    }
+  }
+}

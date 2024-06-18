@@ -16,7 +16,6 @@ public class RockGoodieBlock extends GoodieBlock {
     }
 
     @Override
-    @SuppressWarnings("deprecation")
     public @NotNull VoxelShape getShape(@NotNull BlockState pBlockState, @NotNull BlockGetter pBlockGetter,
                                         @NotNull BlockPos pBlockPos, @NotNull CollisionContext pColContext) {
         Vec3 vec3 = pBlockState.getOffset(pBlockGetter, pBlockPos);

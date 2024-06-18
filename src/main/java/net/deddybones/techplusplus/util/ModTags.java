@@ -1,12 +1,12 @@
 package net.deddybones.techplusplus.util;
 
-import net.deddybones.techplusplus.TechPlusPlus;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+
+import static net.deddybones.techplusplus.datagen.util.ModHelper.modLoc;
 
 public class ModTags {
     public static class Blocks {
@@ -117,12 +117,11 @@ public class ModTags {
 
 
         private static TagKey<Block> tag(String name) {
-            return BlockTags.create(new ResourceLocation(TechPlusPlus.MOD_ID, name));
+            return BlockTags.create(modLoc(name));
         }
     }
 
     public static class Items {
-
         public static final TagKey<Item> CAN_CARVE = tag("can_carve");
         public static final TagKey<Item> CARVED_ITEM = tag("carved_item");
         public static final TagKey<Item> CARVABLE_ITEM = tag("carvable_item");
@@ -132,7 +131,7 @@ public class ModTags {
         public static final TagKey<Item> IS_A_MOLD = tag("is_a_mold");
 
         private static TagKey<Item> tag(String name) {
-            return ItemTags.create(new ResourceLocation(TechPlusPlus.MOD_ID, name));
+            return ItemTags.create(modLoc(name));
         }
 
     }

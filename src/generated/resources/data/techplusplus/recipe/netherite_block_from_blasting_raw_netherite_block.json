@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:blasting",
+  "category": "blocks",
+  "cookingtime": 300,
+  "experience": 1.0,
+  "group": "NETHERITE",
+  "ingredient": {
+    "item": "techplusplus:raw_netherite_block"
+  },
+  "result": {
+    "id": "minecraft:netherite_block"
+  }
+}

@@ -1,13 +1,10 @@
 package net.deddybones.techplusplus.item.util;
 
-import net.deddybones.techplusplus.TechPlusPlus;
 import net.deddybones.techplusplus.util.TierCollection;
 import net.deddybones.techplusplus.util.TierNumerics;
 import net.minecraft.Util;
 import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.*;
@@ -20,9 +17,12 @@ import java.util.EnumMap;
 import java.util.List;
 import java.util.function.Supplier;
 
+import static net.deddybones.techplusplus.TechPlusPlus.MOD_ID;
+import static net.deddybones.techplusplus.datagen.util.ModHelper.resLoc;
+
 public class ModArmorMaterials {
     public static final DeferredRegister<ArmorMaterial> ARMORS =
-            DeferredRegister.create(Registries.ARMOR_MATERIAL, TechPlusPlus.MOD_ID);
+            DeferredRegister.create(Registries.ARMOR_MATERIAL, MOD_ID);
 
     public static final RegistryObject<ArmorMaterial> PLASTIMETAL;
     public static final RegistryObject<ArmorMaterial> BRONZE;
@@ -49,7 +49,7 @@ public class ModArmorMaterials {
             enumMap.put(ArmorItem.Type.BODY, tierNumerics.getBodyProtection());
         });
         String pGroup = pTierColl.getGroup();
-        List<ArmorMaterial.Layer> pLayerList = List.of(new ModArmorLayer(new ResourceLocation(pGroup)));
+        List<ArmorMaterial.Layer> pLayerList = List.of(new ModArmorLayer(resLoc(pGroup)));
         return registerArmor(pGroup, pEnumMap, tierNumerics.getArmorEnchantmentValue(),
                         SoundEvents.ARMOR_EQUIP_IRON, pTierColl.getRepairIngredient(), pLayerList,
                         tierNumerics.getToughness(), tierNumerics.getKnockbackResistance());

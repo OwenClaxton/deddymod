@@ -1,6 +1,5 @@
 package net.deddybones.techplusplus.datagen;
 
-import net.deddybones.techplusplus.TechPlusPlus;
 import net.deddybones.techplusplus.block.ModBlocks;
 import net.deddybones.techplusplus.util.ModTags;
 import net.minecraft.core.HolderLookup;
@@ -15,9 +14,11 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
 
+import static net.deddybones.techplusplus.TechPlusPlus.MOD_ID;
+
 public class ModBlockTagProvider extends BlockTagsProvider {
     public ModBlockTagProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, @Nullable ExistingFileHelper existingFileHelper) {
-        super(output, lookupProvider, TechPlusPlus.MOD_ID, existingFileHelper);
+        super(output, lookupProvider, MOD_ID, existingFileHelper);
     }
 
     protected void addToMinecraftBlockTags() {

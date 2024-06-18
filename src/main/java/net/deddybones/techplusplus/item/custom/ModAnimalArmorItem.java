@@ -11,17 +11,18 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
-import static net.deddybones.techplusplus.TechPlusPlus.MOD_ID;
+import static net.deddybones.techplusplus.datagen.util.ModHelper.modLoc;
 
 public class ModAnimalArmorItem extends AnimalArmorItem {
     public final ResourceLocation modTextureLocation;
     public final ResourceLocation modOverlayTextureLocation;
 
-    public ModAnimalArmorItem(Holder<ArmorMaterial> pMaterial, AnimalArmorItem.BodyType pBodyType, boolean pHasOverlay, Item.Properties pProperties) {
+    public ModAnimalArmorItem(Holder<ArmorMaterial> pMaterial, AnimalArmorItem.BodyType pBodyType,
+                              boolean pHasOverlay, Item.Properties pProperties) {
         super(pMaterial, pBodyType, pHasOverlay, pProperties);
-        this.modTextureLocation = new ResourceLocation(MOD_ID, super.getTexture().getPath());
+        this.modTextureLocation = modLoc(super.getTexture().getPath());
         if (pHasOverlay) {
-            this.modOverlayTextureLocation = new ResourceLocation(MOD_ID, Objects.requireNonNull(super.getOverlayTexture()).getPath());
+            this.modOverlayTextureLocation = modLoc(Objects.requireNonNull(super.getOverlayTexture()).getPath());
         } else {
             this.modOverlayTextureLocation = null;
         }

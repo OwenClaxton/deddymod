@@ -1,6 +1,5 @@
 package net.deddybones.techplusplus.datagen;
 
-import net.deddybones.techplusplus.TechPlusPlus;
 import net.deddybones.techplusplus.block.ModBlocks;
 import net.deddybones.techplusplus.item.ModItems;
 import net.deddybones.techplusplus.util.EquipmentCollection;
@@ -18,8 +17,10 @@ import net.minecraftforge.fml.common.Mod;
 
 import java.util.concurrent.CompletableFuture;
 
+import static net.deddybones.techplusplus.TechPlusPlus.MOD_ID;
+
 @SuppressWarnings("unused")
-@Mod.EventBusSubscriber(modid = TechPlusPlus.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModDataGenerators {
 
     private static void populateEnums() {

@@ -16,6 +16,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
+import static net.deddybones.techplusplus.TechPlusPlus.MOD_ID;
+import static net.minecraft.resources.ResourceLocation.fromNamespaceAndPath;
+import static net.minecraft.resources.ResourceLocation.withDefaultNamespace;
+
 @SuppressWarnings("unused")
 public class ModHelper {
     public static ResourceLocation bKey(Block block) {
@@ -35,7 +39,8 @@ public class ModHelper {
     }
 
     public static String getItemName(ItemLike pItemLike) {
-        return pItemLike.asItem().toString();
+//        return pItemLike.asItem().toString();
+        return iName(pItemLike.asItem());
     }
 
     public static String getFromExt(ItemLike pItemLike) {
@@ -44,6 +49,18 @@ public class ModHelper {
 
     public static String getHasName(ItemLike pItemLike) {
         return "has_" + getItemName(pItemLike);
+    }
+
+    public static ResourceLocation resLoc(String pNamespace, String pPath) {
+        return fromNamespaceAndPath(pNamespace, pPath);
+    }
+
+    public static ResourceLocation resLoc(String pPath) {
+        return withDefaultNamespace(pPath);
+    }
+
+    public static ResourceLocation modLoc(String pPath) {
+        return resLoc(MOD_ID, pPath);
     }
 
     public static Criterion<InventoryChangeTrigger.TriggerInstance> has(MinMaxBounds.Ints p_176521_, ItemLike p_176522_) {
@@ -58,11 +75,11 @@ public class ModHelper {
         return inventoryTrigger(ItemPredicate.Builder.item().of(p_299059_));
     }
 
-    private static Criterion<InventoryChangeTrigger.TriggerInstance> inventoryTrigger(ItemPredicate.Builder... itemPredicateBuilder) {
+    public static Criterion<InventoryChangeTrigger.TriggerInstance> inventoryTrigger(ItemPredicate.Builder... itemPredicateBuilder) {
         return inventoryTrigger(Arrays.stream(itemPredicateBuilder).map(ItemPredicate.Builder::build).toArray(ItemPredicate[]::new));
     }
 
-    private static Criterion<InventoryChangeTrigger.TriggerInstance> inventoryTrigger(ItemPredicate... itemPredicate) {
+    public static Criterion<InventoryChangeTrigger.TriggerInstance> inventoryTrigger(ItemPredicate... itemPredicate) {
         return CriteriaTriggers.INVENTORY_CHANGED.createCriterion(
                 new InventoryChangeTrigger.TriggerInstance(Optional.empty(),
                         InventoryChangeTrigger.TriggerInstance.Slots.ANY,

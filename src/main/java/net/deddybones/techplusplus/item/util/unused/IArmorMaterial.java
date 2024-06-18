@@ -9,20 +9,21 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public abstract interface IArmorMaterial {
-    public abstract int getDefense(ModArmorItem.Type pType);
+@SuppressWarnings("unused")
+public interface IArmorMaterial {
+    int getDefense(ModArmorItem.Type pType);
 
-    public abstract Map<ModArmorItem.Type, Integer> defense();
+    Map<ModArmorItem.Type, Integer> defense();
 
-    public abstract int enchantmentValue();
+    int enchantmentValue();
 
-    public abstract Holder<SoundEvent> equipSound();
+    Holder<SoundEvent> equipSound();
 
-    public abstract Supplier<Ingredient> repairIngredient();
+    Supplier<Ingredient> repairIngredient();
 
-    public abstract List<ModArmorMaterial.Layer> layers();
+    List<ModArmorMaterial.Layer> layers();
 
-    public abstract float toughness();
+    float toughness();
 
-    public abstract float knockbackResistance();
+    float knockbackResistance();
 }

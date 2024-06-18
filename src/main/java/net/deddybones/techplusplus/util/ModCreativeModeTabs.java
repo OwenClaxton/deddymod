@@ -1,6 +1,5 @@
 package net.deddybones.techplusplus.util;
 
-import net.deddybones.techplusplus.TechPlusPlus;
 import net.deddybones.techplusplus.block.ModBlocks;
 import net.deddybones.techplusplus.item.ModItems;
 import net.minecraft.core.registries.Registries;
@@ -11,10 +10,12 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 
+import static net.deddybones.techplusplus.TechPlusPlus.MOD_ID;
+
 @SuppressWarnings("unused")
 public class ModCreativeModeTabs {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS =
-            DeferredRegister.create(Registries.CREATIVE_MODE_TAB, TechPlusPlus.MOD_ID);
+            DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MOD_ID);
 
     public static final RegistryObject<CreativeModeTab> TECHPLUSPLUS_TAB =
             CREATIVE_MODE_TABS.register("techplusplus_tab",

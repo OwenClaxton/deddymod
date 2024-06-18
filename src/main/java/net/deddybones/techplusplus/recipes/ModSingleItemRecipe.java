@@ -8,14 +8,13 @@ import net.minecraft.core.NonNullList;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public abstract class ModSingleItemRecipe implements Recipe<Container> {
+public abstract class ModSingleItemRecipe implements Recipe<SingleRecipeInput> {
     protected final Ingredient ingredient;
     protected final ItemStack result;
     private final RecipeType<?> type;
@@ -56,12 +55,12 @@ public abstract class ModSingleItemRecipe implements Recipe<Container> {
         return true;
     }
 
-    public @NotNull ItemStack assemble(@NotNull Container pContainer, @Nullable HolderLookup.Provider pHLP) {
+    public @NotNull ItemStack assemble(@NotNull SingleRecipeInput pInput, @Nullable HolderLookup.Provider pHLP) {
         return this.result.copy();
     }
 
-    public boolean matches(Container pContainer, @Nullable Level pLevel) {
-        return this.ingredient.test(pContainer.getItem(0));
+    public boolean matches(SingleRecipeInput pInput, @Nullable Level pLevel) {
+        return this.ingredient.test(pInput.getItem(0));
     }
 
     public ItemStack getResult() {

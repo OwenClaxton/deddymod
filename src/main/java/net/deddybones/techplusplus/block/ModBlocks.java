@@ -1,6 +1,5 @@
 package net.deddybones.techplusplus.block;
 
-import net.deddybones.techplusplus.TechPlusPlus;
 import net.deddybones.techplusplus.block.custom.*;
 import net.deddybones.techplusplus.item.ModItems;
 import net.minecraft.core.BlockPos;
@@ -28,10 +27,12 @@ import net.minecraftforge.registries.RegistryObject;
 import java.util.function.Supplier;
 import java.util.function.ToIntFunction;
 
+import static net.deddybones.techplusplus.TechPlusPlus.MOD_ID;
+
 @SuppressWarnings("SameParameterValue")
 public class ModBlocks {
     public static final DeferredRegister<Block> BLOCKS =
-            DeferredRegister.create(ForgeRegistries.BLOCKS, TechPlusPlus.MOD_ID);
+            DeferredRegister.create(ForgeRegistries.BLOCKS, MOD_ID);
 
     public static final RegistryObject<Block> BAUXITE = registerBlock("bauxite",
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.GRANITE)));
@@ -56,6 +57,10 @@ public class ModBlocks {
     public static final RegistryObject<Block> CLAY_MOLDER = registerBlock("clay_molder",
             () -> new ClayMolderBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE)
                     .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.5F)));
+    public static final RegistryObject<Block> SMELTERY = registerBlock("smeltery",
+            () -> new SmelteryBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE)
+                    .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.5F)
+                    .lightLevel(smeltingBlockEmission(13))));
 
     public static final RegistryObject<Block> TIN_BLOCK = registerBlock("tin_block",
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK)));
@@ -193,7 +198,11 @@ public class ModBlocks {
     }
 
     private static ToIntFunction<BlockState> litBlockEmission(int lightLevel) {
-        return (p_50763_) -> p_50763_.getValue(BlockStateProperties.LIT) ? lightLevel : 0;
+        return (state) -> state.getValue(BlockStateProperties.LIT) ? lightLevel : 0;
+    }
+
+    private static ToIntFunction<BlockState> smeltingBlockEmission(int lightLevel) {
+        return (state) -> state.getValue(SmelteryBlock.SMELTING) ? lightLevel : 0;
     }
 
     public static <T extends Block>RegistryObject<T> registerBlock(String name, Supplier<T> block) {

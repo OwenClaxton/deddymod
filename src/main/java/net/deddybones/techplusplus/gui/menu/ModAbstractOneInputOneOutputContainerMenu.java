@@ -16,6 +16,7 @@ import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.item.crafting.SingleRecipeInput;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import org.jetbrains.annotations.NotNull;
@@ -168,14 +169,16 @@ public abstract class ModAbstractOneInputOneOutputContainerMenu<T extends ModSin
         if (this.pickable) this.selectedRecipeIndex.set(-1);
         this.resultSlot.set(ItemStack.EMPTY);
         if (!pStack.isEmpty()) {
-            this.recipes = this.level.getRecipeManager().getRecipesFor(this.linkedRecipeType, pContainer, this.level);
+            this.recipes = this.level.getRecipeManager().getRecipesFor(this.linkedRecipeType,
+                    new SingleRecipeInput(pContainer.getItem(INPUT_SLOT)), this.level);
         }
     }
 
     void setupResultSlot() {
         if (!this.recipes.isEmpty() && this.isValidRecipeIndex(this.selectedRecipeIndex.get())) {
             RecipeHolder<T> recipeHolder = this.recipes.get(this.selectedRecipeIndex.get());
-            ItemStack itemstack = recipeHolder.value().assemble(this.inputContainer, this.level.registryAccess());
+            ItemStack itemstack = recipeHolder.value().assemble(
+                    new SingleRecipeInput(this.inputContainer.getItem(INPUT_SLOT)), this.level.registryAccess());
             if (itemstack.isItemEnabled(this.level.enabledFeatures())) {
                 this.resultContainer.setRecipeUsed(recipeHolder);
                 this.resultSlot.set(itemstack);
@@ -219,7 +222,8 @@ public abstract class ModAbstractOneInputOneOutputContainerMenu<T extends ModSin
                 return ItemStack.EMPTY;
             }
 
-        } else if (this.level.getRecipeManager().getRecipeFor(this.linkedRecipeType, new SimpleContainer(slotStack), this.level).isPresent()) {
+        } else if (this.level.getRecipeManager().getRecipeFor(this.linkedRecipeType,
+                new SingleRecipeInput(slotStack), this.level).isPresent()) {
             if (!this.moveItemStackTo(slotStack, INPUT_SLOT, RESULT_SLOT, false)) {
                 return ItemStack.EMPTY;
             }

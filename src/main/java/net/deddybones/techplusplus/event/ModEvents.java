@@ -1,12 +1,13 @@
 package net.deddybones.techplusplus.event;
 
-import net.deddybones.techplusplus.TechPlusPlus;
 import net.deddybones.techplusplus.util.ModTags;
 import net.minecraft.core.NonNullList;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.CraftingInput;
 import net.minecraft.world.item.crafting.CraftingRecipe;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeType;
@@ -21,7 +22,9 @@ import net.minecraftforge.fml.common.Mod;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Mod.EventBusSubscriber(modid = TechPlusPlus.MOD_ID)
+import static net.deddybones.techplusplus.TechPlusPlus.MOD_ID;
+
+@Mod.EventBusSubscriber(modid = MOD_ID)
 public class ModEvents {
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
@@ -70,17 +73,17 @@ public class ModEvents {
     }
 
     public static boolean isRepairRecipe(Player player, Level level) {
-        CraftingContainer craftingSlots;
+        CraftingInput craftingInput;
         if (player.containerMenu.getClass() == InventoryMenu.class) {
             InventoryMenu iMenu = (InventoryMenu) player.containerMenu;
-            craftingSlots = iMenu.getCraftSlots();
+            craftingInput = iMenu.getCraftSlots().asCraftInput();
         } else {
             CraftingMenu cMenu = (CraftingMenu) player.containerMenu;
             NonNullList<ItemStack> craftingSlotContents = cMenu.slots.subList(1, 10).stream().map(Slot::getItem)
                     .collect(Collectors.toCollection(NonNullList::create));
-            craftingSlots = new TransientCraftingContainer(cMenu, 3, 3, craftingSlotContents);
+            craftingInput = new TransientCraftingContainer(cMenu, 3, 3, craftingSlotContents).asCraftInput();
         }
-        List<RecipeHolder<CraftingRecipe>> recipeList = level.getRecipeManager().getRecipesFor(RecipeType.CRAFTING, craftingSlots, level);
+        List<RecipeHolder<CraftingRecipe>> recipeList = level.getRecipeManager().getRecipesFor(RecipeType.CRAFTING, craftingInput, level);
         return recipeList.getFirst().id().toString().equals("minecraft:repair_item");
     }
 
@@ -98,9 +101,9 @@ public class ModEvents {
                 for (int i = startInd; i <= endInd; i++) {
                     ItemStack thisItem = player.containerMenu.slots.get(i).getItem();
                     if (thisItem.is(ModTags.Items.CAN_CARVE)) {
-                        thisItem.hurtAndBreak(1, player.getRandom(),
+                        thisItem.hurtAndBreak(1, (ServerLevel) player.level(),
                                 player instanceof ServerPlayer ? (ServerPlayer) player : null,
-                                () -> thisItem.setCount(0));
+                                (item) -> thisItem.setCount(0)); // TODO check.
                         return;
                     }
                 }

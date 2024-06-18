@@ -15,7 +15,6 @@ import net.deddybones.techplusplus.gui.ModMenuTypes;
 import net.deddybones.techplusplus.worldgen.ModWorldGen;
 import net.minecraft.client.RecipeBookCategories;
 import net.minecraft.client.renderer.item.ItemProperties;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -27,6 +26,8 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 import java.util.List;
+
+import static net.deddybones.techplusplus.datagen.util.ModHelper.resLoc;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(TechPlusPlus.MOD_ID)
@@ -42,6 +43,10 @@ public class TechPlusPlus {
     public static final RecipeBookCategories CRUSHER_SEARCH = RecipeBookCategories.create("CRUSHER_SEARCH", new ItemStack(Items.COMPASS));
     public static final RecipeBookCategories CRUSHER_MISC = RecipeBookCategories.create("CRUSHER_MISC", new ItemStack(Blocks.GRAVEL));
     public static final List<RecipeBookCategories> CRUSHER_CATEGORIES = ImmutableList.of(CRUSHER_SEARCH, CRUSHER_MISC);
+    public static final RecipeBookType SMELTERY_RECIPE_BOOK_TYPE = RecipeBookType.create("SMELTERY");
+    public static final RecipeBookCategories SMELTERY_SEARCH = RecipeBookCategories.create("SMELTERY_SEARCH", new ItemStack(Items.COMPASS));
+    public static final RecipeBookCategories SMELTERY_MISC = RecipeBookCategories.create("SMELTERY_MISC", new ItemStack(Items.IRON_INGOT));
+    public static final List<RecipeBookCategories> SMELTERY_CATEGORIES = ImmutableList.of(SMELTERY_SEARCH, SMELTERY_MISC);
 //    public static final ResourceKey<Registry<ModArmorMaterial>> MOD_ARMOR_MATERIAL = ResourceKey.createRegistryKey(new ResourceLocation(MOD_ID, "mod_armor_material"));
 
     public TechPlusPlus() {
@@ -78,12 +83,10 @@ public class TechPlusPlus {
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         event.enqueueWork(() ->
-        {
-            ItemProperties.register(ModItems.WOODEN_SPEAR.get(),
-                    new ResourceLocation(TechPlusPlus.MOD_ID, "throwing"), (stack, level, living, id) -> {
-                        return living != null && living.isUsingItem() && living.getUseItem() == stack ? 1.0F : 0.0F;
-                    });
-        });
+                ItemProperties.register(ModItems.WOODEN_SPEAR.get(),
+                        resLoc(TechPlusPlus.MOD_ID, "throwing"),
+                        (stack, level, living, id) ->
+                                (living != null && living.isUsingItem() && living.getUseItem() == stack) ? 1.0F : 0.0F));
     }
 
 //    // Add the example block item to the building blocks tab

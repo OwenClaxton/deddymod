@@ -7,14 +7,13 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class EmptyRecipe implements Recipe<Container> {
+public class EmptyRecipe implements Recipe<RecipeInput> {
     protected final String type; // Necessary to populate the serializer
 
     // Necessary to populate the serializer
@@ -38,15 +37,17 @@ public class EmptyRecipe implements Recipe<Container> {
         return ItemStack.EMPTY;
     }
 
-    public boolean canCraftInDimensions(int p_43999_, int p_44000_) {
+    @Override
+    public boolean matches(@NotNull RecipeInput pRecipeInput, @NotNull Level pLevel) {
         return false;
     }
 
-    public @NotNull ItemStack assemble(@NotNull Container pContainer, @Nullable HolderLookup.Provider pHLP) {
+    @Override
+    public @NotNull ItemStack assemble(@NotNull RecipeInput pRecipeInput, @NotNull HolderLookup.Provider pProvider) {
         return ItemStack.EMPTY;
     }
 
-    public boolean matches(@Nullable Container pContainer, @Nullable Level pLevel) {
+    public boolean canCraftInDimensions(int p_43999_, int p_44000_) {
         return false;
     }
 

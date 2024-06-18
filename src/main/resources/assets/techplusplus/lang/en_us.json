@@ -233,6 +233,7 @@
   "block.techplusplus.crusher": "Crusher",
   "block.techplusplus.kiln": "Kiln",
   "block.techplusplus.clay_molder": "Clay Molder",
+  "block.techplusplus.smeltery": "Smeltery",
 
   "block.techplusplus.test_block": "Test Block",
 
@@ -242,5 +243,6 @@
 
   "container.techplusplus.crusher": "Crusher",
   "container.techplusplus.kiln": "Kiln",
-  "container.techplusplus.clay_molder": "Clay Molder"
+  "container.techplusplus.clay_molder": "Clay Molder",
+  "container.techplusplus.smeltery": "Smeltery"
 }

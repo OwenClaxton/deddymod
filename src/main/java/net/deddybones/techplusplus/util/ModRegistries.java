@@ -2,6 +2,7 @@ package net.deddybones.techplusplus.util;
 
 import net.minecraft.core.Registry;
 
+@SuppressWarnings("unused")
 public class ModRegistries {
 //    public static final Registry<ModArmorMaterial> MOD_ARMOR_MATERIAL;
 

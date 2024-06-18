@@ -37,20 +37,8 @@ public record ModArmorMaterial(Map<ModArmorItem.Type, Integer> defense, int ench
                     .forGetter(ModArmorMaterial::knockbackResistance)
     ).apply(instance, ModArmorMaterial::new));
 
-    public ModArmorMaterial(Map<ModArmorItem.Type, Integer> defense, int enchantmentValue,
-                            Holder<SoundEvent> equipSound, Supplier<Ingredient> repairIngredient,
-                            List<ModArmorMaterial.Layer> layers, float toughness, float knockbackResistance) {
-        this.defense = defense;
-        this.enchantmentValue = enchantmentValue;
-        this.equipSound = equipSound;
-        this.repairIngredient = repairIngredient;
-        this.layers = layers;
-        this.toughness = toughness;
-        this.knockbackResistance = knockbackResistance;
-    }
-
     public int getDefense(ModArmorItem.Type pType) {
-        return (Integer) this.defense.getOrDefault(pType, 0);
+        return this.defense.getOrDefault(pType, 0);
     }
 
     public Map<ModArmorItem.Type, Integer> defense() {

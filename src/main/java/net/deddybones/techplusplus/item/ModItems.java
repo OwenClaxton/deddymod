@@ -1,6 +1,5 @@
 package net.deddybones.techplusplus.item;
 
-import net.deddybones.techplusplus.TechPlusPlus;
 import net.deddybones.techplusplus.block.ModBlocks;
 import net.deddybones.techplusplus.item.custom.*;
 import net.deddybones.techplusplus.item.util.ModToolTiers;
@@ -15,9 +14,11 @@ import net.minecraftforge.registries.RegistryObject;
 
 import net.deddybones.techplusplus.util.EquipmentCollection.EquipmentName;
 
+import static net.deddybones.techplusplus.TechPlusPlus.MOD_ID;
+
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS =
-            DeferredRegister.create(ForgeRegistries.ITEMS, TechPlusPlus.MOD_ID);
+            DeferredRegister.create(ForgeRegistries.ITEMS, MOD_ID);
 
     public static final RegistryObject<Item> SAPPHIRE = simpleItem("sapphire");
 
@@ -290,7 +291,6 @@ public class ModItems {
                 ));
     }
     public static RegistryObject<Item> horseArmor(TierCollection pTierColl) {
-        TierNumerics tierNumerics = TierNumerics.NUMERICS_MAP.get(pTierColl.getGroup());
         return ITEMS.register(pTierColl.getGroup() + "_horse_armor",
                 () -> new ModAnimalArmorItem(
                     pTierColl.getMaterial(), ModAnimalArmorItem.BodyType.EQUESTRIAN, false,

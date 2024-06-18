@@ -7,6 +7,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.SlabType;
+import org.jetbrains.annotations.NotNull;
 
 public class TransparentSlabBlock extends SlabBlock {
     public static final MapCodec<TransparentSlabBlock> CODEC = simpleCodec(TransparentSlabBlock::new);
@@ -15,7 +16,7 @@ public class TransparentSlabBlock extends SlabBlock {
         super(p_56359_);
     }
 
-    public MapCodec<? extends TransparentSlabBlock> codec() {
+    public @NotNull MapCodec<? extends TransparentSlabBlock> codec() {
         return CODEC;
     }
 
@@ -53,11 +54,13 @@ public class TransparentSlabBlock extends SlabBlock {
         return state.getValue(TYPE);
     }
 
-    public float getShadeBrightness(BlockState p_312407_, BlockGetter p_310193_, BlockPos p_311965_) {
+    public float getShadeBrightness(@NotNull BlockState state, @NotNull BlockGetter getter,
+                                    @NotNull BlockPos pos) {
         return 1.0F;
     }
 
-    public boolean propagatesSkylightDown(BlockState p_312717_, BlockGetter p_312877_, BlockPos p_312899_) {
+    public boolean propagatesSkylightDown(@NotNull BlockState state, @NotNull BlockGetter getter,
+                                          @NotNull BlockPos pos) {
         return true;
     }
 }

@@ -71,8 +71,8 @@ public class ModSingleItemRecipeBuilder implements RecipeBuilder {
               .requirements(AdvancementRequirements.Strategy.OR);
 
       this.criteria.forEach(advancement$builder::addCriterion);
-      ModSingleItemRecipe ModSingleItemRecipe = this.factory.create(Objects.requireNonNullElse(this.group, ""), this.ingredient, new ItemStack(this.result, this.count));
-      pOutput.accept(pLoc, ModSingleItemRecipe, advancement$builder.build(pLoc.withPrefix("recipes/" + this.category.getFolderName() + "/")));
+      ModSingleItemRecipe modSingleItemRecipe = this.factory.create(Objects.requireNonNullElse(this.group, ""), this.ingredient, new ItemStack(this.result, this.count));
+      pOutput.accept(pLoc, modSingleItemRecipe, advancement$builder.build(pLoc.withPrefix("recipes/" + this.category.getFolderName() + "/")));
    }
 
    private void ensureValid(ResourceLocation pLoc) {

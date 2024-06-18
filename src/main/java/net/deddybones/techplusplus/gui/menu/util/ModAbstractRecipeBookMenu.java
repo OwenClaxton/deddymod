@@ -1,15 +1,16 @@
 package net.deddybones.techplusplus.gui.menu.util;
 
-import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.inventory.RecipeBookMenu;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeInput;
 import org.jetbrains.annotations.NotNull;
 
 @SuppressWarnings("unused")
-public abstract class ModAbstractRecipeBookMenu<C extends Container> extends RecipeBookMenu<C> {
+public abstract class ModAbstractRecipeBookMenu<I extends RecipeInput, R extends Recipe<I>> extends RecipeBookMenu<I, R> {
     public static final int NUM_INVENTORY_ROWS = 3;
     public static final int INVENTORY_SLOTS_PER_ROW = 9;
 

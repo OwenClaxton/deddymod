@@ -13,9 +13,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.Container;
 import net.minecraft.world.ContainerHelper;
-import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.WorldlyContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -27,10 +25,10 @@ import net.minecraft.world.inventory.StackedContentsCompatible;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeManager;
+import net.minecraft.world.item.crafting.SingleRecipeInput;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.client.model.data.ModelData;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
@@ -45,12 +43,12 @@ import java.util.List;
 public class CrusherBlockEntity extends BaseContainerBlockEntity
         implements WorldlyContainer, RecipeCraftingHolder, StackedContentsCompatible {
     public static final int SLOT_INPUT = 0;
-    public static final int SLOT_RESULT = 1;
-    public static final int SLOT_COUNT = 2;
+    public static final int SLOT_RESULT = SLOT_INPUT + 1;
+    public static final int SLOT_COUNT = SLOT_RESULT - SLOT_INPUT + 1;
     public static final int GRID_WIDTH = 1;
     public static final int GRID_HEIGHT = 1;
-    private static final int[] SLOTS_FOR_UP = new int[]{0};
-    private static final int[] SLOTS_FOR_DOWN = new int[]{1};
+    private static final int[] SLOTS_FOR_UP = new int[]{SLOT_INPUT};
+    private static final int[] SLOTS_FOR_DOWN = new int[]{SLOT_RESULT};
     public static final int DATA_CRUSHING_PROGRESS = 0;
     public static final int DATA_CRUSHING_TOTAL_TIME = 1;
     public static final int NUM_DATA_VALUES = 2;
@@ -60,7 +58,7 @@ public class CrusherBlockEntity extends BaseContainerBlockEntity
     protected NonNullList<ItemStack> items = NonNullList.withSize(SLOT_COUNT, ItemStack.EMPTY);
     private final Object2IntOpenHashMap<ResourceLocation> recipesUsed =
             new Object2IntOpenHashMap<>();
-    private final RecipeManager.CachedCheck<Container, CrusherRecipe> quickRecipeCheck;
+    private final RecipeManager.CachedCheck<SingleRecipeInput, CrusherRecipe> quickRecipeCheck;
     LazyOptional<? extends IItemHandler>[] handlers =
             SidedInvWrapper.create(this, Direction.UP, Direction.DOWN, Direction.NORTH);
 
@@ -106,7 +104,7 @@ public class CrusherBlockEntity extends BaseContainerBlockEntity
         this.crushingTotalTime = pTag.getInt("CrushingTotalTime");
         CompoundTag compoundTag = pTag.getCompound("RecipesUsed");
         for (String s : compoundTag.getAllKeys()) {
-            this.recipesUsed.put(new ResourceLocation(s), compoundTag.getInt(s));
+            this.recipesUsed.put(ResourceLocation.parse(s), compoundTag.getInt(s));
         }
     }
 
@@ -119,8 +117,8 @@ public class CrusherBlockEntity extends BaseContainerBlockEntity
         ContainerHelper.saveAllItems(pTag, this.items, pProvider);
         CompoundTag compoundTag = new CompoundTag();
         this.recipesUsed.forEach(
-                (ResourceLocation resLoc, Integer recipeInt)
-                        -> compoundTag.putInt(resLoc.toString(), recipeInt));
+                (ResourceLocation resourceLocation, Integer recipeInt)
+                        -> compoundTag.putInt(resourceLocation.toString(), recipeInt));
         pTag.put("RecipesUsed", compoundTag);
     }
 
@@ -133,10 +131,11 @@ public class CrusherBlockEntity extends BaseContainerBlockEntity
     }
 
     public static void serverTick(Level pLevel, BlockPos pPos, BlockState pState, CrusherBlockEntity pEntity) {
-        boolean inputIsNotEmpty = !pEntity.items.get(SLOT_INPUT).isEmpty(); // input
+        ItemStack inputItem = pEntity.items.get(SLOT_INPUT);
+        boolean inputIsNotEmpty = !inputItem.isEmpty(); // input
         if (inputIsNotEmpty) {
             RecipeHolder<CrusherRecipe> recipeHolder = pEntity.quickRecipeCheck
-                                                .getRecipeFor(pEntity, pLevel)
+                                                .getRecipeFor(new SingleRecipeInput(inputItem), pLevel)
                                                 .orElse(null);
             int maxStackSize = pEntity.getMaxStackSize();
             if (pEntity.canCrush(pLevel.registryAccess(), recipeHolder, pEntity.items, maxStackSize)) {
@@ -161,7 +160,7 @@ public class CrusherBlockEntity extends BaseContainerBlockEntity
 
     public static boolean stackCanBeCrushed(Level pLevel, ItemStack pStack) {
         return pLevel.getRecipeManager()
-                .getRecipeFor(ModRecipes.CRUSHING_TYPE.get(), new SimpleContainer(pStack), pLevel)
+                .getRecipeFor(ModRecipes.CRUSHING_TYPE.get(), new SingleRecipeInput(pStack), pLevel)
                 .isPresent();
     }
 
@@ -170,7 +169,8 @@ public class CrusherBlockEntity extends BaseContainerBlockEntity
                             NonNullList<ItemStack> pItems, int pMaxStackSize) {
         if (pItems.get(SLOT_INPUT).isEmpty() || pRecipeHolder == null) // no item to crush or no recipe
             return false;
-        ItemStack recipeResult = pRecipeHolder.value().assemble(this, pAccess);
+        ItemStack recipeResult = pRecipeHolder.value().assemble(new SingleRecipeInput(this.items.get(SLOT_INPUT)),
+                                                                pAccess);
         if (recipeResult.isEmpty()) // no valid recipe
             return false;
         ItemStack existingResultStack = pItems.get(SLOT_RESULT);
@@ -192,7 +192,8 @@ public class CrusherBlockEntity extends BaseContainerBlockEntity
         if (pRecipeHolder == null || !canCrush(pAccess, pRecipeHolder, pItems, pMaxStackSize))
             return false;
         ItemStack inputStack = pItems.get(SLOT_INPUT);
-        ItemStack recipeStack = pRecipeHolder.value().assemble(this, pAccess);
+        ItemStack recipeStack = pRecipeHolder.value().assemble(new SingleRecipeInput(this.items.get(SLOT_INPUT)),
+                                                                pAccess);
         ItemStack resultStack = pItems.get(SLOT_RESULT);
         if (resultStack.isEmpty()) {
             pItems.set(SLOT_RESULT, recipeStack.copy());
@@ -205,7 +206,7 @@ public class CrusherBlockEntity extends BaseContainerBlockEntity
 
     @Override
     protected @NotNull Component getDefaultName() {
-        return Component.translatable("container.techplusplus.crusher");
+        return CrusherBlock.CONTAINER_TITLE;
     }
 
     @Override
@@ -225,7 +226,7 @@ public class CrusherBlockEntity extends BaseContainerBlockEntity
     }
 
     private static int getTotalCrushingTime(Level pLevel, CrusherBlockEntity pEntity) {
-        return pEntity.quickRecipeCheck.getRecipeFor(pEntity, pLevel)
+        return pEntity.quickRecipeCheck.getRecipeFor(new SingleRecipeInput(pEntity.items.get(SLOT_INPUT)), pLevel)
                 .map((RecipeHolder<CrusherRecipe> pRecipe)
                     -> CRUSHING_DURATION_STANDARD)
                 .orElse(CRUSHING_DURATION_STANDARD);
@@ -257,16 +258,6 @@ public class CrusherBlockEntity extends BaseContainerBlockEntity
     @Override
     public boolean canPlaceItem(int pSlotIndex, @NotNull ItemStack pStack) {
         return pSlotIndex == SLOT_INPUT;
-    }
-
-    @Override
-    public @NotNull ModelData getModelData() {
-        return super.getModelData();
-    }
-
-    @Override
-    public boolean hasCustomOutlineRendering(Player player) {
-        return super.hasCustomOutlineRendering(player);
     }
 
     @Override

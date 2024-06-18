@@ -6,6 +6,7 @@ import net.deddybones.techplusplus.item.ModItems;
 import net.deddybones.techplusplus.entity.ModEntities;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
@@ -21,6 +22,8 @@ import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Objects;
+
 public class ThrownWoodenSpear extends AbstractArrow {
     private boolean dealtDamage;
 
@@ -29,11 +32,11 @@ public class ThrownWoodenSpear extends AbstractArrow {
     }
 
     public ThrownWoodenSpear(Level pLevel, LivingEntity pEntity, ItemStack pStack) {
-        super(ModEntities.THROWN_WOODEN_SPEAR_ENTITY_TYPE.get(), pEntity, pLevel, pStack);
+        super(ModEntities.THROWN_WOODEN_SPEAR_ENTITY_TYPE.get(), pEntity, pLevel, pStack, null);
     }
 
     public ThrownWoodenSpear(Level pLevel, double pX, double pY, double pZ, ItemStack pStack) {
-        super(ModEntities.THROWN_WOODEN_SPEAR_ENTITY_TYPE.get(), pX, pY, pZ, pLevel, pStack);
+        super(ModEntities.THROWN_WOODEN_SPEAR_ENTITY_TYPE.get(), pX, pY, pZ, pLevel, pStack, null);
     }
 
     @Override
@@ -60,31 +63,28 @@ public class ThrownWoodenSpear extends AbstractArrow {
     protected void onHitEntity(EntityHitResult p_37573_) {
         Entity entity = p_37573_.getEntity();
         float f = 8.0F;
-        if (entity instanceof LivingEntity livingentity) {
-            f += EnchantmentHelper.getDamageBonus(this.getPickupItemStackOrigin(), livingentity.getType());
+        Entity entityOwner = this.getOwner();
+        DamageSource damageSource = this.damageSources().trident(this, entityOwner == null ? this : entityOwner);
+        if (this.level() instanceof ServerLevel serverlevel) {
+            f = EnchantmentHelper.modifyDamage(serverlevel, Objects.requireNonNull(this.getWeaponItem()),
+                                                entity, damageSource, f);
         }
-
-        Entity entity1 = this.getOwner();
-        DamageSource damagesource = this.damageSources().trident(this, entity1 == null ? this : entity1);
         this.dealtDamage = true;
-        SoundEvent soundevent = SoundEvents.TRIDENT_HIT;
-        if (entity.hurt(damagesource, f)) {
+        if (entity.hurt(damageSource, f)) {
             if (entity.getType() == EntityType.ENDERMAN) {
                 return;
             }
+            if (this.level() instanceof ServerLevel serverlevel) {
+                EnchantmentHelper.doPostAttackEffectsWithItemSource(serverlevel, entity, damageSource, this.getWeaponItem());
+            }
 
             if (entity instanceof LivingEntity livingEntity) {
-                if (entity1 instanceof LivingEntity) {
-                    EnchantmentHelper.doPostHurtEffects(livingEntity, entity1);
-                    EnchantmentHelper.doPostDamageEffects((LivingEntity)entity1, livingEntity);
-                }
-
+                this.doKnockback(livingEntity, damageSource);
                 this.doPostHurtEffects(livingEntity);
             }
         }
-
         this.setDeltaMovement(this.getDeltaMovement().multiply(-0.01D, -0.1D, -0.01D));
-        this.playSound(soundevent, 1.0F, 1.0F);
+        this.playSound(SoundEvents.TRIDENT_HIT, 1.0F, 1.0F);
     }
 
     @Override

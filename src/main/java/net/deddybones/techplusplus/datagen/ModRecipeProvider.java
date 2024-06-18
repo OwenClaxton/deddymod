@@ -1,8 +1,8 @@
 package net.deddybones.techplusplus.datagen;
 
 import com.google.common.collect.ImmutableList;
-import net.deddybones.techplusplus.TechPlusPlus;
 import net.deddybones.techplusplus.block.ModBlocks;
+import net.deddybones.techplusplus.block.entity.SmelteryBlockEntity;
 import net.deddybones.techplusplus.item.ModItems;
 import net.deddybones.techplusplus.item.TweakedVanillaItems;
 import net.deddybones.techplusplus.recipes.*;
@@ -27,8 +27,9 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-import static net.deddybones.techplusplus.datagen.util.ModHelper.getFromExt;
+import static net.deddybones.techplusplus.datagen.util.ModHelper.*;
 import static net.deddybones.techplusplus.recipes.builders.ModShapelessRecipeBuilder.shapeless;
+import static net.deddybones.techplusplus.recipes.builders.ModSmelteryRecipeBuilder.smeltery;
 import static net.deddybones.techplusplus.util.ObjectNumbered.ObN;
 
 @SuppressWarnings({"SameParameterValue", "unused"})
@@ -96,23 +97,23 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                             oreCollection.getBilletItem(), 1.0F, 200, oreCollection.name());
                 }
                 if (oreCollection.furnaceOK()) {
-                    // 1x Raw Item -> 1x Ingot @ 1x speed
-                    oreSmelting(pOutput, ImmutableList.of(oreCollection.getRawItem()), RecipeCategory.MISC,
-                            oreCollection.getIngotItem(), 1.0F, 200, oreCollection.name());
-                    // 1x Nugget -> 1x Billet @ 4x speed
+                    // 1x Nugget -> 1x Billet @ 2x speed
                     oreSmelting(pOutput, ImmutableList.of(oreCollection.getNuggetItem()), RecipeCategory.MISC,
                             oreCollection.getBilletItem(), 1.0F, 50, oreCollection.name());
+                    // 1x Raw Item -> 1x Ingot @ 1x speed
+                    oreSmelting(pOutput, ImmutableList.of(oreCollection.getRawItem()), RecipeCategory.MISC,
+                            oreCollection.getIngotItem(), 1.0F, 250, oreCollection.name());
                 }
                 if (oreCollection.forgeOK()) {
-                    // 1x Raw Block -> 1x Cooked Block @ 1x speed
-                    oreBlasting(pOutput, ImmutableList.of(oreCollection.getRawBlock()), RecipeCategory.MISC,
-                            oreCollection.getCookedBlock(), 1.0F, 200, oreCollection.name());
-                    // 1x Raw Item -> 1x Ingot @ 4x speed
-                    oreBlasting(pOutput, ImmutableList.of(oreCollection.getRawItem()), RecipeCategory.MISC,
-                            oreCollection.getIngotItem(), 1.0F, 50, oreCollection.name());
                     // 1x Nugget -> 1x Billet @ 8x speed
                     oreBlasting(pOutput, ImmutableList.of(oreCollection.getNuggetItem()), RecipeCategory.MISC,
                             oreCollection.getBilletItem(), 1.0F, 12, oreCollection.name());
+                    // 1x Raw Item -> 1x Ingot @ 4x speed
+                    oreBlasting(pOutput, ImmutableList.of(oreCollection.getRawItem()), RecipeCategory.MISC,
+                            oreCollection.getIngotItem(), 1.0F, 60, oreCollection.name());
+                    // 1x Raw Block -> 1x Cooked Block @ 1x speed
+                    oreBlasting(pOutput, ImmutableList.of(oreCollection.getRawBlock()), RecipeCategory.MISC,
+                            oreCollection.getCookedBlock(), 1.0F, 300, oreCollection.name());
                 }
             }
         }
@@ -152,6 +153,13 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         }
     }
 
+    protected void makeSmelteryRecipes(@NotNull RecipeOutput pOutput) {
+        smeltery(pOutput, ModItems.COPPER_PICKAXE_PART.get(), Ingredient.of(ModItems.MOLD_PICKAXE_PART.get()),
+                SmelteryBlockEntity.SMELT_TIME_DEFAULT)
+                    .requires(List.of(ObN(Items.COPPER_INGOT, 3)))
+                    .save();
+    }
+
     @Override
     protected void buildRecipes(@NotNull RecipeOutput pOutput) {
         makeClayRecipes(pOutput);
@@ -159,6 +167,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         makeToolRecipes(pOutput);
         makeArmorRecipes(pOutput);
         makeAlloyRecipes(pOutput);
+        makeSmelteryRecipes(pOutput);
 
         oreSmelting(pOutput, SAPPHIRE_SMELTABLES, RecipeCategory.MISC, ModItems.SAPPHIRE.get(), 1.0F, 200, "sapphire");
         oreBlasting(pOutput, SAPPHIRE_SMELTABLES, RecipeCategory.MISC, ModItems.SAPPHIRE.get(), 1.0F, 100, "sapphire");
@@ -180,7 +189,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.PLASTIMETAL_HORSE_ARMOR.get()).define('X', ModItems.PLASTIMETAL_INGOT.get()).pattern("X X").pattern("XXX").pattern("X X").unlockedBy("has_plastimetal_ingot", has(ModItems.PLASTIMETAL_INGOT.get())).save(pOutput);
 
         shapeless(pOutput, RecipeCategory.MISC, ModItems.KNAPPED_FLINT.get(), 2, List.of(ObN(Items.FLINT), ObN(ModBlocks.TINY_ROCK_BLOCK.get()))).save();
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, Items.ARROW, 3).define('#', Items.STICK).define('X', ModItems.KNAPPED_FLINT.get()).define('Y', Items.FEATHER).pattern("X").pattern("#").pattern("Y").unlockedBy("has_feather", has(Items.FEATHER)).unlockedBy("has_stick", has(Items.STICK)).unlockedBy("has_knapped_flint", has(ModItems.KNAPPED_FLINT.get())).save(pOutput, TechPlusPlus.MOD_ID + ":arrow");
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, Items.ARROW, 3).define('#', Items.STICK).define('X', ModItems.KNAPPED_FLINT.get()).define('Y', Items.FEATHER).pattern("X").pattern("#").pattern("Y").unlockedBy("has_feather", has(Items.FEATHER)).unlockedBy("has_stick", has(Items.STICK)).unlockedBy("has_knapped_flint", has(ModItems.KNAPPED_FLINT.get())).save(pOutput, modLoc("arrow"));
 
         List<ItemLike> CarverList = List.of(ModItems.FLINT_KNIFE.get(), ModItems.PLASTIMETAL_AXE.get(), Items.IRON_AXE);
 
@@ -199,9 +208,9 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 //        removeRecipe(pOutput, "arrow");
 
         // gold nuggets used in firework star, glistering melon slice, and golden carrot recipes -> swap to gold billet:
-        SpecialRecipeBuilder.special(ModFireworkStarRecipe::new).save(pOutput,  TechPlusPlus.MOD_ID + ":" + getItemName(Items.FIREWORK_STAR));
-        ShapedRecipeBuilder.shaped(RecipeCategory.BREWING, Items.GOLDEN_CARROT).define('#', ModItems.GOLD_BILLET.get()).define('X', Items.CARROT).pattern("###").pattern("#X#").pattern("###").unlockedBy("has_gold_nugget", has(Items.GOLD_NUGGET)).save(pOutput, TechPlusPlus.MOD_ID + ":" + getItemName(Items.GOLDEN_CARROT));
-        ShapedRecipeBuilder.shaped(RecipeCategory.BREWING, Items.GLISTERING_MELON_SLICE).define('#', ModItems.GOLD_BILLET.get()).define('X', Items.MELON_SLICE).pattern("###").pattern("#X#").pattern("###").unlockedBy("has_melon", has(Items.MELON_SLICE)).save(pOutput, TechPlusPlus.MOD_ID + ":" + getItemName(Items.GLISTERING_MELON_SLICE));
+        SpecialRecipeBuilder.special(ModFireworkStarRecipe::new).save(pOutput,  modLoc(getItemName(Items.FIREWORK_STAR)));
+        ShapedRecipeBuilder.shaped(RecipeCategory.BREWING, Items.GOLDEN_CARROT).define('#', ModItems.GOLD_BILLET.get()).define('X', Items.CARROT).pattern("###").pattern("#X#").pattern("###").unlockedBy("has_gold_nugget", has(Items.GOLD_NUGGET)).save(pOutput, modLoc(getItemName(Items.GOLDEN_CARROT)));
+        ShapedRecipeBuilder.shaped(RecipeCategory.BREWING, Items.GLISTERING_MELON_SLICE).define('#', ModItems.GOLD_BILLET.get()).define('X', Items.MELON_SLICE).pattern("###").pattern("#X#").pattern("###").unlockedBy("has_melon", has(Items.MELON_SLICE)).save(pOutput, modLoc(getItemName(Items.GLISTERING_MELON_SLICE)));
 
         // Clay Molder Recipes
         moldingResult(pOutput, RecipeCategory.MISC, ModItems.MOLD_SWORD_PARTS.get(),      ModItems.CLAY_CHUNK.get());         // 2xI : WEAPON: swords
@@ -239,7 +248,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     protected static void moldingResult(RecipeOutput pOutput, RecipeCategory pCategory, ItemLike pResult, ItemLike pIngredient, int resultCount) {
         ModSingleItemRecipeBuilder.molding(Ingredient.of(pIngredient), pCategory, pResult, resultCount)
                 .unlockedBy(getHasName(pIngredient), has(pIngredient))
-                .save(pOutput,   TechPlusPlus.MOD_ID + ":" + getConversionRecipeName(pResult, pIngredient) + "_molding");
+                .save(pOutput,   modLoc(getConversionRecipeName(pResult, pIngredient) + "_molding"));
     }
 
     protected static void crusherResult(RecipeOutput pOutput, RecipeCategory pCategory, ItemLike pResult, ItemLike pIngredient) {
@@ -249,11 +258,11 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     protected static void crusherResult(RecipeOutput pOutput, RecipeCategory pCategory, ItemLike pResult, ItemLike pIngredient, int resultCount) {
         ModSingleItemRecipeBuilder.crushing(Ingredient.of(pIngredient), pCategory, pResult, resultCount)
                 .unlockedBy(getHasName(pIngredient), has(pIngredient))
-                .save(pOutput,   TechPlusPlus.MOD_ID + ":" + getConversionRecipeName(pResult, pIngredient) + "_crushing");
+                .save(pOutput,   modLoc(getConversionRecipeName(pResult, pIngredient) + "_crushing"));
     }
 
     protected static void recycleIntoSomething(@NotNull RecipeOutput pOutput, @NotNull Ingredient itemsForRecycling, @NotNull RecipeCategory recipeCategory,
-                                               @NotNull ItemLike recipeResult, float experience, String modid) {
+                                               @NotNull ItemLike recipeResult, float experience) {
         ModSimpleCookingRecipeBuilder smeltingBuilder = ModSimpleCookingRecipeBuilder.smelting(itemsForRecycling, recipeCategory, recipeResult, experience, 200);
         ModSimpleCookingRecipeBuilder blastingBuilder = ModSimpleCookingRecipeBuilder.blasting(itemsForRecycling, recipeCategory, recipeResult, experience, 100);
 
@@ -263,14 +272,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             blastingBuilder.unlockedBy(getHasName(itemToRecycle), has(itemToRecycle));
         }
 
-        smeltingBuilder.save(pOutput, modid + ":" + getSmeltingRecipeName(recipeResult));
-        blastingBuilder.save(pOutput, modid + ":" + getBlastingRecipeName(recipeResult));
-    }
-
-    protected static void recycleIntoSomething(@NotNull RecipeOutput pOutput, @NotNull Ingredient itemsForRecycling,
-                                               @NotNull RecipeCategory recipeCategory,
-                                               @NotNull ItemLike recipeResult, float experience) {
-        recycleIntoSomething(pOutput, itemsForRecycling, recipeCategory, recipeResult, experience, TechPlusPlus.MOD_ID);
+        smeltingBuilder.save(pOutput, modLoc(getSmeltingRecipeName(recipeResult)));
+        blastingBuilder.save(pOutput, modLoc(getBlastingRecipeName(recipeResult)));
     }
 
     protected static void itemListAndItemLike(  @NotNull RecipeOutput pOutput, @NotNull RecipeCategory recipeCategory,
@@ -306,7 +309,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             ModSimpleCookingRecipeBuilder.generic(Ingredient.of(itemlike), recipeCategory, cookingOutput, experienceAmount, cookingTime, recipeSerializer, cookingRecipe)
                     .group(group)
                     .unlockedBy(getHasName(itemlike), has(itemlike))
-                    .save(pOutput, TechPlusPlus.MOD_ID + ":" + getItemName(cookingOutput) + methodString + "_" + getItemName(itemlike));
+                    .save(pOutput, modLoc(getItemName(cookingOutput) + methodString + "_" + getItemName(itemlike)));
         }
 
     }
@@ -323,7 +326,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("##")
                 .pattern("##")
                 .unlockedBy(getHasName(singleItem), has(singleItem))
-                .save(pOutput, TechPlusPlus.MOD_ID + ":" + getItemName(storageItem) + getFromExt(singleItem));
+                .save(pOutput, modLoc(getItemName(storageItem) + getFromExt(singleItem)));
 
         shapeless(pOutput, singleRecipeCategory, singleItem, 4, List.of(ObN(storageItem)), getFromExt(storageItem)).save();
     }
@@ -337,7 +340,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("###")
                 .pattern("###")
                 .unlockedBy(getHasName(singleItem), has(singleItem))
-                .save(pOutput, TechPlusPlus.MOD_ID + ":" + getItemName(storageItem) + getFromExt(singleItem));
+                .save(pOutput, modLoc(getItemName(storageItem) + getFromExt(singleItem)));
 
         shapeless(pOutput, singleRecipeCategory, singleItem, 9, List.of(ObN(storageItem)), getFromExt(storageItem)).save();
     }

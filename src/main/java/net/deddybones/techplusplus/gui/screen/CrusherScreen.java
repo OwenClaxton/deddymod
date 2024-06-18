@@ -1,6 +1,5 @@
 package net.deddybones.techplusplus.gui.screen;
 
-import net.deddybones.techplusplus.TechPlusPlus;
 import net.deddybones.techplusplus.gui.menu.CrusherMenu;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.ImageButton;
@@ -19,11 +18,15 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
 
+import static net.deddybones.techplusplus.datagen.util.ModHelper.modLoc;
+
 @OnlyIn(Dist.CLIENT)
 public class CrusherScreen extends AbstractContainerScreen<CrusherMenu> implements RecipeUpdateListener {
-   private static final ResourceLocation texture = new ResourceLocation(TechPlusPlus.MOD_ID + ":textures/gui/container/crusher.png");
-   private static final ResourceLocation crushProgressSprite = new ResourceLocation("container/furnace/burn_progress");
+   private static final ResourceLocation texture = modLoc("textures/gui/container/crusher.png");
+   private static final ResourceLocation crushProgressSprite = modLoc("container/furnace/cook_progress");
    public final AbstractFurnaceRecipeBookComponent recipeBookComponent = new SmeltingRecipeBookComponent();
+   private static final int CRUSH_SPRITE_PX = 76;
+   private static final int CRUSH_SPRITE_PY = 33;
    private boolean widthTooNarrow;
 
    public CrusherScreen(CrusherMenu pMenu, Inventory pInventory, Component pComp) {
@@ -75,7 +78,7 @@ public class CrusherScreen extends AbstractContainerScreen<CrusherMenu> implemen
       int j = this.topPos;
       pGui.blit(texture, i, j, 0, 0, this.imageWidth, this.imageHeight);
       int j1 = Mth.ceil(this.menu.getCrushingProgress() * 24.0F);
-      pGui.blitSprite(crushProgressSprite, 24, 16, 0, 0, i + 77, j + 33, j1, 16);
+      pGui.blitSprite(crushProgressSprite, 24, 16, 0, 0, i + CRUSH_SPRITE_PX, j + CRUSH_SPRITE_PY, j1, 16);
    }
 
    @Override
@@ -122,28 +125,3 @@ public class CrusherScreen extends AbstractContainerScreen<CrusherMenu> implemen
       return this.recipeBookComponent;
    }
 }
-
-/*
-   public CrusherScreen(CrusherMenu pMenu, Inventory pInventory, Component pComp) {
-      super(pMenu, pInventory, pComp);
-      --this.titleLabelY;
-   }
-
-   protected void renderBg(GuiGraphics pGui, float p_282453_, int p_282940_, int p_282328_) {
-      int i = this.leftPos;
-      int j = this.topPos;
-      pGui.blit(BG_LOCATION, i, j, 0, 0, this.imageWidth, this.imageHeight);
-   }
- */
-
-/*
-public class FurnaceScreen extends AbstractFurnaceScreen<FurnaceMenu> {
-    private static final ResourceLocation LIT_PROGRESS_SPRITE = new ResourceLocation("container/furnace/lit_progress");
-    private static final ResourceLocation BURN_PROGRESS_SPRITE = new ResourceLocation("container/furnace/burn_progress");
-    private static final ResourceLocation TEXTURE = new ResourceLocation("textures/gui/container/furnace.png");
-
-    public FurnaceScreen(FurnaceMenu p_98776_, Inventory p_98777_, Component p_98778_) {
-        super(p_98776_, new SmeltingRecipeBookComponent(), p_98777_, p_98778_, TEXTURE, LIT_PROGRESS_SPRITE, BURN_PROGRESS_SPRITE);
-    }
-}
- */

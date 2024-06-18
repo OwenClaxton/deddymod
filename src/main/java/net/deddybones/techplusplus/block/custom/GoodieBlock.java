@@ -11,7 +11,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.*;
 import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.pathfinder.PathComputationType;
 import org.jetbrains.annotations.NotNull;
 
 public class GoodieBlock extends Block {
@@ -30,33 +29,34 @@ public class GoodieBlock extends Block {
         return CODEC;
     }
 
+    @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pStateDefinition) {
         pStateDefinition.add(LEFT_RIGHT);
     }
 
+    @Override
     public BlockState getStateForPlacement(BlockPlaceContext blockPlaceContext) {
         return this.defaultBlockState()
                 .setValue(LEFT_RIGHT, blockPlaceContext.getHorizontalDirection().getAxis() == Direction.Axis.X);
     }
 
-    @SuppressWarnings("deprecation")
+    @Override
     public @NotNull FluidState getFluidState(@NotNull BlockState pBlockState) {
         return super.getFluidState(pBlockState);
     }
 
     @Override
-    @SuppressWarnings("deprecation")
     public @NotNull BlockState updateShape(@NotNull BlockState pBlockState, @NotNull Direction pDirection, @NotNull BlockState p_51034_,
                                            @NotNull LevelAccessor pLevelAccessor, @NotNull BlockPos pBlockPos, @NotNull BlockPos p_51037_) {
         return pDirection == Direction.DOWN && !this.canSurvive(pBlockState, pLevelAccessor, pBlockPos) ? Blocks.AIR.defaultBlockState() : super.updateShape(pBlockState, pDirection, p_51034_, pLevelAccessor, pBlockPos, p_51037_);
     }
 
     @Override
-    @SuppressWarnings("deprecation")
     public @NotNull RenderShape getRenderShape(@NotNull BlockState p_60550_) {
         return RenderShape.MODEL;
     }
 
+    @Override
     public boolean propagatesSkylightDown(BlockState p_51039_, @NotNull BlockGetter p_51040_, @NotNull BlockPos p_51041_) {
         return p_51039_.getFluidState().isEmpty();
     }
@@ -83,7 +83,6 @@ public class GoodieBlock extends Block {
     }
 
     @Override
-    @SuppressWarnings("deprecation")
     public boolean canSurvive(@NotNull BlockState p_51028_, @NotNull LevelReader p_51029_, BlockPos p_51030_) {
         BlockPos blockpos = p_51030_.below();
         return this.mayPlaceOn(p_51029_.getBlockState(blockpos), p_51029_, blockpos);

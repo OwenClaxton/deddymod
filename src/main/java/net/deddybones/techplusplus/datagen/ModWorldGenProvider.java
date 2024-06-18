@@ -1,6 +1,5 @@
 package net.deddybones.techplusplus.datagen;
 
-import net.deddybones.techplusplus.TechPlusPlus;
 import net.deddybones.techplusplus.worldgen.ModBiomeModifiers;
 import net.deddybones.techplusplus.worldgen.ModConfiguredFeatures;
 import net.deddybones.techplusplus.worldgen.ModPlacedFeatures;
@@ -14,6 +13,8 @@ import net.minecraftforge.registries.ForgeRegistries;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
+import static net.deddybones.techplusplus.TechPlusPlus.MOD_ID;
+
 public class ModWorldGenProvider extends DatapackBuiltinEntriesProvider {
     public static final RegistrySetBuilder BUILDER = new RegistrySetBuilder()
             .add(Registries.CONFIGURED_FEATURE, ModConfiguredFeatures::bootstrap)
@@ -21,6 +22,6 @@ public class ModWorldGenProvider extends DatapackBuiltinEntriesProvider {
             .add(ForgeRegistries.Keys.BIOME_MODIFIERS, ModBiomeModifiers::bootstrap);
 
     public ModWorldGenProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
-        super(output, registries, BUILDER, Set.of(TechPlusPlus.MOD_ID));
+        super(output, registries, BUILDER, Set.of(MOD_ID));
     }
 }

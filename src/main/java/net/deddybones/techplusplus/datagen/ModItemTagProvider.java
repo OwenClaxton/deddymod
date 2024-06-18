@@ -1,6 +1,5 @@
 package net.deddybones.techplusplus.datagen;
 
-import net.deddybones.techplusplus.TechPlusPlus;
 import net.deddybones.techplusplus.block.ModBlocks;
 import net.deddybones.techplusplus.item.ModItems;
 import net.deddybones.techplusplus.item.TweakedVanillaItems;
@@ -17,9 +16,11 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
 
+import static net.deddybones.techplusplus.TechPlusPlus.MOD_ID;
+
 public class ModItemTagProvider extends ItemTagsProvider {
     public ModItemTagProvider(PackOutput p_275343_, CompletableFuture<HolderLookup.Provider> p_275729_, CompletableFuture<TagLookup<Block>> p_275322_, @Nullable ExistingFileHelper existingFileHelper) {
-        super(p_275343_, p_275729_, p_275322_, TechPlusPlus.MOD_ID, existingFileHelper);
+        super(p_275343_, p_275729_, p_275322_, MOD_ID, existingFileHelper);
     }
 
     @Override

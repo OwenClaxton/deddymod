@@ -7,15 +7,16 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.NotNull;
 
 public class TransparentStairBlock extends StairBlock {
-    public static final MapCodec<TransparentStairBlock> CODEC = RecordCodecBuilder.mapCodec((p_309295_) -> {
-        return p_309295_.group(BlockState.CODEC.fieldOf("base_state").forGetter((p_309296_) -> {
-            return p_309296_.baseState;
-        }), propertiesCodec()).apply(p_309295_, TransparentStairBlock::new);
-    });
+    public static final MapCodec<TransparentStairBlock> CODEC = RecordCodecBuilder.mapCodec(
+            (p_309295_) -> p_309295_.group(
+                    BlockState.CODEC.fieldOf("base_state").forGetter((p_309296_) -> p_309296_.baseState),
+                    propertiesCodec()
+            ).apply(p_309295_, TransparentStairBlock::new));
 
-    public MapCodec<? extends TransparentStairBlock> codec() {
+    public @NotNull MapCodec<? extends TransparentStairBlock> codec() {
         return CODEC;
     }
 
@@ -27,11 +28,13 @@ public class TransparentStairBlock extends StairBlock {
         super(p_56862_, p_56863_);
     }
 
-    public float getShadeBrightness(BlockState p_312407_, BlockGetter p_310193_, BlockPos p_311965_) {
+    public float getShadeBrightness(@NotNull BlockState state, @NotNull BlockGetter getter,
+                                    @NotNull BlockPos pos) {
         return 1.0F;
     }
 
-    public boolean propagatesSkylightDown(BlockState p_312717_, BlockGetter p_312877_, BlockPos p_312899_) {
+    public boolean propagatesSkylightDown(@NotNull BlockState state, @NotNull BlockGetter getter,
+                                          @NotNull BlockPos pos) {
         return true;
     }
 }

@@ -1,10 +1,8 @@
 package net.deddybones.techplusplus.datagen;
 
-import net.deddybones.techplusplus.TechPlusPlus;
 import net.deddybones.techplusplus.block.ModBlocks;
 import net.deddybones.techplusplus.item.ModItems;
-import static net.deddybones.techplusplus.datagen.util.ModHelper.bName;
-import static net.deddybones.techplusplus.datagen.util.ModHelper.iName;
+
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -22,6 +20,9 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 
 import java.util.LinkedHashMap;
 
+import static net.deddybones.techplusplus.TechPlusPlus.MOD_ID;
+import static net.deddybones.techplusplus.datagen.util.ModHelper.*;
+
 @SuppressWarnings({"UnusedReturnValue","SameParameterValue"})
 public class ModItemModelProvider extends ItemModelProvider {
     private static final LinkedHashMap<ResourceKey<TrimMaterial>, Float> trimMaterials = new LinkedHashMap<>();
@@ -38,7 +39,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         trimMaterials.put(TrimMaterials.AMETHYST, 1.0F);
     }
     public ModItemModelProvider(PackOutput output, ExistingFileHelper existingFileHelper) {
-        super(output, TechPlusPlus.MOD_ID, existingFileHelper);
+        super(output, MOD_ID, existingFileHelper);
     }
 
     @Override
@@ -262,7 +263,6 @@ public class ModItemModelProvider extends ItemModelProvider {
     }
 
     private void trimmedArmorItem(Item item) {
-        final String MOD_ID = TechPlusPlus.MOD_ID; // Change this to your mod id
 
         if (item instanceof ArmorItem armorItem) {
             trimMaterials.forEach((trimMaterial, value) -> {
@@ -277,12 +277,12 @@ public class ModItemModelProvider extends ItemModelProvider {
                     default -> "";
                 };
 
-                String armorItemPath = "item/" + armorItem;
+                String armorItemPath = "item/" + getItemName(armorItem);
                 String trimPath = "trims/items/" + armorType + "_trim_" + trimMaterial.location().getPath();
                 String currentTrimName = armorItemPath + "_" + trimMaterial.location().getPath() + "_trim";
-                ResourceLocation armorItemResLoc = new ResourceLocation(MOD_ID, armorItemPath);
-                ResourceLocation trimResLoc = new ResourceLocation(trimPath); // minecraft namespace
-                ResourceLocation trimNameResLoc = new ResourceLocation(MOD_ID, currentTrimName);
+                ResourceLocation armorItemResLoc = modLoc(armorItemPath);
+                ResourceLocation trimResLoc = resLoc(trimPath); // minecraft namespace
+                ResourceLocation trimNameResLoc = modLoc(currentTrimName);
 
                 // This is used for making the ExistingFileHelper acknowledge that these textures exist,
                 // avoiding an IllegalArgumentException
@@ -301,16 +301,15 @@ public class ModItemModelProvider extends ItemModelProvider {
                         .model(new ModelFile.UncheckedModelFile(trimNameResLoc))
                         .predicate(mcLoc("trim_type"), trimValue).end()
                         .texture("layer0",
-                                new ResourceLocation(MOD_ID,
-                                        "item/" + iName(armorItem)));
+                                modLoc("item/" + iName(armorItem)));
             });
         }
     }
 
     private ItemModelBuilder simpleItem(Item item) {
         return withExistingParent(iName(item),
-                new ResourceLocation("item/generated")).texture("layer0",
-                new ResourceLocation(TechPlusPlus.MOD_ID, "item/" + iName(item)));
+                resLoc("item/generated")).texture("layer0",
+                modLoc("item/" + iName(item)));
     }
 
     public void trapdoorItem(Block block) {
@@ -320,43 +319,39 @@ public class ModItemModelProvider extends ItemModelProvider {
 
     public void fenceItem(Block block, Block baseBlock) {
         this.withExistingParent(bName(block), mcLoc("block/fence_inventory"))
-                .texture("texture",  new ResourceLocation(TechPlusPlus.MOD_ID, "block/" + bName(baseBlock)));
+                .texture("texture",  modLoc("block/" + bName(baseBlock)));
     }
 
     public void buttonItem(Block block, Block baseBlock) {
         this.withExistingParent(bName(block), mcLoc("block/button_inventory"))
-                .texture("texture",  new ResourceLocation(TechPlusPlus.MOD_ID, "block/" + bName(baseBlock)));
+                .texture("texture",  modLoc("block/" + bName(baseBlock)));
     }
 
     public void wallItem(Block block, Block baseBlock) {
         this.withExistingParent(bName(block), mcLoc("block/wall_inventory"))
-                .texture("wall",  new ResourceLocation(TechPlusPlus.MOD_ID, "block/" + bName(baseBlock)));
+                .texture("wall",  modLoc("block/" + bName(baseBlock)));
     }
 
     public void evenSimplerBlockItem(Block block) {
         this.withExistingParent(bName(block),
-                new ResourceLocation(TechPlusPlus.MOD_ID, "block/" + bName(block)));
+                modLoc("block/" + bName(block)));
     }
     
     private ItemModelBuilder handheldBlock(Block block) {
         return withExistingParent(bName(block),
-                new ResourceLocation("item/handheld")).texture("layer0",
-                new ResourceLocation(TechPlusPlus.MOD_ID,"block/" + bName(block)));
-    }
-
-    private ItemModelBuilder handheldItem(Item item, String pModID) {
-        return withExistingParent(iName(item),
-                new ResourceLocation("item/handheld")).texture("layer0",
-                new ResourceLocation(pModID,"item/" + iName(item)));
+                resLoc("item/handheld")).texture("layer0",
+                modLoc("block/" + bName(block)));
     }
 
     private ItemModelBuilder handheldItem(Item item) {
-        return handheldItem(item, TechPlusPlus.MOD_ID);
+        return withExistingParent(iName(item),
+                resLoc("item/handheld")).texture("layer0",
+                modLoc("item/" + iName(item)));
     }
 
     private ItemModelBuilder simpleBlockItem(Block block) {
         return withExistingParent(bName(block),
-                new ResourceLocation("item/generated")).texture("layer0",
-                new ResourceLocation(TechPlusPlus.MOD_ID,"item/" + bName(block)));
+                resLoc("item/generated")).texture("layer0",
+                modLoc("item/" + bName(block)));
     }
 }

@@ -20,6 +20,8 @@ import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Objects;
+
 public class SpearItem extends TridentItem implements ProjectileItem {
     public static final int THROW_THRESHOLD_TIME = 10;
     public static final double BASE_DAMAGE = 8.0D;
@@ -33,22 +35,24 @@ public class SpearItem extends TridentItem implements ProjectileItem {
         return ItemAttributeModifiers.builder()
             .add(
                     Attributes.ATTACK_DAMAGE,
-                    new AttributeModifier(BASE_ATTACK_DAMAGE_UUID, "Tool modifier", BASE_DAMAGE, AttributeModifier.Operation.ADD_VALUE),
+                    new AttributeModifier(BASE_ATTACK_DAMAGE_ID, BASE_DAMAGE, AttributeModifier.Operation.ADD_VALUE),
                     EquipmentSlotGroup.MAINHAND
             )
             .add(
                     Attributes.ATTACK_SPEED,
-                    new AttributeModifier(BASE_ATTACK_SPEED_UUID, "Tool modifier", BASE_SPEED, AttributeModifier.Operation.ADD_VALUE),
+                    new AttributeModifier(BASE_ATTACK_SPEED_ID, BASE_SPEED, AttributeModifier.Operation.ADD_VALUE),
                     EquipmentSlotGroup.MAINHAND
             ).build();
     }
 
-    public void releaseUsing(ItemStack pItemStack, Level pLevel, LivingEntity pEntity, int p_43397_) {
+    public void releaseUsing(@NotNull ItemStack pItemStack, @NotNull Level pLevel,
+                             @NotNull LivingEntity pEntity, int p_43397_) {
         if (pEntity instanceof Player player) {
-            int i = this.getUseDuration(pItemStack) - p_43397_;
+            int i = this.getUseDuration(pItemStack, pEntity) - p_43397_;
             if (i >= THROW_THRESHOLD_TIME) {
                 if (!pLevel.isClientSide) {
-                    pItemStack.hurtAndBreak(1, player, player.getMainHandItem().getEquipmentSlot());
+                    pItemStack.hurtAndBreak(1, player,
+                            Objects.requireNonNull(player.getMainHandItem().getEquipmentSlot()));
                     ThrownWoodenSpear thrownSpear = new ThrownWoodenSpear(pLevel, player, pItemStack);
                     thrownSpear.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 2.5F, 1.0F);
                     if (!player.hasInfiniteMaterials()) {
@@ -56,7 +60,8 @@ public class SpearItem extends TridentItem implements ProjectileItem {
                     }
 
                     pLevel.addFreshEntity(thrownSpear);
-                    pLevel.playSound(null, thrownSpear, SoundEvents.TRIDENT_THROW, SoundSource.PLAYERS, 1.0F, 1.0F);
+                    pLevel.playSound(null, thrownSpear, SoundEvents.TRIDENT_THROW.value(),
+                            SoundSource.PLAYERS, 1.0F, 1.0F);
                     if (!player.hasInfiniteMaterials()) {
                         player.getInventory().removeItem(pItemStack);
                     }

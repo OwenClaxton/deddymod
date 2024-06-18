@@ -10,7 +10,6 @@ import net.deddybones.techplusplus.item.ModItems;
 import net.minecraft.Util;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.component.DataComponents;
-import net.minecraft.world.inventory.CraftingContainer;
 import net.minecraft.world.item.DyeItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -45,15 +44,15 @@ public class ModFireworkStarRecipe extends CustomRecipe {
         super(pCategory);
     }
 
-    public boolean matches(CraftingContainer pContainer, @Nullable Level pLevel) {
+    public boolean matches(CraftingInput pInput, @Nullable Level pLevel) {
         boolean GUNPOWDER_FLAG = false;
         boolean DYE_FLAG = false;
         boolean SHAPE_FLAG = false;
         boolean TRAIL_FLAG = false;
         boolean FLICKER_FLAG = false;
 
-        for (int i = 0; i < pContainer.getContainerSize(); ++i) {
-            ItemStack itemStack = pContainer.getItem(i);
+        for (int i = 0; i < pInput.size(); ++i) {
+            ItemStack itemStack = pInput.getItem(i);
             if (itemStack.isEmpty()) continue;
             if (SHAPE_INGREDIENT.test(itemStack)) {
                 if (SHAPE_FLAG) return false;
@@ -75,13 +74,13 @@ public class ModFireworkStarRecipe extends CustomRecipe {
         return GUNPOWDER_FLAG && DYE_FLAG;
     }
 
-    public @NotNull ItemStack assemble(CraftingContainer p_43893_, HolderLookup.@NotNull Provider p_335220_) {
+    public @NotNull ItemStack assemble(CraftingInput p_43893_, @NotNull HolderLookup.Provider p_335220_) {
         FireworkExplosion.Shape fireworkexplosion$shape = FireworkExplosion.Shape.SMALL_BALL;
         boolean flag = false;
         boolean flag1 = false;
         IntList intlist = new IntArrayList();
 
-        for (int i = 0; i < p_43893_.getContainerSize(); i++) {
+        for (int i = 0; i < p_43893_.size(); i++) {
             ItemStack itemstack = p_43893_.getItem(i);
             if (!itemstack.isEmpty()) {
                 if (SHAPE_INGREDIENT.test(itemstack)) {
@@ -108,7 +107,7 @@ public class ModFireworkStarRecipe extends CustomRecipe {
     }
 
     @Override
-    public @NotNull ItemStack getResultItem(HolderLookup.Provider p_328577_) {
+    public @NotNull ItemStack getResultItem(@NotNull HolderLookup.Provider pHLP) {
         return new ItemStack(Items.FIREWORK_STAR);
     }
 

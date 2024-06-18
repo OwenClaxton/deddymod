@@ -1,0 +1,23 @@
+{
+  "type": "techplusplus:smeltery",
+  "group": "copper_pickaxe_part",
+  "ingredients": [
+    {
+      "item": "minecraft:copper_ingot"
+    },
+    {
+      "item": "minecraft:copper_ingot"
+    },
+    {
+      "item": "minecraft:copper_ingot"
+    }
+  ],
+  "mold": {
+    "item": "techplusplus:mold_pickaxe_part"
+  },
+  "result": {
+    "count": 1,
+    "id": "techplusplus:copper_pickaxe_part"
+  },
+  "smeltTime": 100
+}

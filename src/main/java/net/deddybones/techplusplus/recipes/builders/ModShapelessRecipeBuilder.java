@@ -4,9 +4,10 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.function.Function;
 import javax.annotation.Nullable;
 
-import net.deddybones.techplusplus.TechPlusPlus;
+import net.deddybones.techplusplus.datagen.util.ModHelper;
 import net.deddybones.techplusplus.util.ObjectNumbered;
 import net.minecraft.advancements.*;
 import net.minecraft.advancements.critereon.RecipeUnlockedTrigger;
@@ -136,9 +137,8 @@ public class ModShapelessRecipeBuilder implements RecipeBuilder {
     }
 
     public void save() {
-        String resLocPrefix = this.isFromMinecraft ? "minecraft:" : TechPlusPlus.MOD_ID + ":";
-        ResourceLocation resLoc = new ResourceLocation(resLocPrefix + getItemName(this.getResult()) + extension);
-        this.save(this.recipeOutput, resLoc);
+        Function<String, ResourceLocation> locFunc = this.isFromMinecraft ? ModHelper::resLoc : ModHelper::modLoc;
+        this.save(this.recipeOutput, locFunc.apply(getItemName(this.getResult()) + extension));
     }
 
     public void save(RecipeOutput pOutput, @NotNull ResourceLocation pResLoc) {

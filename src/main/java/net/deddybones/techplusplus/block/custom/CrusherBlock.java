@@ -33,7 +33,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class CrusherBlock extends BaseEntityBlock {
     public static final MapCodec<CrusherBlock> CODEC = simpleCodec(CrusherBlock::new);
-    private static final Component CONTAINER_TITLE = Component.translatable("container.techplusplus.crusher");
+    public static final Component CONTAINER_TITLE = Component.translatable("container.techplusplus.crusher");
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
     public static final BooleanProperty CRUSHING = BooleanProperty.create("crushing");
     protected static final VoxelShape SHAPE = Block.box(0.0D, 0.0D, 0.0D,

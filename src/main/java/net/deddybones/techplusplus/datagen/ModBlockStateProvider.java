@@ -1,18 +1,15 @@
 package net.deddybones.techplusplus.datagen;
 
-import net.deddybones.techplusplus.TechPlusPlus;
 import net.deddybones.techplusplus.block.ModBlocks;
-import static net.deddybones.techplusplus.datagen.util.ModHelper.*;
 import net.deddybones.techplusplus.block.custom.*;
+import static net.deddybones.techplusplus.TechPlusPlus.MOD_ID;
+import static net.deddybones.techplusplus.datagen.util.ModHelper.*;
 import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.Half;
-import net.minecraft.world.level.block.state.properties.SlabType;
-import net.minecraft.world.level.block.state.properties.StairsShape;
+import net.minecraft.world.level.block.state.properties.*;
 import net.minecraftforge.client.model.generators.*;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
@@ -22,7 +19,7 @@ import java.util.function.Function;
 @SuppressWarnings("unused")
 public class ModBlockStateProvider extends BlockStateProvider {
     public ModBlockStateProvider(PackOutput output, ExistingFileHelper exFileHelper) {
-        super(output, TechPlusPlus.MOD_ID, exFileHelper);
+        super(output, MOD_ID, exFileHelper);
     }
 
     @Override
@@ -92,6 +89,8 @@ public class ModBlockStateProvider extends BlockStateProvider {
         horizontalBlockWithItem(ModBlocks.CRUSHER.get(), modLoc("block/crusher_side"), modLoc("block/crusher_front"), modLoc("block/crusher_top"), modLoc("block/crusher_bottom"));
         furnaceBlockWithItem(ModBlocks.KILN.get(), modLoc("block/kiln_side"), modLoc("block/kiln_front"), modLoc("block/kiln_front_on"), modLoc("block/kiln_top"));
         horizontalBlockWithItem(ModBlocks.CLAY_MOLDER.get(), modLoc("block/clay_molder_side"), modLoc("block/clay_molder_front"), modLoc("block/clay_molder_top"), modLoc("block/clay_molder_bottom"));
+        smelteryBlockWithItem(ModBlocks.SMELTERY.get(), modLoc("block/smeltery_side"), modLoc("block/smeltery_front"), modLoc("block/smeltery_front_on"), modLoc("block/smeltery_top"));
+
     }
 
     public void horizontalBlockWithItem(Block pBlock, ResourceLocation side, ResourceLocation front, ResourceLocation top) {
@@ -104,13 +103,15 @@ public class ModBlockStateProvider extends BlockStateProvider {
         itemModels().getBuilder(bKey(pBlock).getPath()).parent(model);
     }
 
-    public void furnaceBlockWithItem(Block pBlock, ResourceLocation side, ResourceLocation front, ResourceLocation front_lit, ResourceLocation top) {
+    public void litBlockWithItem(Block pBlock, ResourceLocation side, ResourceLocation front,
+                                 ResourceLocation front_lit, ResourceLocation top,
+                                 BooleanProperty litProperty) {
         ModelFile model_unlit = models().orientable(bName(pBlock), side, front, top);
         ModelFile model_lit = models().orientable(bName(pBlock) + "_on", side, front_lit, top);
 
         getVariantBuilder(pBlock)
                 .forAllStates(state -> {
-                        Function<BlockState, ModelFile> modelFunc = $ -> state.getValue(BlockStateProperties.LIT) ? model_lit : model_unlit;
+                        Function<BlockState, ModelFile> modelFunc = $ -> state.getValue(litProperty) ? model_lit : model_unlit;
                         return ConfiguredModel.builder()
                                 .modelFile(modelFunc.apply(state))
                                 .rotationY(((int) state.getValue(BlockStateProperties.HORIZONTAL_FACING).toYRot() + 180) % 360)
@@ -118,6 +119,16 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 });
 
         itemModels().getBuilder(bKey(pBlock).getPath()).parent(model_unlit);
+    }
+
+    public void furnaceBlockWithItem(Block pBlock, ResourceLocation side, ResourceLocation front,
+                                     ResourceLocation front_lit, ResourceLocation top) {
+        litBlockWithItem(pBlock, side, front, front_lit, top, AbstractFurnaceBlock.LIT);
+    }
+
+    public void smelteryBlockWithItem(Block pBlock, ResourceLocation side, ResourceLocation front,
+                                     ResourceLocation front_lit, ResourceLocation top) {
+        litBlockWithItem(pBlock, side, front, front_lit, top, SmelteryBlock.SMELTING);
     }
 
     public void goodieBlock(GoodieBlock pBlock, ModelFile pModel) {
@@ -142,7 +153,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
     private ConfiguredModel[] cropStates(BlockState state, ModCropBlock block, String modelName, String textureName) {
         ConfiguredModel[] models = new ConfiguredModel[1];
         models[0] = new ConfiguredModel(models().crop(modelName + state.getValue(block.getAgeProperty()),
-                new ResourceLocation(TechPlusPlus.MOD_ID, "block/" + textureName + state.getValue(block.getAgeProperty()))).renderType("cutout"));
+                modLoc("block/" + textureName + state.getValue(block.getAgeProperty()))).renderType("cutout"));
         return models;
     }
 

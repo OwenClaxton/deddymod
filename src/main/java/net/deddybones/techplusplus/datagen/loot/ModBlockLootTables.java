@@ -5,10 +5,13 @@ import net.deddybones.techplusplus.block.custom.CoffeePlantBlock;
 import net.deddybones.techplusplus.block.custom.FibrosiaCropBlock;
 import net.deddybones.techplusplus.item.ModItems;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -33,9 +36,10 @@ import java.util.Set;
 
 public class ModBlockLootTables extends BlockLootSubProvider {
     private final List<Block> VANILLA_BLOCKS_CHANGED = List.of(Blocks.CLAY);
+    HolderLookup.RegistryLookup<Enchantment> enchantmentLookup = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
 
-    public ModBlockLootTables() {
-        super(Set.of(), FeatureFlags.REGISTRY.allFlags());
+    public ModBlockLootTables(HolderLookup.Provider pProvider) {
+        super(Set.of(), FeatureFlags.REGISTRY.allFlags(), pProvider);
     }
 
     @Override
@@ -115,6 +119,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.CRUSHER.get());
         this.dropSelf(ModBlocks.KILN.get());
         this.dropSelf(ModBlocks.CLAY_MOLDER.get());
+        this.dropSelf(ModBlocks.SMELTERY.get());
     }
 
     protected LootTable.Builder createCropDrop(Block pBlock, Item pProduce, LootItemCondition.Builder pCondition) {
@@ -124,13 +129,14 @@ public class ModBlockLootTables extends BlockLootSubProvider {
                                 .add(LootItem.lootTableItem(pProduce).when(pCondition).otherwise(LootItem.lootTableItem(pProduce))))
                         .withPool(LootPool.lootPool()
                                 .when(pCondition).add(LootItem.lootTableItem(pProduce)
-                                .apply(ApplyBonusCount.addBonusBinomialDistributionCount(Enchantments.FORTUNE, 0.5714286F, 3)))));
+                                .apply(ApplyBonusCount.addBonusBinomialDistributionCount(
+                                        enchantmentLookup.getOrThrow(Enchantments.FORTUNE), 0.5714286F, 3)))));
     }
 
     protected LootTable.Builder createSilkTouchSlabItemTable(Block p_251313_) {
         return LootTable.lootTable()
                 .withPool(LootPool.lootPool()
-                        .when(HAS_SILK_TOUCH).setRolls(ConstantValue.exactly(1.0F))
+                        .when(this.hasSilkTouch()).setRolls(ConstantValue.exactly(1.0F))
                         .add(this.applyExplosionDecay(p_251313_, LootItem.lootTableItem(p_251313_)
                                 .apply(SetItemCountFunction.setCount(ConstantValue.exactly(2.0F))
                                         .when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(p_251313_)
@@ -141,7 +147,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
     protected LootTable.Builder createSilkTouchDoorTable(Block pBlock) {
         return LootTable.lootTable()
                 .withPool(this.applyExplosionCondition(pBlock, LootPool.lootPool()
-                        .when(HAS_SILK_TOUCH).setRolls(ConstantValue.exactly(1.0F))
+                        .when(this.hasSilkTouch()).setRolls(ConstantValue.exactly(1.0F))
                         .add(LootItem.lootTableItem(pBlock)
                                 .when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(pBlock)
                                         .setProperties(StatePropertiesPredicate.Builder.properties()

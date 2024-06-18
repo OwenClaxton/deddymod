@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:blasting",
+  "category": "blocks",
+  "cookingtime": 300,
+  "experience": 1.0,
+  "group": "BRONZE",
+  "ingredient": {
+    "item": "techplusplus:raw_bronze_block"
+  },
+  "result": {
+    "id": "techplusplus:bronze_block"
+  }
+}

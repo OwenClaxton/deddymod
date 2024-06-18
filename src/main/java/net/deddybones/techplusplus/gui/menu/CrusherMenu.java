@@ -5,6 +5,7 @@ import net.deddybones.techplusplus.block.entity.CrusherBlockEntity;
 import net.deddybones.techplusplus.gui.menu.slots.CrusherResultSlot;
 import net.deddybones.techplusplus.gui.menu.util.ModAbstractRecipeBookMenu;
 import net.deddybones.techplusplus.gui.ModMenuTypes;
+import net.deddybones.techplusplus.recipes.CrusherRecipe;
 import net.minecraft.util.Mth;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
@@ -13,19 +14,18 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.player.StackedContents;
 import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeHolder;
+import net.minecraft.world.item.crafting.SingleRecipeInput;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 
-import static net.deddybones.techplusplus.block.entity.CrusherBlockEntity.*;
-
-public class CrusherMenu extends ModAbstractRecipeBookMenu<Container> {
+public class CrusherMenu extends ModAbstractRecipeBookMenu<SingleRecipeInput, CrusherRecipe> {
    public static final int SLOT_INPUT = CrusherBlockEntity.SLOT_INPUT;
    public static final int SLOT_RESULT = CrusherBlockEntity.SLOT_RESULT;
    public static final int SLOT_COUNT = CrusherBlockEntity.SLOT_COUNT;
    public static final int GRID_WIDTH = CrusherBlockEntity.GRID_WIDTH;
    public static final int GRID_HEIGHT = CrusherBlockEntity.GRID_HEIGHT;
+   public static final int NUM_DATA_VALUES = CrusherBlockEntity.NUM_DATA_VALUES;
    private static final int INV_SLOT_START = SLOT_COUNT; // inclusive
    private static final int INV_SLOT_END = INV_SLOT_START + (3*9); // not inclusive
    private static final int USE_ROW_SLOT_START = INV_SLOT_END; // inclusive
@@ -41,7 +41,7 @@ public class CrusherMenu extends ModAbstractRecipeBookMenu<Container> {
 
 
    public CrusherMenu(int pContainerId, Inventory pInventory) {
-      this(pContainerId, pInventory, new SimpleContainer(2), new SimpleContainerData(2));
+      this(pContainerId, pInventory, new SimpleContainer(SLOT_COUNT), new SimpleContainerData(NUM_DATA_VALUES));
    }
 
    public CrusherMenu(int pContainerId, Inventory pInventory, Container pContainer, ContainerData pContData) {
@@ -67,8 +67,8 @@ public class CrusherMenu extends ModAbstractRecipeBookMenu<Container> {
    }
 
    public float getCrushingProgress() {
-      int i = this.data.get(DATA_CRUSHING_PROGRESS);
-      int j = this.data.get(DATA_CRUSHING_TOTAL_TIME);
+      int i = this.data.get(CrusherBlockEntity.DATA_CRUSHING_PROGRESS);
+      int j = this.data.get(CrusherBlockEntity.DATA_CRUSHING_TOTAL_TIME);
       return j != 0 && i != 0 ? Mth.clamp((float)i / (float)j, 0.0F, 1.0F) : 0.0F;
    }
 
@@ -86,8 +86,8 @@ public class CrusherMenu extends ModAbstractRecipeBookMenu<Container> {
    }
 
    @Override
-   public boolean recipeMatches(RecipeHolder<? extends Recipe<Container>> pRecipeHolder) {
-      return pRecipeHolder.value().matches(this.container, this.level);
+   public boolean recipeMatches(RecipeHolder pRecipeHolder) {
+      return pRecipeHolder.value().matches(new SingleRecipeInput(this.container.getItem(SLOT_INPUT)), this.level);
    }
 
    @Override
@@ -130,7 +130,7 @@ public class CrusherMenu extends ModAbstractRecipeBookMenu<Container> {
          quickMovedSlot.onQuickCraft(slotStack, outStack); // perform logic on slot quick move (see: CrusherResultSlot)
       } else if (pSlotIndex != SLOT_INPUT) { // if we shift-click anywhere in the inventory:
          // first try move into input:
-         if (stackCanBeCrushed(this.level, slotStack)) {
+         if (CrusherBlockEntity.stackCanBeCrushed(this.level, slotStack)) {
             if (!this.moveItemStackTo(slotStack, SLOT_INPUT, SLOT_INPUT+1, false)) {
                return ItemStack.EMPTY;
             }

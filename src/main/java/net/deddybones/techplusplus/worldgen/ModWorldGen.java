@@ -1,6 +1,5 @@
 package net.deddybones.techplusplus.worldgen;
 
-import net.deddybones.techplusplus.TechPlusPlus;
 import net.deddybones.techplusplus.worldgen.features.TinyLogFeature;
 import net.deddybones.techplusplus.worldgen.features.TinyRockFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
@@ -13,11 +12,13 @@ import net.minecraftforge.registries.RegistryObject;
 
 import java.util.function.Supplier;
 
+import static net.deddybones.techplusplus.TechPlusPlus.MOD_ID;
+
 public class ModWorldGen {
     public static final DeferredRegister<BiomeModifier> BIOME_MODIFIERS =
-            DeferredRegister.create(ForgeRegistries.Keys.BIOME_MODIFIERS, TechPlusPlus.MOD_ID);
+            DeferredRegister.create(ForgeRegistries.Keys.BIOME_MODIFIERS, MOD_ID);
     public static final DeferredRegister<Feature<?>> FEATURES =
-            DeferredRegister.create(ForgeRegistries.Keys.FEATURES, TechPlusPlus.MOD_ID);
+            DeferredRegister.create(ForgeRegistries.Keys.FEATURES, MOD_ID);
 
     public static final RegistryObject<Feature<SimpleBlockConfiguration>> TINY_ROCK_FEATURE = registerFeature("tiny_rock_feature",
             () -> new TinyRockFeature(SimpleBlockConfiguration.CODEC));

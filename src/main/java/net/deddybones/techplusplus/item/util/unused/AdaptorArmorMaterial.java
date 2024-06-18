@@ -2,7 +2,6 @@ package net.deddybones.techplusplus.item.util.unused;
 
 import net.deddybones.techplusplus.item.custom.ModArmorItem;
 import net.minecraft.core.Holder;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -12,6 +11,9 @@ import java.util.Map;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
+import static net.deddybones.techplusplus.datagen.util.ModHelper.resLoc;
+
+@SuppressWarnings("unused")
 public class AdaptorArmorMaterial implements IArmorMaterial {
     private final ArmorMaterial armorMaterial;
     private final List<ModArmorMaterial.Layer> armorLayers;
@@ -20,7 +22,7 @@ public class AdaptorArmorMaterial implements IArmorMaterial {
         this.armorMaterial = pArmorMaterial.get();
         this.armorLayers = this.armorMaterial.layers().stream().map(
                 (ArmorMaterial.Layer i) -> new ModArmorMaterial.Layer(
-                        new ResourceLocation(pArmorMaterial.getRegisteredName()), i.getSuffix(), i.dyeable()
+                        resLoc(pArmorMaterial.getRegisteredName()), i.getSuffix(), i.dyeable()
                 )
         ).collect(Collectors.toList());
     }
