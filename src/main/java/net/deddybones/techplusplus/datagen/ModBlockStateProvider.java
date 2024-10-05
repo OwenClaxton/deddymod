@@ -89,7 +89,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         horizontalBlockWithItem(ModBlocks.CRUSHER.get(), modLoc("block/crusher_side"), modLoc("block/crusher_front"), modLoc("block/crusher_top"), modLoc("block/crusher_bottom"));
         furnaceBlockWithItem(ModBlocks.KILN.get(), modLoc("block/kiln_side"), modLoc("block/kiln_front"), modLoc("block/kiln_front_on"), modLoc("block/kiln_top"));
         horizontalBlockWithItem(ModBlocks.CLAY_MOLDER.get(), modLoc("block/clay_molder_side"), modLoc("block/clay_molder_front"), modLoc("block/clay_molder_top"), modLoc("block/clay_molder_bottom"));
-        smelteryBlockWithItem(ModBlocks.SMELTERY.get(), modLoc("block/smeltery_side"), modLoc("block/smeltery_front"), modLoc("block/smeltery_front_on"), modLoc("block/smeltery_top"));
+        smelteryBlockWithItem(ModBlocks.SMELTERY.get(), modLoc("block/smeltery_side"), modLoc("block/smeltery_front"), modLoc("block/smeltery_front_on"), modLoc("block/smeltery_top"), modLoc("block/smeltery_bottom"));
 
     }
 
@@ -106,8 +106,15 @@ public class ModBlockStateProvider extends BlockStateProvider {
     public void litBlockWithItem(Block pBlock, ResourceLocation side, ResourceLocation front,
                                  ResourceLocation front_lit, ResourceLocation top,
                                  BooleanProperty litProperty) {
-        ModelFile model_unlit = models().orientable(bName(pBlock), side, front, top);
-        ModelFile model_lit = models().orientable(bName(pBlock) + "_on", side, front_lit, top);
+        litBlockWithItem(pBlock, side, front, front_lit, top, top, litProperty);
+    }
+
+    public void litBlockWithItem(Block pBlock, ResourceLocation side, ResourceLocation front,
+                                 ResourceLocation front_lit, ResourceLocation top,
+                                 ResourceLocation bottom,
+                                 BooleanProperty litProperty) {
+        ModelFile model_unlit = models().orientableWithBottom(bName(pBlock), side, front, top, bottom);
+        ModelFile model_lit = models().orientableWithBottom(bName(pBlock) + "_on", side, front_lit, top, bottom);
 
         getVariantBuilder(pBlock)
                 .forAllStates(state -> {
@@ -127,8 +134,8 @@ public class ModBlockStateProvider extends BlockStateProvider {
     }
 
     public void smelteryBlockWithItem(Block pBlock, ResourceLocation side, ResourceLocation front,
-                                     ResourceLocation front_lit, ResourceLocation top) {
-        litBlockWithItem(pBlock, side, front, front_lit, top, SmelteryBlock.SMELTING);
+                                     ResourceLocation front_lit, ResourceLocation top, ResourceLocation bottom) {
+        litBlockWithItem(pBlock, side, front, front_lit, top, bottom, SmelteryBlock.SMELTING);
     }
 
     public void goodieBlock(GoodieBlock pBlock, ModelFile pModel) {

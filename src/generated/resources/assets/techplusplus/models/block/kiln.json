@@ -1,6 +1,7 @@
 {
-  "parent": "minecraft:block/orientable",
+  "parent": "minecraft:block/orientable_with_bottom",
   "textures": {
+    "bottom": "techplusplus:block/kiln_top",
     "front": "techplusplus:block/kiln_front",
     "side": "techplusplus:block/kiln_side",
     "top": "techplusplus:block/kiln_top"
